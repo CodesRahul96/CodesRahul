@@ -1,0 +1,42 @@
+[
+    {
+      "id": 1,
+      "title": "E-Commerce Platform",
+      "description": "A fully responsive e-commerce website built with React, Node.js, and MongoDB. Features user authentication, product filtering, and a secure payment gateway.",
+      "category": "Web Development",
+      "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+      "github": "https://github.com/yourusername/ecommerce-platform",
+      "demo": "https://ecommerce-demo.example.com",
+      "image": "ecommerce.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Portfolio Website",
+      "description": "A personal portfolio website showcasing my projects and skills, built with React and TailwindCSS. Includes smooth animations and a dark theme.",
+      "category": "Frontend",
+      "technologies": ["React", "TailwindCSS", "Three.js"],
+      "github": "https://github.com/yourusername/portfolio",
+      "demo": "https://portfolio-demo.example.com",
+      "image": "portfolio.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Task Management App",
+      "description": "A task management application with features like task creation, categorization, and deadline tracking. Built with React and Firebase for real-time updates.",
+      "category": "Web Development",
+      "technologies": ["React", "Firebase", "CSS"],
+      "github": "https://github.com/yourusername/task-manager",
+      "demo": "https://taskmanager-demo.example.com",
+      "image": "taskmanager.jpg"
+    },
+    {
+      "id": 4,
+      "title": "3D Product Visualizer",
+      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
+      "category": "3D Visualization",
+      "technologies": ["Three.js", "React", "JavaScript"],
+      "github": "https://github.com/yourusername/3d-visualizer",
+      "demo": "https://3dvisualizer-demo.example.com",
+      "image": "3dvisualizer.jpg"
+    }
+  ]
