@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import developerImage from "../assets/developer.jpg"; // Adjust the path as needed
 import { Link } from "react-router-dom";
 
 function Home() {
+  useEffect(() => {
+    document.title = 'CodesRahul';
+  }, []);
   return (
     <section
       id="home"

@@ -15,7 +15,9 @@ function Projects() {
   const [filter, setFilter] = useState("All");
 
   // Load projects from imported JSON data
+
   useEffect(() => {
+    document.title = 'Projects';
     try {
       console.log("Imported Projects Data:", projectsData); // Debugging log
       if (projectsData && Array.isArray(projectsData)) {

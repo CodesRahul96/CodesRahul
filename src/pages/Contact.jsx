@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaEnvelope,
   FaPhone,
@@ -56,6 +56,11 @@ function Contact() {
     setFormData({ name: "", email: "", subject: "", message: "" });
     setErrors({});
   };
+
+  // Update Page Title
+  useEffect(() => {
+    document.title = 'Contact';
+  }, []);
 
   return (
     <section

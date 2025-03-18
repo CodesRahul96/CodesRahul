@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt, FaDatabase } from 'react-icons/fa';
 import { SiTailwindcss, SiFigma, SiJest } from 'react-icons/si';
 import { TbBrandThreejs } from "react-icons/tb";
@@ -19,6 +19,10 @@ function About() {
     { name: 'Figma', icon: <SiFigma />, level: 65 },
     { name: 'Jest', icon: <SiJest />, level: 60 },
   ];
+
+  useEffect(() => {
+    document.title = 'About';
+  }, []);
 
   return (
     <section id="about" className="py-20 bg-gradient-to-r from-gray-950 via-blue-550 to-violet-950 min-h-screen flex items-center justify-center">
@@ -90,13 +94,13 @@ function About() {
             </p>
             <div className="flex justify-center space-x-6">
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:codesrahul96@gmail.com"
                 className="text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
               >
                 Email
               </a>
               <a
-                href="https://linkedin.com/in/yourprofile"
+                href="https://linkedin.com/in/codesrahul"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
@@ -104,7 +108,7 @@ function About() {
                 LinkedIn
               </a>
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/codesrahul96"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
