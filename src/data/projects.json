@@ -4,121 +4,145 @@
     "title": "Blogsify",
     "description": "A full-stack blogging platform built with React for a dynamic frontend and Node.js with Express for the backend API. Users can create, read, update, and delete blog posts, stored in a database (e.g., MongoDB). Includes features like user authentication, comments, and a responsive design with Tailwind CSS..",
     "category": "Web Development",
-    "technologies": ["React", "JavaScript","TailwindCSS","Node.js","MongoDB","JWT", "API"],
+    "technologies": [
+      "React",
+      "JavaScript",
+      "TailwindCSS",
+      "Node.js",
+      "MongoDB",
+      "JWT",
+      "API",
+      "Axios"
+    ],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://github.com/CodesRahul96",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/blogsify.png"
   },
-    {
-      "id": 2,
-      "title": "TrentShopNow / E-Commerce Platform",
-      "description": "A fully responsive e-commerce website built with React, Node.js, and MongoDB. Features user authentication, product filtering, and a secure payment gateway.",
-      "category": "Web Development",
-      "technologies": ["React", "JavaScript","TailwindCSS","Node.js","MongoDB"],
-      "github": "https://github.com/CodesRahul96/TrentShopNow.git",
-      "demo": "https://trentshopnow.vercel.app/",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/TrentShopNow.png"
-    },
-    {
-      "id": 3,
-      "title": "Portfolio Website",
-      "description": "A personal portfolio website showcasing my projects and skills, built with React and TailwindCSS. Includes smooth animations and a dark theme.",
-      "category": "Frontend",
-      "technologies": ["React", "TailwindCSS", "API"],
-      "github": "https://github.com/yourusername/portfolio",
-      "demo": "https://codesrahul.vercel.app",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/portfolio.png"
-    },
-    {
-      "id": 4,
-      "title": "VideoX",
-      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
-      "category": "Web Development",
-      "technologies": ["React", "JavaScript","TailwindCSS","Node.js","MongoDB"],
-      "github": "https://github.com/CodesRahul96/VideoX.git",
-      "demo": "https://video-x.vercel.app/",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/video-x.png"
-    },
-    {
-      "id": 5,
-      "title": "Netflix Clone",
-      "description": "A full-stack app mimicking Netflix, built with React for a dynamic, responsive UI and Node.js with Express for the backend API. Features movie streaming, browsing, and user profiles, with data stored in a database (e.g., MongoDB). Integrates external APIs for content and uses CSS for styling..",
-      "category": "Frontend",
-      "technologies": ["React", "Node.js", "MongoDB", "CSS"],
-      "github": "https://github.com/CodesRahul96/Netflix-Clone.git",
-      "demo": "https://codesrahul-netflix.vercel.app/",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/netflix-clone.png"
-    },
-    {
-      "id": 6,
-      "title": "IMDB",
-      "description": "This is a full-stack web application inspired by IMDb, designed to manage and display movie information. The frontend, built with React, provides a responsive and interactive user interface for browsing movies, viewing details, and searching through a catalog. Features include dynamic routing, state management (e.g., with Redux or Context API), and a sleek design using modern CSS frameworks like Tailwind CSS.",
-      "category": "Frontend",
-      "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
-      "github": "https://github.com/CodesRahul96/IMDB.git",
-      "demo": "https://codesrahul-imdb.vercel.app/",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/IMDB.png"
-    },
+  {
+    "id": 2,
+    "title": "TrentShopNow / E-Commerce Platform",
+    "description": "A fully responsive e-commerce website built with React, Node.js, and MongoDB. Features user authentication, product filtering, and a secure payment gateway.",
+    "category": "Web Development",
+    "technologies": [
+      "React",
+      "JavaScript",
+      "TailwindCSS",
+      "Node.js",
+      "MongoDB",
+      "JWT",
+      "API",
+      "Axios"
+    ],
+    "github": "https://github.com/CodesRahul96/TrentShopNow.git",
+    "demo": "https://trentshopnow.vercel.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/TrentShopNow.png"
+  },
+  {
+    "id": 3,
+    "title": "Portfolio Website",
+    "description": "A full-stack showcase built with React for a vibrant, responsive frontend and Node.js with Express for the backend API. Highlights personal projects, skills, and contact details, with data stored in a database. Designed with Tailwind CSS for a polished, professional look. Includes smooth animations and a dark theme.",
+    "category": "Frontend",
+    "technologies": ["React", "TailwindCSS", "API"],
+    "github": "https://github.com/yourusername/portfolio",
+    "demo": "https://codesrahul.vercel.app",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/portfolio.png"
+  },
+  {
+    "id": 4,
+    "title": "VideoX",
+    "description": "A full-stack video streaming app built with React for a responsive frontend and Node.js with Express for the backend API. Enables users to watch and browse videos, stored in a database (e.g., MongoDB) or cloud storage. Features a modern UI with Tailwind CSS and video playback integration.",
+    "category": "Web Development",
+    "technologies": [
+      "React",
+      "JavaScript",
+      "TailwindCSS",
+      "Node.js",
+      "MongoDB"
+    ],
+    "github": "https://github.com/CodesRahul96/VideoX.git",
+    "demo": "https://video-x.vercel.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/video-x.png"
+  },
+  {
+    "id": 5,
+    "title": "Netflix Clone",
+    "description": "A full-stack app mimicking Netflix, built with React for a dynamic, responsive UI and Node.js with Express for the backend API. Features movie streaming, browsing, and user profiles, with data stored in a database (e.g., MongoDB). Integrates external APIs for content and uses CSS for styling..",
+    "category": "Frontend",
+    "technologies": ["React", "Node.js", "MongoDB", "CSS"],
+    "github": "https://github.com/CodesRahul96/Netflix-Clone.git",
+    "demo": "https://codesrahul-netflix.vercel.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/netflix-clone.png"
+  },
+  {
+    "id": 6,
+    "title": "IMDB",
+    "description": "This is a full-stack web application inspired by IMDb, designed to manage and display movie information. The frontend, built with React, provides a responsive and interactive user interface for browsing movies, viewing details, and searching through a catalog. Features include dynamic routing, state management (e.g., with Redux or Context API), and a sleek design using modern CSS frameworks like Tailwind CSS.",
+    "category": "Frontend",
+    "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+    "github": "https://github.com/CodesRahul96/IMDB.git",
+    "demo": "https://codesrahul-imdb.vercel.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/IMDB.png"
+  },
 
-    {
-      "id": 7,
-      "title": "Live TV",
-      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
-      "category": "Frontend",
-      "technologies": ["Three.js", "React", "JavaScript"],
-      "github": "https://github.com/CodesRahul96",
-      "demo": "https://codesrahul-tv.vercel.app/",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/live-tv.png"
-    },
+  {
+    "id": 7,
+    "title": "Live TV",
+    "description": "A full-stack application built with React for a dynamic frontend and Node.js with Express for the backend API. Streams live TV channels using embedded video players or third-party APIs, with a channel list and basic controls. Data is managed in a database (e.g., MongoDB), styled with Tailwind CSS for a sleek, responsive UI.",
+    "category": "Frontend",
+    "technologies": ["Three.js", "React", "JavaScript"],
+    "github": "https://github.com/CodesRahul96",
+    "demo": "https://codesrahul-tv.vercel.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/live-tv.png"
+  },
 
-    {
-      "id": 8,
-      "title": "Task Management App",
-      "description": "A simple full-stack app built with React for an interactive UI and Node.js with Express for the backend API. Allows users to create, edit, and delete tasks, with data persisted in a database (e.g., MongoDB). Features a clean design using Tailwind CSS and basic CRUD functionality.",
-      "category": "Web Development",
-      "technologies": ["React", "Firebase", "TailwindCSS"],
-      "github": "https://github.com/CodesRahul96/todo-list.git",
-      "demo": "https://codesrahul-todolist.vercel.app/",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/task-management.png"
-    },
-    {
-      "id": 9,
-      "title": "Image Gallary",
-      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
-      "category": "Frontend",
-      "technologies": ["React","CSS", "JavaScript"],
-      "github": "https://github.com/CodesRahul96/Image-Gallary.git",
-      "demo": "https://codesrahul-imagegallary.vercel.app/",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/image-gallary.png"
-    },
-    {
-      "id": 10,
-      "title": "Logic Website",
-      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
-      "category": "Frontend",
-      "technologies": ["WordPress", "HTML","CSS", "JavaScript"],
-      "github": "https://github.com/CodesRahul96",
-      "demo": "https://codeslogic.netlify.app/",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/logic.png"
-    },
-    {
-      "id": 10,
-      "title": "My Website",
-      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
-      "category": "Frontend",
-      "technologies": ["React","SCSS","JavaScript","Responsive"],
-      "github": "https://github.com/CodesRahul96",
-      "demo": "https://codeslogic.netlify.app/",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/mywebsite.png"
-    },
-    {
-      "id": 100,
-      "title": "Coming Soon",
-      "description": "Many new Project are in development stage.",
-      "category": "Web Development",
-      "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
-      "github": "https://github.com/CodesRahul96",
-      "demo": "https://github.com/CodesRahul96",
-      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png"
-    }
-  ]
+  {
+    "id": 8,
+    "title": "Task Management App",
+    "description": "A simple full-stack app built with React for an interactive UI and Node.js with Express for the backend API. Allows users to create, edit, and delete tasks, with data persisted in a database (e.g., MongoDB). Features a clean design using Tailwind CSS and basic CRUD functionality.",
+    "category": "Web Development",
+    "technologies": ["React", "Firebase", "TailwindCSS"],
+    "github": "https://github.com/CodesRahul96/todo-list.git",
+    "demo": "https://codesrahul-todolist.vercel.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/task-management.png"
+  },
+  {
+    "id": 9,
+    "title": "Image Gallary",
+    "description": "A full-stack app built with React for an interactive frontend and Node.js with Express for the backend API. Displays a collection of images with features like upload, view, and delete, stored in a database (e.g., MongoDB) or cloud storage. Styled with Tailwind CSS for a responsive, grid-based layout.",
+    "category": "Frontend",
+    "technologies": ["React", "CSS", "JavaScript"],
+    "github": "https://github.com/CodesRahul96/Image-Gallary.git",
+    "demo": "https://codesrahul-imagegallary.vercel.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/image-gallary.png"
+  },
+  {
+    "id": 10,
+    "title": "Logic Website",
+    "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
+    "category": "Frontend",
+    "technologies": ["WordPress", "HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/CodesRahul96",
+    "demo": "https://codeslogic.netlify.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/logic.png"
+  },
+  {
+    "id": 10,
+    "title": "My Website",
+    "description": "A full-stack personal portfolio built with React for a modern, responsive frontend and Node.js with Express for the backend API. Showcases projects, skills, and contact info, with data managed in a database (e.g., MongoDB). Features a clean, professional design using Tailwind CSS.",
+    "category": "Frontend",
+    "technologies": ["React", "SCSS", "JavaScript", "Responsive"],
+    "github": "https://github.com/CodesRahul96",
+    "demo": "https://codeslogic.netlify.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/mywebsite.png"
+  },
+  {
+    "id": 100,
+    "title": "Coming Soon",
+    "description": "A lightweight full-stack app built with React for a sleek, animated frontend and Node.js with Express for the backend. Displays a 'Coming Soon' page with a countdown timer, email subscription form, and stylish design using Tailwind CSS. Stores subscriber emails in a database (e.g., MongoDB).",
+    "category": "Web Development",
+    "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+    "github": "https://github.com/CodesRahul96",
+    "demo": "https://github.com/CodesRahul96",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png"
+  }
+]
