@@ -16,11 +16,10 @@ function App() {
         <Navbar />
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" exact element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/*" element={<PageNotFound />} /> {/* Catch-all route for 404 */}
             <Route path="*" element={<PageNotFound />} /> {/* Catch-all route for 404 */}
           </Routes>
         </main>
