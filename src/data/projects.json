@@ -66,9 +66,9 @@
       "description": "This is a full-stack web application inspired by IMDb, designed to manage and display movie information. The frontend, built with React, provides a responsive and interactive user interface for browsing movies, viewing details, and searching through a catalog. Features include dynamic routing, state management (e.g., with Redux or Context API), and a sleek design using modern CSS frameworks like Tailwind CSS.",
       "category": "3D Visualization",
       "technologies": ["Three.js", "React", "JavaScript"],
-      "github": "https://github.com/yourusername/3d-visualizer",
+      "github": "https://github.com/CodesRahul96/IMDB",
       "demo": "https://codesrahul-imdb.vercel.app/",
-      "image": "3dvisualizer.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/IMDB.png"
     },
     {
       "id": 8,

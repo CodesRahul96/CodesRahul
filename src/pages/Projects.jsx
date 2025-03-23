@@ -99,11 +99,11 @@ function Projects() {
                   >
                     {/* Project Image */}
                     <img
-                      src={`/assets/${project.image}`} // Ensure images are in src/assets
+                      src={`${project.image}`} // Ensure images are in src/assets
                       alt={project.title}
                       className="w-full h-48 object-cover"
                       onError={(e) => {
-                        e.target.src = "https://via.placeholder.com/300x200"; // Fallback image
+                        e.target.src = "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png"; // Fallback image
                       }}
                     />
                     <div className="p-6">
