@@ -1,12 +1,13 @@
 [
+  
     {
       "id": 1,
       "title": "E-Commerce Platform",
       "description": "A fully responsive e-commerce website built with React, Node.js, and MongoDB. Features user authentication, product filtering, and a secure payment gateway.",
       "category": "Web Development",
       "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
-      "github": "https://github.com/yourusername/ecommerce-platform",
-      "demo": "https://ecommerce-demo.example.com",
+      "github": "https://github.com/CodesRahul96/TrentShopNow.git",
+      "demo": "https://trentshopnow.vercel.app/",
       "image": "ecommerce.jpg"
     },
     {
@@ -16,7 +17,7 @@
       "category": "Frontend",
       "technologies": ["React", "TailwindCSS", "Three.js"],
       "github": "https://github.com/yourusername/portfolio",
-      "demo": "https://portfolio-demo.example.com",
+      "demo": "https://codesrahul.vercel.app",
       "image": "portfolio.jpg"
     },
     {
@@ -25,13 +26,74 @@
       "description": "A task management application with features like task creation, categorization, and deadline tracking. Built with React and Firebase for real-time updates.",
       "category": "Web Development",
       "technologies": ["React", "Firebase", "CSS"],
-      "github": "https://github.com/yourusername/task-manager",
-      "demo": "https://taskmanager-demo.example.com",
+      "github": "https://github.com/CodesRahul96/todo-list.git",
+      "demo": "https://codesrahul-todolist.vercel.app/",
       "image": "taskmanager.jpg"
     },
     {
       "id": 4,
       "title": "3D Product Visualizer",
+      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
+      "category": "3D Visualization",
+      "technologies": ["Three.js", "React", "JavaScript"],
+      "github": "https://github.com/yourusername/3d-visualizer",
+      "demo": "https://3dvisualizer-demo.example.com",
+      "image": "3dvisualizer.jpg"
+    },
+    {
+      "id": 5,
+      "title": "VideoX",
+      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
+      "category": "3D Visualization",
+      "technologies": ["Three.js", "React", "JavaScript"],
+      "github": "https://github.com/yourusername/3d-visualizer",
+      "demo": "https://3dvisualizer-demo.example.com",
+      "image": "3dvisualizer.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Netflix Clone",
+      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
+      "category": "3D Visualization",
+      "technologies": ["Three.js", "React", "JavaScript"],
+      "github": "https://github.com/yourusername/3d-visualizer",
+      "demo": "https://3dvisualizer-demo.example.com",
+      "image": "3dvisualizer.jpg"
+    },
+    {
+      "id": 7,
+      "title": "IMDB",
+      "description": "This is a full-stack web application inspired by IMDb, designed to manage and display movie information. The frontend, built with React, provides a responsive and interactive user interface for browsing movies, viewing details, and searching through a catalog. Features include dynamic routing, state management (e.g., with Redux or Context API), and a sleek design using modern CSS frameworks like Tailwind CSS.",
+      "category": "3D Visualization",
+      "technologies": ["Three.js", "React", "JavaScript"],
+      "github": "https://github.com/yourusername/3d-visualizer",
+      "demo": "https://codesrahul-imdb.vercel.app/",
+      "image": "3dvisualizer.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Live TV",
+      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
+      "category": "3D Visualization",
+      "technologies": ["Three.js", "React", "JavaScript"],
+      "github": "https://github.com/yourusername/3d-visualizer",
+      "demo": "https://codesrahul-tv.vercel.app/",
+      "image": "3dvisualizer.jpg"
+    },
+    
+    {
+      "id": 10,
+      "title": "Image Gallary",
+      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
+      "category": "3D Visualization",
+      "technologies": ["Three.js", "React", "JavaScript"],
+      "github": "https://github.com/yourusername/3d-visualizer",
+      "demo": "https://3dvisualizer-demo.example.com",
+      "image": "3dvisualizer.jpg"
+    },
+    {
+      "id": 11,
+      "title": "Logic Website",
       "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
       "category": "3D Visualization",
       "technologies": ["Three.js", "React", "JavaScript"],

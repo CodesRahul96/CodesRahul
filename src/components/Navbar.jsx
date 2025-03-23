@@ -1,48 +1,30 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownloadCV = () => {
-    // Define the CV file path (relative to the public folder)
-    const cvFilePath = '/Rahul_CV.pdf'; // Update with your CV filename
-    const link = document.createElement('a');
-    link.href = cvFilePath;
-    link.download = 'Rahul_CV.pdf'; // Suggested filename for download
+    // Google Drive file ID (replace with your actual file ID)
+    const fileId = "1buayPMpn_P3-tEYAxt_JzBekcj8vyB_4";
+    // Construct direct download URL from Google Drive
+    const cvUrlOrg = `https://drive.google.com/file/d/1buayPMpn_P3-tEYAxt_JzBekcj8vyB_4/view?usp=sharing`;
+    const cvUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+    
+    setIsDownloading(true);
+    
+    const link = document.createElement("a");
+    link.href = cvUrl;
+    link.download = "Rahul-Misal-CV.pdf"; // Suggested filename
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
-    // Add feedback using toastify
-    try {
-      // Check if the file exists (basic validation)
-      fetch(cvFilePath)
-        .then((response) => {
-          if (response.ok) {
-            toast.success('CV download started!', {
-              position: 'top-right',
-              autoClose: 3000,
-            });
-          } else {
-            throw new Error('File not found');
-          }
-        })
-        .catch((error) => {
-          console.error('Error downloading CV:', error);
-          toast.error('Failed to download CV. Please try again later.', {
-            position: 'top-right',
-            autoClose: 3000,
-          });
-        });
-    } catch (error) {
-      console.error('Unexpected error:', error);
-      toast.error('An unexpected error occurred.', {
-        position: 'top-right',
-        autoClose: 3000,
-      });
-    }
+    // Reset downloading state after 2 seconds
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 2000);
   };
 
   const toggleMenu = () => {
@@ -67,17 +49,17 @@ function Navbar() {
           >
             <div
               className={`w-8 h-1 bg-gray-400 mb-1 transition-all duration-300 ${
-                isOpen ? 'rotate-45 translate-y-2' : ''
+                isOpen ? "rotate-45 translate-y-2" : ""
               }`}
             ></div>
             <div
               className={`w-8 h-1 bg-gray-400 mb-1 transition-all duration-300 ${
-                isOpen ? 'opacity-0' : ''
+                isOpen ? "opacity-0" : ""
               }`}
             ></div>
             <div
               className={`w-8 h-1 bg-gray-400 transition-all duration-300 ${
-                isOpen ? '-rotate-45 -translate-y-2' : ''
+                isOpen ? "-rotate-45 -translate-y-2" : ""
               }`}
             ></div>
           </button>
@@ -94,7 +76,7 @@ function Navbar() {
               <span className="absolute left-0 bottom-0 w-0 h-1 bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </li>
-          {['About', 'Projects', 'Contact'].map((item) => (
+          {["About", "Projects", "Contact"].map((item) => (
             <li key={item}>
               <Link
                 to={`/${item.toLowerCase()}`}
@@ -106,19 +88,29 @@ function Navbar() {
             </li>
           ))}
           <li>
-            <button
+            {/* <button
               onClick={handleDownloadCV}
               className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-pulse"
             >
               Download CV
-            </button>
+            </button> */}
+            <button
+          onClick={handleDownloadCV}
+          className={`bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105
+            ${isDownloading ? 'animate-bounce' : ''}`}
+          disabled={isDownloading}
+        >
+          {isDownloading ? 'Downloading...' : 'Download CV'}
+        </button>
           </li>
         </ul>
 
         {/* Mobile Menu */}
         <div
           className={`md:hidden absolute top-16 left-0 w-full bg-gradient-to-r from-gray-950 via-blue-950 to-violet-950 shadow-lg transition-all duration-300 ${
-            isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+            isOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
         >
           <ul className="flex flex-col items-center space-y-4 p-4">
@@ -131,7 +123,7 @@ function Navbar() {
                 Home
               </Link>
             </li>
-            {['About', 'Projects', 'Contact'].map((item) => (
+            {["About", "Projects", "Contact"].map((item) => (
               <li key={item}>
                 <Link
                   to={`/${item.toLowerCase()}`}
