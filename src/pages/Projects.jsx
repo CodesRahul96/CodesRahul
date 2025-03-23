@@ -101,6 +101,7 @@ function Projects() {
                     <img
                       src={`${project.image}`} // Ensure images are in src/assets
                       alt={project.title}
+                      loading="lazy"
                       className="w-full h-48 object-cover"
                       onError={(e) => {
                         e.target.src = "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png"; // Fallback image

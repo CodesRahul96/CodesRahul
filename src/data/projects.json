@@ -2,13 +2,13 @@
   
     {
       "id": 1,
-      "title": "E-Commerce Platform",
+      "title": "TrentShopNow / E-Commerce Platform",
       "description": "A fully responsive e-commerce website built with React, Node.js, and MongoDB. Features user authentication, product filtering, and a secure payment gateway.",
       "category": "Web Development",
       "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
       "github": "https://github.com/CodesRahul96/TrentShopNow.git",
       "demo": "https://trentshopnow.vercel.app/",
-      "image": "ecommerce.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/TrentShopNow.png"
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "technologies": ["React", "TailwindCSS", "Three.js"],
       "github": "https://github.com/yourusername/portfolio",
       "demo": "https://codesrahul.vercel.app",
-      "image": "portfolio.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/portfolio.jpg"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "technologies": ["React", "Firebase", "CSS"],
       "github": "https://github.com/CodesRahul96/todo-list.git",
       "demo": "https://codesrahul-todolist.vercel.app/",
-      "image": "taskmanager.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/task-management.png"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "technologies": ["Three.js", "React", "JavaScript"],
       "github": "https://github.com/yourusername/3d-visualizer",
       "demo": "https://3dvisualizer-demo.example.com",
-      "image": "3dvisualizer.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/task-management.png"
     },
     {
       "id": 5,
@@ -48,7 +48,7 @@
       "technologies": ["Three.js", "React", "JavaScript"],
       "github": "https://github.com/yourusername/3d-visualizer",
       "demo": "https://3dvisualizer-demo.example.com",
-      "image": "3dvisualizer.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/video-x.png"
     },
     {
       "id": 6,
@@ -58,7 +58,7 @@
       "technologies": ["Three.js", "React", "JavaScript"],
       "github": "https://github.com/yourusername/3d-visualizer",
       "demo": "https://3dvisualizer-demo.example.com",
-      "image": "3dvisualizer.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/netflix-clone.png"
     },
     {
       "id": 7,
@@ -78,7 +78,7 @@
       "technologies": ["Three.js", "React", "JavaScript"],
       "github": "https://github.com/yourusername/3d-visualizer",
       "demo": "https://codesrahul-tv.vercel.app/",
-      "image": "3dvisualizer.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/live-tv.png"
     },
     
     {
@@ -89,16 +89,16 @@
       "technologies": ["Three.js", "React", "JavaScript"],
       "github": "https://github.com/yourusername/3d-visualizer",
       "demo": "https://3dvisualizer-demo.example.com",
-      "image": "3dvisualizer.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/image-gallary.png"
     },
     {
       "id": 11,
       "title": "Logic Website",
       "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
       "category": "3D Visualization",
-      "technologies": ["Three.js", "React", "JavaScript"],
+      "technologies": ["WordPress", "HTML","CSS", "JavaScript"],
       "github": "https://github.com/yourusername/3d-visualizer",
       "demo": "https://3dvisualizer-demo.example.com",
-      "image": "3dvisualizer.jpg"
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/logic.png"
     }
   ]
