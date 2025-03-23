@@ -102,6 +102,16 @@
       "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/logic.png"
     },
     {
+      "id": 10,
+      "title": "My Website",
+      "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
+      "category": "Frontend",
+      "technologies": ["React","SCSS","JavaScript","Responsive"],
+      "github": "https://github.com/CodesRahul96",
+      "demo": "https://codeslogic.netlify.app/",
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/mywebsite.png"
+    },
+    {
       "id": 100,
       "title": "Coming Soon",
       "description": "Many new Project are in development stage.",
@@ -109,6 +119,6 @@
       "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
       "github": "https://github.com/CodesRahul96",
       "demo": "https://github.com/CodesRahul96",
-      "image": ""
+      "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png"
     }
   ]
