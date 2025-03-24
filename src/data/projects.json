@@ -64,6 +64,20 @@
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/video-x.png"
   },
   {
+    "id": 4,
+    "title": "GymWala",
+    "description": "A full-stack video streaming app built with React for a responsive frontend and Node.js with Express for the backend API. Enables users to watch and browse videos, stored in a database (e.g., MongoDB) or cloud storage. Features a modern UI with Tailwind CSS and video playback integration.",
+    "category": "Frontend",
+    "technologies": [
+      "React",
+      "JavaScript",
+      "TailwindCSS"
+    ],
+    "github": "https://github.com/CodesRahul96/GymWala.git",
+    "demo": "https://gymwala.vercel.app/",
+    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/GymWala.png"
+  },
+  {
     "id": 5,
     "title": "Netflix Clone",
     "description": "A full-stack app mimicking Netflix, built with React for a dynamic, responsive UI and Node.js with Express for the backend API. Features movie streaming, browsing, and user profiles, with data stored in a database (e.g., MongoDB). Integrates external APIs for content and uses CSS for styling..",
