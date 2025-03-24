@@ -167,7 +167,7 @@ function Projects() {
                 Check out my GitHub for more projects and contributions!
               </p>
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/codesrahul96"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
