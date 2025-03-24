@@ -64,7 +64,7 @@
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/video-x.png"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "GymWala",
     "description": "A full-stack video streaming app built with React for a responsive frontend and Node.js with Express for the backend API. Enables users to watch and browse videos, stored in a database (e.g., MongoDB) or cloud storage. Features a modern UI with Tailwind CSS and video playback integration.",
     "category": "Frontend",
@@ -78,7 +78,7 @@
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/GymWala.png"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Netflix Clone",
     "description": "A full-stack app mimicking Netflix, built with React for a dynamic, responsive UI and Node.js with Express for the backend API. Features movie streaming, browsing, and user profiles, with data stored in a database (e.g., MongoDB). Integrates external APIs for content and uses CSS for styling..",
     "category": "Frontend",
@@ -88,7 +88,7 @@
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/netflix-clone.png"
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "IMDB",
     "description": "This is a full-stack web application inspired by IMDb, designed to manage and display movie information. The frontend, built with React, provides a responsive and interactive user interface for browsing movies, viewing details, and searching through a catalog. Features include dynamic routing, state management (e.g., with Redux or Context API), and a sleek design using modern CSS frameworks like Tailwind CSS.",
     "category": "Frontend",
@@ -99,7 +99,7 @@
   },
 
   {
-    "id": 7,
+    "id": 8,
     "title": "Live TV",
     "description": "A full-stack application built with React for a dynamic frontend and Node.js with Express for the backend API. Streams live TV channels using embedded video players or third-party APIs, with a channel list and basic controls. Data is managed in a database (e.g., MongoDB), styled with Tailwind CSS for a sleek, responsive UI.",
     "category": "Frontend",
@@ -110,7 +110,7 @@
   },
 
   {
-    "id": 8,
+    "id": 9,
     "title": "Task Management App",
     "description": "A simple full-stack app built with React for an interactive UI and Node.js with Express for the backend API. Allows users to create, edit, and delete tasks, with data persisted in a database (e.g., MongoDB). Features a clean design using Tailwind CSS and basic CRUD functionality.",
     "category": "Web Development",
@@ -120,7 +120,7 @@
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/task-management.png"
   },
   {
-    "id": 9,
+    "id": 10,
     "title": "Image Gallary",
     "description": "A full-stack app built with React for an interactive frontend and Node.js with Express for the backend API. Displays a collection of images with features like upload, view, and delete, stored in a database (e.g., MongoDB) or cloud storage. Styled with Tailwind CSS for a responsive, grid-based layout.",
     "category": "Frontend",
@@ -130,7 +130,7 @@
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/image-gallary.png"
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "Logic Website",
     "description": "An interactive 3D product visualizer built with Three.js, allowing users to rotate and customize products in real-time.",
     "category": "Frontend",
@@ -140,7 +140,7 @@
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/logic.png"
   },
   {
-    "id": 10,
+    "id": 12,
     "title": "My Website",
     "description": "A full-stack personal portfolio built with React for a modern, responsive frontend and Node.js with Express for the backend API. Showcases projects, skills, and contact info, with data managed in a database (e.g., MongoDB). Features a clean, professional design using Tailwind CSS.",
     "category": "Frontend",
@@ -150,7 +150,7 @@
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/mywebsite.png"
   },
   {
-    "id": 100,
+    "id": 13,
     "title": "Coming Soon",
     "description": "A lightweight full-stack app built with React for a sleek, animated frontend and Node.js with Express for the backend. Displays a 'Coming Soon' page with a countdown timer, email subscription form, and stylish design using Tailwind CSS. Stores subscriber emails in a database (e.g., MongoDB).",
     "category": "Web Development",
