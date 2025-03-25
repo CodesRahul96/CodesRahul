@@ -16,7 +16,7 @@ function Home() {
           {/* Left Side: Title, Description, CTA */}
           <div className="text-center md:text-left w-full md:w-1/2 space-y-6 animate-fadeIn">
             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-100 drop-shadow-lg">
-              Welcome to <span className="text-yellow-300">CodesRahul</span>
+              Welcome to <span className="text-yellow-300">Codes</span><span className="text-gray-100">Rahul</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0">
               I am a passionate Full Stack Developer skilled in React,
