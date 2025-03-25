@@ -5,10 +5,14 @@ import {
   SiReact,
   SiNodedotjs,
   SiMongodb,
+  SiJavascript,
   SiTailwindcss,
   SiExpress,
   SiSocketdotio,
+  SiAxios,
+  SiWordpress ,
 } from "react-icons/si";
+import { VscJson } from "react-icons/vsc";
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -47,12 +51,16 @@ function Projects() {
   // Map tech stack to icons
   const techIcons = {
     React: <SiReact className="text-blue-500" />,
+    JavaScript: <SiJavascript className="text-yellow-500" />,
     "Node.js": <SiNodedotjs className="text-green-500" />,
     MongoDB: <SiMongodb className="text-green-700" />,
     TailwindCSS: <SiTailwindcss className="text-teal-400" />,
     Express: <SiExpress className="text-gray-300" />,
     "Socket.io": <SiSocketdotio className="text-gray-400" />,
     "API Integration": <FaExternalLinkAlt className="text-gray-300" />,
+    "Axios": <SiAxios className="text-violet-400" />,
+    "Wordpress ": <SiWordpress  className="text-white-400" />,
+    "JWT": <VscJson  className="text-orange-400" />,
   };
 
   return (

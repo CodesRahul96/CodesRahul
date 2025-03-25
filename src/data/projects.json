@@ -11,7 +11,7 @@
       "Node.js",
       "MongoDB",
       "JWT",
-      "API",
+      "API Integration",
       "Axios"
     ],
     "github": "https://github.com/CodesRahul96",
@@ -30,8 +30,9 @@
       "Node.js",
       "MongoDB",
       "JWT",
-      "API",
-      "Axios"
+      "API Integration",
+      "Axios",
+      "JWT"
     ],
     "github": "https://github.com/CodesRahul96/TrentShopNow.git",
     "demo": "https://trentshopnow.vercel.app/",
@@ -42,7 +43,7 @@
     "title": "Portfolio Website",
     "description": "A full-stack showcase built with React for a vibrant, responsive frontend and Node.js with Express for the backend API. Highlights personal projects, skills, and contact details, with data stored in a database. Designed with Tailwind CSS for a polished, professional look. Includes smooth animations and a dark theme.",
     "category": "Frontend",
-    "technologies": ["React", "TailwindCSS", "API"],
+    "technologies": ["React", "TailwindCSS", "API Integration"],
     "github": "https://github.com/yourusername/portfolio",
     "demo": "https://codesrahul.vercel.app",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/portfolio.png"
@@ -57,7 +58,9 @@
       "JavaScript",
       "TailwindCSS",
       "Node.js",
-      "MongoDB"
+      "MongoDB",
+      "Axios",
+      "JWT"
     ],
     "github": "https://github.com/CodesRahul96/VideoX.git",
     "demo": "https://video-x.vercel.app/",
@@ -68,11 +71,7 @@
     "title": "GymWala",
     "description": "A full-stack video streaming app built with React for a responsive frontend and Node.js with Express for the backend API. Enables users to watch and browse videos, stored in a database (e.g., MongoDB) or cloud storage. Features a modern UI with Tailwind CSS and video playback integration.",
     "category": "Frontend",
-    "technologies": [
-      "React",
-      "JavaScript",
-      "TailwindCSS"
-    ],
+    "technologies": ["React", "JavaScript", "TailwindCSS"],
     "github": "https://github.com/CodesRahul96/GymWala.git",
     "demo": "https://gymwala.vercel.app/",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/GymWala.png"
@@ -82,7 +81,14 @@
     "title": "Netflix Clone",
     "description": "A full-stack app mimicking Netflix, built with React for a dynamic, responsive UI and Node.js with Express for the backend API. Features movie streaming, browsing, and user profiles, with data stored in a database (e.g., MongoDB). Integrates external APIs for content and uses CSS for styling..",
     "category": "Frontend",
-    "technologies": ["React", "Node.js", "MongoDB", "CSS"],
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "CSS",
+      "API Integration",
+      "Axios"
+    ],
     "github": "https://github.com/CodesRahul96/Netflix-Clone.git",
     "demo": "https://codesrahul-netflix.vercel.app/",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/netflix-clone.png"
@@ -92,7 +98,7 @@
     "title": "IMDB",
     "description": "This is a full-stack web application inspired by IMDb, designed to manage and display movie information. The frontend, built with React, provides a responsive and interactive user interface for browsing movies, viewing details, and searching through a catalog. Features include dynamic routing, state management (e.g., with Redux or Context API), and a sleek design using modern CSS frameworks like Tailwind CSS.",
     "category": "Frontend",
-    "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+    "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS", "Axios"],
     "github": "https://github.com/CodesRahul96/IMDB.git",
     "demo": "https://codesrahul-imdb.vercel.app/",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/IMDB.png"
@@ -103,7 +109,7 @@
     "title": "Live TV",
     "description": "A full-stack application built with React for a dynamic frontend and Node.js with Express for the backend API. Streams live TV channels using embedded video players or third-party APIs, with a channel list and basic controls. Data is managed in a database (e.g., MongoDB), styled with Tailwind CSS for a sleek, responsive UI.",
     "category": "Frontend",
-    "technologies": ["Three.js", "React", "JavaScript"],
+    "technologies": ["React", "JavaScript", "API Integration"],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://codesrahul-tv.vercel.app/",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/live-tv.png"
