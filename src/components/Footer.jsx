@@ -103,6 +103,13 @@ function Footer() {
               <p className="text-gray-400">
                 © {new Date().getFullYear()} CodesRahul. All rights reserved.
               </p>
+              <p>
+              Made with ❤️ by{" "}
+              <a href="https://codesrahul.xyz">
+                <span className="text-yellow-300 animate-pulse">Codes</span>
+                <span className="text-white">Rahul</span>
+              </a>
+            </p>
             </div>
           </div>
         </div>
