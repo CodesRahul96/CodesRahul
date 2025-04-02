@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import developerImage from "../assets/developer.jpg"; // Adjust the path as needed
+import developerImage from "../assets/crwg.png";
 import { Link } from "react-router-dom";
 
 function Home() {

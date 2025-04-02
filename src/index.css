@@ -11,6 +11,9 @@
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 0;
   }
 
   section {
@@ -53,3 +56,5 @@
     50% { transform: translateY(-10px); }
   }
 }
+
+

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom'; // Use NavLink instead of Link
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom"; // Use NavLink instead of Link
+import { toast } from "react-toastify";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,9 +12,9 @@ function Navbar() {
     // Construct direct download URL from Google Drive
     // const cvUrlOrg = `https://drive.google.com/file/d/1buayPMpn_P3-tEYAxt_JzBekcj8vyB_4/view?usp=sharing`;
     const cvUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-    
+
     setIsDownloading(true);
-    
+
     const link = document.createElement("a");
     link.href = cvUrl;
     link.download = "Rahul-Misal-CV.pdf"; // Suggested filename
@@ -49,18 +49,18 @@ function Navbar() {
             className="block md:hidden text-gray-300 focus:outline-none"
           >
             <div
-              className={`w-8 h-1 bg-gray-400 mb-1 transition-all duration-300 ${
-                isOpen ? 'rotate-45 translate-y-2' : ''
+              className={`w-8 h-1 bg-yellow-400 mb-1 transition-all duration-300 ${
+                isOpen ? "rotate-45 translate-y-2" : ""
               }`}
             ></div>
             <div
-              className={`w-8 h-1 bg-gray-400 mb-1 transition-all duration-300 ${
-                isOpen ? 'opacity-0' : ''
+              className={`w-8 h-1 bg-yellow-400 mb-1 transition-all duration-300 ${
+                isOpen ? "opacity-0" : ""
               }`}
             ></div>
             <div
-              className={`w-8 h-1 bg-gray-400 transition-all duration-300 ${
-                isOpen ? '-rotate-45 -translate-y-2' : ''
+              className={`w-8 h-1 bg-yellow-400 transition-all duration-300 ${
+                isOpen ? "-rotate-45 -translate-y-2" : ""
               }`}
             ></div>
           </button>
@@ -68,18 +68,19 @@ function Navbar() {
 
         {/* Menu for larger screens */}
         <ul className="hidden md:flex space-x-8">
-          {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+          {["Home", "About", "Projects", "Contact"].map((item) => (
             <li key={item}>
               <NavLink
-                to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                 className={({ isActive }) =>
                   `relative text-lg font-medium transition-colors duration-300 ${
-                    isActive ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-400'
+                    isActive
+                      ? "text-yellow-400"
+                      : "text-gray-300 hover:text-yellow-400"
                   }`
                 }
               >
                 {item}
-               
               </NavLink>
             </li>
           ))}
@@ -96,18 +97,22 @@ function Navbar() {
         {/* Mobile Menu */}
         <div
           className={`md:hidden absolute top-16 left-0 w-full bg-gradient-to-r from-gray-950 via-blue-950 to-violet-950 shadow-lg transition-all duration-300 ${
-            isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+            isOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
         >
           <ul className="flex flex-col items-center space-y-4 p-4">
-            {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+            {["Home", "About", "Projects", "Contact"].map((item) => (
               <li key={item}>
                 <NavLink
-                  to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                  to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                   onClick={toggleMenu}
                   className={({ isActive }) =>
                     `text-lg font-medium transition-colors duration-300 ${
-                      isActive ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-400'
+                      isActive
+                        ? "text-yellow-400"
+                        : "text-gray-300 hover:text-yellow-400"
                     }`
                   }
                 >
@@ -116,7 +121,7 @@ function Navbar() {
               </li>
             ))}
             <li>
-            <button
+              <button
                 onClick={handleDownloadCV}
                 className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-pulse"
               >
