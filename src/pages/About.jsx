@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt, FaDatabase } from 'react-icons/fa';
 import { SiTailwindcss, SiFigma, SiJest } from 'react-icons/si';
 import { TbBrandThreejs } from "react-icons/tb";
-
-import profileImage from '../assets/developer.jpg'; // Adjust path as needed
+import profileImage from '../assets/crbg.png';
 
 function About() {
   const skills = [
