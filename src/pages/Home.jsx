@@ -37,6 +37,7 @@ function Home() {
               src={developerImage}
               alt="Developer"
               className="w-64 h-64 md:w-80 md:h-80 object-contain animate-bounce-slow rounded-full"
+              loading="lazy"
             />
           </div>
         </div>

@@ -45,6 +45,7 @@ function About() {
                   src={profileImage}
                   alt="Rahul Profile"
                   className="w-64 h-64 object-cover rounded-full shadow-lg"
+                  loading='lazy'
                 />
               </div>
               {/* Right Side: Titles and Description */}
