@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt, FaDatabase } from 'react-icons/fa';
-import { SiTailwindcss, SiFigma, SiJest } from 'react-icons/si';
+import { SiTailwindcss, SiCanva, SiMysql  } from 'react-icons/si';
 import { TbBrandThreejs } from "react-icons/tb";
 import profileImage from '../assets/crbg.png';
 
@@ -15,8 +15,8 @@ function About() {
     { name: 'Three.js', icon: <TbBrandThreejs />, level: 75 },
     { name: 'Git', icon: <FaGitAlt />, level: 80 },
     { name: 'Database (MongoDB)', icon: <FaDatabase />, level: 70 },
-    { name: 'Figma', icon: <SiFigma />, level: 65 },
-    { name: 'Jest', icon: <SiJest />, level: 60 },
+    { name: 'SQL', icon: <SiMysql  />, level: 60 },
+    { name: 'Canva', icon: <SiCanva />, level: 65 },
   ];
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function About() {
               <div className="w-full md:w-1/2 text-center md:text-left">
                 <h3 className="text-2xl font-semibold text-gray-100 mb-4">Who Am I?</h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  I am Rahul, a dedicated Full Stack Developer with over 3 years of experience in crafting dynamic and responsive web applications. My journey in tech began with a passion for problem-solving, which led me to master a wide range of technologies. I thrive on building user-friendly interfaces and robust back-end systems, always striving to deliver innovative solutions that exceed expectations.
+                  I am Rahul, a dedicated Full Stack Developer with over 2+ years of experience in crafting dynamic and responsive web applications. My journey in tech began with a passion for problem-solving, which led me to master a wide range of technologies. I thrive on building user-friendly interfaces and robust back-end systems, always striving to deliver innovative solutions that exceed expectations.
                 </p>
                 <p className="text-gray-300 text-lg mt-4">
                   Outside of coding, I enjoy exploring new frameworks, contributing to open-source projects, and staying updated with the latest industry trends. Let's connect and create something amazing together!
