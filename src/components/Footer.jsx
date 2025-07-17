@@ -71,7 +71,7 @@ function Footer() {
                     href="https://github.com/codesrahul96"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-yellow-400 transition-colors duration-300 transform hover:scale-110"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
                   >
                     <FaGithub size={24} />
                   </a>
@@ -79,18 +79,18 @@ function Footer() {
                     href="https://linkedin.com/in/codesrahul"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-yellow-400 transition-colors duration-300 transform hover:scale-110"
+                    className="text-gray-400 hover:text-blue-400 transition-colors duration-300 transform hover:scale-110"
                   >
                     <FaLinkedin size={24} />
                   </a>
-                  <a
+                  {/* <a
                     href="https://twitter.com/Codesrahul96"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-yellow-400 transition-colors duration-300 transform hover:scale-110"
                   >
                     <FaTwitter size={24} />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>

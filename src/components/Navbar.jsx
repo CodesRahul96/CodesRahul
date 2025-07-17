@@ -9,7 +9,6 @@ function Navbar() {
   const handleDownloadCV = () => {
     // Google Drive file ID (replace with your actual file ID)
     const fileId = "1buayPMpn_P3-tEYAxt_JzBekcj8vyB_4";
-    // Construct direct download URL from Google Drive
     // const cvUrlOrg = `https://drive.google.com/file/d/1buayPMpn_P3-tEYAxt_JzBekcj8vyB_4/view?usp=sharing`;
     const cvUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
 
@@ -17,7 +16,7 @@ function Navbar() {
 
     const link = document.createElement("a");
     link.href = cvUrl;
-    link.download = "Rahul-Misal-CV.pdf"; // Suggested filename
+    link.download = "Rahul-Misal-CV.pdf"; // filename
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

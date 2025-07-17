@@ -1,22 +1,28 @@
 import React, { useEffect } from 'react';
-import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt, FaDatabase } from 'react-icons/fa';
-import { SiTailwindcss, SiCanva, SiMysql  } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt  } from 'react-icons/fa';
+import { SiTailwindcss, SiCanva, SiMysql, SiMongodb, SiTypescript, SiAxios, SiExpress, SiPostman, SiWordpress, SiShopify  } from 'react-icons/si';
 import { TbBrandThreejs } from "react-icons/tb";
 import profileImage from '../assets/crbg.png';
 
 function About() {
   const skills = [
-    { name: 'React', icon: <FaReact />, level: 90 },
-    { name: 'Node.js', icon: <FaNodeJs />, level: 85 },
-    { name: 'HTML5', icon: <FaHtml5 />, level: 95 },
-    { name: 'CSS3', icon: <FaCss3 />, level: 90 },
-    { name: 'JavaScript', icon: <FaJsSquare />, level: 90 },
-    { name: 'TailwindCSS', icon: <SiTailwindcss />, level: 85 },
+    { name: 'HTML', icon: <FaHtml5 />, level: 95 },
+    { name: 'CSS', icon: <FaCss3 />, level: 90 },
+    { name: 'ReactJS', icon: <FaReact />, level: 90 },
+    { name: 'NodeJS', icon: <FaNodeJs />, level: 70 },
+    { name: 'ExpressJS', icon: <SiExpress />, level: 75 },
+    { name: 'JavaScript', icon: <FaJsSquare />, level: 80 },
+    { name: 'Typescript ', icon: <SiTypescript  />, level: 70 },
+    { name: 'Tailwind', icon: <SiTailwindcss />, level: 85 },
     { name: 'Three.js', icon: <TbBrandThreejs />, level: 75 },
+    { name: 'Axios ', icon: <SiAxios  />, level: 80 },
+    { name: 'Postman ', icon: <SiPostman  />, level: 70 },
     { name: 'Git', icon: <FaGitAlt />, level: 80 },
-    { name: 'Database (MongoDB)', icon: <FaDatabase />, level: 70 },
-    { name: 'SQL', icon: <SiMysql  />, level: 60 },
+    { name: 'MongoDB', icon: <SiMongodb />, level: 70 },
+    { name: 'MySQL', icon: <SiMysql  />, level: 60 },
     { name: 'Canva', icon: <SiCanva />, level: 65 },
+    { name: 'Wordpress ', icon: <SiWordpress  />, level: 65 },
+    { name: 'Shopify  ', icon: <SiShopify   />, level: 75 },
   ];
 
   useEffect(() => {
