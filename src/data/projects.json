@@ -158,8 +158,8 @@
   {
     "id": 13,
     "title": "Coming Soon",
-    "description": "A lightweight full-stack app built with React for a sleek, animated frontend and Node.js with Express for the backend. Displays a 'Coming Soon' page with a countdown timer, email subscription form, and stylish design using Tailwind CSS. Stores subscriber emails in a database (e.g., MongoDB).",
-    "category": "Web Development",
+    "description": "This project is currently under development. Stay tuned for updates!",
+    "category": "Frontend",
     "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://github.com/CodesRahul96",
