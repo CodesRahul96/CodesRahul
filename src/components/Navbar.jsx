@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { NavLink } from "react-router-dom"; // Use NavLink instead of Link
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
+
+const MENU_ITEMS = ["Home", "About", "Projects", "Contact"];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
 
-  const handleDownloadCV = () => {
+  const handleDownloadCV = useCallback(() => {
     // Google Drive file ID (replace with your actual file ID)
     const fileId = "1buayPMpn_P3-tEYAxt_JzBekcj8vyB_4";
-    // const cvUrlOrg = `https://drive.google.com/file/d/1buayPMpn_P3-tEYAxt_JzBekcj8vyB_4/view?usp=sharing`;
     const cvUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
 
     setIsDownloading(true);
@@ -21,18 +22,18 @@ function Navbar() {
     link.click();
     document.body.removeChild(link);
 
-    // Reset downloading state after 2 secondss
+    // Reset downloading state after 2 seconds
     setTimeout(() => {
       setIsDownloading(false);
     }, 2000);
-  };
+  }, []);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-20 bg-gradient-to-r from-gray-950 via-blue-550 to-violet-950 shadow-lg animate-fadeIn">
+    <nav className="fixed top-0 left-0 w-full z-40 bg-gray-950/60 backdrop-blur-sm shadow-lg animate-fadeIn">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
         <h1 className="text-3xl font-extrabold text-gray-100 tracking-tight">
@@ -86,29 +87,30 @@ function Navbar() {
           <li>
             <button
               onClick={handleDownloadCV}
-              className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-pulse"
+              disabled={isDownloading}
+              className={`bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-pulse ${isDownloading ? 'opacity-50 cursor-not-allowed hover:scale-100' : ''}`}
             >
-              Download CV
+              {isDownloading ? 'Downloading...' : 'Download CV'}
             </button>
           </li>
         </ul>
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden absolute top-16 left-0 w-full bg-gradient-to-r from-gray-950 via-blue-950 to-violet-950 shadow-lg transition-all duration-300 ${
+          className={`md:hidden absolute top-16 left-0 w-full bg-gray-950/95 shadow-lg transition-all duration-300 ${
             isOpen
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
         >
-          <ul className="flex flex-col items-center space-y-4 p-4">
+          <ul className="flex flex-col items-center space-y-10 p-20">
             {["Home", "About", "Projects", "Contact"].map((item) => (
               <li key={item}>
                 <NavLink
                   to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                   onClick={toggleMenu}
                   className={({ isActive }) =>
-                    `text-lg font-medium transition-colors duration-300 ${
+                    `text-2xl font-bold transition-colors duration-300 ${
                       isActive
                         ? "text-yellow-400"
                         : "text-gray-300 hover:text-yellow-400"
@@ -122,9 +124,10 @@ function Navbar() {
             <li>
               <button
                 onClick={handleDownloadCV}
-                className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-pulse"
+                disabled={isDownloading}
+                className={`bg-yellow-500 hover:bg-yellow-600 text-xl text-gray-900 font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-pulse ${isDownloading ? 'opacity-50 cursor-not-allowed hover:scale-100' : ''}`}
               >
-                Download CV
+                {isDownloading ? 'Downloading...' : 'Download CV'}
               </button>
             </li>
           </ul>
@@ -134,4 +137,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default React.memo(Navbar);

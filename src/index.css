@@ -55,6 +55,22 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
+
+  /* Ripple/grid background utility (inspired by reactbits.dev ripple-grid) */
+  .ripple-grid {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    will-change: background-position;
+  }
+
+  .ripple-grid-animated {
+    animation: rippleMove 12s linear infinite;
+  }
+
+  @keyframes rippleMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 1000px; }
+  }
 }
 
 

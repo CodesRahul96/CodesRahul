@@ -1,37 +1,55 @@
-import React, { useEffect } from 'react';
-import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt  } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt, FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { SiTailwindcss, SiCanva, SiMysql, SiMongodb, SiTypescript, SiAxios, SiExpress, SiPostman, SiWordpress, SiShopify  } from 'react-icons/si';
 import { TbBrandThreejs } from "react-icons/tb";
-import profileImage from '../assets/crbg.png';
+// Move skills to module scope so the array and icon elements aren't recreated each render
+const skills = [
+  { name: 'HTML', icon: <FaHtml5 />, level: 95 },
+  { name: 'CSS', icon: <FaCss3 />, level: 90 },
+  { name: 'ReactJS', icon: <FaReact />, level: 90 },
+  { name: 'NodeJS', icon: <FaNodeJs />, level: 70 },
+  { name: 'ExpressJS', icon: <SiExpress />, level: 75 },
+  { name: 'JavaScript', icon: <FaJsSquare />, level: 80 },
+  { name: 'Typescript ', icon: <SiTypescript  />, level: 70 },
+  { name: 'Tailwind', icon: <SiTailwindcss />, level: 85 },
+  { name: 'Three.js', icon: <TbBrandThreejs />, level: 75 },
+  { name: 'Axios ', icon: <SiAxios  />, level: 80 },
+  { name: 'Postman ', icon: <SiPostman  />, level: 70 },
+  { name: 'Git', icon: <FaGitAlt />, level: 80 },
+  { name: 'MongoDB', icon: <SiMongodb />, level: 70 },
+  { name: 'MySQL', icon: <SiMysql  />, level: 60 },
+  { name: 'Canva', icon: <SiCanva />, level: 65 },
+  { name: 'Wordpress ', icon: <SiWordpress  />, level: 65 },
+  { name: 'Shopify  ', icon: <SiShopify   />, level: 75 },
+];
 
 function About() {
-  const skills = [
-    { name: 'HTML', icon: <FaHtml5 />, level: 95 },
-    { name: 'CSS', icon: <FaCss3 />, level: 90 },
-    { name: 'ReactJS', icon: <FaReact />, level: 90 },
-    { name: 'NodeJS', icon: <FaNodeJs />, level: 70 },
-    { name: 'ExpressJS', icon: <SiExpress />, level: 75 },
-    { name: 'JavaScript', icon: <FaJsSquare />, level: 80 },
-    { name: 'Typescript ', icon: <SiTypescript  />, level: 70 },
-    { name: 'Tailwind', icon: <SiTailwindcss />, level: 85 },
-    { name: 'Three.js', icon: <TbBrandThreejs />, level: 75 },
-    { name: 'Axios ', icon: <SiAxios  />, level: 80 },
-    { name: 'Postman ', icon: <SiPostman  />, level: 70 },
-    { name: 'Git', icon: <FaGitAlt />, level: 80 },
-    { name: 'MongoDB', icon: <SiMongodb />, level: 70 },
-    { name: 'MySQL', icon: <SiMysql  />, level: 60 },
-    { name: 'Canva', icon: <SiCanva />, level: 65 },
-    { name: 'Wordpress ', icon: <SiWordpress  />, level: 65 },
-    { name: 'Shopify  ', icon: <SiShopify   />, level: 75 },
-  ];
-
+  const [imageSrc, setImageSrc] = useState(null);
   useEffect(() => {
     document.title = 'About';
   }, []);
 
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const mod = await import('../assets/crbg.png');
+        if (mounted) setImageSrc(mod?.default ?? mod);
+      } catch (err) {
+        console.error('Failed to load profile image', err);
+      }
+    })();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   return (
-    <section id="about" className="py-20 bg-gradient-to-r from-gray-950 via-blue-550 to-violet-950 min-h-screen flex items-center justify-center">
-      <div className="container mx-auto px-4">
+  <section id="about" className="py-20 bg-gray-950 min-h-screen flex items-center justify-center relative">
+      {/* Ripple grid background overlay */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-10 ripple-grid ripple-grid-animated" />
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="flex justify-center mb-12">
           <div className="max-w-3xl w-full text-center">
@@ -48,10 +66,13 @@ function About() {
               {/* Left Side: Profile Image */}
               <div className="w-full md:w-1/2 flex justify-center md:justify-start">
                 <img
-                  src={profileImage}
+                  src={imageSrc}
                   alt="Rahul Profile"
+                  width="256"
+                  height="256"
+                  decoding="async"
+                  loading="lazy"
                   className="w-64 h-64 object-cover rounded-full shadow-lg"
-                  loading='lazy'
                 />
               </div>
               {/* Right Side: Titles and Description */}
@@ -74,7 +95,11 @@ function About() {
             <h3 className="text-2xl font-semibold text-center mb-8 text-gray-100">My Skills</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {skills.map((skill, index) => (
-                <div key={index} className="bg-gray-800 p-4 rounded-lg shadow-md">
+                <div
+                  key={index}
+                  tabIndex={0}
+                  className="bg-gray-800 p-4 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                >
                   <div className="flex items-center mb-2">
                     <span className="text-yellow-400 mr-2">{skill.icon}</span>
                     <h4 className="text-gray-200 font-medium">{skill.name}</h4>
@@ -101,25 +126,31 @@ function About() {
             <div className="flex justify-center space-x-6">
               <a
                 href="mailto:codesrahul96@gmail.com"
-                className="text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+                className="flex items-center text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+                aria-label="Email Rahul"
               >
-                Email
+                <FaEnvelope className="mr-2" />
+                <span>Email</span>
               </a>
               <a
                 href="https://linkedin.com/in/codesrahul"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+                className="flex items-center text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+                aria-label="Rahul on LinkedIn"
               >
-                LinkedIn
+                <FaLinkedin className="mr-2" />
+                <span>LinkedIn</span>
               </a>
               <a
                 href="https://github.com/codesrahul96"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+                className="flex items-center text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+                aria-label="Rahul on GitHub"
               >
-                GitHub
+                <FaGithub className="mr-2" />
+                <span>GitHub</span>
               </a>
             </div>
           </div>
@@ -139,4 +170,4 @@ function About() {
   );
 }
 
-export default About;
+export default React.memo(About);

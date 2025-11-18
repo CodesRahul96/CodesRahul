@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import projectsData from "../data/projects.json"; // Import JSON file directly
+import React, { useState, useEffect, useMemo } from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import {
   SiReact,
@@ -14,61 +13,125 @@ import {
 } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
 
+// Keep the tech -> icon map at module scope so it's not recreated on every render
+const techIcons = {
+  React: <SiReact className="text-blue-500" />,
+  JavaScript: <SiJavascript className="text-yellow-500" />,
+  "Node.js": <SiNodedotjs className="text-green-500" />,
+  MongoDB: <SiMongodb className="text-green-700" />,
+  TailwindCSS: <SiTailwindcss className="text-teal-400" />,
+  Express: <SiExpress className="text-gray-300" />,
+  "Socket.io": <SiSocketdotio className="text-gray-400" />,
+  "API Integration": <FaExternalLinkAlt className="text-gray-300" />,
+  Axios: <SiAxios className="text-violet-400" />,
+  Wordpress: <SiWordpress className="text-white-400" />,
+  JWT: <VscJson className="text-orange-400" />,
+};
+
+// Memoized project card to avoid re-rendering when unrelated state changes
+const ProjectCard = React.memo(function ProjectCard({ project }) {
+  return (
+    <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl animate-fadeIn delay-400">
+      {/* Project Image */}
+      <img
+        src={project.image}
+        alt={project.title}
+        loading="lazy"
+        decoding="async"
+        className="w-full h-48 object-cover"
+        onError={(e) => {
+          e.target.src =
+            "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png";
+        }}
+      />
+      <div className="p-6">
+        <h3 className="text-xl font-semibold text-gray-100 mb-2">
+          {project.title}
+        </h3>
+        <p className="text-gray-400 text-sm mb-4">{project.description}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.technologies.map((tech, index) => (
+            <div
+              key={index}
+              className="flex items-center px-3 py-1 bg-gray-700 rounded-full text-xs text-gray-200"
+            >
+              {techIcons[tech] && <span className="mr-1">{techIcons[tech]}</span>}
+              <span>{tech}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex space-x-4">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+          >
+            <FaGithub className="mr-1" /> GitHub
+          </a>
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+          >
+            <FaExternalLinkAlt className="mr-1" /> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+});
+
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [filter, setFilter] = useState("All");
 
-  // Load projects from imported JSON data
-
+  // Load projects JSON dynamically to keep initial bundle smaller
   useEffect(() => {
-    document.title = 'Projects';
-    try {
-      console.log("Imported Projects Data:", projectsData); // Debugging log
-      if (projectsData && Array.isArray(projectsData)) {
-        setProjects(projectsData);
-      } else {
-        console.error(
-          "Projects data is not an array or is undefined:",
-          projectsData
-        );
-        setProjects([]); // Fallback to empty array
+    document.title = "Projects";
+    let mounted = true;
+    (async () => {
+      try {
+        const module = await import("../data/projects.json");
+        const data = module?.default ?? module;
+        if (mounted && Array.isArray(data)) {
+          setProjects(data);
+        } else if (mounted) {
+          console.error("Projects data is not an array or is undefined:", data);
+          setProjects([]);
+        }
+      } catch (error) {
+        console.error("Error loading projects data:", error);
+        if (mounted) setProjects([]);
       }
-    } catch (error) {
-      console.error("Error loading projects data:", error);
-      setProjects([]); // Fallback to empty array
-    }
+    })();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
-  // Define categories for filtering
-  const categories = ["All", "Web Development", "Frontend"];
+  // Define categories for filtering (memoized)
+  const categories = useMemo(() => ["All", "Web Development", "Frontend"], []);
 
-  // Filter projects based on selected category
-  const filteredProjects =
-    filter === "All"
-      ? projects
-      : projects.filter((project) => project.category === filter);
+  // Filter projects based on selected category (memoized)
+  const filteredProjects = useMemo(
+    () => (filter === "All" ? projects : projects.filter((project) => project.category === filter)),
+    [projects, filter]
+  );
 
-  // Map tech stack to icons
-  const techIcons = {
-    React: <SiReact className="text-blue-500" />,
-    JavaScript: <SiJavascript className="text-yellow-500" />,
-    "Node.js": <SiNodedotjs className="text-green-500" />,
-    MongoDB: <SiMongodb className="text-green-700" />,
-    TailwindCSS: <SiTailwindcss className="text-teal-400" />,
-    Express: <SiExpress className="text-gray-300" />,
-    "Socket.io": <SiSocketdotio className="text-gray-400" />,
-    "API Integration": <FaExternalLinkAlt className="text-gray-300" />,
-    "Axios": <SiAxios className="text-violet-400" />,
-    "Wordpress ": <SiWordpress  className="text-white-400" />,
-    "JWT": <VscJson  className="text-orange-400" />,
-  };
+  
 
   return (
     <section
       id="projects"
-      className="py-20 bg-gradient-to-r from-gray-950 via-blue-950 to-violet-950 min-h-screen "
+      className="py-20 bg-gray-950 min-h-screen relative"
     >
-      <div className="container mx-auto px-4">
+      {/* Subtle ripple grid background behind project cards */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-10 ripple-grid" />
+
+  <div className="container mx-auto px-4 relative z-10">
         <div className="flex justify-center mb-16">
           <div className="max-w-4xl w-full">
             {/* Header */}
@@ -101,63 +164,7 @@ function Projects() {
                 </p>
               ) : filteredProjects.length > 0 ? (
                 filteredProjects.map((project) => (
-                  <div
-                    key={project.id}
-                    className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl animate-fadeIn delay-400"
-                  >
-                    {/* Project Image */}
-                    <img
-                      src={`${project.image}`} // Ensure images are in src/assets
-                      alt={project.title}
-                      className="w-full h-48 object-cover"
-                      onError={(e) => {
-                        e.target.src = "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png"; // Fallback image
-                      }}
-                    />
-                    <div className="p-6">
-                      {/* Project Title */}
-                      <h3 className="text-xl font-semibold text-gray-100 mb-2">
-                        {project.title}
-                      </h3>
-                      {/* Project Description */}
-                      <p className="text-gray-400 text-sm mb-4">
-                        {project.description}
-                      </p>
-                      {/* Tech Stack */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.map((tech, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center px-3 py-1 bg-gray-700 rounded-full text-xs text-gray-200"
-                          >
-                            {techIcons[tech] && (
-                              <span className="mr-1">{techIcons[tech]}</span>
-                            )}
-                            <span>{tech}</span>
-                          </div>
-                        ))}
-                      </div>
-                      {/* Links */}
-                      <div className="flex space-x-4">
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
-                        >
-                          <FaGithub className="mr-1" /> GitHub
-                        </a>
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
-                        >
-                          <FaExternalLinkAlt className="mr-1" /> Live Demo
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <ProjectCard key={project.id} project={project} />
                 ))
               ) : (
                 <p className="text-center text-gray-400 col-span-full">
