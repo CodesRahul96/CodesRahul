@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.codesrahul.xyz/sitemap.xml
+# Crawl-delay can be added if you want to slow bots (not necessary on Vercel)

@@ -7,6 +7,27 @@ function Home() {
   useEffect(() => {
     document.title = "CodesRahul";
 
+    // set SEO-friendly description and canonical
+    try {
+      let desc = document.querySelector('meta[name="description"]');
+      if (!desc) {
+        desc = document.createElement('meta');
+        desc.name = 'description';
+        document.head.appendChild(desc);
+      }
+      desc.content = 'Rahul — Full Stack Web Developer. I build modern, responsive web apps with React, TailwindCSS and Node.js.';
+
+      let canon = document.querySelector('link[rel="canonical"]');
+      if (!canon) {
+        canon = document.createElement('link');
+        canon.rel = 'canonical';
+        document.head.appendChild(canon);
+      }
+      canon.href = 'https://www.codesrahul.xyz/';
+    } catch {
+      // ignore in non-browser environments
+    }
+
     let mounted = true;
     // Dynamically import the developer image to reduce initial bundle weight
     (async () => {

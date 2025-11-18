@@ -60,6 +60,25 @@ function Contact() {
   // Update Page Title
   useEffect(() => {
     document.title = "Contact";
+    try {
+      let desc = document.querySelector('meta[name="description"]');
+      if (!desc) {
+        desc = document.createElement('meta');
+        desc.name = 'description';
+        document.head.appendChild(desc);
+      }
+      desc.content = 'Contact Rahul — email, phone and social links. Reach out for web development, freelance or collaborations.';
+
+      let canon = document.querySelector('link[rel="canonical"]');
+      if (!canon) {
+        canon = document.createElement('link');
+        canon.rel = 'canonical';
+        document.head.appendChild(canon);
+      }
+      canon.href = 'https://www.codesrahul.xyz/contact';
+    } catch {
+      // ignore in non-browser environments
+    }
   }, []);
 
   return (

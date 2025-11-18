@@ -12,8 +12,39 @@ const Preloader = ({ onLoaded, minDuration = 600 }) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    // Preload logo to help LCP and SEO-friendly rendering
+    try {
+      if (typeof document !== "undefined") {
+        const exists = document.querySelector(`link[rel="preload"][href="${Logo}"]`);
+        if (!exists) {
+          const link = document.createElement("link");
+          link.rel = "preload";
+          link.as = "image";
+          link.href = Logo;
+          document.head.appendChild(link);
+        }
+      }
+    } catch {
+      // ignore in non-browser environments
+    }
+
     let mounted = true;
     const start = Date.now();
+
+    const prefersReduced = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReduced) {
+      // respect reduced motion: complete quickly
+      setProgress(100);
+      setTimeout(() => {
+        if (!mounted) return;
+        setVisible(false);
+        if (typeof onLoaded === "function") onLoaded();
+      }, Math.max(minDuration, 300));
+      return () => {
+        mounted = false;
+      };
+    }
 
     const id = setInterval(() => {
       setProgress((p) => {

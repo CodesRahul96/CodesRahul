@@ -27,6 +27,25 @@ function About() {
   const [imageSrc, setImageSrc] = useState(null);
   useEffect(() => {
     document.title = 'About';
+    try {
+      let desc = document.querySelector('meta[name="description"]');
+      if (!desc) {
+        desc = document.createElement('meta');
+        desc.name = 'description';
+        document.head.appendChild(desc);
+      }
+      desc.content = 'About Rahul — Full Stack Developer. Learn about skills, experience and how to get in touch.';
+
+      let canon = document.querySelector('link[rel="canonical"]');
+      if (!canon) {
+        canon = document.createElement('link');
+        canon.rel = 'canonical';
+        document.head.appendChild(canon);
+      }
+      canon.href = 'https://www.codesrahul.xyz/about';
+    } catch {
+      // ignore server-side
+    }
   }, []);
 
   useEffect(() => {

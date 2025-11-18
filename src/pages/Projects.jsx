@@ -90,6 +90,25 @@ function Projects() {
   // Load projects JSON dynamically to keep initial bundle smaller
   useEffect(() => {
     document.title = "Projects";
+    try {
+      let desc = document.querySelector('meta[name="description"]');
+      if (!desc) {
+        desc = document.createElement('meta');
+        desc.name = 'description';
+        document.head.appendChild(desc);
+      }
+      desc.content = 'Projects by Rahul — selected web projects built with React, Node.js and modern web stacks.';
+
+      let canon = document.querySelector('link[rel="canonical"]');
+      if (!canon) {
+        canon = document.createElement('link');
+        canon.rel = 'canonical';
+        document.head.appendChild(canon);
+      }
+      canon.href = 'https://www.codesrahul.xyz/projects';
+    } catch {
+      // ignore in non-browser
+    }
     let mounted = true;
     (async () => {
       try {
