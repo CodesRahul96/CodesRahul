@@ -15,7 +15,7 @@
       "Axios"
     ],
     "github": "https://github.com/CodesRahul96",
-    "demo": "https://github.com/CodesRahul96",
+    "demo": "https://blogsify.vercel.app/",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/blogsify.png"
   },
   {
@@ -90,7 +90,7 @@
       "Axios"
     ],
     "github": "https://github.com/CodesRahul96/Netflix-Clone.git",
-    "demo": "https://codesrahul-netflix.vercel.app/",
+    "demo": "https://github.com/CodesRahul96/Netflix-Clone.git",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/netflix-clone.png"
   },
   {
@@ -147,7 +147,7 @@
   },
   {
     "id": 12,
-    "title": "My Website",
+    "title": "Logic Builder Website",
     "description": "A full-stack personal portfolio built with React for a modern, responsive frontend and Node.js with Express for the backend API. Showcases projects, skills, and contact info, with data managed in a database (e.g., MongoDB). Features a clean, professional design using Tailwind CSS.",
     "category": "Frontend",
     "technologies": ["React", "SCSS", "JavaScript", "Responsive"],
