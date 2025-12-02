@@ -9,8 +9,9 @@ function Navbar() {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownloadCV = useCallback(() => {
+    // const gLink = "https://drive.google.com/file/d/16oAxK80kNl3fhIkWygchH43WMaMLLCxm/view?usp=sharing";
     // Google Drive file ID (replace with your actual file ID)
-    const fileId = "1buayPMpn_P3-tEYAxt_JzBekcj8vyB_4";
+    const fileId = "16oAxK80kNl3fhIkWygchH43WMaMLLCxm";
     const cvUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
 
     setIsDownloading(true);
