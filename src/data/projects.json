@@ -14,7 +14,7 @@
       "API Integration",
       "Axios"
     ],
-    "github": "https://github.com/CodesRahul96",
+    "github": "https://github.com/CodesRahul96/Blogsify.git",
     "demo": "https://blogsify.vercel.app/",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/blogsify.png"
   },
@@ -44,7 +44,7 @@
     "description": "A full-stack showcase built with React for a vibrant, responsive frontend and Node.js with Express for the backend API. Highlights personal projects, skills, and contact details, with data stored in a database. Designed with Tailwind CSS for a polished, professional look. Includes smooth animations and a dark theme.",
     "category": "Frontend",
     "technologies": ["React", "TailwindCSS", "API Integration"],
-    "github": "https://github.com/yourusername/portfolio",
+    "github": "https://github.com/CodesRahul96/CodesRahul.git",
     "demo": "https://codesrahul.vercel.app",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/portfolio.png"
   },
@@ -110,7 +110,7 @@
     "description": "A full-stack application built with React for a dynamic frontend and Node.js with Express for the backend API. Streams live TV channels using embedded video players or third-party APIs, with a channel list and basic controls. Data is managed in a database (e.g., MongoDB), styled with Tailwind CSS for a sleek, responsive UI.",
     "category": "Frontend",
     "technologies": ["React", "JavaScript", "API Integration"],
-    "github": "https://github.com/CodesRahul96",
+    "github": "https://github.com/CodesRahul96/Live-TV.git",
     "demo": "https://codesrahul-tv.vercel.app/",
     "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/live-tv.png"
   },
