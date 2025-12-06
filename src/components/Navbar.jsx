@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaDownload, FaSpinner } from "react-icons/fa";
 import { NAV_LINKS, CV_FILE_ID, CV_FILENAME } from "../constants";
 
 const Navbar = () => {
@@ -129,9 +130,28 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               onClick={handleDownloadCV}
               disabled={isDownloading}
-              className={`bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-bold py-2.5 px-6 rounded-full shadow-lg shadow-yellow-500/20 transition duration-300 text-sm ${isDownloading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`
+                relative overflow-hidden
+                flex items-center gap-2 
+                bg-gradient-to-r from-yellow-500 to-yellow-600 
+                hover:from-yellow-400 hover:to-yellow-500 
+                text-gray-900 font-bold py-2.5 px-6 rounded-full 
+                shadow-[0_0_15px_rgba(234,179,8,0.3)] hover:shadow-[0_0_20px_rgba(234,179,8,0.5)]
+                transition-all duration-300 text-sm
+                ${isDownloading ? 'cursor-not-allowed opacity-90' : ''}
+              `}
             >
-              {isDownloading ? 'Downloading...' : 'Download CV'}
+              {isDownloading ? (
+                <>
+                  <FaSpinner className="animate-spin" />
+                  <span>Downloading...</span>
+                </>
+              ) : (
+                <>
+                  <FaDownload className="animate-bounce" style={{ animationDuration: '2s' }} />
+                  <span>Download CV</span>
+                </>
+              )}
             </motion.button>
         </div>
 
@@ -186,9 +206,25 @@ const Navbar = () => {
                         <button
                         onClick={handleDownloadCV}
                         disabled={isDownloading}
-                        className={`w-full bg-yellow-500 hover:bg-yellow-600 text-xl text-gray-900 font-bold py-4 px-6 rounded-xl shadow-lg transition duration-300 ${isDownloading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`
+                            w-full flex items-center justify-center gap-3
+                            bg-gradient-to-r from-yellow-500 to-yellow-600 
+                            text-xl text-gray-900 font-bold py-4 px-6 rounded-xl 
+                            shadow-lg transition duration-300 
+                            ${isDownloading ? 'opacity-70 cursor-not-allowed' : ''}
+                        `}
                         >
-                        {isDownloading ? 'Downloading...' : 'Download CV'}
+                         {isDownloading ? (
+                            <>
+                                <FaSpinner className="animate-spin" />
+                                <span>Downloading...</span>
+                            </>
+                        ) : (
+                            <>
+                                <FaDownload className="animate-bounce" style={{ animationDuration: '2s' }} />
+                                <span>Download CV</span>
+                            </>
+                        )}
                         </button>
                     </motion.li>
                 </motion.ul>
