@@ -16,7 +16,7 @@
     ],
     "github": "https://github.com/CodesRahul96/Blogsify.git",
     "demo": "https://blogsify.vercel.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/blogsify.png"
+    "image": "blogsify"
   },
   {
     "id": 2,
@@ -36,7 +36,7 @@
     ],
     "github": "https://github.com/CodesRahul96/TrentShopNow.git",
     "demo": "https://trentshopnow.vercel.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/TrentShopNow.png"
+    "image": "trentshopnow"
   },
   {
     "id": 3,
@@ -46,7 +46,7 @@
     "technologies": ["React", "TailwindCSS", "API Integration"],
     "github": "https://github.com/CodesRahul96/CodesRahul.git",
     "demo": "https://codesrahul.vercel.app",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/portfolio.png"
+    "image": "portfolio"
   },
   {
     "id": 4,
@@ -64,7 +64,7 @@
     ],
     "github": "https://github.com/CodesRahul96/VideoX.git",
     "demo": "https://video-x.vercel.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/video-x.png"
+    "image": "videox"
   },
   {
     "id": 5,
@@ -74,7 +74,7 @@
     "technologies": ["React", "JavaScript", "TailwindCSS"],
     "github": "https://github.com/CodesRahul96/GymWala.git",
     "demo": "https://gymwala.vercel.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/GymWala.png"
+    "image": "gymwala"
   },
   {
     "id": 6,
@@ -91,7 +91,7 @@
     ],
     "github": "https://github.com/CodesRahul96/Netflix-Clone.git",
     "demo": "https://github.com/CodesRahul96/Netflix-Clone.git",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/netflix-clone.png"
+    "image": "netflix"
   },
   {
     "id": 7,
@@ -101,9 +101,8 @@
     "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS", "Axios"],
     "github": "https://github.com/CodesRahul96/IMDB.git",
     "demo": "https://codesrahul-imdb.vercel.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/IMDB.png"
+    "image": "imdb"
   },
-
   {
     "id": 8,
     "title": "Live TV",
@@ -112,9 +111,8 @@
     "technologies": ["React", "JavaScript", "API Integration"],
     "github": "https://github.com/CodesRahul96/Live-TV.git",
     "demo": "https://free-live-tv.vercel.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/live-tv.png"
+    "image": "livetv"
   },
-
   {
     "id": 9,
     "title": "Task Management App",
@@ -123,7 +121,7 @@
     "technologies": ["React", "Firebase", "TailwindCSS"],
     "github": "https://github.com/CodesRahul96/todo-list.git",
     "demo": "https://codesrahul-todolist.vercel.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/task-management.png"
+    "image": "taskmanager"
   },
   {
     "id": 10,
@@ -133,7 +131,7 @@
     "technologies": ["React", "CSS", "JavaScript"],
     "github": "https://github.com/CodesRahul96/Image-Gallary.git",
     "demo": "https://codesrahul-imagegallary.vercel.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/image-gallary.png"
+    "image": "imagegallery"
   },
   {
     "id": 11,
@@ -143,7 +141,7 @@
     "technologies": ["WordPress", "HTML", "CSS", "JavaScript"],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://codeslogic.netlify.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/logic.png"
+    "image": "logic"
   },
   {
     "id": 12,
@@ -153,7 +151,7 @@
     "technologies": ["React", "SCSS", "JavaScript", "Responsive"],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://codeslogic.netlify.app/",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/logic.png"
+    "image": "logic"
   },
   {
     "id": 13,
@@ -163,6 +161,6 @@
     "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://github.com/CodesRahul96",
-    "image": "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png"
+    "image": "comingsoon"
   }
 ]

@@ -13,6 +13,7 @@ import {
 } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
 import { motion, AnimatePresence } from "framer-motion";
+import * as projectImages from "../assets/projects";
 
 const techIcons = {
   React: <SiReact className="text-blue-500" />,
@@ -28,7 +29,39 @@ const techIcons = {
   JWT: <VscJson className="text-orange-400" />,
 };
 
+// Progressive Image Component
+const ProgressiveImage = React.memo(({ src, alt, className }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className={`relative overflow-hidden ${className}`}>
+        {/* Placeholder / Skeleton */}
+        {!isLoaded && (
+            <div className="absolute inset-0 bg-gray-700 animate-pulse" />
+        )}
+        
+        {/* Actual Image */}
+        <img
+            src={src}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setIsLoaded(true)}
+            className={`w-full h-full object-cover transition-all duration-700 ${
+                isLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-lg scale-110"
+            }`}
+            onError={(e) => {
+                e.target.src = projectImages.comingsoon;
+                setIsLoaded(true); 
+            }}
+        />
+    </div>
+  );
+});
+
 const ProjectCard = React.memo(function ProjectCard({ project }) {
+  const imageSrc = projectImages[project.image] || projectImages.comingsoon;
+
   return (
     <motion.div
       layout
@@ -40,16 +73,12 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
       className="bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-700 hover:shadow-2xl hover:border-yellow-500/50 group"
     >
       <div className="relative overflow-hidden h-48">
-        <img
-          src={project.image}
-          alt={project.title}
-          loading="lazy"
-          className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
-          onError={(e) => {
-            e.target.src =
-              "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png";
-          }}
+        <ProgressiveImage 
+            src={imageSrc}
+            alt={project.title}
+            className="w-full h-full group-hover:scale-110 transition-transform duration-700"
         />
+        
         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
           <a
             href={project.github}
