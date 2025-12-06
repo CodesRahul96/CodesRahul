@@ -1,5 +1,15 @@
 [
   {
+    "id": 14,
+    "title": "DesiDelights",
+    "description": "Discover authentic Indian recipes. From spicy curries to sweet desserts, find the best traditional and modern Indian dishes. Features a rich search and filtering experience.",
+    "category": "Web Development",
+    "technologies": ["React", "TailwindCSS", "API Integration"],
+    "github": "https://github.com/CodesRahul96",
+    "demo": "https://desidelightsrecipe.vercel.app/",
+    "image": "desidelights"
+  },
+  {
     "id": 1,
     "title": "Blogsify",
     "description": "A full-stack blogging platform built with React for a dynamic frontend and Node.js with Express for the backend API. Users can create, read, update, and delete blog posts, stored in a database (e.g., MongoDB). Includes features like user authentication, comments, and a responsive design with Tailwind CSS..",

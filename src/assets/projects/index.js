@@ -10,6 +10,7 @@ import taskmanager from "./task-management.png";
 import imagegallery from "./image-gallary.png";
 import logic from "./logic.png";
 import comingsoon from "./comingsoon.png";
+import desidelights from "./DesiDelights.jpg";
 
 export {
   blogsify,
@@ -24,4 +25,5 @@ export {
   imagegallery,
   logic,
   comingsoon,
+  desidelights,
 };
