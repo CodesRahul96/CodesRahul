@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Home() {
   const [imageSrc, setImageSrc] = useState(null);
@@ -29,13 +30,11 @@ function Home() {
     }
 
     let mounted = true;
-    // Dynamically import the developer image to reduce initial bundle weight
     (async () => {
       try {
         const mod = await import("../assets/crwg.png");
         if (mounted) setImageSrc(mod?.default ?? mod);
       } catch (err) {
-        // If dynamic import fails, leave imageSrc null (no crash)
         console.error("Failed to load developer image:", err);
       }
     })();
@@ -44,98 +43,132 @@ function Home() {
       mounted = false;
     };
   }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section
+    <motion.section
       id="home"
-      className="relative min-h-screen pb-10 flex items-center justify-center bg-gray-950"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="relative min-h-screen pb-10 flex flex-col items-center justify-center bg-gray-950 overflow-hidden"
     >
-      {/* Decorative ripple grid background for subtle texture */}
+      {/* Decorative ripple grid background */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-10 ripple-grid ripple-grid-animated" />
-      <div className="max-w-4xl w-full">
-        <div className="relative z-10 container mx-auto px-4 flex flex-col md:flex-row items-center justify-between py-16">
+      
+      {/* Background Gradient elements */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDuration: '7s' }}></div>
+
+      <div className="max-w-6xl w-full z-10 px-4">
+        <div className="flex flex-col md:flex-row items-center justify-between py-12 md:py-24">
+          
           {/* Left Side: Title, Description, CTA */}
-          <div className="text-center md:text-left w-full md:w-1/2 space-y-6 animate-fadeIn">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-100 drop-shadow-lg">
-              Welcome to <span className="text-yellow-300">Codes</span><span className="text-gray-100">Rahul</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0">
-              I'm Rahul, a passionate Full Stack Web developer skilled in React,
-              TailwindCSS and Node.js, creating modern and interactive web
-              experiences.
-            </p>
-            <Link
-              to="/projects"
-              className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
+          <motion.div 
+            className="text-center md:text-left w-full md:w-1/2 space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.h1 
+              variants={itemVariants}
+              className="text-5xl md:text-7xl font-extrabold text-gray-100 leading-tight tracking-tight"
             >
-              Explore My Work
-            </Link>
-          </div>
+              Welcome to <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">CodesRahul</span>
+            </motion.h1>
+            
+            <motion.p 
+              variants={itemVariants}
+              className="text-lg md:text-xl text-gray-400 max-w-lg mx-auto md:mx-0 leading-relaxed"
+            >
+              I'm Rahul, a passionate Full Stack Web Developer. 
+              I craft <span className="text-gray-200 font-semibold">modern, responsive, and performance-driven</span> web experiences using the latest tech stack.
+            </motion.p>
+            
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+              <Link
+                to="/projects"
+                className="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-bold py-3 px-8 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.5)] transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(234,179,8,0.7)]"
+              >
+                Explore My Work
+              </Link>
+              <Link
+                to="/contact"
+                className="px-8 py-3 rounded-full font-bold text-yellow-500 border border-yellow-500/30 hover:bg-yellow-500/10 transition-all duration-300"
+              >
+                Let's Talk
+              </Link>
+            </motion.div>
+          </motion.div>
 
           {/* Right Side: Animated Developer Image */}
-          <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center animate-fadeIn delay-200">
-            <img
-              src={imageSrc}
-              alt="Developer"
-              width="320"
-              height="320"
-              decoding="async"
-              loading="lazy"
-              className="w-64 h-64 md:w-80 md:h-80 object-contain animate-bounce-slow rounded-full"
-            />
-          </div>
+          <motion.div 
+            className="w-full md:w-1/2 mt-12 md:mt-0 flex justify-center perspective-1000"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <div className="relative group">
+                <div className="absolute inset-0 bg-yellow-500 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                <img
+                src={imageSrc}
+                alt="Rahul - Developer"
+                width="350"
+                height="350"
+                className="relative z-10 w-64 h-64 md:w-96 md:h-96 object-contain drop-shadow-2xl animate-bounce-slow"
+                />
+            </div>
+          </motion.div>
         </div>
-          {/* Key highlights / necessary points */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div
-              id="highlight-fast"
-              tabIndex={0}
-              role="article"
-              aria-labelledby="highlight-fast-heading"
-              className="bg-gray-800/60 p-6 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            >
-              <svg className="mx-auto mb-3" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                <path d="M5 12l4 4L19 6" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <h4 id="highlight-fast-heading" className="text-lg font-semibold text-gray-100">Fast & Responsive</h4>
-              <p className="text-gray-300 mt-2">Optimized for performance and mobile-first responsive layouts.</p>
-            </div>
-            <div
-              id="highlight-clean"
-              tabIndex={0}
-              role="article"
-              aria-labelledby="highlight-clean-heading"
-              className="bg-gray-800/60 p-6 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            >
-              <svg className="mx-auto mb-3" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                <path d="M12 2v6l4 2" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <h4 id="highlight-clean-heading" className="text-lg font-semibold text-gray-100">Clean Code</h4>
-              <p className="text-gray-300 mt-2">Readable, maintainable code following industry best practices.</p>
-            </div>
-            <div
-              id="highlight-prod"
-              tabIndex={0}
-              role="article"
-              aria-labelledby="highlight-prod-heading"
-              className="bg-gray-800/60 p-6 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            >
-              <svg className="mx-auto mb-3" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                <circle cx="12" cy="12" r="3" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M19.4 15a8 8 0 1 0-14.8 0" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <h4 id="highlight-prod-heading" className="text-lg font-semibold text-gray-100">Production Ready</h4>
-              <p className="text-gray-300 mt-2">Deployed solutions with CI/CD, monitoring and scalable architecture.</p>
-            </div>
-          </div>
-          {/* Quick projects teaser */}
-          <div className="mt-10 text-center">
-            <Link to="/projects" className="inline-block bg-transparent border border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-gray-900 font-semibold py-2 px-6 rounded-full transition">
-              See Featured Projects
-            </Link>
-          </div>
+
+          {/* Key highlights */}
+          <motion.div 
+            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {[
+                { title: "Fast & Responsive", icon: "M13 10V3L4 14h7v7l9-11h-7z", desc: "Optimized for speed and mobile devices." },
+                { title: "Clean Code", icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4", desc: "Scalable and maintainable architecture." },
+                { title: "Production Ready", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z", desc: "Deployed with best CI/CD practices." }
+            ].map((item, idx) => (
+                <motion.div
+                    key={idx}
+                    whileHover={{ y: -5, backgroundColor: "rgba(31, 41, 55, 0.8)" }}
+                    className="bg-gray-900/40 backdrop-blur-sm border border-gray-800 p-8 rounded-2xl shadow-lg transition-colors"
+                >
+                    <div className="bg-gray-800/50 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-yellow-500">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon}></path></svg>
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-100 mb-2">{item.title}</h4>
+                    <p className="text-gray-400">{item.desc}</p>
+                </motion.div>
+            ))}
+          </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

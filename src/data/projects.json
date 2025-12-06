@@ -147,7 +147,7 @@
   },
   {
     "id": 12,
-    "title": "Logic Builder Website",
+    "title": "ChatBot",
     "description": "A full-stack personal portfolio built with React for a modern, responsive frontend and Node.js with Express for the backend API. Showcases projects, skills, and contact info, with data managed in a database (e.g., MongoDB). Features a clean, professional design using Tailwind CSS.",
     "category": "Frontend",
     "technologies": ["React", "SCSS", "JavaScript", "Responsive"],

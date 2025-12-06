@@ -12,8 +12,8 @@ import {
   SiWordpress ,
 } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Keep the tech -> icon map at module scope so it's not recreated on every render
 const techIcons = {
   React: <SiReact className="text-blue-500" />,
   JavaScript: <SiJavascript className="text-yellow-500" />,
@@ -28,58 +28,69 @@ const techIcons = {
   JWT: <VscJson className="text-orange-400" />,
 };
 
-// Memoized project card to avoid re-rendering when unrelated state changes
 const ProjectCard = React.memo(function ProjectCard({ project }) {
   return (
-    <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl animate-fadeIn delay-400">
-      {/* Project Image */}
-      <img
-        src={project.image}
-        alt={project.title}
-        loading="lazy"
-        decoding="async"
-        className="w-full h-48 object-cover"
-        onError={(e) => {
-          e.target.src =
-            "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png";
-        }}
-      />
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-100 mb-2">
-          {project.title}
-        </h3>
-        <p className="text-gray-400 text-sm mb-4">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.map((tech, index) => (
-            <div
-              key={index}
-              className="flex items-center px-3 py-1 bg-gray-700 rounded-full text-xs text-gray-200"
-            >
-              {techIcons[tech] && <span className="mr-1">{techIcons[tech]}</span>}
-              <span>{tech}</span>
-            </div>
-          ))}
-        </div>
-        <div className="flex space-x-4">
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      whileHover={{ y: -10 }}
+      transition={{ duration: 0.3 }}
+      className="bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-700 hover:shadow-2xl hover:border-yellow-500/50 group"
+    >
+      <div className="relative overflow-hidden h-48">
+        <img
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
+          className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+          onError={(e) => {
+            e.target.src =
+              "https://raw.githubusercontent.com/CodesRahul96/CodesRahul/refs/heads/main/src/assets/projects/comingsoon.png";
+          }}
+        />
+        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+            className="bg-gray-900 p-3 rounded-full text-yellow-400 hover:bg-yellow-500 hover:text-gray-900 transition-all duration-300 transform hover:scale-110"
+            title="View Code"
           >
-            <FaGithub className="mr-1" /> GitHub
+             <FaGithub size={20} />
           </a>
           <a
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center text-yellow-400 hover:text-yellow-500 transition-colors duration-300"
+            className="bg-gray-900 p-3 rounded-full text-yellow-400 hover:bg-yellow-500 hover:text-gray-900 transition-all duration-300 transform hover:scale-110"
+            title="Live Demo"
           >
-            <FaExternalLinkAlt className="mr-1" /> Live Demo
+            <FaExternalLinkAlt size={18} />
           </a>
         </div>
       </div>
-    </div>
+      
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-100 mb-2 group-hover:text-yellow-400 transition-colors">
+          {project.title}
+        </h3>
+        <p className="text-gray-400 text-sm mb-4 line-clamp-3">{project.description}</p>
+        
+        <div className="flex flex-wrap gap-2 mt-auto">
+          {project.technologies.map((tech, index) => (
+            <span
+              key={index}
+              className="flex items-center px-2.5 py-1 bg-gray-700/50 border border-gray-600 rounded-md text-xs text-gray-300"
+            >
+              {techIcons[tech] && <span className="mr-1.5">{techIcons[tech]}</span>}
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 });
 
@@ -87,28 +98,18 @@ function Projects() {
   const [projects, setProjects] = useState([]);
   const [filter, setFilter] = useState("All");
 
-  // Load projects JSON dynamically to keep initial bundle smaller
   useEffect(() => {
-    document.title = "Projects";
+    document.title = "CodesRahul | Projects";
     try {
       let desc = document.querySelector('meta[name="description"]');
       if (!desc) {
-        desc = document.createElement('meta');
-        desc.name = 'description';
-        document.head.appendChild(desc);
+          desc = document.createElement('meta');
+          desc.name = 'description';
+          document.head.appendChild(desc);
       }
       desc.content = 'Projects by Rahul — selected web projects built with React, Node.js and modern web stacks.';
+    } catch {}
 
-      let canon = document.querySelector('link[rel="canonical"]');
-      if (!canon) {
-        canon = document.createElement('link');
-        canon.rel = 'canonical';
-        document.head.appendChild(canon);
-      }
-      canon.href = 'https://www.codesrahul.xyz/projects';
-    } catch {
-      // ignore in non-browser
-    }
     let mounted = true;
     (async () => {
       try {
@@ -117,11 +118,9 @@ function Projects() {
         if (mounted && Array.isArray(data)) {
           setProjects(data);
         } else if (mounted) {
-          console.error("Projects data is not an array or is undefined:", data);
           setProjects([]);
         }
       } catch (error) {
-        console.error("Error loading projects data:", error);
         if (mounted) setProjects([]);
       }
     })();
@@ -131,88 +130,124 @@ function Projects() {
     };
   }, []);
 
-  // Define categories for filtering (memoized)
   const categories = useMemo(() => ["All", "Web Development", "Frontend"], []);
 
-  // Filter projects based on selected category (memoized)
   const filteredProjects = useMemo(
     () => (filter === "All" ? projects : projects.filter((project) => project.category === filter)),
     [projects, filter]
   );
 
-  
-
   return (
-    <section
+    <motion.section
       id="projects"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className="py-20 bg-gray-950 min-h-screen relative"
     >
-      {/* Subtle ripple grid background behind project cards */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-10 ripple-grid" />
 
-  <div className="container mx-auto px-4 relative z-10">
-        <div className="flex justify-center mb-16">
-          <div className="max-w-4xl w-full">
-            {/* Header */}
-            <h2 className="text-4xl font-bold text-center mb-12 text-gray-100 animate-fadeIn">
-              My Projects
-            </h2>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16 space-y-4">
+             <motion.h2 
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="text-4xl md:text-5xl font-extrabold text-gray-100"
+             >
+              My <span className="text-yellow-400">Projects</span>
+            </motion.h2>
+            <motion.p 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="text-gray-400 text-lg max-w-2xl mx-auto"
+            >
+                A showcase of my recent work, side projects, and open source contributions.
+            </motion.p>
+          </div>
 
-            {/* Filter Options */}
-            <div className="flex justify-center space-x-4 mb-8 animate-fadeIn delay-200">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setFilter(category)}
-                  className={`px-4 py-2 rounded-full font-medium transition-colors duration-300 ${
-                    filter === category
-                      ? "bg-yellow-500 text-gray-900"
-                      : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
+          {/* Filter Options */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-4 mb-12"
+          >
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setFilter(category)}
+                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 relative ${
+                  filter === category
+                    ? "text-gray-900"
+                    : "text-gray-300 hover:text-white"
+                }`}
+              >
+                {filter === category && (
+                    <motion.div
+                        layoutId="activeFilter"
+                        className="absolute inset-0 bg-yellow-500 rounded-full"
+                        style={{ zIndex: -1 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                )}
+                {category}
+              </button>
+            ))}
+          </motion.div>
 
-            {/* Project Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+          {/* Project Cards Grid */}
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <AnimatePresence mode="popLayout">
               {projects.length === 0 ? (
-                <p className="text-center text-gray-400 col-span-full">
-                  No projects available. Please check the data source.
-                </p>
+                 <motion.p
+                    initial={{ opacity: 0 }} 
+                    animate={{ opacity: 1 }}
+                    className="text-center text-gray-400 col-span-full py-20"
+                 >
+                  Loading projects...
+                </motion.p>
               ) : filteredProjects.length > 0 ? (
                 filteredProjects.map((project) => (
                   <ProjectCard key={project.id} project={project} />
                 ))
               ) : (
-                <p className="text-center text-gray-400 col-span-full">
+                <motion.p 
+                    initial={{ opacity: 0 }} 
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="text-center text-gray-400 col-span-full py-20"
+                >
                   No projects found in this category.
-                </p>
+                </motion.p>
               )}
-            </div>
+            </AnimatePresence>
+          </motion.div>
 
-            {/* Call to Action */}
-            <div className="text-center mt-12 animate-fadeIn delay-600">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-100">
-                Want to See More?
-              </h3>
-              <p className="text-gray-300 mb-6">
-                Check out my GitHub for more projects and contributions!
-              </p>
-              <a
-                href="https://github.com/codesrahul96"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
-              >
-                Visit My GitHub
-              </a>
-            </div>
-          </div>
+          {/* Call to Action */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-20"
+          >
+            <h3 className="text-2xl font-semibold mb-4 text-gray-100">
+              Want to See More?
+            </h3>
+            <a
+              href="https://github.com/codesrahul96"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-transparent border-2 border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-gray-900 font-bold py-3 px-8 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.2)] hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] transition duration-300 transform hover:scale-105"
+            >
+              Visit My GitHub
+            </a>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

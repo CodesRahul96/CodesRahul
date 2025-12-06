@@ -3,112 +3,93 @@ import Logo from "../assets/orangecode.svg";
 
 /**
  * Modern Preloader
- * - shows centered logo + brand
- * - simulated progress bar (nice UX while assets load)
- * - calls onLoaded() when complete (if provided)
  */
-const Preloader = ({ onLoaded, minDuration = 600 }) => {
+const Preloader = ({ onLoaded, minDuration = 800 }) => {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Preload logo to help LCP and SEO-friendly rendering
+    // preload logo
     try {
-      if (typeof document !== "undefined") {
-        const exists = document.querySelector(`link[rel="preload"][href="${Logo}"]`);
-        if (!exists) {
-          const link = document.createElement("link");
-          link.rel = "preload";
-          link.as = "image";
-          link.href = Logo;
-          document.head.appendChild(link);
-        }
-      }
-    } catch {
-      // ignore in non-browser environments
-    }
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = Logo;
+      document.head.appendChild(link);
+    } catch {}
 
     let mounted = true;
     const start = Date.now();
 
-    const prefersReduced = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReduced) {
-      // respect reduced motion: complete quickly
-      setProgress(100);
-      setTimeout(() => {
-        if (!mounted) return;
-        setVisible(false);
-        if (typeof onLoaded === "function") onLoaded();
-      }, Math.max(minDuration, 300));
-      return () => {
-        mounted = false;
-      };
-    }
-
-    const id = setInterval(() => {
-      setProgress((p) => {
-        // ease out progress, never go backward
-        const next = Math.min(100, p + Math.random() * (10 - p / 12));
-        return next;
-      });
+    const interval = setInterval(() => {
+        setProgress(old => {
+            const next = old + Math.random() * 5; 
+            return next > 90 ? 90 : next; // Stall at 90% until done
+        });
     }, 100);
 
-    const checkComplete = setInterval(() => {
-      if (!mounted) return;
-      if (progress >= 98 || Date.now() - start > Math.max(minDuration, 800)) {
-        clearInterval(id);
-        clearInterval(checkComplete);
-        // finalize to 100 and fade out
+    const onComplete = () => {
+        clearInterval(interval);
         setProgress(100);
         setTimeout(() => {
-          if (!mounted) return;
-          setVisible(false);
-          if (typeof onLoaded === "function") onLoaded();
-        }, 380);
-      }
-    }, 150);
+             if(mounted) setVisible(false);
+             if(onLoaded) onLoaded();
+        }, 500);
+    };
+
+    // Simulate checks or waiting for window load if needed
+    // For now we just use a timer + simulated progress
+    const checkTimeout = setTimeout(() => {
+        onComplete();
+    }, minDuration);
+
+    const loadListener = () => {
+         // Window loaded, ensure we wait at least minDuration
+         const elapsed = Date.now() - start;
+         if (elapsed < minDuration) {
+             setTimeout(onComplete, minDuration - elapsed);
+         } else {
+             onComplete();
+         }
+         clearTimeout(checkTimeout);
+    };
+
+    if (document.readyState === 'complete') {
+        loadListener();
+    } else {
+        window.addEventListener('load', loadListener);
+    }
 
     return () => {
       mounted = false;
-      clearInterval(id);
-      clearInterval(checkComplete);
+      window.removeEventListener('load', loadListener);
+      clearTimeout(checkTimeout);
+      clearInterval(interval);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [minDuration, onLoaded]);
 
   if (!visible) return null;
 
   return (
     <div
-      role="status"
-      aria-live="polite"
-      aria-busy={progress < 100}
-      className="fixed inset-0 bg-gray-900/90 flex items-center justify-center z-50"
+      className={`fixed inset-0 bg-gray-950 flex flex-col items-center justify-center z-[100] transition-opacity duration-500 ${progress === 100 ? 'opacity-0' : 'opacity-100'}`}
     >
-      <div className="flex flex-col items-center gap-6 px-6 py-8 rounded-lg">
-        <div className="flex items-center gap-3">
-          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg">
-            <img src={Logo} alt="CodesRahul logo" className="w-8 h-8" />
-          </div>
-          <div className="text-left">
-            <h1 className="text-2xl font-extrabold text-white leading-tight">
-              <span className="text-yellow-400">Codes</span>
-              <span className="text-gray-100">Rahul</span>
-            </h1>
-            <p className="text-xs text-gray-400">Loading, please wait…</p>
-          </div>
+        <div className="relative mb-8">
+            <div className="absolute inset-0 bg-yellow-500 blur-2xl opacity-20 animate-pulse"></div>
+            <img src={Logo} alt="CodesRahul" className="w-20 h-20 relative z-10 animate-bounce-slow" />
         </div>
 
-        <div className="w-64 sm:w-80">
-          <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-yellow-400 transition-all duration-200 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+        <h1 className="text-3xl font-extrabold text-white tracking-tight mb-8">
+            <span className="text-yellow-400">Codes</span>Rahul
+        </h1>
+
+        <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
+            <div 
+                className="h-full bg-yellow-500 transition-all duration-300 ease-out"
+                style={{ width: `${progress}%` }}
+            ></div>
         </div>
-      </div>
+        <p className="mt-4 text-gray-500 text-sm font-mono tracking-widest">{Math.round(progress)}%</p>
     </div>
   );
 };
