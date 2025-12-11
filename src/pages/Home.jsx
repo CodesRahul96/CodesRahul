@@ -101,7 +101,7 @@ function Home() {
               variants={itemVariants}
               className="text-lg md:text-xl text-gray-400 max-w-lg mx-auto md:mx-0 leading-relaxed"
             >
-              I'm Rahul, a passionate Full Stack Web Developer. 
+              I'm Rahul Misal, a passionate Full Stack Web Developer. 
               I craft <span className="text-gray-200 font-semibold">modern, responsive, and performance-driven</span> web experiences using the latest tech stack.
             </motion.p>
             

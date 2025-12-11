@@ -146,7 +146,7 @@ function About() {
           
           <motion.div variants={itemVariants} className="w-full md:w-2/3 space-y-6 text-center md:text-left">
             <h3 className="text-3xl font-bold text-gray-100">
-              I'm <span className="text-yellow-400">Rahul</span>, a Full Stack Developer.
+              I'm <span className="text-yellow-400">Rahul Misal</span>, a Full Stack Developer.
             </h3>
             <p className="text-gray-300 text-lg leading-relaxed">
               I specialize in building high-quality websites and applications with modern technologies like React, Node.js, and Tailwind CSS. My passion lies in creating seamless user experiences and robust backend architectures.
