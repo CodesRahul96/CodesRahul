@@ -80,12 +80,12 @@ const Preloader = ({ onLoaded, minDuration = 800 }) => {
         </div>
 
         <h1 className="text-3xl font-extrabold text-white tracking-tight mb-8">
-            <span className="text-yellow-400">Codes</span>Rahul
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Codes</span>Rahul
         </h1>
 
         <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
             <div 
-                className="h-full bg-yellow-500 transition-all duration-300 ease-out"
+                className="h-full bg-amber-500 transition-all duration-300 ease-out"
                 style={{ width: `${progress}%` }}
             ></div>
         </div>

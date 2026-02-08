@@ -16,7 +16,7 @@ function Footer() {
             {/* Brand Column */}
             <div className="space-y-4">
                 <Link to="/" className="text-2xl font-bold tracking-tight inline-block">
-                    <span className="text-yellow-500">Codes</span><span className="text-gray-100">Rahul</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Codes</span><span className="text-gray-100">Rahul</span>
                 </Link>
                 <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
                     Building digital experiences with modern technologies. focused on performance, accessibility, and user-centric design.
@@ -34,7 +34,7 @@ function Footer() {
                 <ul className="space-y-2">
                     {NAV_LINKS.map(link => (
                         <li key={link.name}>
-                            <Link to={link.path} className="text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+                            <Link to={link.path} className="text-gray-400 hover:text-amber-400 transition-colors text-sm">
                                 {link.name}
                             </Link>
                         </li>
@@ -47,11 +47,11 @@ function Footer() {
                 <h3 className="text-gray-100 font-semibold mb-4">Contact</h3>
                 <ul className="space-y-3">
                     <li className="flex items-center gap-2 text-sm text-gray-400">
-                        <FaEnvelope className="text-yellow-500 shrink-0" />
+                        <FaEnvelope className="text-amber-500 shrink-0" />
                         <a href="mailto:codesrahul96@gmail.com" className="hover:text-white transition-colors">codesrahul96@gmail.com</a>
                     </li>
                     <li className="flex items-center gap-2 text-sm text-gray-400">
-                        <FaMapMarkerAlt className="text-yellow-500 shrink-0" />
+                        <FaMapMarkerAlt className="text-amber-500 shrink-0" />
                         <span>Pune, Maharashtra, India</span>
                     </li>
                 </ul>
@@ -65,7 +65,7 @@ function Footer() {
                 </p>
                 <Link 
                     to="/contact"
-                    className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 text-sm font-bold py-2 px-6 rounded-full transition-transform hover:scale-105 shadow-md"
+                    className="inline-block bg-amber-500 hover:bg-amber-600 text-black text-sm font-bold py-2 px-6 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(245,158,11,0.2)] hover:shadow-[0_0_25px_rgba(245,158,11,0.4)]"
                 >
                     Let's Talk
                 </Link>

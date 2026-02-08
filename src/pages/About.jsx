@@ -1,43 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt, FaEnvelope, FaLinkedin, FaGithub, FaGraduationCap, FaBriefcase, FaCode } from 'react-icons/fa';
-import { SiTailwindcss, SiCanva, SiMysql, SiMongodb, SiTypescript, SiAxios, SiExpress, SiPostman, SiWordpress, SiShopify } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt, FaEnvelope, FaLinkedin, FaGithub, FaGraduationCap, FaBriefcase, FaCode, FaMobile } from 'react-icons/fa';
+import { SiTailwindcss, SiCanva, SiMysql, SiMongodb, SiTypescript, SiAxios, SiExpress, SiPostman, SiWordpress, SiShopify, SiKotlin, SiAndroid, SiFirebase, SiAndroidstudio } from 'react-icons/si';
 import { TbBrandThreejs } from "react-icons/tb";
 import { motion } from 'framer-motion';
 
 const skillCategories = [
   {
     title: "Frontend Development",
-    icon: <FaCode className="text-blue-400" />,
+    icon: <FaReact className="text-cyan-400" />,
     skills: [
-      { name: 'HTML5', icon: <FaHtml5 />, level: 95, color: "text-orange-500" },
-      { name: 'CSS3', icon: <FaCss3 />, level: 90, color: "text-blue-500" },
-      { name: 'React', icon: <FaReact />, level: 90, color: "text-cyan-400" },
-      { name: 'Tailwind', icon: <SiTailwindcss />, level: 85, color: "text-teal-400" },
-      { name: 'JavaScript', icon: <FaJsSquare />, level: 80, color: "text-yellow-400" },
-      { name: 'TypeScript', icon: <SiTypescript />, level: 70, color: "text-blue-600" },
-      { name: 'Three.js', icon: <TbBrandThreejs />, level: 75, color: "text-white" },
+      { name: 'React', icon: <FaReact />, level: 90, color: "text-cyan-400", bgColor: "bg-cyan-400" },
+      { name: 'JavaScript', icon: <FaJsSquare />, level: 85, color: "text-amber-400", bgColor: "bg-amber-400" },
+      { name: 'HTML5', icon: <FaHtml5 />, level: 95, color: "text-orange-500", bgColor: "bg-orange-500" },
+      { name: 'CSS3', icon: <FaCss3 />, level: 90, color: "text-blue-500", bgColor: "bg-blue-500" },
+      { name: 'Tailwind CSS', icon: <SiTailwindcss />, level: 90, color: "text-teal-400", bgColor: "bg-teal-400" },
+      { name: 'TypeScript', icon: <SiTypescript />, level: 75, color: "text-blue-600", bgColor: "bg-blue-600" },
     ]
   },
   {
-    title: "Backend & CMS",
-    icon: <FaBriefcase className="text-green-400" />,
+    title: "Mobile Development",
+    icon: <FaMobile className="text-purple-400" />,
     skills: [
-      { name: 'Node.js', icon: <FaNodeJs />, level: 70, color: "text-green-500" },
-      { name: 'Express', icon: <SiExpress />, level: 75, color: "text-gray-400" },
-      { name: 'MongoDB', icon: <SiMongodb />, level: 70, color: "text-green-600" },
-      { name: 'MySQL', icon: <SiMysql />, level: 60, color: "text-blue-400" },
-      { name: 'WordPress', icon: <SiWordpress />, level: 65, color: "text-blue-300" },
-      { name: 'Shopify', icon: <SiShopify />, level: 75, color: "text-green-400" },
+      { name: 'React Native', icon: <FaReact />, level: 75, color: "text-cyan-400", bgColor: "bg-cyan-400" },
+      { name: 'Android', icon: <SiAndroid />, level: 70, color: "text-green-500", bgColor: "bg-green-500" },
+      { name: 'Kotlin', icon: <SiKotlin />, level: 65, color: "text-purple-500", bgColor: "bg-purple-500" },
+      { name: 'Firebase', icon: <SiFirebase />, level: 75, color: "text-amber-500", bgColor: "bg-amber-500" },
+      { name: 'Android Studio', icon: <SiAndroidstudio />, level: 70, color: "text-blue-500", bgColor: "bg-blue-500" },
     ]
   },
   {
-    title: "Tools & Utilities",
-    icon: <FaGraduationCap className="text-yellow-400" />,
+    title: "Backend & Database",
+    icon: <FaNodeJs className="text-green-500" />,
     skills: [
-      { name: 'Git', icon: <FaGitAlt />, level: 80, color: "text-red-500" },
-      { name: 'Postman', icon: <SiPostman />, level: 70, color: "text-orange-500" },
-      { name: 'Axios', icon: <SiAxios />, level: 80, color: "text-purple-400" },
-      { name: 'Canva', icon: <SiCanva />, level: 85, color: "text-blue-400" },
+      { name: 'Node.js', icon: <FaNodeJs />, level: 80, color: "text-green-500", bgColor: "bg-green-500" },
+      { name: 'Express.js', icon: <SiExpress />, level: 80, color: "text-gray-400", bgColor: "bg-gray-400" },
+      { name: 'MongoDB', icon: <SiMongodb />, level: 75, color: "text-green-600", bgColor: "bg-green-600" },
+      { name: 'MySQL', icon: <SiMysql />, level: 65, color: "text-blue-400", bgColor: "bg-blue-400" },
+      { name: 'REST APIs', icon: <FaCode />, level: 85, color: "text-purple-400", bgColor: "bg-purple-400" },
+    ]
+  },
+  {
+    title: "Tools & Platforms",
+    icon: <FaGitAlt className="text-orange-500" />,
+    skills: [
+      { name: 'Git & GitHub', icon: <FaGitAlt />, level: 85, color: "text-orange-500", bgColor: "bg-orange-500" },
+      { name: 'WordPress', icon: <SiWordpress />, level: 70, color: "text-blue-300", bgColor: "bg-blue-300" },
+      { name: 'Shopify', icon: <SiShopify />, level: 75, color: "text-green-400", bgColor: "bg-green-400" },
+      { name: 'Postman', icon: <SiPostman />, level: 75, color: "text-orange-400", bgColor: "bg-orange-400" },
+      { name: 'Canva', icon: <SiCanva />, level: 80, color: "text-blue-400", bgColor: "bg-blue-400" },
     ]
   }
 ];
@@ -121,12 +131,12 @@ function About() {
         {/* Header */}
         <div className="flex justify-center mb-16">
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-100 relative inline-block mb-4">
+            <h2 className="text-4xl md:text-6xl font-black text-white relative inline-block mb-6 tracking-tighter">
               About Me
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+              <div className="absolute -bottom-2 left-0 w-full h-[3px] bg-gradient-to-r from-amber-400 via-amber-600 to-transparent rounded-full"></div>
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Transforming complex problems into simple, beautiful, and intuitive designs.
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg font-medium">
+              Architecting elegant solutions for complex digital challenges.
             </p>
           </motion.div>
         </div>
@@ -134,19 +144,19 @@ function About() {
         {/* Profile Section */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-20">
           <motion.div variants={itemVariants} className="w-full md:w-1/3 flex justify-center relative group">
-            <div className="absolute inset-0 bg-yellow-500/20 rounded-full blur-2xl group-hover:opacity-40 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-amber-500/10 rounded-3xl blur-[80px] group-hover:opacity-60 transition-opacity duration-500"></div>
             {imageSrc && (
               <img
                 src={imageSrc}
                 alt="Rahul Profile"
-                className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl shadow-2xl border-2 border-gray-700/50 z-10 transform transition duration-500 group-hover:scale-105 group-hover:-rotate-2 grayscale-[20%] group-hover:grayscale-0"
+                className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-[32px] shadow-2xl border border-white/10 z-10 transform transition duration-700 group-hover:scale-105 group-hover:-rotate-1"
               />
             )}
           </motion.div>
           
           <motion.div variants={itemVariants} className="w-full md:w-2/3 space-y-6 text-center md:text-left">
-            <h3 className="text-3xl font-bold text-gray-100">
-              I'm <span className="text-yellow-400">Rahul Misal</span>, a Full Stack Developer.
+            <h3 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Rahul Misal</span>, a Full Stack Developer.
             </h3>
             <p className="text-gray-300 text-lg leading-relaxed">
               I specialize in building high-quality websites and applications with modern technologies like React, Node.js, and Tailwind CSS. My passion lies in creating seamless user experiences and robust backend architectures.
@@ -154,9 +164,9 @@ function About() {
             <p className="text-gray-300 text-lg">
               With over <span className="font-semibold text-white">2+ years</span> of experience, I've worked on diverse projects ranging from e-commerce platforms to interactive dashboards. I'm constantly learning and adapting to the latest tech trends.
             </p>
-            <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
-               {["Web Development", "UI/UX Design", "API Integration", "Database Management"].map((tag, i) => (
-                 <span key={i} className="px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-full text-sm text-gray-300 hover:border-yellow-500/50 transition-colors">
+            <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-6">
+               {["MERN Stack", "UI/UX Architecture", "System Design", "Cloud Optimization"].map((tag, i) => (
+                 <span key={i} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm font-semibold text-gray-300 hover:text-amber-400 hover:border-amber-400/30 transition-all cursor-default backdrop-blur-sm">
                    {tag}
                  </span>
                ))}
@@ -166,17 +176,20 @@ function About() {
 
         {/* Skills Section */}
         <div className="mb-20">
-           <motion.h3 variants={itemVariants} className="text-3xl font-bold text-center text-gray-100 mb-12">Technical Expertise</motion.h3>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+           <motion.h3 variants={itemVariants} className="text-3xl md:text-4xl font-black text-white mb-4 text-center tracking-tighter">
+              Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Expertise</span>
+           </motion.h3>
+           <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">Proficient in modern web technologies and tools for building scalable applications</p>
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
              {skillCategories.map((category, idx) => (
-               <motion.div 
-                 key={idx} 
-                 variants={containerVariants}
-                 initial="hidden"
-                 whileInView="visible"
-                 viewport={{ once: true, margin: "-50px" }}
-                 className="bg-gray-900/50 backdrop-blur-md p-6 rounded-2xl border border-gray-800 hover:border-gray-600 transition-colors"
-               >
+                <motion.div 
+                  key={idx} 
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="bg-[#111827]/40 backdrop-blur-xl p-8 rounded-3xl border border-white/5 hover:border-white/10 shadow-2xl transition-all duration-500"
+                >
                  <div className="flex items-center gap-3 mb-6">
                    <span className="text-2xl">{category.icon}</span>
                    <h4 className="text-xl font-bold text-gray-200">{category.title}</h4>
@@ -186,18 +199,19 @@ function About() {
                      <div key={sIdx} className="group">
                        <div className="flex justify-between mb-1">
                          <div className="flex items-center gap-2">
-                            <span className={`text-lg ${skill.color}`}>{skill.icon}</span>
-                            <span className="text-gray-300 font-medium">{skill.name}</span>
-                         </div>
-                         <span className="text-xs text-gray-500 group-hover:text-yellow-400 transition-colors">{skill.level}%</span>
+                             <span className={`text-lg transition-transform group-hover:scale-110 ${skill.color}`}>{skill.icon}</span>
+                             <span className="text-gray-200 font-semibold tracking-tight">{skill.name}</span>
+                          </div>
+                          <span className="text-xs font-mono text-gray-500 group-hover:text-amber-500 transition-colors">{skill.level}%</span>
                        </div>
-                       <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                         <motion.div 
-                           initial={{ width: 0 }}
-                           whileInView={{ width: `${skill.level}%` }}
-                           transition={{ duration: 1, delay: 0.1 * sIdx }}
-                           className={`h-full rounded-full ${skill.color.replace('text-', 'bg-')}`}
-                         />
+                        <div className="h-2 bg-gray-800/50 rounded-full overflow-hidden">
+                          <motion.div 
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            transition={{ duration: 1, delay: 0.1 * sIdx, ease: "easeOut" }}
+                            viewport={{ once: true }}
+                            className={`h-full rounded-full ${skill.bgColor}`}
+                          />
                        </div>
                      </div>
                    ))}
@@ -216,14 +230,14 @@ function About() {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            <h3 className="text-2xl font-bold text-gray-100 mb-8 flex items-center gap-3">
-              <FaBriefcase className="text-yellow-500" /> Experience
+            <h3 className="text-3xl font-black text-white mb-10 flex items-center gap-4 tracking-tighter uppercase">
+              <FaBriefcase className="text-amber-500" /> Experience
             </h3>
-            <div className="space-y-8 border-l-2 border-gray-800 pl-8 ml-3">
+            <div className="space-y-10 border-l-[3px] border-white/5 pl-10 ml-4">
               {experience.map((exp, index) => (
                 <div key={index} className="relative group">
-                  <span className="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-gray-900 bg-yellow-500 group-hover:scale-125 transition-transform"></span>
-                  <spam className="text-sm text-yellow-500 font-mono mb-1 block">{exp.year}</spam>
+                  <span className="absolute -left-[54px] top-1.5 h-6 w-6 rounded-full border-[5px] border-[#0f172a] bg-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:scale-125 transition-transform duration-300"></span>
+                  <span className="text-sm text-amber-500 font-black tracking-widest mb-2 block uppercase">{exp.year}</span>
                   <h4 className="text-xl font-bold text-gray-200">{exp.role}</h4>
                   <p className="text-gray-400 text-sm mb-2">{exp.company}</p>
                   <p className="text-gray-500 leading-relaxed">{exp.desc}</p>
@@ -239,14 +253,14 @@ function About() {
             viewport={{ once: true }}
             variants={containerVariants}
           >
-            <h3 className="text-2xl font-bold text-gray-100 mb-8 flex items-center gap-3">
+            <h3 className="text-3xl font-black text-white mb-10 flex items-center gap-4 tracking-tighter uppercase">
               <FaGraduationCap className="text-blue-500" /> Education
             </h3>
-            <div className="space-y-8 border-l-2 border-gray-800 pl-8 ml-3">
+            <div className="space-y-10 border-l-[3px] border-white/5 pl-10 ml-4">
                {education.map((edu, index) => (
                 <div key={index} className="relative group">
-                  <span className="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-gray-900 bg-blue-500 group-hover:scale-125 transition-transform"></span>
-                  <spam className="text-sm text-blue-400 font-mono mb-1 block">{edu.year}</spam>
+                  <span className="absolute -left-[54px] top-1.5 h-6 w-6 rounded-full border-[5px] border-[#0f172a] bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)] group-hover:scale-125 transition-transform duration-300"></span>
+                  <span className="text-sm text-blue-400 font-black tracking-widest mb-2 block uppercase">{edu.year}</span>
                   <h4 className="text-xl font-bold text-gray-200">{edu.degree}</h4>
                   <p className="text-gray-400 text-sm mb-2">{edu.institution}</p>
                   <p className="text-gray-500 leading-relaxed">{edu.desc}</p>
@@ -259,19 +273,20 @@ function About() {
         {/* Contact CTA (Simplified version of original) */}
         <div className="flex justify-center mb-16">
           <motion.div 
-            whileHover={{ y: -5 }}
-            className="bg-gradient-to-r from-gray-900 to-gray-800 p-8 rounded-2xl border border-gray-700 text-center max-w-2xl w-full"
+            whileHover={{ y: -8 }}
+            className="bg-gradient-to-br from-[#1e293b]/40 to-[#0f172a]/40 backdrop-blur-xl p-10 rounded-[32px] border border-white/5 text-center max-w-2xl w-full shadow-2xl relative group"
           >
-            <h3 className="text-2xl font-bold text-white mb-4">Interested in working together?</h3>
-            <div className="flex justify-center gap-6 mt-6">
-              <a href="mailto:codesrahul96@gmail.com" className="p-3 bg-gray-700 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
-                <FaEnvelope size={24} />
+            <div className="absolute inset-0 bg-amber-500/5 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <h3 className="text-3xl font-extrabold text-white mb-6 relative z-10 transition-colors group-hover:text-amber-400">Let's create something extraordinary.</h3>
+            <div className="flex justify-center gap-8 mt-8 relative z-10">
+              <a href="mailto:codesrahul96@gmail.com" className="p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all duration-300 shadow-xl">
+                <FaEnvelope size={28} />
               </a>
-              <a href="https://linkedin.com/in/codesrahul" target="_blank" className="p-3 bg-gray-700 rounded-full hover:bg-[#0077b5] hover:text-white transition-all">
-                <FaLinkedin size={24} />
+              <a href="https://linkedin.com/in/codesrahul" target="_blank" className="p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all duration-300 shadow-xl">
+                <FaLinkedin size={28} />
               </a>
-              <a href="https://github.com/codesrahul96" target="_blank" className="p-3 bg-gray-700 rounded-full hover:bg-black hover:text-white transition-all">
-                <FaGithub size={24} />
+              <a href="https://github.com/codesrahul96" target="_blank" className="p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-xl">
+                <FaGithub size={28} />
               </a>
             </div>
           </motion.div>

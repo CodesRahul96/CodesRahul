@@ -57,7 +57,7 @@ const Navbar = () => {
            whileTap={{ scale: 0.95 }}
         >
             <NavLink to="/" className="text-3xl font-extrabold text-gray-100 tracking-tight flex items-center gap-1">
-                <span className="text-yellow-400">Codes</span>Rahul
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Codes</span>Rahul
             </NavLink>
         </motion.div>
 
@@ -77,28 +77,28 @@ const Navbar = () => {
                     closed: { rotate: 0, y: 0 },
                     open: { rotate: 45, y: 6 },
                   }}
-                  className="w-6 h-0.5 bg-yellow-400 block mb-1.5"
+                  className="w-6 h-0.5 bg-amber-500 block mb-1.5"
                 />
                 <motion.span
                   variants={{
                     closed: { opacity: 1 },
                     open: { opacity: 0 },
                   }}
-                  className="w-6 h-0.5 bg-yellow-400 block mb-1.5"
+                  className="w-6 h-0.5 bg-amber-500 block mb-1.5"
                 />
                 <motion.span
                   variants={{
                     closed: { rotate: 0, y: 0 },
                     open: { rotate: -45, y: -6 },
                   }}
-                  className="w-6 h-0.5 bg-yellow-400 block"
+                  className="w-6 h-0.5 bg-amber-500 block"
                 />
             </motion.div>
           </button>
         </div>
 
         {/* Menu for larger screens */}
-        <ul className="hidden md:flex space-x-2 items-center bg-gray-900/50 p-1.5 rounded-full border border-gray-800/50 backdrop-blur-sm">
+        <ul className="hidden md:flex space-x-2 items-center bg-[#0f172a]/60 backdrop-blur-xl p-1.5 rounded-full border border-white/10 shadow-lg">
           {NAV_LINKS.map((item) => {
              const isActive = location.pathname === item.path;
              return (
@@ -106,14 +106,14 @@ const Navbar = () => {
                     {isActive && (
                         <motion.div
                             layoutId="navbar-indicator"
-                            className="absolute inset-0 bg-gray-800 rounded-full"
+                            className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-amber-600/20 backdrop-blur-sm rounded-full border border-amber-500/30"
                             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                         />
                     )}
                     <NavLink
                         to={item.path}
                         className={`relative z-10 px-5 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                            isActive ? "text-yellow-400" : "text-gray-300 hover:text-white"
+                            isActive ? "text-amber-400 font-bold" : "text-gray-300 hover:text-white"
                         }`}
                     >
                         {item.name}
@@ -133,10 +133,10 @@ const Navbar = () => {
               className={`
                 relative overflow-hidden
                 flex items-center gap-2 
-                bg-gradient-to-r from-yellow-500 to-yellow-600 
-                hover:from-yellow-400 hover:to-yellow-500 
-                text-gray-900 font-bold py-2.5 px-6 rounded-full 
-                shadow-[0_0_15px_rgba(234,179,8,0.3)] hover:shadow-[0_0_20px_rgba(234,179,8,0.5)]
+                bg-gradient-to-r from-amber-500 to-amber-600 
+                hover:from-amber-400 hover:to-amber-500 
+                text-black font-bold py-2.5 px-6 rounded-full 
+                shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:shadow-[0_0_25px_rgba(245,158,11,0.5)]
                 transition-all duration-300 text-sm
                 ${isDownloading ? 'cursor-not-allowed opacity-90' : ''}
               `}
@@ -162,7 +162,7 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -20, height: 0 }}
                 animate={{ opacity: 1, y: 0, height: "100vh" }}
                 exit={{ opacity: 0, y: -20, height: 0 }}
-                className="md:hidden absolute top-0 left-0 w-full bg-gray-950 z-[45] flex flex-col pt-24 px-6 overflow-hidden"
+                className="md:hidden absolute top-0 left-0 w-full bg-[#0f172a]/95 backdrop-blur-2xl z-[45] flex flex-col pt-24 px-6 overflow-hidden border-b border-white/5"
             >
                  <motion.ul 
                     initial="closed"
@@ -187,7 +187,7 @@ const Navbar = () => {
                                 className={({ isActive }) =>
                                 `text-3xl font-bold transition-colors duration-300 block py-2 ${
                                     isActive
-                                    ? "text-yellow-400"
+                                    ? "text-amber-400"
                                     : "text-gray-400"
                                 }`
                                 }
@@ -208,8 +208,8 @@ const Navbar = () => {
                         disabled={isDownloading}
                         className={`
                             w-full flex items-center justify-center gap-3
-                            bg-gradient-to-r from-yellow-500 to-yellow-600 
-                            text-xl text-gray-900 font-bold py-4 px-6 rounded-xl 
+                            bg-gradient-to-r from-amber-500 to-amber-600 
+                            text-xl text-black font-bold py-4 px-6 rounded-xl 
                             shadow-lg transition duration-300 
                             ${isDownloading ? 'opacity-70 cursor-not-allowed' : ''}
                         `}

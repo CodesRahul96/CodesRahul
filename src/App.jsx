@@ -28,7 +28,7 @@ function App() {
           <main className="flex-grow pt-20"> {/* Added pt-20 here to account for fixed navbar */}
             <Suspense fallback={
                 <div className="flex items-center justify-center min-h-[50vh]">
-                    <div className="w-12 h-12 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-12 h-12 border-4 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             }>
                 <AnimatePresence mode="wait">

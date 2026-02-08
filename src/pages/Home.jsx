@@ -76,8 +76,8 @@ function Home() {
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-10 ripple-grid ripple-grid-animated" />
       
       {/* Background Gradient elements */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDuration: '7s' }}></div>
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] -z-10 animate-pulse" style={{ animationDuration: '8s' }}></div>
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[120px] -z-10 animate-pulse" style={{ animationDuration: '10s' }}></div>
 
       <div className="max-w-6xl w-full z-10 px-4">
         <div className="flex flex-col md:flex-row items-center justify-between py-12 md:py-24">
@@ -91,10 +91,10 @@ function Home() {
           >
             <motion.h1 
               variants={itemVariants}
-              className="text-5xl md:text-7xl font-extrabold text-gray-100 leading-tight tracking-tight"
+              className="text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter"
             >
-              Welcome to <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">CodesRahul</span>
+              Building <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-500 to-amber-700">Digital Mastery</span>
             </motion.h1>
             
             <motion.p 
@@ -108,35 +108,35 @@ function Home() {
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
               <Link
                 to="/projects"
-                className="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-bold py-3 px-8 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.5)] transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(234,179,8,0.7)]"
+                className="bg-amber-500 hover:bg-amber-400 text-black font-extrabold py-4 px-10 rounded-2xl shadow-[0_10px_30px_rgba(245,158,11,0.2)] transition-all duration-300 transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(245,158,11,0.4)]"
               >
-                Explore My Work
+                View Projects
               </Link>
               <Link
                 to="/contact"
-                className="px-8 py-3 rounded-full font-bold text-yellow-500 border border-yellow-500/30 hover:bg-yellow-500/10 transition-all duration-300"
+                className="px-10 py-4 rounded-2xl font-bold text-amber-500 border border-amber-500/20 hover:bg-amber-500/5 transition-all duration-300"
               >
-                Let's Talk
+                Get In Touch
               </Link>
             </motion.div>
           </motion.div>
 
           {/* Right Side: Animated Developer Image */}
           <motion.div 
-            className="w-full md:w-1/2 mt-12 md:mt-0 flex justify-center perspective-1000"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            className="w-full md:w-1/2 mt-12 md:mt-0 flex justify-center perspective-2000"
+            initial={{ opacity: 0, x: 50, rotateY: 20 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
             <div className="relative group">
-                <div className="absolute inset-0 bg-yellow-500 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-                <img
-                src={imageSrc}
-                alt="Rahul - Developer"
-                width="350"
-                height="350"
-                className="relative z-10 w-64 h-64 md:w-96 md:h-96 object-contain drop-shadow-2xl animate-bounce-slow"
-                />
+                <div className="absolute inset-0 bg-amber-500/10 rounded-full blur-[100px] group-hover:bg-amber-500/20 transition-all duration-700"></div>
+                <div className="relative z-10 p-4 bg-white/5 backdrop-blur-xl rounded-[40px] border border-white/10 shadow-2xl transform hover:rotate-2 transition-transform duration-500">
+                    <img
+                    src={imageSrc}
+                    alt="Rahul Misal"
+                    className="w-64 h-64 md:w-[450px] md:h-[450px] object-contain drop-shadow-2xl"
+                    />
+                </div>
             </div>
           </motion.div>
         </div>
@@ -154,16 +154,16 @@ function Home() {
                 { title: "Clean Code", icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4", desc: "Scalable and maintainable architecture." },
                 { title: "Production Ready", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z", desc: "Deployed with best CI/CD practices." }
             ].map((item, idx) => (
-                <motion.div
+                 <motion.div
                     key={idx}
-                    whileHover={{ y: -5, backgroundColor: "rgba(31, 41, 55, 0.8)" }}
-                    className="bg-gray-900/40 backdrop-blur-sm border border-gray-800 p-8 rounded-2xl shadow-lg transition-colors"
+                    whileHover={{ y: -8, backgroundColor: "rgba(30, 41, 59, 0.4)" }}
+                    className="bg-[#111827]/40 backdrop-blur-md border border-white/5 p-8 rounded-3xl shadow-2xl transition-all duration-500 group"
                 >
-                    <div className="bg-gray-800/50 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-yellow-500">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon}></path></svg>
+                    <div className="bg-amber-500/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all">
+                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d={item.icon}></path></svg>
                     </div>
-                    <h4 className="text-xl font-bold text-gray-100 mb-2">{item.title}</h4>
-                    <p className="text-gray-400">{item.desc}</p>
+                    <h4 className="text-2xl font-bold text-white mb-3 tracking-tight">{item.title}</h4>
+                    <p className="text-gray-400 font-medium leading-relaxed">{item.desc}</p>
                 </motion.div>
             ))}
           </motion.div>

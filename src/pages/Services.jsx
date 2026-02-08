@@ -31,7 +31,7 @@ const SERVICES = [
 const ServiceCard = React.memo(function ServiceCard({ service }) {
   return (
     <article
-      className="bg-gray-800/50 p-6 rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+      className="bg-[#111827]/40 backdrop-blur-xl p-6 rounded-3xl border border-white/5 transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:border-amber-500/30 focus:outline-none focus:ring-2 focus:ring-amber-400"
       tabIndex={0}
       aria-labelledby={`service-${service.title}`}
     >

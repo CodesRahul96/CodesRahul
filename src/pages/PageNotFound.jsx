@@ -12,7 +12,7 @@ function PageNotFound() {
         {/* Header with Animation */}
         <div className="animate-fadeIn">
           <Suspense fallback={<span className="block h-16 w-16 mx-auto mb-6" />}>
-            <FaExclamationTriangle className="text-yellow-500 text-6xl mx-auto mb-6 animate-bounce-slow" aria-hidden="true" />
+            <FaExclamationTriangle className="text-amber-500 text-6xl mx-auto mb-6 animate-bounce-slow" aria-hidden="true" />
           </Suspense>
           <h1 className="text-6xl font-extrabold text-gray-100 mb-4">404</h1>
           <h2 className="text-3xl font-semibold text-gray-200 mb-6">Page Not Found</h2>
@@ -26,7 +26,7 @@ function PageNotFound() {
         {/* Call to Action */}
         <Link
           to="/"
-          className="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animate-fadeIn delay-400"
+          className="inline-block bg-amber-500 hover:bg-amber-600 text-black font-bold py-3 px-8 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] transition duration-300 transform hover:scale-105 animate-fadeIn delay-400"
           aria-label="Return to Home"
         >
           <Suspense fallback={<span className="inline-block w-4 h-4 mr-2 align-middle" />}>

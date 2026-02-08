@@ -105,15 +105,15 @@ function Contact() {
       className="py-20 bg-gray-950 min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-5 ripple-grid ripple-grid-animated" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-[100px] -z-10 animate-pulse" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px] -z-10 animate-pulse" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] -z-10 animate-pulse" />
 
       <div className="container mx-auto px-4 relative z-10 max-w-7xl">
         <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-100 mb-4">
-            Get in <span className="text-yellow-400">Touch</span>
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter">
+            Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Touch</span>
             </h2>
-            <div className="h-1 w-20 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full mb-6" />
+            <div className="h-[3px] w-20 bg-gradient-to-r from-amber-400 via-amber-600 to-transparent mx-auto rounded-full mb-6" />
             <p className="text-gray-400 max-w-xl mx-auto text-lg">
                 Have a project in mind or simply want to say hello? I'd love to hear from you.
             </p>
@@ -127,10 +127,10 @@ function Contact() {
                 <motion.div 
                     variants={itemVariants}
                     whileHover={{ y: -5 }}
-                    className="bg-gray-900/50 backdrop-blur-md p-6 rounded-2xl border border-gray-800 hover:border-yellow-500/30 transition-all shadow-lg group"
+                    className="bg-[#111827]/40 backdrop-blur-xl p-6 rounded-3xl border border-white/5 hover:border-amber-500/30 transition-all duration-500 shadow-2xl group"
                 >
                     <div className="flex items-start gap-4">
-                        <div className="p-4 bg-yellow-500/10 rounded-xl text-yellow-500 group-hover:bg-yellow-500 group-hover:text-gray-900 transition-colors duration-300">
+                        <div className="p-4 bg-amber-500/10 rounded-xl text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all duration-300">
                             <FaEnvelope size={24} />
                         </div>
                         <div>
@@ -199,9 +199,9 @@ function Contact() {
 
             {/* Form Column */}
             <motion.div variants={itemVariants} className="lg:col-span-2">
-                <div className="bg-gray-900/40 backdrop-blur-xl p-8 rounded-3xl border border-gray-800 shadow-2xl">
-                    <h3 className="text-2xl font-bold text-gray-100 mb-6 flex items-center gap-2">
-                        Send Message <FaPaperPlane className="text-yellow-500 text-sm" />
+                <div className="bg-[#111827]/40 backdrop-blur-xl p-8 rounded-3xl border border-white/5 shadow-2xl">
+                    <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        Send Message <FaPaperPlane className="text-amber-500 text-sm" />
                     </h3>
                     
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -213,9 +213,9 @@ function Contact() {
                                     value={formData.name}
                                     onChange={handleChange}
                                     placeholder=" "
-                                    className={`peer w-full bg-gray-950/50 border-2 ${errors.name ? 'border-red-500/50' : 'border-gray-800'} rounded-xl px-4 py-3 text-gray-100 outline-none focus:border-yellow-500 transition-colors`}
+                                    className={`peer w-full bg-gray-950/50 border-2 ${errors.name ? 'border-red-500/50' : 'border-gray-800'} rounded-xl px-4 py-3 text-gray-100 outline-none focus:border-amber-500 transition-colors`}
                                 />
-                                <label className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-yellow-500 peer-focus:bg-gray-900 peer-focus:px-2 pointer-events-none">
+                                <label className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-amber-500 peer-focus:bg-gray-900 peer-focus:px-2 pointer-events-none">
                                     Your Name
                                 </label>
                                 {errors.name && <p className="text-red-400 text-xs mt-1 ml-1">{errors.name}</p>}
@@ -228,9 +228,9 @@ function Contact() {
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder=" "
-                                    className={`peer w-full bg-gray-950/50 border-2 ${errors.email ? 'border-red-500/50' : 'border-gray-800'} rounded-xl px-4 py-3 text-gray-100 outline-none focus:border-yellow-500 transition-colors`}
+                                    className={`peer w-full bg-gray-950/50 border-2 ${errors.email ? 'border-red-500/50' : 'border-gray-800'} rounded-xl px-4 py-3 text-gray-100 outline-none focus:border-amber-500 transition-colors`}
                                 />
-                                <label className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-yellow-500 peer-focus:bg-gray-900 peer-focus:px-2 pointer-events-none">
+                                <label className="absolute left-4 top-3 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-amber-500 peer-focus:bg-gray-900 peer-focus:px-2 pointer-events-none">
                                     Your Email
                                 </label>
                                 {errors.email && <p className="text-red-400 text-xs mt-1 ml-1">{errors.email}</p>}
@@ -271,7 +271,7 @@ function Contact() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className={`px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-gray-900 font-bold rounded-xl shadow-lg hover:shadow-yellow-500/20 active:scale-95 transition-all duration-200 flex items-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                className={`px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-black font-bold rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] active:scale-95 transition-all duration-300 flex items-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
                                 {isSubmitting ? 'Sending...' : 'Send Message'}
                                 {!isSubmitting && <FaPaperPlane />}
