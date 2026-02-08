@@ -1,0 +1,19 @@
+# Netlify Build Configuration
+# This file is used by Netlify to configure the build process
+
+[build]
+  # Directory to publish (output of build)
+  publish = "dist"
+  
+  # Build command
+  command = "npm run build"
+
+# Redirect rules for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables (optional - set in Netlify UI)
+# [build.environment]
+#   NODE_VERSION = "18"
