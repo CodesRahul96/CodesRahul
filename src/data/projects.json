@@ -168,13 +168,29 @@
     "title": "ExclusiveTV",
     "description": "A premium Android application for seamless live TV streaming. Features a custom video player, D-Pad navigation support for Android TV, and real-time channel updates. Designed for a high-end viewing experience.",
     "category": "Android App",
-    "technologies": ["Kotlin", "Android Studio", "ExoPlayer", "Firebase", "API Integration"],
+    "technologies": [
+      "Kotlin",
+      "Android Studio",
+      "ExoPlayer",
+      "Firebase",
+      "API Integration"
+    ],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://github.com/CodesRahul96",
-    "image": "comingsoon"
+    "image": "ExclusiveTV"
   },
   {
     "id": 15,
+    "title": "Playlist Downloader",
+    "description": "playlist.indevs.in appears to be a web page associated with working with playlist files (likely M3U), but there’s no clear public description, visible interface, or documentation easily available — so its exact function and legitimacy aren’t verifiable from publicly indexed sources. It’s possible that it’s a personal project, a tool for managing media playlists, or something else entirely. Without more information, it’s difficult to provide a detailed description of its purpose or features.",
+    "category": "Frontend",
+    "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+    "github": "https://github.com/CodesRahul96",
+    "demo": "https://playlist.indevs.in/",
+    "image": "Playlist"
+  },
+  {
+    "id": 16,
     "title": "Coming Soon",
     "description": "Exciting new projects are in the pipeline. Stay tuned for future updates and innovations!",
     "category": "Frontend",
