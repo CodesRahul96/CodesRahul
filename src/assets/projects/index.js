@@ -12,8 +12,8 @@ import logic from "./logic.png";
 import comingsoon from "./comingsoon.png";
 import desidelights from "./desidelightsrecipe.png";
 import chatbot from "./chatbot.jpg";
-import ExclusiveTV from "./ExclusiveTV.png";
-import Playlist from "./playlist.png";
+import exclusivetv from "./ExclusiveTV.png";
+import playlist from "./playlist.png";
 
 export {
   blogsify,
@@ -30,6 +30,6 @@ export {
   comingsoon,
   desidelights,
   chatbot,
-  ExclusiveTV,
-  Playlist,
+  exclusivetv,
+  playlist,
 };
