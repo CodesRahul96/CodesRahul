@@ -160,7 +160,7 @@
     "category": "Frontend",
     "technologies": ["React", "SCSS", "JavaScript", "Responsive"],
     "github": "https://github.com/CodesRahul96",
-    "demo": "https://codeslogic.netlify.app/",
+    "demo": "https://www.codesrahul.in",
     "image": "chatbot"
   },
   {
@@ -176,7 +176,7 @@
       "API Integration"
     ],
     "github": "https://github.com/CodesRahul96",
-    "demo": "https://github.com/CodesRahul96",
+    "demo": "https://exclusivetv.indevs.in",
     "image": "exclusivetv"
   },
   {
@@ -186,11 +186,21 @@
     "category": "Frontend",
     "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
     "github": "https://github.com/CodesRahul96",
-    "demo": "https://playlist.indevs.in/",
+    "demo": "https://playlist.indevs.in",
     "image": "playlist"
   },
   {
     "id": 16,
+    "title": "Advanced ToDoList",
+    "description": "A modern, responsive ToDoList application built with React, Node.js, and Firebase. Features real-time data synchronization, drag-and-drop organization, and a clean, intuitive interface.",
+    "category": "Frontend",
+    "technologies": ["React", "Node.js", "Firebase", "TailwindCSS"],
+    "github": "https://github.com/CodesRahul96",
+    "demo": "https://todolist.indevs.in",
+    "image": "todolist"
+  },
+  {
+    "id": 17,
     "title": "Coming Soon",
     "description": "Exciting new projects are in the pipeline. Stay tuned for future updates and innovations!",
     "category": "Frontend",

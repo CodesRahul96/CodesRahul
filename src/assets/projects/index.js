@@ -14,6 +14,7 @@ import desidelights from "./desidelightsrecipe.png";
 import chatbot from "./chatbot.jpg";
 import exclusivetv from "./ExclusiveTV.png";
 import playlist from "./playlist.png";
+import todolist from "./desktop_todolist.png";
 
 export {
   blogsify,
@@ -32,4 +33,5 @@ export {
   chatbot,
   exclusivetv,
   playlist,
+  todolist,
 };
