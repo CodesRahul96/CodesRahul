@@ -22,4 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-\n# Next.js\n.next\nout\nbuild
+
+# Next.js
+.next
+out
+build
