@@ -71,6 +71,29 @@
     0% { background-position: 0 0; }
     100% { background-position: 1000px 1000px; }
   }
+
+  .noise-bg {
+    background-image: url("/noise.svg");
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .text-stroke-1 {
+    -webkit-text-stroke-width: 1px;
+  }
+  .text-stroke-gray-800 {
+    -webkit-text-stroke-color: #1f2937;
+  }
+  .text-stroke-transparent {
+    -webkit-text-stroke-color: transparent;
+  }
 }
 
 
