@@ -1,33 +1,33 @@
-# CodesRahul Portfolio Website 🚀
+# CodesRahul Portfolio 🚀
 
-Welcome to my personal portfolio repository! This is a modern, responsive, and highly interactive React application designed to showcase my projects, skills, and professional journey.
+Welcome to my personal portfolio repository! This is a modern, enterprise-grade, high-performance web application designed to showcase my projects, skills, and professional journey.
 
 ![Portfolio Preview](https://raw.githubusercontent.com/CodesRahul96/CodesRahul/main/src/assets/projects/portfolio.png)
 
 ## ✨ Features
 
-- **Modern UI/UX**: Built with a "premium" design philosophy using glassmorphism, smooth gradients, and a dark theme.
-- **Advanced Animations**: Powered by **Framer Motion** for complex page transitions, staggered reveals, and interactive hover effects.
+- **"Anti-AI" Brutalist UI/UX**: Built with a bespoke design philosophy using stark contrasts, complex serif/sans-serif typography pairings, negative space, and organic noise overlays to stand out from generic templates.
+- **Advanced Animations**: Powered by **Framer Motion** for cinematic page load sequences, staggering reveals, and interactive hover effects.
+- **Serverless Backend Architecture**:
+  - Fully functional contact form powered by **Next.js Server Actions**.
+  - Integrated with **Resend SDK** for instant, secure email delivery.
+- **Enterprise SEO & Analytics**:
+  - Global Open Graph & Twitter Cards for beautiful link unfurling.
+  - Automatically generated `sitemap.xml` and `robots.txt`.
+  - Integrated **Vercel Analytics** and **Speed Insights**.
 - **Performance Optimized**:
-  - **Lazy Loading**: All pages are lazy-loaded for faster initial render.
-  - **Progressive Images**: Custom image loader with blur-up effect.
-  - **Vite**: Ultra-fast build tool and dev server.
-- **Responsive Design**: Fully mobile-responsive layout with a smooth animated mobile menu.
-- **Interactive Elements**:
-  - Scroll-aware Navbar.
-  - Filterable Project Gallery.
-  - Animated Skill Bars.
-  - Interactive Contact Form with validation.
+  - Lightning-fast LCP (Largest Contentful Paint) via Next.js native Image optimization.
+  - Edge caching and server-side rendering for optimal load speeds.
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: [React](https://reactjs.org/) (v19)
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **Frontend**: [React 19](https://reactjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Routing**: [React Router](https://reactrouter.com/) (v7)
-- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
-- **Toast Notifications**: [React Toastify](https://fkhadra.github.io/react-toastify/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Backend Email**: [Resend](https://resend.com/)
+- **Notifications**: [Sonner](https://sonner.emilkowal.ski/)
+- **Deployment & Analytics**: [Vercel](https://vercel.com/)
 
 ## 🚀 Getting Started
 
@@ -37,44 +37,44 @@ Follow these steps to run the project locally.
 
 - Node.js (v18 or higher recommended)
 - npm or yarn
+- A free API key from [Resend](https://resend.com/) (if you want the contact form to work locally)
 
 ### Installation
 
 1.  **Clone the repository**:
-
     ```bash
     git clone https://github.com/CodesRahul96/CodesRahul.git
     cd CodesRahul
     ```
 
 2.  **Install dependencies**:
-
     ```bash
     npm install
-    # or
-    yarn install
     ```
 
-3.  **Run the development server**:
+3.  **Environment Variables**:
+    Create a `.env.local` file in the root directory and add your Resend API key:
+    ```bash
+    RESEND_API_KEY=your_resend_api_key_here
+    NEXT_PUBLIC_BASE_URL=http://localhost:3000
+    ```
 
+4.  **Run the development server**:
     ```bash
     npm run dev
-    # or
-    yarn dev
     ```
 
-4.  **Open your browser**:
-    Navigate to `http://localhost:5173` to view the site.
+5.  **Open your browser**:
+    Navigate to `http://localhost:3000` to view the site.
 
 ## 🏗️ Build for Production
 
-To create a production-ready build:
+To create a production-ready optimized build:
 
 ```bash
 npm run build
+npm start
 ```
-
-This will generate a `dist` folder containing the optimized assets.
 
 ## 👤 Developer
 
@@ -83,8 +83,8 @@ This will generate a `dist` folder containing the optimized assets.
 - **GitHub**: [@CodesRahul96](https://github.com/CodesRahul96)
 - **LinkedIn**: [Rahul Misal](https://linkedin.com/in/codesrahul)
 - **Email**: codesrahul96@gmail.com
-- **Portfolio**: [codesrahul.vercel.app](https://codesrahul.vercel.app)
+- **Website**: [www.codesrahul.in](https://www.codesrahul.in)
 
 ---
 
-Made with ❤️ by Rahul using **React** & **Tailwind CSS**.
+Engineered with ❤️ by Rahul using **Next.js 15**.
