@@ -88,6 +88,9 @@
   .text-stroke-1 {
     -webkit-text-stroke-width: 1px;
   }
+  .text-stroke-white {
+    -webkit-text-stroke-color: #ffffff;
+  }
   .text-stroke-gray-800 {
     -webkit-text-stroke-color: #1f2937;
   }

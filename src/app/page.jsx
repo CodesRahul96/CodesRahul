@@ -96,7 +96,7 @@ export default function Home() {
          <div className="flex whitespace-nowrap animate-marquee w-fit">
             {/* 3 sets of the list to create a seamless infinite loop that is wide enough */}
             {[...technologies, ...technologies, ...technologies].map((tech, index) => (
-               <span key={index} className="mx-8 text-4xl md:text-6xl font-serif font-medium text-transparent text-stroke-1 text-stroke-gray-800 uppercase tracking-wider opacity-60 hover:text-white hover:text-stroke-transparent transition-all duration-300">
+               <span key={index} className="mx-8 text-4xl md:text-6xl font-serif font-medium text-transparent text-stroke-1 text-stroke-white uppercase tracking-wider opacity-30 hover:opacity-100 hover:text-white hover:text-stroke-transparent transition-all duration-300">
                   {tech}
                </span>
             ))}
