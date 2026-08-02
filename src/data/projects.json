@@ -109,6 +109,23 @@
   },
   {
     "id": 7,
+    "title": "PlayNox Player",
+    "description": "A high-performance native Android video player powered by the MPV/libmpv media engine with hardware acceleration. Features Material Design 3 with Material You dynamic colors, AMOLED dark mode, edge swipe gestures for brightness & volume, subtitle support, real-time video enhancement (brightness, contrast, saturation, gamma), and multilingual support. Targets Android API 26–36.",
+    "category": "Android App",
+    "technologies": [
+      "Kotlin",
+      "Jetpack Compose",
+      "MPV",
+      "CMake",
+      "KSP",
+      "Android"
+    ],
+    "github": "https://github.com/CodesRahul96/PlayNox.git",
+    "demo": "https://github.com/CodesRahul96/PlayNox/releases",
+    "image": "playnox"
+  },
+  {
+    "id": 8,
     "title": "Netflix Clone",
     "description": "A pixel-perfect recreation of the Netflix interface, integrated with the TMDB API for live movie data. Demonstrating mastery of complex CSS grids and responsive design patterns.",
     "category": "Frontend",
@@ -125,7 +142,7 @@
     "image": "netflix"
   },
   {
-    "id": 8,
+    "id": 9,
     "title": "IMDB Clone",
     "description": "An interactive movie database application featuring dynamic search, detailed views, and rating systems. Optimized for fast content delivery and seamless navigation.",
     "category": "Frontend",
@@ -135,7 +152,7 @@
     "image": "imdb"
   },
   {
-    "id": 9,
+    "id": 10,
     "title": "DesiDelights",
     "description": "Discover authentic Indian recipes. From spicy curries to sweet desserts, find the best traditional and modern Indian dishes. Features a rich search and filtering experience.",
     "category": "Web Development",
@@ -145,7 +162,7 @@
     "image": "desidelights"
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "GymWala",
     "description": "A modern fitness companion app offering workout guides and health tracking. Features a sleek, high-contrast UI designed for motivation and clarity.",
     "category": "Frontend",
@@ -155,7 +172,7 @@
     "image": "gymwala"
   },
   {
-    "id": 11,
+    "id": 12,
     "title": "Live TV",
     "description": "A web-based TV streaming interface aggregating free-to-air channels. Features a custom video player implementation and an approachable channel guide UI.",
     "category": "Frontend",
@@ -165,7 +182,7 @@
     "image": "livetv"
   },
   {
-    "id": 12,
+    "id": 13,
     "title": "Playlist Downloader",
     "description": "A web tool for managing and downloading M3U playlist files. Enables users to parse, preview, and export playlists for use across media players and IPTV applications.",
     "category": "Frontend",
@@ -175,7 +192,7 @@
     "image": "playlist"
   },
   {
-    "id": 13,
+    "id": 14,
     "title": "Task Management App",
     "description": "A productivity tool for managing daily tasks with intuitive drag-and-drop organization. Built with Firebase for real-time data synchronization across devices.",
     "category": "Web Development",
@@ -185,7 +202,7 @@
     "image": "taskmanager"
   },
   {
-    "id": 14,
+    "id": 15,
     "title": "Advanced ToDoList",
     "description": "A modern, responsive ToDoList application built with React, Node.js, and Firebase. Features real-time data synchronization, drag-and-drop organization, and a clean, intuitive interface.",
     "category": "Frontend",
@@ -195,7 +212,7 @@
     "image": "todolist"
   },
   {
-    "id": 15,
+    "id": 16,
     "title": "OmenControl for Linux",
     "description": "Open-source GTK4 Linux control center for HP Omen & Victus laptops. Replaces the Windows OMEN Gaming Hub with native fan control (15-sample hysteresis), zero-overhead RGB keyboard lighting, GPU MUX switching (Hybrid/Discrete/Integrated), WMI hardware power profiles, and real-time CPU/GPU telemetry dashboards.",
     "category": "Open Source",
@@ -213,7 +230,7 @@
     "contributed": true
   },
   {
-    "id": 16,
+    "id": 17,
     "title": "Image Gallery",
     "description": "A masonry-style image gallery with seamless upload functionality and preview modes. Optimized for handling high-resolution media with minimal latency.",
     "category": "Frontend",
@@ -223,7 +240,7 @@
     "image": "imagegallery"
   },
   {
-    "id": 17,
+    "id": 18,
     "title": "Portfolio Website",
     "description": "This very website! A showcase of modern frontend techniques including glassmorphism, particle animations, lazy loading, and a fully responsive layout built with Next.js.",
     "category": "Frontend",
@@ -233,7 +250,7 @@
     "image": "portfolio"
   },
   {
-    "id": 18,
+    "id": 19,
     "title": "Logic Website",
     "description": "A static corporate website for a logistics company, focusing on clear information architecture and professional branding.",
     "category": "Frontend",
@@ -243,7 +260,7 @@
     "image": "logic"
   },
   {
-    "id": 19,
+    "id": 20,
     "title": "AI ChatBot",
     "description": "An intelligent conversational interface powered by NLP APIs. Features a clean, message-based UI that handles real-time user interactions gracefully.",
     "category": "Frontend",
@@ -253,3 +270,4 @@
     "image": "chatbot"
   }
 ]
+

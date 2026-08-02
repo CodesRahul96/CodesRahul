@@ -18,6 +18,7 @@ import todolist from "./desktop_todolist.png";
 import taskflow from "./taskflow.jpg";
 import omencontrol from "./omencontrol.jpg";
 import streamplus from "./streamplus.jpg";
+import playnox from "./playnox.jpg";
 
 export {
   blogsify,
@@ -40,4 +41,5 @@ export {
   taskflow,
   omencontrol,
   streamplus,
+  playnox,
 };
