@@ -2,22 +2,23 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
-import DevProfileAvatar from "../components/DevProfileAvatar";
+import Image from "next/image";
+import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import crwg from "../assets/crwg.png";
 import ProjectCard from "../components/ProjectCard";
 import projectsData from "../data/projects.json";
 
-// Technologies for the marquee
-const technologies = [
+// Clean technology tags
+const coreSkills = [
   "React", "Next.js", "Node.js", "TypeScript", "Tailwind CSS", 
-  "MongoDB", "Express", "Framer Motion", "React Native", "Firebase", "PostgreSQL"
+  "MongoDB", "Express", "React Native", "Firebase", "PostgreSQL"
 ];
 
 const stats = [
   { value: "3+", label: "Years Experience" },
-  { value: "15+", label: "Projects Completed" },
-  { value: "12+", label: "Modern Tech Stacks" },
-  { value: "100%", label: "Code Quality" },
+  { value: "15+", label: "Production Projects" },
+  { value: "MERN", label: "Core Stack" },
+  { value: "100%", label: "Client Satisfaction" },
 ];
 
 export default function Home() {
@@ -25,46 +26,48 @@ export default function Home() {
 
   return (
     <div className="relative w-full text-white animate-fadeIn">
-      {/* Decorative noise texture */}
-      <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.02] noise-bg" />
-
       {/* Hero Section */}
       <section className="relative flex flex-col justify-center py-10 md:py-16">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full relative z-10 gap-12">
           
-          {/* Left Side: Title, Description, CTA */}
-          <div className="w-full lg:w-3/5 space-y-8">
-            {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-mono tracking-wider backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-              <span>Available for High-Impact Projects</span>
+          {/* Left Column: Authentic Executive Bio */}
+          <div className="w-full lg:w-7/12 space-y-8">
+            {/* Status Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono tracking-wider backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Available for Full-time Roles & Contracts</span>
             </div>
 
-            <h1 className="text-5xl sm:text-7xl lg:text-[92px] font-serif font-medium tracking-tight text-white leading-[0.95]">
-              Digital<br />
-              <span className="italic text-gray-400 hover:text-amber-400 transition-colors duration-300">
-                Craftsmanship.
-              </span>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.05]">
+              Full Stack Software Engineer.
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed font-light">
-              I&apos;m Rahul Misal. I engineer bespoke digital experiences that live at the intersection of minimal design and robust architecture.
+            <p className="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed font-light">
+              Hi, I&apos;m <span className="text-white font-medium">Rahul Misal</span>. I design and build high-performance web applications, scalable MERN architectures, and intuitive digital interfaces.
             </p>
             
-            <div className="flex items-center gap-6 pt-2 pb-2">
+            {/* Action CTAs */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 href="/projects"
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-amber-500 text-black text-xs font-mono font-bold uppercase tracking-widest rounded-full shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:bg-amber-400"
+                className="group inline-flex items-center gap-3 px-7 py-3.5 bg-amber-500 text-black text-xs font-mono font-bold uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all duration-200 hover:bg-amber-400 hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span>Selected Works</span>
+                <span>View Projects</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
+              
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/5 border border-white/10 hover:border-white/30 text-white text-xs font-mono uppercase tracking-widest rounded-full transition-all duration-200 hover:bg-white/10"
+              >
+                <span>Get In Touch</span>
               </Link>
             </div>
 
             {/* Metrics Row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-white/10">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-white/10">
               {stats.map((stat, i) => (
-                <div key={i} className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md hover:border-amber-500/30 transition-all">
+                <div key={i} className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
                   <div className="text-2xl sm:text-3xl font-serif font-bold text-amber-400">{stat.value}</div>
                   <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 mt-1">{stat.label}</div>
                 </div>
@@ -72,64 +75,77 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side: Animated Developer Profile Canvas */}
-          <div className="w-full lg:w-2/5 flex justify-center lg:justify-end">
-            <DevProfileAvatar variant="home" />
+          {/* Right Column: Authentic Clean High-Res Portrait */}
+          <div className="w-full lg:w-5/12 flex justify-center lg:justify-end">
+            <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[410px] rounded-3xl p-1 bg-gradient-to-b from-white/15 via-amber-500/20 to-transparent backdrop-blur-xl border border-white/15 shadow-2xl group">
+              <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-[#070913] flex items-center justify-center">
+                <Image
+                  src={crwg}
+                  alt="Rahul Misal"
+                  fill
+                  sizes="(max-width: 768px) 300px, 400px"
+                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-500 ease-out"
+                  priority
+                />
+              </div>
+
+              {/* Subtle Floating Role Badge */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#0a0d18] border border-white/15 text-amber-400 text-[10px] font-mono uppercase tracking-widest shadow-xl whitespace-nowrap">
+                Rahul Misal — Pune, India
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Infinite Tech Stack Marquee */}
-      <section className="py-10 border-y border-white/10 bg-white/[0.02] backdrop-blur-md overflow-hidden relative my-16">
-         <div className="flex whitespace-nowrap animate-marquee w-fit">
-            {[...technologies, ...technologies, ...technologies].map((tech, index) => (
-               <span key={index} className="mx-8 text-3xl sm:text-5xl font-serif font-medium text-transparent text-stroke-1 text-stroke-white uppercase tracking-wider opacity-40 hover:opacity-100 hover:text-amber-400 hover:text-stroke-transparent transition-all duration-300 cursor-default">
-                  {tech}
-               </span>
-            ))}
-         </div>
+      {/* Tech Ticker */}
+      <section className="py-8 border-y border-white/10 bg-white/[0.02] backdrop-blur-md overflow-hidden relative my-16">
+        <div className="flex whitespace-nowrap animate-marquee w-fit">
+          {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
+            <span key={index} className="mx-8 text-2xl sm:text-4xl font-serif font-medium text-gray-400 hover:text-amber-400 uppercase tracking-wider opacity-60 hover:opacity-100 transition-all duration-300 cursor-default">
+              {tech}
+            </span>
+          ))}
+        </div>
       </section>
 
-      {/* Featured Projects Preview */}
+      {/* Featured Works */}
       <section className="mb-24">
-        <div className="flex justify-between items-end mb-12 border-b border-white/20 pb-6">
-           <h2 className="text-3xl sm:text-5xl font-serif font-medium text-white tracking-tight">
-             Featured Works.
-           </h2>
-           <Link href="/projects" className="hidden md:flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-400 hover:text-amber-400 transition-colors pb-2">
-              View All <FaArrowRight />
-           </Link>
+        <div className="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
+          <div>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400">Portfolio Highlights</span>
+            <h2 className="text-3xl sm:text-5xl font-serif font-medium text-white tracking-tight mt-1">
+              Featured Projects.
+            </h2>
+          </div>
+          <Link href="/projects" className="hidden md:flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-400 hover:text-amber-400 transition-colors pb-2">
+            View All Projects <FaArrowRight />
+          </Link>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-           {featuredProjects.map((project) => (
-             <ProjectCard key={project.id} project={project} />
-           ))}
-        </div>
-        
-        <div className="mt-12 flex justify-center md:hidden">
-           <Link href="/projects" className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white border border-white/20 px-6 py-3 rounded-full hover:border-amber-400 transition-colors">
-              View All Projects
-           </Link>
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
       </section>
 
-      {/* Core Philosophy Section */}
-      <section className="mb-24 py-16 px-6 sm:px-12 bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-3xl text-center shadow-2xl hover:border-amber-500/30 transition-all duration-300">
-         <div className="max-w-3xl mx-auto space-y-6">
-            <h2 className="text-3xl md:text-5xl font-serif font-medium text-white tracking-tight">
-              Architecture over aesthetics.<br />
-              <span className="text-amber-400 italic">But why not both?</span>
-            </h2>
-            <p className="text-base sm:text-lg text-gray-400 font-light leading-relaxed max-w-2xl mx-auto">
-              I believe that premium products require more than just a beautiful surface. Underneath the minimal design must lie a resilient, scalable, and optimized architecture. I build systems that look stunning and perform flawlessly under pressure.
-            </p>
-            <div className="pt-4">
-               <Link href="/about" className="inline-block border-b border-amber-400 text-xs font-mono font-bold uppercase tracking-widest text-amber-400 hover:text-white hover:border-white transition-colors duration-200 pb-1">
-                 Discover My Expertise
-               </Link>
-            </div>
-         </div>
+      {/* Professional Commitment Section */}
+      <section className="mb-24 py-14 px-8 sm:px-12 bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-3xl text-center shadow-2xl">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <h2 className="text-3xl md:text-4xl font-serif font-medium text-white tracking-tight">
+            Engineering scalable products with clean, maintainable code.
+          </h2>
+          <p className="text-base text-gray-300 font-light leading-relaxed max-w-2xl mx-auto">
+            Focused on building dependable, performant web applications using React, Next.js, Node.js, and modern cloud technologies.
+          </p>
+          <div className="pt-2">
+            <Link href="/about" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-400 hover:text-white transition-colors">
+              <span>Read Full Background</span>
+              <FaArrowRight />
+            </Link>
+          </div>
+        </div>
       </section>
 
     </div>

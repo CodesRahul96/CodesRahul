@@ -1,9 +1,10 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { FaReact, FaNodeJs, FaHtml5, FaJsSquare, FaGitAlt, FaCode, FaMobile } from 'react-icons/fa';
 import { SiTailwindcss, SiMysql, SiMongodb, SiTypescript, SiExpress, SiPostman, SiWordpress, SiKotlin, SiFirebase, SiAndroidstudio, SiFigma } from 'react-icons/si';
-import DevProfileAvatar from '../../components/DevProfileAvatar';
+import crbg from '../../assets/crbg.png';
 
 const skillCategories = [
   {
@@ -54,14 +55,14 @@ const experience = [
   {
     year: "2023 - Present",
     role: "Full Stack Software Developer",
-    company: "Freelance & Bespoke Clients",
-    desc: "Architecting end-to-end full-stack web platforms, custom MERN stack architectures, and high-performance WebGL user interfaces."
+    company: "Freelance & Bespoke Engagements",
+    desc: "Architecting web applications, custom MERN stack solutions, and responsive user interfaces for modern web platforms."
   },
   {
     year: "2021 - 2023",
     role: "Frontend Engineer",
-    company: "Project-Based Engagements",
-    desc: "Engineered responsive client-side web applications using React, Next.js, and Tailwind CSS with focus on performance optimization and component reusability."
+    company: "Project Engagements",
+    desc: "Engineered responsive client-side web applications using React, Next.js, and Tailwind CSS with focus on performance and clean component architecture."
   }
 ];
 
@@ -70,7 +71,7 @@ const education = [
     year: "2017 - 2020",
     degree: "B.Sc. Computer Science",
     institution: "Savitribai Phule Pune University",
-    desc: "Focused on Core Computer Science Fundamentals, Object-Oriented Architecture, Web Technologies, and Database Systems."
+    desc: "Core Computer Science Fundamentals, Data Structures, Web Technologies, and Database Systems."
   }
 ];
 
@@ -82,20 +83,32 @@ export default function About() {
         {/* Header */}
         <div className="mb-16">
           <div>
-            <h2 className="text-5xl md:text-7xl font-serif font-medium text-white mb-4 tracking-tight">
-              About.
+            <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400">Background & Experience</span>
+            <h2 className="text-5xl md:text-7xl font-serif font-medium text-white mb-4 tracking-tight mt-1">
+              About Me.
             </h2>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
-            <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
-              Architecting elegant, resilient, and performant solutions for complex digital experiences.
+            <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl">
+              Software Engineer dedicated to building dependable web solutions with clean code practices and intuitive design.
             </p>
           </div>
         </div>
 
-        {/* Profile Section with Animated 2D/3D Dev Profile Avatar */}
+        {/* Profile Section with Full Color crbg.png Portrait */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
           <div className="w-full md:w-2/5 flex justify-center">
-            <DevProfileAvatar variant="about" />
+            <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[400px] rounded-3xl p-1 bg-gradient-to-tr from-amber-500/30 via-cyan-500/20 to-purple-500/30 border border-white/15 shadow-2xl">
+              <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-[#070914]">
+                <Image
+                  src={crbg}
+                  alt="Rahul Misal"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </div>
           
           <div className="w-full md:w-3/5 space-y-6">
@@ -104,19 +117,19 @@ export default function About() {
             </div>
 
             <h3 className="text-3xl sm:text-4xl font-serif font-medium text-white tracking-tight leading-tight">
-              Crafting bespoke web applications & resilient architectures.
+              Building full-stack web applications & clean API architectures.
             </h3>
 
             <p className="text-gray-300 text-base font-light leading-relaxed">
-              I specialize in engineering high-quality web applications using modern stacks like React, Next.js, Node.js, and Tailwind CSS. My passion lies in building intuitive user interfaces backed by scalable server architectures.
+              I specialize in engineering responsive web applications using React, Next.js, Node.js, Express, and Tailwind CSS. My focus is on building practical, scalable software that delivers real value.
             </p>
 
             <p className="text-gray-400 text-base font-light">
-              With over <span className="text-amber-400 font-medium font-mono">3+ years</span> of active engineering experience, I deliver scalable digital products built to perform.
+              With over <span className="text-amber-400 font-medium font-mono">3+ years</span> of active engineering experience, I enjoy turning complex ideas into streamlined web applications.
             </p>
 
             <div className="flex flex-wrap gap-2.5 pt-2">
-               {["Full-Stack MERN", "UI/UX Architecture", "API Integration", "Performance Tuning"].map((tag, i) => (
+               {["Full-Stack MERN", "UI Component Systems", "API Integration", "Performance Tuning"].map((tag, i) => (
                  <span key={i} className="px-3.5 py-1.5 border border-white/10 bg-white/5 text-xs font-mono uppercase tracking-wider text-amber-400 rounded-full backdrop-blur-md">
                    {tag}
                  </span>
@@ -128,7 +141,8 @@ export default function About() {
         {/* Skills Section */}
         <div className="mb-24">
            <div>
-             <h3 className="text-3xl font-serif font-medium text-white mb-4 tracking-tight">Technical Expertise</h3>
+             <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-400">Technical Capability</span>
+             <h3 className="text-3xl font-serif font-medium text-white mb-4 tracking-tight mt-1">Technical Skills</h3>
              <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-12" />
            </div>
            
@@ -172,7 +186,7 @@ export default function About() {
           {/* Experience */}
           <div className="p-8 rounded-3xl bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-xl">
             <h3 className="text-2xl font-serif font-medium text-white mb-8 tracking-tight">
-               Experience
+               Work History
             </h3>
             <div className="space-y-10">
               {experience.map((exp, index) => (
