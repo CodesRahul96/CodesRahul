@@ -3,7 +3,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaDownload, FaSpinner } from "react-icons/fa";
 import { NAV_LINKS, CV_FILE_ID, CV_FILENAME } from "../constants";
 
@@ -36,7 +35,7 @@ const Navbar = () => {
 
     setTimeout(() => {
       setIsDownloading(false);
-    }, 2000);
+    }, 1500);
   }, []);
 
   const toggleMenu = useCallback(() => {
@@ -45,201 +44,153 @@ const Navbar = () => {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          isOpen
-            ? "bg-transparent py-6 border-b border-transparent"
-            : scrolled
-            ? "bg-black/90 backdrop-blur-md border-b border-white/10 py-4"
-            : "bg-transparent py-6 border-b border-transparent"
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          scrolled ? "py-3" : "py-6"
         }`}
       >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center w-full">
-        {/* Logo */}
-        <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
-            <Link href="/" className="text-2xl font-serif font-bold text-white tracking-tighter uppercase flex flex-col leading-none">
-                <span>Codes</span>
-                <span className="text-gray-500 text-sm tracking-widest font-sans font-light">Rahul</span>
-            </Link>
-        </motion.div>
+        <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center w-full">
+          
+          {/* Logo Brand Badge */}
+          <Link href="/" prefetch={true} className="group flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-400 flex items-center justify-center text-black font-black text-sm shadow-[0_0_15px_rgba(245,158,11,0.4)] group-hover:scale-105 transition-transform">
+              R
+            </div>
+            <div className="flex flex-col leading-none">
+              <span className="text-xl font-serif font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors">
+                CodesRahul
+              </span>
+              <span className="text-[9px] font-mono tracking-widest text-amber-400/80 uppercase">
+                Software Engineer
+              </span>
+            </div>
+          </Link>
 
-        {/* Hamburger Button */}
-        <div className="flex items-center space-x-4 md:hidden">
-          <button
-            onClick={toggleMenu}
-            className="text-white focus:outline-none z-50 relative p-2"
-            aria-label="Toggle Menu"
-          >
-            <motion.div
-              animate={isOpen ? "open" : "closed"}
-              className="w-6 h-6 flex flex-col justify-between items-end"
-            >
-                <motion.span
-                  variants={{
-                    closed: { rotate: 0, y: 0, width: "100%" },
-                    open: { rotate: 45, y: 10, width: "100%" },
-                  }}
-                  className="h-[1px] bg-white block transition-all"
-                />
-                <motion.span
-                  variants={{
-                    closed: { opacity: 1, width: "70%" },
-                    open: { opacity: 0, width: "0%" },
-                  }}
-                  className="h-[1px] bg-white block transition-all"
-                />
-                <motion.span
-                  variants={{
-                    closed: { rotate: 0, y: 0, width: "100%" },
-                    open: { rotate: -45, y: -12, width: "100%" },
-                  }}
-                  className="h-[1px] bg-white block transition-all"
-                />
-            </motion.div>
-          </button>
-        </div>
-
-        {/* Menu for larger screens */}
-        <ul className="hidden md:flex space-x-10 items-center">
-          {NAV_LINKS.map((item) => {
-             const isActive = pathname === item.path;
-             return (
-                <li key={item.name} className="relative group overflow-hidden">
-                    <Link
-                        href={item.path}
-                        prefetch={false}
-                        className={`relative z-10 text-[11px] uppercase tracking-[0.2em] font-medium transition-colors duration-300 pb-1 block ${
-                            isActive ? "text-white" : "text-gray-500 hover:text-white"
-                        }`}
-                    >
-                        {item.name}
-                    </Link>
-                    <motion.div
-                        layoutId="navbar-indicator"
-                        className="absolute bottom-0 left-0 h-[1px] bg-white transition-all duration-300"
-                        initial={false}
-                        animate={{ width: isActive ? "100%" : "0%" }}
-                        whileHover={{ width: "100%" }}
-                    />
+          {/* Desktop Floating Glass Pill Nav */}
+          <ul className="hidden md:flex space-x-1 items-center bg-[#070710]/80 backdrop-blur-xl border border-white/10 px-3 py-1.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
+            {NAV_LINKS.map((item) => {
+              const isActive = pathname === item.path;
+              return (
+                <li key={item.name} className="relative">
+                  <Link
+                    href={item.path}
+                    prefetch={true}
+                    className={`relative z-10 text-[11px] font-mono uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 block ${
+                      isActive
+                        ? "text-black font-bold bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.5)]"
+                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
                 </li>
-             );
-          })}
-        </ul>
-        
-        {/* CV Button (Desktop) */}
-        <div className="hidden md:block">
+              );
+            })}
+          </ul>
+
+          {/* Resume CTA (Desktop) */}
+          <div className="hidden md:block">
             <button
               onClick={handleDownloadCV}
               disabled={isDownloading}
               className={`
                 group relative overflow-hidden
-                flex items-center gap-3 
-                border border-white/20 
-                hover:border-white hover:bg-white
-                text-white hover:text-black
-                py-3 px-6 rounded-none
-                transition-all duration-500 text-[10px] uppercase tracking-widest font-bold
-                ${isDownloading ? 'cursor-not-allowed opacity-50' : ''}
+                flex items-center gap-2.5 
+                border border-amber-500/40 hover:border-amber-400
+                bg-amber-500/10 hover:bg-amber-500 hover:text-black
+                text-amber-400 font-mono text-[11px] uppercase tracking-widest font-bold
+                py-2.5 px-5 rounded-full
+                transition-all duration-300 shadow-[0_0_15px_rgba(245,158,11,0.15)]
+                ${isDownloading ? "cursor-not-allowed opacity-50" : ""}
               `}
             >
               {isDownloading ? (
                 <>
-                  <FaSpinner className="animate-spin" />
+                  <FaSpinner className="animate-spin text-xs" />
                   <span>Processing</span>
                 </>
               ) : (
                 <>
-                  <FaDownload className="transition-transform group-hover:-translate-y-1" />
+                  <FaDownload className="text-xs transition-transform group-hover:-translate-y-0.5" />
                   <span>Resume</span>
                 </>
               )}
             </button>
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <div className="flex items-center space-x-4 md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-white focus:outline-none z-50 relative p-2"
+              aria-label="Toggle Menu"
+            >
+              <div className="w-6 h-5 flex flex-col justify-between items-end">
+                <span
+                  className={`h-[2px] bg-amber-400 block transition-all duration-300 ${
+                    isOpen ? "w-6 rotate-45 translate-y-2" : "w-6"
+                  }`}
+                />
+                <span
+                  className={`h-[2px] bg-white block transition-all duration-300 ${
+                    isOpen ? "opacity-0" : "w-4"
+                  }`}
+                />
+                <span
+                  className={`h-[2px] bg-white block transition-all duration-300 ${
+                    isOpen ? "w-6 -rotate-45 -translate-y-2" : "w-6"
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
         </div>
+      </nav>
 
-      </div>
-    </motion.nav>
-
-    {/* Mobile Menu */}
-    <AnimatePresence>
-        {isOpen && (
-        <motion.div
-            initial={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
-            animate={{ opacity: 1, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
-            exit={{ opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden fixed inset-0 bg-[#050505] z-[45] flex flex-col justify-center items-center px-6 overflow-hidden"
-        >
-            <div className="absolute inset-0 pointer-events-none noise-bg opacity-[0.03]"></div>
-             <motion.ul 
-                initial="closed"
-                animate="open"
-                variants={{
-                    open: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-                    closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
-                }}
-                className="flex flex-col items-center space-y-8 w-full relative z-10 mt-16"
-             >
-                {NAV_LINKS.map((item) => (
-                    <motion.li 
-                        key={item.name}
-                        variants={{
-                            open: { opacity: 1, y: 0 },
-                            closed: { opacity: 0, y: 20 }
-                        }}
-                    >
-                        <Link
-                            href={item.path}
-                            prefetch={false}
-                            onClick={toggleMenu}
-                            className={`text-4xl md:text-5xl font-serif tracking-tight transition-colors duration-300 block ${
-                                pathname === item.path
-                                ? "text-white italic"
-                                : "text-gray-500 hover:text-white"
-                            }`}
-                        >
-                            {item.name}
-                        </Link>
-                    </motion.li>
-                ))}
-                <motion.li
-                     variants={{
-                        open: { opacity: 1, y: 0 },
-                        closed: { opacity: 0, y: 20 }
-                    }}
-                    className="pt-12 w-full max-w-xs"
+      {/* Mobile Glass Menu */}
+      {isOpen && (
+        <div className="md:hidden fixed inset-0 bg-[#070710]/95 backdrop-blur-2xl z-[45] flex flex-col justify-center items-center px-6 overflow-hidden">
+          <ul className="flex flex-col items-center space-y-8 w-full relative z-10 mt-8">
+            {NAV_LINKS.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.path}
+                  prefetch={true}
+                  onClick={toggleMenu}
+                  className={`text-3xl font-serif tracking-tight transition-colors duration-300 block ${
+                    pathname === item.path
+                      ? "text-amber-400 font-bold italic"
+                      : "text-gray-400 hover:text-white"
+                  }`}
                 >
-                    <button
-                    onClick={handleDownloadCV}
-                    disabled={isDownloading}
-                    className={`
-                        w-full flex items-center justify-center gap-3
-                        border border-white/20 text-white hover:bg-white hover:text-black
-                        text-xs uppercase tracking-widest font-bold py-4 px-6 rounded-none
-                        transition duration-500 
-                        ${isDownloading ? 'opacity-50 cursor-not-allowed' : ''}
-                    `}
-                    >
-                     {isDownloading ? (
-                        <>
-                            <FaSpinner className="animate-spin" />
-                            <span>Processing</span>
-                        </>
-                    ) : (
-                        <>
-                            <FaDownload />
-                            <span>Download Resume</span>
-                        </>
-                    )}
-                    </button>
-                </motion.li>
-            </motion.ul>
-        </motion.div>
-        )}
-    </AnimatePresence>
-  </>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+            <li className="pt-6 w-full max-w-xs">
+              <button
+                onClick={handleDownloadCV}
+                disabled={isDownloading}
+                className="w-full flex items-center justify-center gap-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.3)]"
+              >
+                {isDownloading ? (
+                  <>
+                    <FaSpinner className="animate-spin" />
+                    <span>Downloading...</span>
+                  </>
+                ) : (
+                  <>
+                    <FaDownload />
+                    <span>Download Resume</span>
+                  </>
+                )}
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
+    </>
   );
-}
+};
 
 export default React.memo(Navbar);

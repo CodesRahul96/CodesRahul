@@ -1,55 +1,51 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { FaReact, FaNodeJs, FaHtml5, FaCss3, FaJsSquare, FaGitAlt, FaEnvelope, FaLinkedin, FaGithub, FaGraduationCap, FaBriefcase, FaCode, FaMobile } from 'react-icons/fa';
-import { SiTailwindcss, SiCanva, SiMysql, SiMongodb, SiTypescript, SiExpress, SiPostman, SiWordpress, SiShopify, SiKotlin, SiAndroid, SiFirebase, SiAndroidstudio } from 'react-icons/si';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import crbg from '../../assets/crbg.png';
+import React from 'react';
+import { FaReact, FaNodeJs, FaHtml5, FaJsSquare, FaGitAlt, FaCode, FaMobile } from 'react-icons/fa';
+import { SiTailwindcss, SiMysql, SiMongodb, SiTypescript, SiExpress, SiPostman, SiWordpress, SiKotlin, SiFirebase, SiAndroidstudio, SiFigma } from 'react-icons/si';
+import DevProfileAvatar from '../../components/DevProfileAvatar';
 
 const skillCategories = [
   {
-    title: "Frontend Development",
-    icon: <FaReact className="text-gray-400" />,
+    title: "Frontend Engineering",
+    icon: <FaReact className="text-amber-400 text-xl" />,
     skills: [
-      { name: 'React', icon: <FaReact />, level: 90, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'JavaScript', icon: <FaJsSquare />, level: 85, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'HTML5', icon: <FaHtml5 />, level: 95, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'CSS3', icon: <FaCss3 />, level: 90, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'Tailwind CSS', icon: <SiTailwindcss />, level: 90, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'TypeScript', icon: <SiTypescript />, level: 75, color: "text-gray-400", bgColor: "bg-gray-400" },
+      { name: 'React', icon: <FaReact className="text-cyan-400" />, level: 90 },
+      { name: 'JavaScript (ES6+)', icon: <FaJsSquare className="text-amber-400" />, level: 88 },
+      { name: 'HTML5 & CSS3', icon: <FaHtml5 className="text-orange-400" />, level: 95 },
+      { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-cyan-400" />, level: 92 },
+      { name: 'TypeScript', icon: <SiTypescript className="text-blue-400" />, level: 80 },
     ]
   },
   {
     title: "Mobile Development",
-    icon: <FaMobile className="text-gray-400" />,
+    icon: <FaMobile className="text-cyan-400 text-xl" />,
     skills: [
-      { name: 'React Native', icon: <FaReact />, level: 75, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'Android', icon: <SiAndroid />, level: 70, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'Kotlin', icon: <SiKotlin />, level: 65, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'Firebase', icon: <SiFirebase />, level: 75, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'Android Studio', icon: <SiAndroidstudio />, level: 70, color: "text-gray-400", bgColor: "bg-gray-400" },
+      { name: 'React Native', icon: <FaReact className="text-cyan-400" />, level: 78 },
+      { name: 'Android Studio', icon: <SiAndroidstudio className="text-emerald-400" />, level: 75 },
+      { name: 'Kotlin', icon: <SiKotlin className="text-purple-400" />, level: 70 },
+      { name: 'Firebase & Auth', icon: <SiFirebase className="text-amber-400" />, level: 80 },
     ]
   },
   {
-    title: "Backend & Database",
-    icon: <FaNodeJs className="text-gray-400" />,
+    title: "Backend & Cloud Architecture",
+    icon: <FaNodeJs className="text-amber-400 text-xl" />,
     skills: [
-      { name: 'Node.js', icon: <FaNodeJs />, level: 80, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'Express.js', icon: <SiExpress />, level: 80, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'MongoDB', icon: <SiMongodb />, level: 75, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'MySQL', icon: <SiMysql />, level: 65, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'REST APIs', icon: <FaCode />, level: 85, color: "text-gray-400", bgColor: "bg-gray-400" },
+      { name: 'Node.js', icon: <FaNodeJs className="text-emerald-400" />, level: 85 },
+      { name: 'Express.js', icon: <SiExpress className="text-gray-300" />, level: 85 },
+      { name: 'MongoDB & Mongoose', icon: <SiMongodb className="text-emerald-500" />, level: 80 },
+      { name: 'MySQL & Relational DBs', icon: <SiMysql className="text-blue-400" />, level: 70 },
+      { name: 'REST APIs & Integrations', icon: <FaCode className="text-amber-400" />, level: 88 },
     ]
   },
   {
-    title: "Tools & Platforms",
-    icon: <FaGitAlt className="text-gray-400" />,
+    title: "Dev Tools & Design Systems",
+    icon: <FaGitAlt className="text-cyan-400 text-xl" />,
     skills: [
-      { name: 'Git & GitHub', icon: <FaGitAlt />, level: 85, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'WordPress', icon: <SiWordpress />, level: 70, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'Postman', icon: <SiPostman />, level: 75, color: "text-gray-400", bgColor: "bg-gray-400" },
-      { name: 'Canva', icon: <SiCanva />, level: 80, color: "text-gray-400", bgColor: "bg-gray-400" },
+      { name: 'Git & GitHub Workflows', icon: <FaGitAlt className="text-orange-500" />, level: 88 },
+      { name: 'Figma UI/UX Design', icon: <SiFigma className="text-pink-400" />, level: 82 },
+      { name: 'Postman API Testing', icon: <SiPostman className="text-orange-400" />, level: 85 },
+      { name: 'WordPress CMS', icon: <SiWordpress className="text-blue-400" />, level: 75 },
     ]
   }
 ];
@@ -57,15 +53,15 @@ const skillCategories = [
 const experience = [
   {
     year: "2023 - Present",
-    role: "Full Stack Developer",
-    company: "Freelance",
-    desc: "Architecting and developing full-stack web applications for diverse clients. Specializing in MERN stack solutions, performance optimization, and custom UI/UX design."
+    role: "Full Stack Software Developer",
+    company: "Freelance & Bespoke Clients",
+    desc: "Architecting end-to-end full-stack web platforms, custom MERN stack architectures, and high-performance WebGL user interfaces."
   },
   {
     year: "2021 - 2023",
-    role: "Frontend Developer",
-    company: "Project-Based",
-    desc: "Collaborated on various web projects, translating design mockups into responsive, interactive code using React and Tailwind CSS. Focused on component reusability and clean state management."
+    role: "Frontend Engineer",
+    company: "Project-Based Engagements",
+    desc: "Engineered responsive client-side web applications using React, Next.js, and Tailwind CSS with focus on performance optimization and component reusability."
   }
 ];
 
@@ -74,174 +70,143 @@ const education = [
     year: "2017 - 2020",
     degree: "B.Sc. Computer Science",
     institution: "Savitribai Phule Pune University",
-    desc: "Specialized in Software Development and Database Management. Graduated with a focus on web technologies."
+    desc: "Focused on Core Computer Science Fundamentals, Object-Oriented Architecture, Web Technologies, and Database Systems."
   }
 ];
 
 export default function About() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
-
   return (
-    <motion.section 
-      initial="hidden"
-      animate="visible"
-      exit={{ opacity: 0, transition: { duration: 0.3 } }}
-      className="py-10 min-h-screen relative"
-    >
-      <div className="container mx-auto px-4 relative z-10 max-w-5xl">
+    <section className="py-12 min-h-screen relative text-white max-w-5xl mx-auto px-4 animate-fadeIn">
+      <div className="relative z-10">
         
         {/* Header */}
         <div className="mb-16">
-          <motion.div variants={itemVariants}>
-            <h2 className="text-5xl md:text-7xl font-serif font-medium text-white mb-6 tracking-tight">
+          <div>
+            <h2 className="text-5xl md:text-7xl font-serif font-medium text-white mb-4 tracking-tight">
               About.
             </h2>
-            <div className="w-full h-[1px] bg-white/20 mb-8"></div>
-            <p className="text-gray-400 max-w-2xl text-xl font-light leading-relaxed">
-              Architecting elegant solutions for complex digital challenges.
+            <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
+            <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
+              Architecting elegant, resilient, and performant solutions for complex digital experiences.
             </p>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Profile Section */}
-        <div className="flex flex-col md:flex-row items-start gap-12 mb-24">
-          <motion.div variants={itemVariants} className="w-full md:w-1/3 relative grayscale hover:grayscale-0 transition-all duration-700">
-             <div className="w-full h-[400px] relative border border-white/10">
-                <Image
-                  src={crbg}
-                  alt="Rahul Profile"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
-                  priority
-                />
-             </div>
-          </motion.div>
+        {/* Profile Section with Animated 2D/3D Dev Profile Avatar */}
+        <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
+          <div className="w-full md:w-2/5 flex justify-center">
+            <DevProfileAvatar variant="about" />
+          </div>
           
-          <motion.div variants={itemVariants} className="w-full md:w-2/3 space-y-8 mt-4 md:mt-0">
-            <h3 className="text-3xl font-serif font-medium text-white tracking-tight">
-              I&apos;m Rahul Misal, a Full Stack Developer.
+          <div className="w-full md:w-3/5 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-mono">
+              Rahul Misal — Full Stack Developer
+            </div>
+
+            <h3 className="text-3xl sm:text-4xl font-serif font-medium text-white tracking-tight leading-tight">
+              Crafting bespoke web applications & resilient architectures.
             </h3>
-            <p className="text-gray-400 text-lg leading-relaxed font-light">
-              I specialize in building high-quality websites and applications with modern technologies like React, Node.js, and Tailwind CSS. My passion lies in creating seamless user experiences and robust backend architectures.
+
+            <p className="text-gray-300 text-base font-light leading-relaxed">
+              I specialize in engineering high-quality web applications using modern stacks like React, Next.js, Node.js, and Tailwind CSS. My passion lies in building intuitive user interfaces backed by scalable server architectures.
             </p>
-            <p className="text-gray-400 text-lg font-light">
-              With over <span className="text-white font-medium">2+ years</span> of experience, I&apos;ve worked on diverse projects ranging from e-commerce platforms to interactive dashboards. I&apos;m constantly learning and adapting to the latest tech trends.
+
+            <p className="text-gray-400 text-base font-light">
+              With over <span className="text-amber-400 font-medium font-mono">3+ years</span> of active engineering experience, I deliver scalable digital products built to perform.
             </p>
-            <div className="flex flex-wrap gap-3 pt-6">
-               {["MERN Stack", "UI/UX Architecture", "System Design", "Cloud Optimization"].map((tag, i) => (
-                 <span key={i} className="px-4 py-2 border border-white/20 text-xs uppercase tracking-widest text-gray-300 hover:bg-white hover:text-black transition-colors cursor-default">
+
+            <div className="flex flex-wrap gap-2.5 pt-2">
+               {["Full-Stack MERN", "UI/UX Architecture", "API Integration", "Performance Tuning"].map((tag, i) => (
+                 <span key={i} className="px-3.5 py-1.5 border border-white/10 bg-white/5 text-xs font-mono uppercase tracking-wider text-amber-400 rounded-full backdrop-blur-md">
                    {tag}
                  </span>
                ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Skills Section */}
         <div className="mb-24">
-           <motion.div variants={itemVariants}>
-             <h3 className="text-3xl font-serif font-medium text-white mb-8 tracking-tight">Technical Expertise</h3>
-             <div className="w-full h-[1px] bg-white/20 mb-12"></div>
-           </motion.div>
+           <div>
+             <h3 className="text-3xl font-serif font-medium text-white mb-4 tracking-tight">Technical Expertise</h3>
+             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-12" />
+           </div>
            
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
              {skillCategories.map((category, idx) => (
-                <motion.div 
+                <div 
                   key={idx} 
-                  variants={containerVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-50px" }}
-                  className="p-8 border border-white/10 hover:border-white/30 transition-all duration-500 bg-black/50"
+                  className="p-8 border border-white/10 rounded-3xl bg-white/[0.02] backdrop-blur-xl hover:border-amber-500/30 transition-all duration-300 shadow-xl"
                 >
-                 <div className="flex items-center gap-4 mb-8">
-                   <h4 className="text-xl font-medium text-gray-200 tracking-wide uppercase text-sm">{category.title}</h4>
+                 <div className="flex items-center gap-3.5 mb-8">
+                   {category.icon}
+                   <h4 className="text-base font-mono font-semibold text-white tracking-wider uppercase">{category.title}</h4>
                  </div>
+
                  <div className="space-y-6">
                    {category.skills.map((skill, sIdx) => (
                      <div key={sIdx} className="group">
                        <div className="flex justify-between items-center mb-2">
                          <div className="flex items-center gap-3">
-                             <span className="text-gray-500">{skill.icon}</span>
-                             <span className="text-gray-300 font-light text-sm">{skill.name}</span>
+                             <span className="text-lg">{skill.icon}</span>
+                             <span className="text-gray-200 font-light text-sm">{skill.name}</span>
                           </div>
-                          <span className="text-xs font-mono text-gray-500">{skill.level}%</span>
+                          <span className="text-xs font-mono text-amber-400">{skill.level}%</span>
                        </div>
-                        <div className="h-[2px] bg-gray-900 w-full">
-                          <motion.div 
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            transition={{ duration: 1, delay: 0.1 * sIdx, ease: "easeOut" }}
-                            viewport={{ once: true }}
-                            className="h-full bg-white/70"
+                        <div className="h-[3px] bg-white/10 w-full rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-gradient-to-r from-amber-500 to-cyan-400 transition-all duration-700 ease-out"
+                            style={{ width: `${skill.level}%` }}
                           />
                        </div>
                      </div>
                    ))}
                  </div>
-               </motion.div>
+                </div>
              ))}
            </div>
         </div>
 
         {/* Experience & Education */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           {/* Experience */}
-          <motion.div 
-            initial="hidden" 
-            whileInView="visible" 
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
+          <div className="p-8 rounded-3xl bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-xl">
             <h3 className="text-2xl font-serif font-medium text-white mb-8 tracking-tight">
                Experience
             </h3>
-            <div className="space-y-12">
+            <div className="space-y-10">
               {experience.map((exp, index) => (
-                <div key={index} className="relative group border-l border-white/20 pl-8">
-                  <span className="absolute -left-[5px] top-1 h-[9px] w-[9px] bg-white"></span>
-                  <span className="text-xs text-gray-500 tracking-widest mb-2 block uppercase">{exp.year}</span>
-                  <h4 className="text-xl font-medium text-gray-200 mb-1">{exp.role}</h4>
-                  <p className="text-gray-400 text-sm mb-4 font-light">{exp.company}</p>
-                  <p className="text-gray-500 leading-relaxed font-light text-sm">{exp.desc}</p>
+                <div key={index} className="relative group border-l-2 border-amber-500/40 pl-6">
+                  <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.8)]" />
+                  <span className="text-xs font-mono text-amber-400 tracking-widest mb-1 block uppercase">{exp.year}</span>
+                  <h4 className="text-lg font-bold text-white mb-1">{exp.role}</h4>
+                  <p className="text-gray-400 text-xs mb-3 font-mono">{exp.company}</p>
+                  <p className="text-gray-300 leading-relaxed font-light text-sm">{exp.desc}</p>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Education */}
-          <motion.div 
-            initial="hidden" 
-            whileInView="visible" 
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
+          <div className="p-8 rounded-3xl bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-xl">
             <h3 className="text-2xl font-serif font-medium text-white mb-8 tracking-tight">
                Education
             </h3>
-            <div className="space-y-12">
+            <div className="space-y-10">
                {education.map((edu, index) => (
-                <div key={index} className="relative group border-l border-white/20 pl-8">
-                  <span className="absolute -left-[5px] top-1 h-[9px] w-[9px] bg-white"></span>
-                  <span className="text-xs text-gray-500 tracking-widest mb-2 block uppercase">{edu.year}</span>
-                  <h4 className="text-xl font-medium text-gray-200 mb-1">{edu.degree}</h4>
-                  <p className="text-gray-400 text-sm mb-4 font-light">{edu.institution}</p>
-                  <p className="text-gray-500 leading-relaxed font-light text-sm">{edu.desc}</p>
+                <div key={index} className="relative group border-l-2 border-cyan-500/40 pl-6">
+                  <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
+                  <span className="text-xs font-mono text-cyan-400 tracking-widest mb-1 block uppercase">{edu.year}</span>
+                  <h4 className="text-lg font-bold text-white mb-1">{edu.degree}</h4>
+                  <p className="text-gray-400 text-xs mb-3 font-mono">{edu.institution}</p>
+                  <p className="text-gray-300 leading-relaxed font-light text-sm">{edu.desc}</p>
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
+
       </div>
-    </motion.section>
+    </section>
   );
 }

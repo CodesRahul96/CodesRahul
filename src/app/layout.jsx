@@ -2,6 +2,7 @@ import './globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Preloader from '../components/Preloader';
+import AppBackground from '../components/AppBackground';
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from 'sonner';
@@ -39,15 +40,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-[#050505] text-gray-200 antialiased selection:bg-amber-500 selection:text-black">
-        <div className="flex flex-col min-h-screen">
+      <body className="bg-[#050508] text-gray-200 antialiased selection:bg-amber-500 selection:text-black relative">
+        <AppBackground />
+        <div className="flex flex-col min-h-screen relative z-10">
           <Preloader />
           <Navbar />
           <main className="flex-grow pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto w-full">
             {children}
           </main>
           <Footer />
-          <Toaster position="bottom-right" theme="dark" toastOptions={{ style: { background: '#050505', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' } }} />
+          <Toaster position="bottom-right" theme="dark" toastOptions={{ style: { background: '#050508', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' } }} />
           <Analytics />
           <SpeedInsights />
         </div>
