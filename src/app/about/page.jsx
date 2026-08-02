@@ -55,7 +55,7 @@ const experience = [
   {
     year: "2023 - Present",
     role: "Full Stack Software Developer",
-    company: "Freelance & Bespoke Engagements",
+    company: "Freelance & Bespoke Clients",
     desc: "Architecting web applications, custom MERN stack solutions, and responsive user interfaces for modern web platforms."
   },
   {
@@ -97,14 +97,14 @@ export default function About() {
         {/* Profile Section with Full Color crbg.png Portrait */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
           <div className="w-full md:w-2/5 flex justify-center">
-            <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[400px] rounded-3xl p-1 bg-gradient-to-tr from-amber-500/30 via-cyan-500/20 to-purple-500/30 border border-white/15 shadow-2xl">
-              <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-[#070914]">
+            <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[400px] rounded-3xl p-1 bg-gradient-to-tr from-amber-500/30 via-cyan-500/20 to-purple-500/30 border border-white/15 shadow-2xl group">
+              <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-[#070914] flex items-center justify-center">
                 <Image
                   src={crbg}
                   alt="Rahul Misal"
                   fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover"
+                  sizes="(max-width: 768px) 300px, 400px"
+                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-500 ease-out"
                   priority
                 />
               </div>
