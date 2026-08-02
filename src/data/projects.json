@@ -201,12 +201,21 @@
   },
   {
     "id": 17,
-    "title": "Coming Soon",
-    "description": "Exciting new projects are in the pipeline. Stay tuned for future updates and innovations!",
-    "category": "Frontend",
-    "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
-    "github": "https://github.com/CodesRahul96",
-    "demo": "https://github.com/CodesRahul96",
-    "image": "comingsoon"
+    "title": "TaskFlow",
+    "description": "An enterprise-grade productivity platform with Kanban boards, real-time collaboration via Socket.IO, JWT + Google OAuth authentication, drag-and-drop task management, and a hardened security architecture. Built with React (Vite), Node.js, Express, and MongoDB.",
+    "category": "Web Development",
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Socket.io",
+      "JWT",
+      "Firebase",
+      "Axios"
+    ],
+    "github": "https://github.com/CodesRahul96/TaskFlow.git",
+    "demo": "https://github.com/CodesRahul96/TaskFlow.git",
+    "image": "taskflow"
   }
 ]

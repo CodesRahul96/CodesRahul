@@ -15,6 +15,7 @@ import chatbot from "./chatbot.jpg";
 import exclusivetv from "./ExclusiveTV.png";
 import playlist from "./playlist.png";
 import todolist from "./desktop_todolist.png";
+import taskflow from "./taskflow.jpg";
 
 export {
   blogsify,
@@ -34,4 +35,5 @@ export {
   exclusivetv,
   playlist,
   todolist,
+  taskflow,
 };
