@@ -5,6 +5,8 @@ import { FaSearch } from "react-icons/fa";
 import ProjectCard from "../../components/ProjectCard";
 import projectsData from "../../data/projects.json";
 
+export const dynamic = 'force-dynamic'; // keep client interactivity
+
 export default function Projects() {
   const [filter, setFilter] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");

@@ -1,10 +1,14 @@
-"use client";
-
 import React from 'react';
 import Image from 'next/image';
 import { FaReact, FaNodeJs, FaHtml5, FaJsSquare, FaGitAlt, FaCode, FaMobile } from 'react-icons/fa';
 import { SiTailwindcss, SiMysql, SiMongodb, SiTypescript, SiExpress, SiPostman, SiWordpress, SiKotlin, SiFirebase, SiAndroidstudio, SiFigma } from 'react-icons/si';
 import crbg from '../../assets/crbg.png';
+
+export const metadata = {
+  title: 'About',
+  description: 'Learn about Rahul Misal — Full Stack Software Engineer from Pune, India with 3+ years of experience building MERN stack web applications, mobile apps, and intuitive UIs.',
+};
+
 
 const skillCategories = [
   {
