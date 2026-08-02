@@ -13,7 +13,7 @@ export default function Projects() {
 
   const projects = useMemo(() => (Array.isArray(projectsData) ? projectsData : []), []);
 
-  const categories = useMemo(() => ["All", "Web Development", "Frontend", "Android App"], []);
+  const categories = useMemo(() => ["All", "Web Development", "Frontend", "Android App", "Open Source"], []);
   const categoryCounts = useMemo(() => {
     const counts = { All: projects.length };
     projects.forEach((p) => {

@@ -95,9 +95,16 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
             <h3 className="text-xl md:text-2xl font-serif font-medium text-white group-hover:text-amber-400 transition-colors duration-200">
               {project.title}
             </h3>
-            <span className="text-[10px] font-mono tracking-widest text-amber-400 uppercase border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 rounded-full backdrop-blur-md">
-              {project.category === "Android App" ? "App" : "Web"}
-            </span>
+            <div className="flex flex-col items-end gap-1.5 shrink-0">
+              <span className="text-[10px] font-mono tracking-widest text-amber-400 uppercase border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 rounded-full backdrop-blur-md">
+                {project.category === "Android App" ? "App" : project.category === "Open Source" ? "OS" : "Web"}
+              </span>
+              {project.contributed && (
+                <span className="text-[9px] font-mono tracking-widest text-cyan-400 uppercase border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 rounded-full backdrop-blur-md">
+                  ✦ Contributed
+                </span>
+              )}
+            </div>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed font-light line-clamp-3">
             {project.description}

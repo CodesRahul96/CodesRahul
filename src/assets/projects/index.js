@@ -16,6 +16,8 @@ import exclusivetv from "./ExclusiveTV.png";
 import playlist from "./playlist.png";
 import todolist from "./desktop_todolist.png";
 import taskflow from "./taskflow.jpg";
+import omencontrol from "./omencontrol.jpg";
+import streamplus from "./streamplus.jpg";
 
 export {
   blogsify,
@@ -36,4 +38,6 @@ export {
   playlist,
   todolist,
   taskflow,
+  omencontrol,
+  streamplus,
 };
