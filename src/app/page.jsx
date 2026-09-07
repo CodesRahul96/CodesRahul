@@ -4,8 +4,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import crwg from "../assets/crwg.png";
+import rahulHero3D from "../assets/rahul_hero_3d.png";
 import ProjectCard from "../components/ProjectCard";
+import InteractivePhotoCard from "../components/InteractivePhotoCard";
 import projectsData from "../data/projects.json";
 
 // Clean technology tags
@@ -75,25 +76,16 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Column: Authentic Clean High-Res Portrait */}
+          {/* Right Column: 3D Interactive Portrait */}
           <div className="w-full lg:w-5/12 flex justify-center lg:justify-end">
-            <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[410px] rounded-3xl p-1 bg-gradient-to-b from-white/15 via-amber-500/20 to-transparent backdrop-blur-xl border border-white/15 shadow-2xl group">
-              <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-[#070913] flex items-center justify-center">
-                <Image
-                  src={crwg}
-                  alt="Rahul Misal"
-                  fill
-                  sizes="(max-width: 768px) 300px, 400px"
-                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-500 ease-out"
-                  priority
-                />
-              </div>
-
-              {/* Subtle Floating Role Badge */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#0a0d18] border border-white/15 text-amber-400 text-[10px] font-mono uppercase tracking-widest shadow-xl whitespace-nowrap">
-                Rahul Misal — Pune, India
-              </div>
-            </div>
+            <InteractivePhotoCard
+              imageSrc={rahulHero3D}
+              alt="Rahul Misal"
+              badgeText="Rahul Misal — Pune, India"
+              gradientBorder="from-white/15 via-amber-500/20 to-transparent"
+              glowColor="rgba(245, 158, 11, 0.25)"
+              priority
+            />
           </div>
         </div>
       </section>

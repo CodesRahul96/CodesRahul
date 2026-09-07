@@ -2,7 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { FaReact, FaNodeJs, FaHtml5, FaJsSquare, FaGitAlt, FaCode, FaMobile } from 'react-icons/fa';
 import { SiTailwindcss, SiMysql, SiMongodb, SiTypescript, SiExpress, SiPostman, SiWordpress, SiKotlin, SiFirebase, SiAndroidstudio, SiFigma } from 'react-icons/si';
-import crbg from '../../assets/crbg.png';
+import rahulAbout3D from '../../assets/rahul_about_3d.png';
+import InteractivePhotoCard from '../../components/InteractivePhotoCard';
 
 export const metadata = {
   title: 'About',
@@ -98,21 +99,17 @@ export default function About() {
           </div>
         </div>
 
-        {/* Profile Section with Full Color crbg.png Portrait */}
+        {/* Profile Section with 3D Interactive Portrait */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
           <div className="w-full md:w-2/5 flex justify-center">
-            <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[400px] rounded-3xl p-1 bg-gradient-to-tr from-amber-500/30 via-cyan-500/20 to-purple-500/30 border border-white/15 shadow-2xl group">
-              <div className="relative w-full h-full rounded-[22px] overflow-hidden bg-[#070914] flex items-center justify-center">
-                <Image
-                  src={crbg}
-                  alt="Rahul Misal"
-                  fill
-                  sizes="(max-width: 768px) 300px, 400px"
-                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-500 ease-out"
-                  priority
-                />
-              </div>
-            </div>
+            <InteractivePhotoCard
+              imageSrc={rahulAbout3D}
+              alt="Rahul Misal"
+              badgeText="Rahul Misal — Full Stack Developer"
+              gradientBorder="from-amber-500/30 via-cyan-500/20 to-purple-500/30"
+              glowColor="rgba(6, 182, 212, 0.25)"
+              priority
+            />
           </div>
           
           <div className="w-full md:w-3/5 space-y-6">
