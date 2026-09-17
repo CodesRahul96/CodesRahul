@@ -2,7 +2,8 @@ import blogsify from "./blogsify.png";
 import comingsoon from "./comingsoon.png";
 import desidelights from "./desidelights.png";
 import gymwala from "./gymwala.png";
-import livetv from "./livetv.jpg";
+import freelivetv from "./freelivetv.png";
+const livetv = freelivetv;
 import omencontrol from "./omencontrol.png";
 import playlist from "./playlist.png";
 import portfolio from "./portfolio.png";
@@ -70,6 +71,7 @@ export {
   blogsify,
   comingsoon,
   desidelights,
+  freelivetv,
   gymwala,
   livetv,
   omencontrol,
