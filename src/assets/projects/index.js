@@ -10,7 +10,7 @@ import taskmanager from "./task-management.png";
 import imagegallery from "./image-gallary.png";
 import logic from "./logic.png";
 import comingsoon from "./comingsoon.png";
-import desidelights from "./desidelightsrecipe.png";
+import desidelights from "./desidelight.png";
 import chatbot from "./chatbot.jpg";
 import exclusivetv from "./ExclusiveTV.png";
 import playlist from "./playlist.png";
