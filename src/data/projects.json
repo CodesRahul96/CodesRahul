@@ -143,39 +143,6 @@
   },
   {
     "id": 9,
-    "title": "Netflix Clone",
-    "description": "A pixel-perfect recreation of the Netflix interface, integrated with the TMDB API for live movie data. Demonstrating mastery of complex CSS grids and responsive design patterns.",
-    "category": "Frontend",
-    "technologies": [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "CSS",
-      "API Integration",
-      "Axios"
-    ],
-    "github": "https://github.com/CodesRahul96/Netflix-Clone.git",
-    "demo": "https://github.com/CodesRahul96/Netflix-Clone.git",
-    "image": "netflix"
-  },
-  {
-    "id": 10,
-    "title": "IMDB Clone",
-    "description": "An interactive movie database application featuring dynamic search, detailed views, and rating systems. Optimized for fast content delivery and seamless navigation.",
-    "category": "Frontend",
-    "technologies": [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "TailwindCSS",
-      "Axios"
-    ],
-    "github": "https://github.com/CodesRahul96/IMDB.git",
-    "demo": "https://codesrahul-imdb.vercel.app/",
-    "image": "imdb"
-  },
-  {
-    "id": 11,
     "title": "DesiDelights",
     "description": "Discover authentic Indian recipes. From spicy curries to sweet desserts, find the best traditional and modern Indian dishes. Features a rich search and filtering experience.",
     "category": "Web Development",
@@ -189,7 +156,7 @@
     "image": "desidelights"
   },
   {
-    "id": 12,
+    "id": 10,
     "title": "GymWala",
     "description": "A modern fitness companion app offering workout guides and health tracking. Features a sleek, high-contrast UI designed for motivation and clarity.",
     "category": "Frontend",
@@ -203,7 +170,7 @@
     "image": "gymwala"
   },
   {
-    "id": 13,
+    "id": 11,
     "title": "Live TV",
     "description": "A web-based TV streaming interface aggregating free-to-air channels. Features a custom video player implementation and an approachable channel guide UI.",
     "category": "Frontend",
@@ -217,7 +184,7 @@
     "image": "livetv"
   },
   {
-    "id": 14,
+    "id": 12,
     "title": "Playlist Downloader",
     "description": "A web tool for managing and downloading M3U playlist files. Enables users to parse, preview, and export playlists for use across media players and IPTV applications.",
     "category": "Frontend",
@@ -232,7 +199,7 @@
     "image": "playlist"
   },
   {
-    "id": 15,
+    "id": 13,
     "title": "Task Management App",
     "description": "A productivity tool for managing daily tasks with intuitive drag-and-drop organization. Built with Firebase for real-time data synchronization across devices.",
     "category": "Web Development",
@@ -246,7 +213,7 @@
     "image": "taskmanager"
   },
   {
-    "id": 16,
+    "id": 14,
     "title": "Advanced ToDoList",
     "description": "A modern, responsive ToDoList application built with React, Node.js, and Firebase. Features real-time data synchronization, drag-and-drop organization, and a clean, intuitive interface.",
     "category": "Frontend",
@@ -261,7 +228,7 @@
     "image": "todolist"
   },
   {
-    "id": 17,
+    "id": 15,
     "title": "OmenControl for Linux",
     "description": "Open-source GTK4 Linux control center for HP Omen & Victus laptops. Replaces the Windows OMEN Gaming Hub with native fan control (15-sample hysteresis), zero-overhead RGB keyboard lighting, GPU MUX switching (Hybrid/Discrete/Integrated), WMI hardware power profiles, and real-time CPU/GPU telemetry dashboards.",
     "category": "Open Source",
@@ -279,21 +246,7 @@
     "contributed": true
   },
   {
-    "id": 18,
-    "title": "Image Gallery",
-    "description": "A masonry-style image gallery with seamless upload functionality and preview modes. Optimized for handling high-resolution media with minimal latency.",
-    "category": "Frontend",
-    "technologies": [
-      "React",
-      "CSS",
-      "JavaScript"
-    ],
-    "github": "https://github.com/CodesRahul96/Image-Gallary.git",
-    "demo": "https://codesrahul-imagegallary.vercel.app/",
-    "image": "imagegallery"
-  },
-  {
-    "id": 19,
+    "id": 16,
     "title": "Portfolio Website",
     "description": "This very website! A showcase of modern frontend techniques including glassmorphism, particle animations, lazy loading, and a fully responsive layout built with Next.js.",
     "category": "Frontend",
@@ -306,35 +259,5 @@
     "github": "https://github.com/CodesRahul96/CodesRahul.git",
     "demo": "https://codesrahul.vercel.app",
     "image": "portfolio"
-  },
-  {
-    "id": 20,
-    "title": "Logic Website",
-    "description": "A static corporate website for a logistics company, focusing on clear information architecture and professional branding.",
-    "category": "Frontend",
-    "technologies": [
-      "WordPress",
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
-    "github": "https://github.com/CodesRahul96",
-    "demo": "https://codeslogic.netlify.app/",
-    "image": "logic"
-  },
-  {
-    "id": 21,
-    "title": "AI ChatBot",
-    "description": "An intelligent conversational interface powered by NLP APIs. Features a clean, message-based UI that handles real-time user interactions gracefully.",
-    "category": "Frontend",
-    "technologies": [
-      "React",
-      "SCSS",
-      "JavaScript",
-      "Responsive"
-    ],
-    "github": "https://github.com/CodesRahul96",
-    "demo": "https://www.codesrahul.in",
-    "image": "chatbot"
   }
 ]
