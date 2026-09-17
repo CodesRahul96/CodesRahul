@@ -114,23 +114,23 @@ export default function About() {
           
           <div className="w-full md:w-3/5 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-mono">
-              Rahul Misal — Full Stack Developer
+              Rahul Misal — Full Stack MERN & Android Engineer
             </div>
 
             <h3 className="text-3xl sm:text-4xl font-serif font-medium text-white tracking-tight leading-tight">
-              Building full-stack web applications & clean API architectures.
+              Architecting scalable MERN platforms & native Android applications.
             </h3>
 
             <p className="text-gray-300 text-base font-light leading-relaxed">
-              I specialize in engineering responsive web applications using React, Next.js, Node.js, Express, and Tailwind CSS. My focus is on building practical, scalable software that delivers real value.
+              I specialize in engineering resilient full-stack systems using <span className="text-amber-400 font-medium">React, Next.js, Node.js, Express, and MongoDB</span>, complemented by native <span className="text-cyan-400 font-medium">Android applications</span> written in Kotlin and Jetpack Compose.
             </p>
 
             <p className="text-gray-400 text-base font-light">
-              With over <span className="text-amber-400 font-medium font-mono">3+ years</span> of active engineering experience, I enjoy turning complex ideas into streamlined web applications.
+              With over <span className="text-amber-400 font-medium font-mono">3+ years</span> of active engineering experience and 20+ applications built, I focus on delivering clean component architectures, robust security practices, and reliable database structures.
             </p>
 
             <div className="flex flex-wrap gap-2.5 pt-2">
-               {["Full-Stack MERN", "UI Component Systems", "API Integration", "Performance Tuning"].map((tag, i) => (
+               {["Full-Stack MERN", "Android (Kotlin)", "Next.js 15", "REST & Socket APIs", "UI/UX Systems", "Cloud & Docker"].map((tag, i) => (
                  <span key={i} className="px-3.5 py-1.5 border border-white/10 bg-white/5 text-xs font-mono uppercase tracking-wider text-amber-400 rounded-full backdrop-blur-md">
                    {tag}
                  </span>
