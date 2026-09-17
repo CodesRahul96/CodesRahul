@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import {
   FaGithub,
@@ -53,6 +54,11 @@ const techIcons = {
 const ProjectCard = React.memo(function ProjectCard({ project }) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Touch swipe tracking refs
   const cardTouchStartX = useRef(null);
@@ -147,13 +153,14 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
     modalTouchStartY.current = null;
   };
 
-  // Lock body scroll and handle keyboard navigation when Lightbox is open
+  // Lock body scroll, hide Navbar via class, and handle keyboard navigation when Lightbox is open
   useEffect(() => {
     if (!isLightboxOpen) return;
 
-    // Prevent background scrolling on mobile & desktop
+    // Prevent background scrolling on mobile & desktop and hide Navbar
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    document.body.classList.add("lightbox-open");
 
     const handleKeyDown = (e) => {
       if (e.key === "Escape") setIsLightboxOpen(false);
@@ -164,6 +171,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
 
     return () => {
       document.body.style.overflow = originalOverflow;
+      document.body.classList.remove("lightbox-open");
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isLightboxOpen, handlePrev, handleNext]);
@@ -204,36 +212,51 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.75)_100%)]" />
             </div>
 
-            {/* Main Foreground Screenshot */}
-            <div className={`relative w-full h-full flex items-center justify-center z-10 ${hasMultipleImages ? "p-3 sm:p-4" : "p-0"}`}>
-              {currentImage?.src ? (
-                <Image
-                  src={currentImage}
-                  alt={`${project.title} - screenshot ${currentIdx + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className={`object-contain transition-transform duration-500 ease-out pointer-events-none ${
-                    hasMultipleImages
-                      ? "p-2 drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
-                      : "bg-black/30 group-hover:scale-105"
+            {/* Sliding Screenshots Track with Hardware-Accelerated Smooth Transition */}
+            <div
+              className={`flex h-full w-full z-10 ${
+                hasMultipleImages ? "transition-transform duration-500 ease-out will-change-transform" : ""
+              }`}
+              style={{ transform: `translateX(-${currentIdx * 100}%)` }}
+            >
+              {imageList.map((img, idx) => (
+                <div
+                  key={idx}
+                  className={`relative w-full h-full shrink-0 flex items-center justify-center ${
+                    hasMultipleImages ? "p-3 sm:p-4" : "p-0"
                   }`}
-                />
-              ) : (
-                <img
-                  src={typeof currentImage === "string" ? currentImage : currentImage?.src || ""}
-                  alt={`${project.title} - screenshot ${currentIdx + 1}`}
-                  className={`w-full h-full object-contain transition-transform duration-500 ease-out pointer-events-none ${
-                    hasMultipleImages
-                      ? "p-2 drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
-                      : "bg-black/30 group-hover:scale-105"
-                  }`}
-                />
-              )}
+                >
+                  {img?.src ? (
+                    <Image
+                      src={img}
+                      alt={`${project.title} - screenshot ${idx + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className={`object-contain transition-transform duration-500 ease-out pointer-events-none ${
+                        hasMultipleImages
+                          ? "p-2 drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
+                          : "bg-black/30 group-hover:scale-105"
+                      }`}
+                      priority={idx === 0}
+                    />
+                  ) : (
+                    <img
+                      src={typeof img === "string" ? img : img?.src || ""}
+                      alt={`${project.title} - screenshot ${idx + 1}`}
+                      className={`w-full h-full object-contain transition-transform duration-500 ease-out pointer-events-none ${
+                        hasMultipleImages
+                          ? "p-2 drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
+                          : "bg-black/30 group-hover:scale-105"
+                      }`}
+                    />
+                  )}
+                </div>
+              ))}
             </div>
 
             {/* Multiple Images Counter Badge */}
             {hasMultipleImages && (
-              <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[10px] sm:text-xs font-mono text-amber-400 shadow-md">
+              <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[10px] sm:text-xs font-mono text-amber-400 shadow-md pointer-events-none">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
                 <span>
                   {currentIdx + 1} / {imageList.length}
@@ -250,7 +273,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                   e.stopPropagation();
                   setIsLightboxOpen(true);
                 }}
-                className="absolute top-2.5 right-2.5 z-20 p-2.5 sm:p-2 min-w-[40px] min-h-[40px] rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white/90 hover:text-amber-400 hover:border-amber-500/50 hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-lg"
+                className="absolute top-2.5 right-2.5 z-20 p-2.5 sm:p-2 min-w-[40px] min-h-[40px] rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white/90 hover:text-amber-400 hover:border-amber-500/50 hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-lg cursor-pointer"
                 title="View All Screenshots Fullscreen"
                 aria-label="View all screenshots fullscreen"
               >
@@ -280,20 +303,27 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                   <FaChevronRight size={12} />
                 </button>
 
-                {/* Dot Pagination indicators */}
-                <div className="absolute bottom-2.5 left-0 right-0 z-10 flex items-center justify-center gap-1.5 pointer-events-none px-2">
+                {/* Clickable Dot Pagination indicators */}
+                <div className="absolute bottom-2.5 left-0 right-0 z-20 flex items-center justify-center gap-1.5 px-2">
                   {imageList.slice(0, 8).map((_, idx) => (
-                    <span
+                    <button
                       key={idx}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setCurrentIdx(idx);
+                      }}
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                         idx === currentIdx
-                          ? "w-4 bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]"
-                          : "w-1.5 bg-white/40"
+                          ? "w-5 bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]"
+                          : "w-2 bg-white/40 hover:bg-white/70"
                       }`}
+                      aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}
                   {imageList.length > 8 && (
-                    <span className="text-[9px] font-mono text-gray-300 ml-1">
+                    <span className="text-[9px] font-mono text-gray-300 ml-1 select-none">
                       +{imageList.length - 8}
                     </span>
                   )}
@@ -429,16 +459,16 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
         </div>
       </div>
 
-      {/* Fullscreen Lightbox Modal Optimized for Mobile & Desktop */}
-      {isLightboxOpen && (
+      {/* Fullscreen Lightbox Modal Portaled to document.body to prevent stacking context & navbar overlap */}
+      {isLightboxOpen && isMounted && typeof document !== "undefined" && createPortal(
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-[100] bg-[#060911]/95 backdrop-blur-2xl flex flex-col justify-between p-3 sm:p-6 md:p-8 animate-fadeIn select-none overflow-hidden"
+          className="fixed inset-0 z-[99999] bg-[#05070f]/98 backdrop-blur-3xl flex flex-col justify-between p-3 sm:p-6 md:p-8 animate-fadeIn select-none overflow-hidden"
           onClick={() => setIsLightboxOpen(false)}
         >
           {/* Ambient Glow Backdrop for Lightbox */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-35 z-0">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40 z-0">
             {currentImage?.src ? (
               <Image
                 src={currentImage}
@@ -459,9 +489,9 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
             <div className="absolute inset-0 bg-black/75 backdrop-blur-xl" />
           </div>
 
-          {/* Top Header Bar */}
+          {/* Top Header Bar with Safe Area Top Spacing */}
           <div
-            className="flex items-center justify-between w-full max-w-6xl mx-auto z-10 px-1 py-1"
+            className="flex items-center justify-between w-full max-w-6xl mx-auto z-20 pt-3 sm:pt-2 px-2 sm:px-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="pr-4 min-w-0">
@@ -481,11 +511,11 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
             <button
               type="button"
               onClick={() => setIsLightboxOpen(false)}
-              className="p-3 sm:p-3.5 min-w-[44px] min-h-[44px] rounded-full bg-white/10 hover:bg-amber-500 hover:text-black active:scale-90 text-white transition-all duration-200 flex items-center justify-center shrink-0 shadow-lg"
+              className="p-3 sm:p-3.5 min-w-[48px] min-h-[48px] rounded-full bg-white/20 hover:bg-amber-500 hover:text-black active:scale-90 text-white transition-all duration-200 flex items-center justify-center shrink-0 shadow-2xl border border-white/25"
               title="Close (Esc)"
               aria-label="Close lightbox"
             >
-              <FaTimes size={16} />
+              <FaTimes size={18} />
             </button>
           </div>
 
@@ -496,23 +526,35 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
             onTouchStart={onModalTouchStart}
             onTouchEnd={onModalTouchEnd}
           >
-            <div className="relative w-full h-[60vh] sm:h-[68vh] md:h-[72vh] flex items-center justify-center p-2">
-              {currentImage?.src ? (
-                <Image
-                  src={currentImage}
-                  alt={`${project.title} - fullscreen screenshot ${currentIdx + 1}`}
-                  fill
-                  sizes="100vw"
-                  className="object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] rounded-xl"
-                  priority
-                />
-              ) : (
-                <img
-                  src={typeof currentImage === "string" ? currentImage : currentImage?.src || ""}
-                  alt={`${project.title} - fullscreen screenshot ${currentIdx + 1}`}
-                  className="max-h-full max-w-full object-contain rounded-xl shadow-2xl pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
-                />
-              )}
+            <div className="relative w-full h-[60vh] sm:h-[68vh] md:h-[72vh] overflow-hidden rounded-2xl flex items-center justify-center">
+              <div
+                className="flex h-full w-full transition-transform duration-500 ease-out will-change-transform"
+                style={{ transform: `translateX(-${currentIdx * 100}%)` }}
+              >
+                {imageList.map((img, idx) => (
+                  <div
+                    key={idx}
+                    className="relative w-full h-full shrink-0 flex items-center justify-center p-2 sm:p-4"
+                  >
+                    {img?.src ? (
+                      <Image
+                        src={img}
+                        alt={`${project.title} - fullscreen screenshot ${idx + 1}`}
+                        fill
+                        sizes="100vw"
+                        className="object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] rounded-xl"
+                        priority={idx === currentIdx}
+                      />
+                    ) : (
+                      <img
+                        src={typeof img === "string" ? img : img?.src || ""}
+                        alt={`${project.title} - fullscreen screenshot ${idx + 1}`}
+                        className="max-h-full max-w-full object-contain rounded-xl shadow-2xl pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Left / Right Nav Chevrons (Optimized touch targets on mobile) */}
@@ -571,7 +613,8 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
               </button>
             ))}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

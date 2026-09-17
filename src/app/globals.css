@@ -19,6 +19,13 @@
   section {
     @apply pt-8;
   }
+
+  body.lightbox-open nav {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
 }
 
 @layer utilities {
