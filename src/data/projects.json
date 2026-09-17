@@ -58,6 +58,23 @@
   },
   {
     "id": 4,
+    "title": "UdemyWala",
+    "description": "A high-performance, 100% free Udemy course & coupon aggregator web application built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. Features real-time search autocomplete, category filtering, one-click coupon copying, client-side bookmarks, ISR caching, and zero-flicker dark/light mode.",
+    "category": "Web Development",
+    "technologies": [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "TailwindCSS",
+      "API Integration",
+      "PWA"
+    ],
+    "github": "https://github.com/CodesRahul96/UdemyWala.git",
+    "demo": "https://udemywala.vercel.app/",
+    "image": "udemywala"
+  },
+  {
+    "id": 5,
     "title": "VideoX",
     "description": "A high-performance video streaming application supporting large file uploads and adaptive playback. Leverages MongoDB GridFS for efficient media storage and retrieval.",
     "category": "Web Development",
@@ -75,7 +92,7 @@
     "image": "videox"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "ExclusiveTV",
     "description": "A premium Android application for seamless live TV streaming. Features a custom video player, D-Pad navigation support for Android TV, and real-time channel updates. Designed for a high-end viewing experience.",
     "category": "Android App",
@@ -91,7 +108,7 @@
     "image": "exclusivetv"
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "StreamPlus",
     "description": "A native Android streaming app built with Jetpack Compose and Kotlin. Features a Netflix-style content feed with horizontal rows, Firebase-backed authentication with Crashlytics reporting, Hilt dependency injection, and a fully dark OLED-optimized UI. Targets Android API 24–34.",
     "category": "Android App",
@@ -108,7 +125,7 @@
     "image": "streamplus"
   },
   {
-    "id": 7,
+    "id": 8,
     "title": "PlayNox Player",
     "description": "A high-performance native Android video player powered by the MPV/libmpv media engine with hardware acceleration. Features Material Design 3 with Material You dynamic colors, AMOLED dark mode, edge swipe gestures for brightness & volume, subtitle support, real-time video enhancement (brightness, contrast, saturation, gamma), and multilingual support. Targets Android API 26–36.",
     "category": "Android App",
@@ -125,7 +142,7 @@
     "image": "playnox"
   },
   {
-    "id": 8,
+    "id": 9,
     "title": "Netflix Clone",
     "description": "A pixel-perfect recreation of the Netflix interface, integrated with the TMDB API for live movie data. Demonstrating mastery of complex CSS grids and responsive design patterns.",
     "category": "Frontend",
@@ -142,77 +159,109 @@
     "image": "netflix"
   },
   {
-    "id": 9,
+    "id": 10,
     "title": "IMDB Clone",
     "description": "An interactive movie database application featuring dynamic search, detailed views, and rating systems. Optimized for fast content delivery and seamless navigation.",
     "category": "Frontend",
-    "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS", "Axios"],
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "TailwindCSS",
+      "Axios"
+    ],
     "github": "https://github.com/CodesRahul96/IMDB.git",
     "demo": "https://codesrahul-imdb.vercel.app/",
     "image": "imdb"
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "DesiDelights",
     "description": "Discover authentic Indian recipes. From spicy curries to sweet desserts, find the best traditional and modern Indian dishes. Features a rich search and filtering experience.",
     "category": "Web Development",
-    "technologies": ["React", "TailwindCSS", "API Integration"],
+    "technologies": [
+      "React",
+      "TailwindCSS",
+      "API Integration"
+    ],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://desidelightsrecipe.vercel.app/",
     "image": "desidelights"
   },
   {
-    "id": 11,
+    "id": 12,
     "title": "GymWala",
     "description": "A modern fitness companion app offering workout guides and health tracking. Features a sleek, high-contrast UI designed for motivation and clarity.",
     "category": "Frontend",
-    "technologies": ["React", "JavaScript", "TailwindCSS"],
+    "technologies": [
+      "React",
+      "JavaScript",
+      "TailwindCSS"
+    ],
     "github": "https://github.com/CodesRahul96/GymWala.git",
     "demo": "https://gymwala.vercel.app/",
     "image": "gymwala"
   },
   {
-    "id": 12,
+    "id": 13,
     "title": "Live TV",
     "description": "A web-based TV streaming interface aggregating free-to-air channels. Features a custom video player implementation and an approachable channel guide UI.",
     "category": "Frontend",
-    "technologies": ["React", "JavaScript", "API Integration"],
+    "technologies": [
+      "React",
+      "JavaScript",
+      "API Integration"
+    ],
     "github": "https://github.com/CodesRahul96/Live-TV.git",
     "demo": "https://free-live-tv.vercel.app/",
     "image": "livetv"
   },
   {
-    "id": 13,
+    "id": 14,
     "title": "Playlist Downloader",
     "description": "A web tool for managing and downloading M3U playlist files. Enables users to parse, preview, and export playlists for use across media players and IPTV applications.",
     "category": "Frontend",
-    "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "TailwindCSS"
+    ],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://playlist.indevs.in",
     "image": "playlist"
   },
   {
-    "id": 14,
+    "id": 15,
     "title": "Task Management App",
     "description": "A productivity tool for managing daily tasks with intuitive drag-and-drop organization. Built with Firebase for real-time data synchronization across devices.",
     "category": "Web Development",
-    "technologies": ["React", "Firebase", "TailwindCSS"],
+    "technologies": [
+      "React",
+      "Firebase",
+      "TailwindCSS"
+    ],
     "github": "https://github.com/CodesRahul96/todo-list.git",
     "demo": "https://codesrahul-todolist.vercel.app/",
     "image": "taskmanager"
   },
   {
-    "id": 15,
+    "id": 16,
     "title": "Advanced ToDoList",
     "description": "A modern, responsive ToDoList application built with React, Node.js, and Firebase. Features real-time data synchronization, drag-and-drop organization, and a clean, intuitive interface.",
     "category": "Frontend",
-    "technologies": ["React", "Node.js", "Firebase", "TailwindCSS"],
+    "technologies": [
+      "React",
+      "Node.js",
+      "Firebase",
+      "TailwindCSS"
+    ],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://todolist.indevs.in",
     "image": "todolist"
   },
   {
-    "id": 16,
+    "id": 17,
     "title": "OmenControl for Linux",
     "description": "Open-source GTK4 Linux control center for HP Omen & Victus laptops. Replaces the Windows OMEN Gaming Hub with native fan control (15-sample hysteresis), zero-overhead RGB keyboard lighting, GPU MUX switching (Hybrid/Discrete/Integrated), WMI hardware power profiles, and real-time CPU/GPU telemetry dashboards.",
     "category": "Open Source",
@@ -230,44 +279,62 @@
     "contributed": true
   },
   {
-    "id": 17,
+    "id": 18,
     "title": "Image Gallery",
     "description": "A masonry-style image gallery with seamless upload functionality and preview modes. Optimized for handling high-resolution media with minimal latency.",
     "category": "Frontend",
-    "technologies": ["React", "CSS", "JavaScript"],
+    "technologies": [
+      "React",
+      "CSS",
+      "JavaScript"
+    ],
     "github": "https://github.com/CodesRahul96/Image-Gallary.git",
     "demo": "https://codesrahul-imagegallary.vercel.app/",
     "image": "imagegallery"
   },
   {
-    "id": 18,
+    "id": 19,
     "title": "Portfolio Website",
     "description": "This very website! A showcase of modern frontend techniques including glassmorphism, particle animations, lazy loading, and a fully responsive layout built with Next.js.",
     "category": "Frontend",
-    "technologies": ["Next.js", "React", "TailwindCSS", "JavaScript"],
+    "technologies": [
+      "Next.js",
+      "React",
+      "TailwindCSS",
+      "JavaScript"
+    ],
     "github": "https://github.com/CodesRahul96/CodesRahul.git",
     "demo": "https://codesrahul.vercel.app",
     "image": "portfolio"
   },
   {
-    "id": 19,
+    "id": 20,
     "title": "Logic Website",
     "description": "A static corporate website for a logistics company, focusing on clear information architecture and professional branding.",
     "category": "Frontend",
-    "technologies": ["WordPress", "HTML", "CSS", "JavaScript"],
+    "technologies": [
+      "WordPress",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://codeslogic.netlify.app/",
     "image": "logic"
   },
   {
-    "id": 20,
+    "id": 21,
     "title": "AI ChatBot",
     "description": "An intelligent conversational interface powered by NLP APIs. Features a clean, message-based UI that handles real-time user interactions gracefully.",
     "category": "Frontend",
-    "technologies": ["React", "SCSS", "JavaScript", "Responsive"],
+    "technologies": [
+      "React",
+      "SCSS",
+      "JavaScript",
+      "Responsive"
+    ],
     "github": "https://github.com/CodesRahul96",
     "demo": "https://www.codesrahul.in",
     "image": "chatbot"
   }
 ]
-

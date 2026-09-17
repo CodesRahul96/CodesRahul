@@ -1,5 +1,5 @@
 import blogsify from "./blogsify.png";
-import trentshopnow from "./TrentShopNow.png";
+import trentshopnow from "./trentshopnow.png";
 import portfolio from "./codesrahul.png";
 import videox from "./video-x.png";
 import gymwala from "./GymWala.png";
@@ -15,10 +15,11 @@ import chatbot from "./chatbot.jpg";
 import exclusivetv from "./ExclusiveTV.png";
 import playlist from "./playlist.png";
 import todolist from "./desktop_todolist.png";
-import taskflow from "./taskflow.jpg";
-import omencontrol from "./omencontrol.jpg";
+import taskflow from "./taskflow.png";
+import omencontrol from "./omencontrol.png";
 import streamplus from "./streamplus.jpg";
 import playnox from "./playnox.jpg";
+import udemywala from "./udemywala.png";
 
 export {
   blogsify,
@@ -42,4 +43,5 @@ export {
   omencontrol,
   streamplus,
   playnox,
+  udemywala,
 };
