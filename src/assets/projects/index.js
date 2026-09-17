@@ -5,7 +5,6 @@ import gymwala from "./gymwala.png";
 import livetv from "./livetv.jpg";
 import omencontrol from "./omencontrol.png";
 import playlist from "./playlist.png";
-import playnox from "./playnox.jpg";
 import portfolio from "./portfolio.png";
 import taskflow from "./taskflow.png";
 import taskmanager from "./taskmanager.png";
@@ -33,6 +32,12 @@ import streamplus2 from "./streamplus/streamplus-02.jpg";
 import streamplus3 from "./streamplus/streamplus-03.jpg";
 import streamplus4 from "./streamplus/streamplus-04.jpg";
 
+// PlayNox Android App Screenshots
+import playnox1 from "./playnox/playnox-01.jpg";
+import playnox2 from "./playnox/playnox-02.jpg";
+import playnox3 from "./playnox/playnox-03.jpg";
+import playnox4 from "./playnox/playnox-04.jpg";
+
 const exclusivetv = [
   exclusivetv1,
   exclusivetv2,
@@ -52,6 +57,13 @@ const streamplus = [
   streamplus2,
   streamplus3,
   streamplus4,
+];
+
+const playnox = [
+  playnox1,
+  playnox2,
+  playnox3,
+  playnox4,
 ];
 
 export {
@@ -89,4 +101,8 @@ export {
   streamplus2,
   streamplus3,
   streamplus4,
+  playnox1,
+  playnox2,
+  playnox3,
+  playnox4,
 };
