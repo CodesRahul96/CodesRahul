@@ -200,43 +200,55 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
 
   return (
     <>
-      <div className="group relative rounded-3xl border border-slate-200 dark:border-white/15 bg-white/70 dark:bg-white/[0.02] backdrop-blur-2xl overflow-hidden transition-all duration-300 ease-out hover:border-amber-500/50 hover:bg-white/95 dark:hover:bg-white/[0.04] hover:-translate-y-1.5 shadow-md dark:shadow-none hover:shadow-[0_15px_35px_rgba(245,158,11,0.15)] flex flex-col justify-between h-full">
+      <div className="group relative rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/75 dark:bg-[#070913]/65 backdrop-blur-2xl overflow-hidden transition-all duration-300 ease-out hover:border-amber-500/50 dark:hover:border-amber-500/40 hover:bg-white/90 dark:hover:bg-[#0c1020]/80 hover:-translate-y-1.5 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.03)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_40px_-12px_rgba(245,158,11,0.18)] dark:hover:shadow-[0_20px_45px_-10px_rgba(245,158,11,0.22)] ring-1 ring-black/[0.03] dark:ring-white/[0.06] flex flex-col justify-between h-full">
         {/* Top subtle glow accent bar on hover */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none" />
 
         <div>
-          {/* Image / Gallery Showcase Area with Dynamic Ambient Backdrop */}
+          {/* Image / Gallery Showcase Area with Dynamic Ambient Backdrop & Frosted Glass Depth */}
           <div
-            className="relative overflow-hidden h-64 sm:h-72 border-b border-slate-200 dark:border-white/10 bg-gradient-to-b from-slate-100 via-slate-200/80 to-slate-100 dark:from-[#0e1424] dark:via-[#090d19] dark:to-[#04060d] select-none touch-pan-y"
+            className="relative overflow-hidden h-64 sm:h-72 border-b border-slate-200/80 dark:border-white/10 bg-gradient-to-b from-slate-50/95 via-slate-100/75 to-slate-200/85 dark:from-[#0d1326]/95 dark:via-[#080c1b]/85 dark:to-[#04060f]/95 backdrop-blur-2xl select-none touch-pan-y"
             onTouchStart={onCardTouchStart}
             onTouchEnd={onCardTouchEnd}
           >
+            {/* Tactile Micro-Grid / Dot Matrix Texture for Glass Material Feeling */}
+            <div className="absolute inset-0 bg-[radial-gradient(#64748b_1px,transparent_1px)] dark:bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:18px_18px] opacity-[0.14] dark:opacity-[0.08] pointer-events-none z-0" />
+
             {/* Dynamic Ambient Colored Glow matching active screenshot */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-45">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50 dark:opacity-40 z-0">
               {currentImage?.src ? (
                 <Image
                   src={currentImage}
                   alt=""
                   fill
                   sizes="100px"
-                  className="object-cover scale-150 blur-3xl"
+                  className="object-cover scale-150 blur-3xl transition-all duration-700"
                   aria-hidden="true"
                 />
               ) : (
                 <img
                   src={typeof currentImage === "string" ? currentImage : currentImage?.src || ""}
                   alt=""
-                  className="w-full h-full object-cover scale-150 blur-3xl"
+                  className="w-full h-full object-cover scale-150 blur-3xl transition-all duration-700"
                   aria-hidden="true"
                 />
               )}
-              {/* Radial gradient vignette overlay */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.3)_100%)] dark:bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.75)_100%)]" />
+              {/* Radial gradient vignette overlay for depth & focus */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.2)_0%,rgba(0,0,0,0.12)_100%)] dark:bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.15)_0%,rgba(0,0,0,0.8)_100%)]" />
             </div>
+
+            {/* Specular Radial Glass Highlight from top center */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.7)_0%,transparent_65%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(56,189,248,0.12)_0%,transparent_70%)] pointer-events-none z-0" />
+
+            {/* Subtle Diagonal Glass Refraction Sheen on Hover */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.12] dark:via-white/[0.04] to-transparent pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity duration-500 z-0" />
+
+            {/* Top Glass Shine Line */}
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent pointer-events-none z-20" />
 
             {/* Sliding Screenshots Track with Hardware-Accelerated Smooth Transition */}
             <div
-              className={`flex h-full w-full z-10 ${
+              className={`flex h-full w-full z-10 relative ${
                 hasMultipleImages ? "transition-transform duration-500 ease-out will-change-transform" : ""
               }`}
               style={{ transform: `translateX(-${currentIdx * 100}%)` }}
@@ -256,8 +268,8 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className={`object-contain transition-transform duration-500 ease-out pointer-events-none ${
                         hasMultipleImages
-                          ? "p-2 drop-shadow-[0_8px_20px_rgba(0,0,0,0.18)] dark:drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
-                          : "bg-black/10 dark:bg-black/30 group-hover:scale-105"
+                          ? "p-2 drop-shadow-[0_10px_25px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_14px_32px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
+                          : "bg-black/5 dark:bg-black/30 group-hover:scale-105"
                       }`}
                       priority={idx === 0}
                     />
@@ -267,8 +279,8 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                       alt={`${project.title} - screenshot ${idx + 1}`}
                       className={`w-full h-full object-contain transition-transform duration-500 ease-out pointer-events-none ${
                         hasMultipleImages
-                          ? "p-2 drop-shadow-[0_8px_20px_rgba(0,0,0,0.18)] dark:drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
-                          : "bg-black/10 dark:bg-black/30 group-hover:scale-105"
+                          ? "p-2 drop-shadow-[0_10px_25px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_14px_32px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
+                          : "bg-black/5 dark:bg-black/30 group-hover:scale-105"
                       }`}
                     />
                   )}
@@ -278,9 +290,9 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
 
             {/* Multiple Images Counter Badge */}
             {hasMultipleImages && (
-              <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[10px] sm:text-xs font-mono text-amber-400 shadow-md pointer-events-none">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                <span>
+              <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/85 dark:bg-black/75 backdrop-blur-xl border border-slate-200/90 dark:border-white/20 text-[10px] sm:text-xs font-mono text-slate-800 dark:text-amber-400 shadow-[0_4px_12px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.4)] pointer-events-none">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 animate-pulse" />
+                <span className="font-semibold dark:font-normal">
                   {currentIdx + 1} / {imageList.length}
                 </span>
               </div>
@@ -295,7 +307,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                   e.stopPropagation();
                   setIsLightboxOpen(true);
                 }}
-                className="absolute top-2.5 right-2.5 z-20 p-2.5 sm:p-2 min-w-[40px] min-h-[40px] rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white/90 hover:text-amber-400 hover:border-amber-500/50 hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-lg cursor-pointer"
+                className="absolute top-2.5 right-2.5 z-20 p-2.5 sm:p-2 min-w-[40px] min-h-[40px] rounded-full bg-white/85 dark:bg-black/75 backdrop-blur-xl border border-slate-200/90 dark:border-white/20 text-slate-700 dark:text-white/90 hover:text-amber-500 dark:hover:text-amber-400 hover:border-amber-500/50 hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.08)] dark:shadow-lg cursor-pointer"
                 title="View All Screenshots Fullscreen"
                 aria-label="View all screenshots fullscreen"
               >
@@ -309,7 +321,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-black/80 backdrop-blur-md border border-white/25 text-white hover:text-black hover:bg-amber-400 active:scale-90 opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-all duration-200 flex items-center justify-center shadow-xl cursor-pointer"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-white/90 dark:bg-black/80 backdrop-blur-xl border border-slate-200/90 dark:border-white/25 text-slate-800 dark:text-white hover:text-black hover:bg-amber-400 hover:border-amber-400 active:scale-90 opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-all duration-200 flex items-center justify-center shadow-xl cursor-pointer"
                   aria-label="Previous image"
                   title="Previous screenshot"
                 >
@@ -318,7 +330,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-black/80 backdrop-blur-md border border-white/25 text-white hover:text-black hover:bg-amber-400 active:scale-90 opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-all duration-200 flex items-center justify-center shadow-xl cursor-pointer"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-white/90 dark:bg-black/80 backdrop-blur-xl border border-slate-200/90 dark:border-white/25 text-slate-800 dark:text-white hover:text-black hover:bg-amber-400 hover:border-amber-400 active:scale-90 opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-all duration-200 flex items-center justify-center shadow-xl cursor-pointer"
                   aria-label="Next image"
                   title="Next screenshot"
                 >
@@ -327,40 +339,42 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
 
                 {/* Clickable Dot Pagination indicators */}
                 <div className="absolute bottom-2.5 left-0 right-0 z-20 flex items-center justify-center gap-1.5 px-2">
-                  {imageList.slice(0, 8).map((_, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setCurrentIdx(idx);
-                      }}
-                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                        idx === currentIdx
-                          ? "w-5 bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]"
-                          : "w-2 bg-white/50 hover:bg-white/80"
-                      }`}
-                      aria-label={`Go to slide ${idx + 1}`}
-                    />
-                  ))}
-                  {imageList.length > 8 && (
-                    <span className="text-[9px] font-mono text-gray-300 ml-1 select-none">
-                      +{imageList.length - 8}
-                    </span>
-                  )}
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/20 dark:bg-black/40 backdrop-blur-md border border-white/10">
+                    {imageList.slice(0, 8).map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setCurrentIdx(idx);
+                        }}
+                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                          idx === currentIdx
+                            ? "w-5 bg-amber-500 dark:bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]"
+                            : "w-2 bg-white/60 dark:bg-white/40 hover:bg-white dark:hover:bg-white/80"
+                        }`}
+                        aria-label={`Go to slide ${idx + 1}`}
+                      />
+                    ))}
+                    {imageList.length > 8 && (
+                      <span className="text-[9px] font-mono text-white/90 ml-1 select-none font-medium">
+                        +{imageList.length - 8}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </>
             )}
 
             {/* Desktop Quick-Action Overlay (visible on hover) */}
-            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden md:flex items-center justify-center space-x-4 backdrop-blur-md pointer-events-none group-hover:pointer-events-auto z-10">
+            <div className="absolute inset-0 bg-slate-950/40 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden md:flex items-center justify-center space-x-4 backdrop-blur-md pointer-events-none group-hover:pointer-events-auto z-10">
               {project.github && (
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 rounded-full text-white bg-white/10 hover:bg-amber-500 hover:text-black hover:scale-110 active:scale-95 transition-all duration-200 shadow-lg border border-white/10"
+                  className="p-3.5 rounded-full text-slate-800 dark:text-white bg-white/90 dark:bg-white/15 hover:bg-amber-500 hover:text-black dark:hover:bg-amber-500 dark:hover:text-black hover:scale-110 active:scale-95 transition-all duration-200 shadow-xl border border-slate-200/80 dark:border-white/20 backdrop-blur-md"
                   title="View Code"
                 >
                   <FaGithub size={18} />
@@ -371,7 +385,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 rounded-full text-white bg-white/10 hover:bg-amber-500 hover:text-black hover:scale-110 active:scale-95 transition-all duration-200 shadow-lg border border-white/10"
+                  className="p-3.5 rounded-full text-slate-800 dark:text-white bg-white/90 dark:bg-white/15 hover:bg-amber-500 hover:text-black dark:hover:bg-amber-500 dark:hover:text-black hover:scale-110 active:scale-95 transition-all duration-200 shadow-xl border border-slate-200/80 dark:border-white/20 backdrop-blur-md"
                   title="Live Demo"
                 >
                   <FaExternalLinkAlt size={16} />
@@ -385,7 +399,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                     e.stopPropagation();
                     setIsLightboxOpen(true);
                   }}
-                  className="p-3.5 rounded-full text-white bg-white/10 hover:bg-cyan-500 hover:text-black hover:scale-110 active:scale-95 transition-all duration-200 shadow-lg border border-white/10"
+                  className="p-3.5 rounded-full text-slate-800 dark:text-white bg-white/90 dark:bg-white/15 hover:bg-cyan-500 hover:text-black dark:hover:bg-cyan-400 dark:hover:text-black hover:scale-110 active:scale-95 transition-all duration-200 shadow-xl border border-slate-200/80 dark:border-white/20 backdrop-blur-md"
                   title="Open Gallery Lightbox"
                 >
                   <FaExpand size={16} />
@@ -467,7 +481,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
             {project.technologies.map((tech, index) => (
               <span
                 key={index}
-                className="flex items-center px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-slate-700 dark:text-gray-300 bg-slate-100/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-md group-hover:border-amber-500/40 group-hover:text-slate-900 dark:group-hover:text-white transition-all duration-200 backdrop-blur-md"
+                className="flex items-center px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-slate-700 dark:text-gray-300 bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 rounded-lg group-hover:border-amber-500/40 group-hover:text-slate-900 dark:group-hover:text-white transition-all duration-200 backdrop-blur-md"
               >
                 {techIcons[tech] && (
                   <span className="mr-1.5 opacity-90 text-amber-600 dark:text-amber-400">
