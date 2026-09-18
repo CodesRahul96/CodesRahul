@@ -1,5 +1,6 @@
 import blogsify from "./blogsify.png";
 import comingsoon from "./comingsoon.png";
+import crunchyroll from "./crunchyroll.png";
 import desidelights from "./desidelights.png";
 import gymwala from "./gymwala.png";
 import freelivetv from "./freelivetv.png";
@@ -90,6 +91,7 @@ const nevrio = nevriotech;
 export {
   blogsify,
   comingsoon,
+  crunchyroll,
   desidelights,
   freelivetv,
   gymwala,

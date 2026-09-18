@@ -29,8 +29,12 @@ import {
   SiPostgresql,
   SiRedis,
   SiGooglegemini,
+  SiElectron,
+  SiPython,
+  SiGtk,
+  SiGnubash,
 } from "react-icons/si";
-import { FaAndroid, FaWhatsapp } from "react-icons/fa";
+import { FaAndroid, FaWhatsapp, FaLinux } from "react-icons/fa";
 import { VscJson } from "react-icons/vsc";
 import * as projectImages from "../assets/projects";
 
@@ -61,6 +65,12 @@ const techIcons = {
   "Google Gemini": <SiGooglegemini />,
   "WhatsApp Cloud API": <FaWhatsapp />,
   WhatsApp: <FaWhatsapp />,
+  Electron: <SiElectron />,
+  Linux: <FaLinux />,
+  Shell: <SiGnubash />,
+  Python: <SiPython />,
+  GTK4: <SiGtk />,
+  GTK: <SiGtk />,
 };
 
 const ProjectCard = React.memo(function ProjectCard({ project }) {
