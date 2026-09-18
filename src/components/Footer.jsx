@@ -38,8 +38,8 @@ function Footer() {
         {/* Bottom Navigation & Copyright */}
         <div className="pt-8 border-t border-slate-200 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Link href="/" className="text-xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">
-              Codes<span className="text-amber-500 dark:text-amber-400 font-mono text-sm font-light">Rahul</span>
+            <Link href="/" className="text-xl font-black tracking-tight">
+              <span className="text-slate-900 dark:text-white">Codes</span><span className="text-amber-500">Rahul</span>
             </Link>
             <span className="hidden sm:inline text-slate-300 dark:text-gray-600">|</span>
             <p className="text-xs font-mono text-slate-500 dark:text-gray-400">
