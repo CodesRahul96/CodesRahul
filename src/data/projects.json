@@ -205,17 +205,18 @@
   },
   {
     "id": 13,
-    "title": "Task Management App",
-    "description": "A productivity tool for managing daily tasks with intuitive drag-and-drop organization. Built with Firebase for real-time data synchronization across devices.",
-    "category": "Web Development",
+    "title": "Advanced ToDoList",
+    "description": "A modern, responsive ToDoList application built with React, Node.js, and Firebase. Features real-time data synchronization, drag-and-drop organization, and a clean, intuitive interface.",
+    "category": "Frontend",
     "technologies": [
       "React",
+      "Node.js",
       "Firebase",
       "TailwindCSS"
     ],
-    "github": "https://github.com/CodesRahul96/todo-list.git",
-    "demo": "https://codesrahul-todolist.vercel.app/",
-    "image": "taskmanager"
+    "github": "https://github.com/CodesRahul96/ToDoList-Project.git",
+    "demo": "https://todolist.indevs.in",
+    "image": "todolist"
   },
   {
     "id": 14,

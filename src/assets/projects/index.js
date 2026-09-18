@@ -7,7 +7,7 @@ const livetv = freelivetv;
 import omencontrol from "./omencontrol.png";
 import portfolio from "./portfolio.png";
 import taskflow from "./taskflow.png";
-import taskmanager from "./taskmanager.png";
+import todolist from "./todolist.png";
 import trentshopnow from "./trentshopnow.png";
 import udemywala from "./udemywala.png";
 import videox from "./videox.png";
@@ -87,7 +87,7 @@ export {
   playnox,
   portfolio,
   taskflow,
-  taskmanager,
+  todolist,
   trentshopnow,
   udemywala,
   videox,
