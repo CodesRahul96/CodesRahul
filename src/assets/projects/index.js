@@ -41,6 +41,10 @@ import playnox4 from "./playnox/playnox-04.jpg";
 import whatsappAutomation1 from "./whatsapp_automation/whatsapp-automation-01.png";
 import whatsappAutomation2 from "./whatsapp_automation/whatsapp-automation-02.png";
 
+// NevrioTech Screenshots
+import nevriotech1 from "./nevriotech/nevriotech-01.png";
+import nevriotech2 from "./nevriotech/nevriotech-02.png";
+
 const exclusivetv = [
   exclusivetv1,
   exclusivetv2,
@@ -76,6 +80,13 @@ const whatsappautomation = [
 
 const whatsapp_automation = whatsappautomation;
 
+const nevriotech = [
+  nevriotech1,
+  nevriotech2,
+];
+
+const nevrio = nevriotech;
+
 export {
   blogsify,
   comingsoon,
@@ -93,6 +104,8 @@ export {
   videox,
   // Multi-image collections
   exclusivetv,
+  nevrio,
+  nevriotech,
   streamplus,
   whatsappautomation,
   whatsapp_automation,
@@ -108,6 +121,8 @@ export {
   exclusivetv9,
   exclusivetv10,
   exclusivetv11,
+  nevriotech1,
+  nevriotech2,
   streamplus1,
   streamplus2,
   streamplus3,
