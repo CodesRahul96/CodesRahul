@@ -402,7 +402,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
               </h3>
               <div className="flex flex-col items-end gap-1.5 shrink-0">
                 <span className="text-[10px] font-mono tracking-widest text-amber-400 uppercase border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 rounded-full backdrop-blur-md">
-                  {project.category === "Android App"
+                  {project.category?.toLowerCase().includes("app")
                     ? "App"
                     : project.category === "Open Source"
                     ? "OS"

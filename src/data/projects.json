@@ -238,7 +238,7 @@
     "id": 15,
     "title": "Crunchyroll Desktop for Linux",
     "description": "An unofficial, feature-packed cross-platform Crunchyroll desktop client built with Electron and Widevine DRM support for Linux, Windows, and macOS. Features hardware-accelerated video playback, customizable playback speed (0.25x–3.0x), Picture-in-Picture mode, automated intro/recap skip, system theme synchronization, power-save sleep prevention, and persistent session state.",
-    "category": "Open Source",
+    "category": "App",
     "technologies": [
       "Electron",
       "JavaScript",
