@@ -197,6 +197,17 @@ export default function Home() {
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
+
+        {/* See More Projects CTA */}
+        <div className="flex justify-center mt-12">
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-slate-200 dark:border-white/15 bg-white/80 dark:bg-white/[0.03] hover:bg-amber-500 hover:border-amber-500 dark:hover:bg-amber-500 dark:hover:border-amber-500 text-slate-700 dark:text-gray-200 hover:text-black dark:hover:text-black text-xs font-mono uppercase tracking-widest transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] backdrop-blur-md"
+          >
+            <span>See All Projects</span>
+            <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
       </section>
 
       {/* Professional Commitment Section */}
