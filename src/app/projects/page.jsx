@@ -40,23 +40,23 @@ export default function Projects() {
   }, [projects, filter, searchTerm]);
 
   return (
-    <section className="py-12 min-h-screen relative text-white animate-fadeIn">
+    <section className="py-12 min-h-screen relative text-slate-900 dark:text-white animate-fadeIn transition-colors duration-300">
       <div className="container mx-auto px-4 relative z-10 max-w-6xl">
         {/* Header */}
         <div className="mb-16">
           <div>
-            <h2 className="text-5xl md:text-7xl font-serif font-medium text-white mb-4 tracking-tight">
+            <h2 className="text-5xl md:text-7xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight">
               Selected Works.
             </h2>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
-            <p className="text-gray-400 text-lg font-light max-w-xl">
+            <p className="text-slate-600 dark:text-gray-400 text-lg font-light max-w-xl">
               A curated collection of web applications, mobile platforms, and architectural systems.
             </p>
           </div>
         </div>
 
         {/* Filters & Search */}
-        <div className="mb-14 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 p-6 rounded-3xl bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-2xl">
+        <div className="mb-14 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 p-6 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
           {/* Category Pills */}
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => {
@@ -68,7 +68,7 @@ export default function Projects() {
                   className={`text-xs font-mono tracking-wider uppercase px-4 py-2.5 rounded-full transition-all duration-200 ${
                     isActive
                       ? "bg-amber-500 text-black font-bold shadow-[0_0_15px_rgba(245,158,11,0.4)]"
-                      : "bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/30"
+                      : "bg-slate-100 hover:bg-slate-200/80 border border-slate-300/80 text-slate-700 hover:text-slate-900 dark:bg-white/5 dark:border-white/10 dark:text-gray-400 dark:hover:text-white dark:hover:border-white/30"
                   }`}
                 >
                   {category} <span className="opacity-60 ml-1">({categoryCounts[category] || 0})</span>
@@ -79,13 +79,13 @@ export default function Projects() {
 
           {/* Search Box */}
           <div className="relative w-full md:w-72">
-            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs" />
+            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-400 text-xs" />
             <input
               type="text"
               placeholder="Search projects..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 focus:border-amber-500/50 py-2.5 pl-10 pr-4 text-xs font-mono text-white placeholder-gray-500 outline-none transition-all rounded-full backdrop-blur-md"
+              className="w-full bg-slate-100/90 dark:bg-white/5 border border-slate-300/80 dark:border-white/10 focus:border-amber-500/60 dark:focus:border-amber-500/50 py-2.5 pl-10 pr-4 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 outline-none transition-all rounded-full backdrop-blur-md"
             />
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function Projects() {
               <ProjectCard key={project.id} project={project} />
             ))
           ) : (
-            <p className="text-gray-400 font-mono text-sm col-span-2 py-8 text-center bg-white/[0.02] border border-white/10 rounded-2xl">
+            <p className="text-slate-500 dark:text-gray-400 font-mono text-sm col-span-2 py-8 text-center bg-white/80 dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 rounded-2xl shadow-sm">
               No projects matching your search criteria.
             </p>
           )}

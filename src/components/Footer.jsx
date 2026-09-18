@@ -4,22 +4,22 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="relative z-10 w-full pt-20 pb-12 border-t border-white/10 bg-white/[0.02] backdrop-blur-xl">
+    <footer className="relative z-10 w-full pt-20 pb-12 border-t border-slate-200 dark:border-white/10 bg-slate-100/40 dark:bg-white/[0.02] backdrop-blur-xl transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Call to Action Banner */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-20 gap-10 p-8 md:p-12 rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md shadow-2xl relative overflow-hidden group">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-20 gap-10 p-8 md:p-12 rounded-3xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/[0.02] backdrop-blur-md shadow-xl dark:shadow-2xl relative overflow-hidden group transition-all duration-300">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
           <div className="space-y-4 max-w-2xl relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-mono">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-mono font-medium">
               Available for New Projects
             </div>
-            <h2 className="text-4xl sm:text-6xl font-serif font-medium tracking-tight text-white leading-tight">
+            <h2 className="text-4xl sm:text-6xl font-serif font-medium tracking-tight text-slate-900 dark:text-white leading-tight">
               Let&apos;s Build <br />
-              <span className="text-amber-400 italic">Something Extraordinary.</span>
+              <span className="text-amber-500 dark:text-amber-400 italic">Something Extraordinary.</span>
             </h2>
-            <p className="text-gray-400 text-base font-light max-w-lg">
+            <p className="text-slate-600 dark:text-gray-400 text-base font-light max-w-lg">
               Have an ambitious project or want to level up your existing digital presence? Let&apos;s turn your vision into high-impact code.
             </p>
           </div>
@@ -36,13 +36,13 @@ function Footer() {
         </div>
 
         {/* Bottom Navigation & Copyright */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-8 border-t border-slate-200 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Link href="/" className="text-xl font-serif font-bold text-white tracking-tight">
-              Codes<span className="text-amber-400 font-mono text-sm font-light">Rahul</span>
+            <Link href="/" className="text-xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">
+              Codes<span className="text-amber-500 dark:text-amber-400 font-mono text-sm font-light">Rahul</span>
             </Link>
-            <span className="hidden sm:inline text-gray-600">|</span>
-            <p className="text-xs font-mono text-gray-400">
+            <span className="hidden sm:inline text-slate-300 dark:text-gray-600">|</span>
+            <p className="text-xs font-mono text-slate-500 dark:text-gray-400">
               © {new Date().getFullYear()} Rahul Misal. All rights reserved.
             </p>
           </div>
@@ -51,7 +51,7 @@ function Footer() {
           <div className="flex items-center gap-4">
             <a 
               href="mailto:codesrahul96@gmail.com" 
-              className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-gray-400 hover:text-amber-400 bg-white/5 border border-white/10 px-4 py-2 rounded-full transition-all hover:border-amber-500/30"
+              className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-600 hover:text-amber-600 dark:text-gray-400 dark:hover:text-amber-400 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-4 py-2 rounded-full transition-all hover:border-amber-500/40 dark:hover:border-amber-500/30 shadow-sm"
             >
               <FaEnvelope /> Email
             </a>
@@ -59,7 +59,7 @@ function Footer() {
               href="https://github.com/codesrahul96" 
               target="_blank" 
               rel="noreferrer" 
-              className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-gray-400 hover:text-amber-400 bg-white/5 border border-white/10 px-4 py-2 rounded-full transition-all hover:border-amber-500/30"
+              className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-600 hover:text-amber-600 dark:text-gray-400 dark:hover:text-amber-400 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-4 py-2 rounded-full transition-all hover:border-amber-500/40 dark:hover:border-amber-500/30 shadow-sm"
             >
               <FaGithub /> GitHub
             </a>
@@ -67,7 +67,7 @@ function Footer() {
               href="https://linkedin.com/in/codesrahul" 
               target="_blank" 
               rel="noreferrer" 
-              className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-gray-400 hover:text-amber-400 bg-white/5 border border-white/10 px-4 py-2 rounded-full transition-all hover:border-amber-500/30"
+              className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-600 hover:text-amber-600 dark:text-gray-400 dark:hover:text-amber-400 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-4 py-2 rounded-full transition-all hover:border-amber-500/40 dark:hover:border-amber-500/30 shadow-sm"
             >
               <FaLinkedin /> LinkedIn
             </a>

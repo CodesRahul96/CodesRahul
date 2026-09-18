@@ -5,7 +5,8 @@ import Preloader from '../components/Preloader';
 import AppBackground from '../components/AppBackground';
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Toaster } from 'sonner';
+import { ThemeProvider } from '../context/ThemeContext';
+import ThemedToaster from '../components/ThemedToaster';
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.codesrahul.in'),
@@ -150,26 +151,48 @@ const jsonLdSchema = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('theme');
+                  if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    document.documentElement.style.colorScheme = 'light';
+                  } else {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.style.colorScheme = 'dark';
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
       </head>
-      <body className="bg-[#050508] text-gray-200 antialiased selection:bg-amber-500 selection:text-black relative">
-        <AppBackground />
-        <div className="flex flex-col min-h-screen relative z-10">
-          <Preloader />
-          <Navbar />
-          <main className="flex-grow pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto w-full">
-            {children}
-          </main>
-          <Footer />
-          <Toaster position="bottom-right" theme="dark" toastOptions={{ style: { background: '#050508', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' } }} />
-          <Analytics />
-          <SpeedInsights />
-        </div>
+      <body className="bg-[#f8fafc] text-slate-900 dark:bg-[#050508] dark:text-gray-200 antialiased selection:bg-amber-500 selection:text-black relative transition-colors duration-300">
+        <ThemeProvider>
+          <AppBackground />
+          <div className="flex flex-col min-h-screen relative z-10">
+            <Preloader />
+            <Navbar />
+            <main className="flex-grow pt-24 pb-12 px-4 md:px-8 max-w-7xl mx-auto w-full">
+              {children}
+            </main>
+            <Footer />
+            <ThemedToaster />
+            <Analytics />
+            <SpeedInsights />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -108,7 +108,7 @@ export default function InteractivePhotoCard({
     >
       {/* 3D Root Card */}
       <div
-        className={`relative w-[280px] h-[360px] sm:w-[320px] sm:h-[410px] rounded-3xl p-1 bg-gradient-to-b ${gradientBorder} backdrop-blur-xl border border-white/15 shadow-2xl transition-transform ease-out cursor-pointer`}
+        className={`relative w-[280px] h-[360px] sm:w-[320px] sm:h-[410px] rounded-3xl p-1 bg-gradient-to-b ${gradientBorder} backdrop-blur-xl border border-slate-200 dark:border-white/15 shadow-xl dark:shadow-2xl transition-transform ease-out cursor-pointer`}
         style={{
           transformStyle: "preserve-3d",
           transform: isActive
@@ -116,13 +116,13 @@ export default function InteractivePhotoCard({
             : "rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
           transitionDuration: isActive ? "120ms" : "600ms",
           boxShadow: isActive
-            ? `0 25px 50px -12px ${glowColor}, 0 0 30px rgba(0,0,0,0.8)`
-            : "0 20px 40px -15px rgba(0,0,0,0.7)",
+            ? `0 25px 50px -12px ${glowColor}, 0 0 30px rgba(0,0,0,0.4)`
+            : "0 20px 40px -15px rgba(0,0,0,0.3)",
         }}
       >
         {/* Inner Card Frame */}
         <div
-          className="relative w-full h-full rounded-[22px] overflow-hidden bg-[#070913] flex items-center justify-center border border-white/10"
+          className="relative w-full h-full rounded-[22px] overflow-hidden bg-slate-100/90 dark:bg-[#070913] flex items-center justify-center border border-slate-200/80 dark:border-white/10 transition-colors duration-300"
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Ambient Background Glow inside frame */}
@@ -137,9 +137,9 @@ export default function InteractivePhotoCard({
 
           {/* Micro Grid Ambient Texture */}
           <div
-            className="absolute inset-0 opacity-[0.07] pointer-events-none"
+            className="absolute inset-0 opacity-[0.07] dark:opacity-[0.07] pointer-events-none"
             style={{
-              backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.8) 1px, transparent 0)",
+              backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
               backgroundSize: "20px 20px",
             }}
           />
@@ -175,15 +175,15 @@ export default function InteractivePhotoCard({
         {/* 3D Floating Role Badge */}
         {badgeText && (
           <div
-            className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#0a0d18] border border-white/20 text-amber-400 text-[10px] font-mono uppercase tracking-widest shadow-xl whitespace-nowrap pointer-events-none transition-transform ease-out"
+            className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-white dark:bg-[#0a0d18] border border-slate-200 dark:border-white/20 text-amber-600 dark:text-amber-400 text-[10px] font-mono uppercase tracking-widest shadow-xl whitespace-nowrap pointer-events-none transition-transform ease-out font-medium"
             style={{
               transform: isActive
                 ? "translateX(-50%) translateZ(55px) scale(1.05)"
                 : "translateX(-50%) translateZ(0px) scale(1)",
               transitionDuration: isActive ? "150ms" : "600ms",
               boxShadow: isActive
-                ? "0 10px 25px rgba(0,0,0,0.9), 0 0 15px rgba(245,158,11,0.3)"
-                : "0 4px 15px rgba(0,0,0,0.5)",
+                ? "0 10px 25px rgba(0,0,0,0.3), 0 0 15px rgba(245,158,11,0.3)"
+                : "0 4px 15px rgba(0,0,0,0.15)",
             }}
           >
             {badgeText}
@@ -192,14 +192,14 @@ export default function InteractivePhotoCard({
 
         {/* Interactive Hologram Corner Accents */}
         <div
-          className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-amber-400 transition-opacity duration-300"
+          className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-amber-400 transition-opacity duration-300"
           style={{
             opacity: isActive ? 1 : 0.3,
             boxShadow: isActive ? "0 0 8px rgba(245, 158, 11, 0.9)" : "none",
           }}
         />
         <div
-          className="absolute top-3 left-3 w-1.5 h-1.5 rounded-full bg-cyan-400 transition-opacity duration-300"
+          className="absolute top-3 left-3 w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 transition-opacity duration-300"
           style={{
             opacity: isActive ? 1 : 0.3,
             boxShadow: isActive ? "0 0 8px rgba(6, 182, 212, 0.9)" : "none",

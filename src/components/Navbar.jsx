@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaDownload, FaSpinner } from "react-icons/fa";
 import { NAV_LINKS, CV_FILE_ID, CV_FILENAME } from "../constants";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,17 +58,17 @@ const Navbar = () => {
               R
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-xl font-serif font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors">
+              <span className="text-xl font-serif font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors">
                 CodesRahul
               </span>
-              <span className="text-[9px] font-mono tracking-widest text-amber-400/80 uppercase">
+              <span className="text-[9px] font-mono tracking-widest text-amber-600 dark:text-amber-400/80 uppercase font-medium">
                 Software Engineer
               </span>
             </div>
           </Link>
 
           {/* Desktop Floating Glass Pill Nav */}
-          <ul className="hidden md:flex space-x-1 items-center bg-[#070710]/80 backdrop-blur-xl border border-white/10 px-3 py-1.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
+          <ul className="hidden md:flex space-x-1 items-center bg-white/80 dark:bg-[#070710]/80 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 px-3 py-1.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.6)] transition-colors duration-300">
             {NAV_LINKS.map((item) => {
               const isActive = pathname === item.path;
               return (
@@ -78,7 +79,7 @@ const Navbar = () => {
                     className={`relative z-10 text-[11px] font-mono uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 block ${
                       isActive
                         ? "text-black font-bold bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.5)]"
-                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/5"
                     }`}
                   >
                     {item.name}
@@ -88,17 +89,18 @@ const Navbar = () => {
             })}
           </ul>
 
-          {/* Resume CTA (Desktop) */}
-          <div className="hidden md:block">
+          {/* Actions (Desktop: ThemeToggle + Resume CTA) */}
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
             <button
               onClick={handleDownloadCV}
               disabled={isDownloading}
               className={`
                 group relative overflow-hidden
                 flex items-center gap-2.5 
-                border border-amber-500/40 hover:border-amber-400
+                border border-amber-500/50 hover:border-amber-400
                 bg-amber-500/10 hover:bg-amber-500 hover:text-black
-                text-amber-400 font-mono text-[11px] uppercase tracking-widest font-bold
+                text-amber-600 dark:text-amber-400 font-mono text-[11px] uppercase tracking-widest font-bold
                 py-2.5 px-5 rounded-full
                 transition-all duration-300 shadow-[0_0_15px_rgba(245,158,11,0.15)]
                 ${isDownloading ? "cursor-not-allowed opacity-50" : ""}
@@ -118,26 +120,27 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex items-center space-x-4 md:hidden">
+          {/* Mobile Right Bar: ThemeToggle + Hamburger Button */}
+          <div className="flex items-center space-x-2 md:hidden">
+            <ThemeToggle compact />
             <button
               onClick={toggleMenu}
-              className="text-white focus:outline-none z-50 relative p-2"
+              className="text-slate-800 dark:text-white focus:outline-none z-50 relative p-2"
               aria-label="Toggle Menu"
             >
               <div className="w-6 h-5 flex flex-col justify-between items-end">
                 <span
-                  className={`h-[2px] bg-amber-400 block transition-all duration-300 ${
+                  className={`h-[2px] bg-amber-500 dark:bg-amber-400 block transition-all duration-300 ${
                     isOpen ? "w-6 rotate-45 translate-y-2" : "w-6"
                   }`}
                 />
                 <span
-                  className={`h-[2px] bg-white block transition-all duration-300 ${
+                  className={`h-[2px] bg-slate-800 dark:bg-white block transition-all duration-300 ${
                     isOpen ? "opacity-0" : "w-4"
                   }`}
                 />
                 <span
-                  className={`h-[2px] bg-white block transition-all duration-300 ${
+                  className={`h-[2px] bg-slate-800 dark:bg-white block transition-all duration-300 ${
                     isOpen ? "w-6 -rotate-45 -translate-y-2" : "w-6"
                   }`}
                 />
@@ -149,7 +152,7 @@ const Navbar = () => {
 
       {/* Mobile Glass Menu */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#070710]/95 backdrop-blur-2xl z-[45] flex flex-col justify-center items-center px-6 overflow-hidden">
+        <div className="md:hidden fixed inset-0 bg-white/95 dark:bg-[#070710]/95 backdrop-blur-2xl z-[45] flex flex-col justify-center items-center px-6 overflow-hidden transition-colors duration-300">
           <ul className="flex flex-col items-center space-y-8 w-full relative z-10 mt-8">
             {NAV_LINKS.map((item) => (
               <li key={item.name}>
@@ -159,15 +162,15 @@ const Navbar = () => {
                   onClick={toggleMenu}
                   className={`text-3xl font-serif tracking-tight transition-colors duration-300 block ${
                     pathname === item.path
-                      ? "text-amber-400 font-bold italic"
-                      : "text-gray-400 hover:text-white"
+                      ? "text-amber-500 dark:text-amber-400 font-bold italic"
+                      : "text-slate-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white"
                   }`}
                 >
                   {item.name}
                 </Link>
               </li>
             ))}
-            <li className="pt-6 w-full max-w-xs">
+            <li className="pt-6 w-full max-w-xs space-y-4">
               <button
                 onClick={handleDownloadCV}
                 disabled={isDownloading}

@@ -50,7 +50,7 @@ export default function Home() {
   const featuredProjects = projectsData.slice(0, 4);
 
   return (
-    <div className="relative w-full text-white animate-fadeIn">
+    <div className="relative w-full text-slate-900 dark:text-white animate-fadeIn transition-colors duration-300">
       {/* Hero Section */}
       <section className="relative flex flex-col justify-center py-10 md:py-16">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full relative z-10 gap-12">
@@ -58,18 +58,18 @@ export default function Home() {
           {/* Left Column: Authentic Executive Bio */}
           <div className="w-full lg:w-7/12 space-y-8">
             {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono tracking-wider backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-mono tracking-wider backdrop-blur-md font-medium">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
               <span>Available for Full-time Roles & Contracts • Pune / Remote</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-white leading-[1.05]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-slate-900 dark:text-white leading-[1.05]">
               Full Stack & Android <br className="hidden sm:inline" />
-              <span className="text-amber-400 italic font-normal">Software Engineer.</span>
+              <span className="text-amber-500 dark:text-amber-400 italic font-normal">Software Engineer.</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed font-light">
-              Hi, I&apos;m <span className="text-white font-medium">Rahul Misal</span>. I engineer high-performance web systems using the <span className="text-amber-400 font-medium">MERN stack</span> (MongoDB, Express, React, Node.js), <span className="text-white font-medium">Next.js</span>, and native <span className="text-cyan-400 font-medium">Android applications</span> with Kotlin.
+            <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed font-light">
+              Hi, I&apos;m <span className="text-slate-900 dark:text-white font-medium">Rahul Misal</span>. I engineer high-performance web systems using the <span className="text-amber-600 dark:text-amber-400 font-medium">MERN stack</span> (MongoDB, Express, React, Node.js), <span className="text-slate-900 dark:text-white font-medium">Next.js</span>, and native <span className="text-cyan-600 dark:text-cyan-400 font-medium">Android applications</span> with Kotlin.
             </p>
             
             {/* Action CTAs */}
@@ -84,18 +84,18 @@ export default function Home() {
               
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/5 border border-white/10 hover:border-white/30 text-white text-xs font-mono uppercase tracking-widest rounded-full transition-all duration-200 hover:bg-white/10"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-slate-50 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/30 text-slate-800 dark:text-white text-xs font-mono uppercase tracking-widest rounded-full transition-all duration-200 shadow-sm"
               >
                 <span>Get In Touch</span>
               </Link>
             </div>
 
             {/* Metrics Row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-white/10">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-slate-200 dark:border-white/10">
               {stats.map((stat, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
-                  <div className="text-2xl sm:text-3xl font-serif font-bold text-amber-400">{stat.value}</div>
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400 mt-1">{stat.label}</div>
+                <div key={i} className="p-4 rounded-2xl bg-white/70 dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 backdrop-blur-md shadow-sm dark:shadow-none">
+                  <div className="text-2xl sm:text-3xl font-serif font-bold text-amber-600 dark:text-amber-400">{stat.value}</div>
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-gray-400 mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -107,7 +107,7 @@ export default function Home() {
               imageSrc={rahulHero3D}
               alt="Rahul Misal — Full Stack & Android Developer"
               badgeText="Rahul Misal — Pune, India"
-              gradientBorder="from-white/15 via-amber-500/20 to-transparent"
+              gradientBorder="from-slate-300/40 via-amber-500/20 to-transparent dark:from-white/15 dark:via-amber-500/20 dark:to-transparent"
               glowColor="rgba(245, 158, 11, 0.25)"
               priority
             />
@@ -116,10 +116,10 @@ export default function Home() {
       </section>
 
       {/* Tech Ticker */}
-      <section className="py-8 border-y border-white/10 bg-white/[0.02] backdrop-blur-md overflow-hidden relative my-16">
+      <section className="py-8 border-y border-slate-200 dark:border-white/10 bg-slate-100/60 dark:bg-white/[0.02] backdrop-blur-md overflow-hidden relative my-16 transition-colors duration-300">
         <div className="flex whitespace-nowrap animate-marquee w-fit">
           {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
-            <span key={index} className="mx-8 text-2xl sm:text-4xl font-serif font-medium text-gray-400 hover:text-amber-400 uppercase tracking-wider opacity-60 hover:opacity-100 transition-all duration-300 cursor-default">
+            <span key={index} className="mx-8 text-2xl sm:text-4xl font-serif font-medium text-slate-400 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400 uppercase tracking-wider opacity-70 hover:opacity-100 transition-all duration-300 cursor-default">
               {tech}
             </span>
           ))}
@@ -128,12 +128,12 @@ export default function Home() {
 
       {/* Core Engineering Domains (Executive Section) */}
       <section className="mb-24">
-        <div className="mb-12 border-b border-white/10 pb-6">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400">Engineering Competence</span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-medium text-white tracking-tight mt-1">
+        <div className="mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
+          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Engineering Competence</span>
+          <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
             Specialized Architectures.
           </h2>
-          <p className="text-gray-400 text-sm md:text-base font-light mt-2 max-w-2xl">
+          <p className="text-slate-600 dark:text-gray-400 text-sm md:text-base font-light mt-2 max-w-2xl">
             From resilient full-stack MERN backends to native Android mobile platforms and low-latency cloud deployments.
           </p>
         </div>
@@ -142,33 +142,33 @@ export default function Home() {
           {engineeringDomains.map((domain, index) => (
             <div
               key={index}
-              className="p-8 rounded-3xl bg-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-amber-500/40 hover:bg-white/[0.04] transition-all duration-300 shadow-xl flex flex-col justify-between group"
+              className="p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 hover:border-amber-500/40 hover:bg-white dark:hover:bg-white/[0.04] transition-all duration-300 shadow-md dark:shadow-xl flex flex-col justify-between group"
             >
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 font-medium">
                     {domain.tag}
                   </span>
-                  <span className="text-xs font-mono text-gray-500">0{index + 1}</span>
+                  <span className="text-xs font-mono text-slate-400 dark:text-gray-500">0{index + 1}</span>
                 </div>
 
-                <h3 className="text-2xl font-serif font-medium text-white group-hover:text-amber-400 transition-colors">
+                <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                   {domain.title}
                 </h3>
 
-                <p className="text-xs font-mono text-cyan-400 tracking-wide">
+                <p className="text-xs font-mono text-cyan-700 dark:text-cyan-400 tracking-wide font-medium">
                   {domain.badge}
                 </p>
 
-                <p className="text-gray-300 text-sm font-light leading-relaxed">
+                <p className="text-slate-600 dark:text-gray-300 text-sm font-light leading-relaxed">
                   {domain.description}
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/5 space-y-2">
+              <div className="mt-8 pt-6 border-t border-slate-200/80 dark:border-white/5 space-y-2">
                 {domain.highlights.map((h, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs font-mono text-gray-400">
-                    <span className="text-amber-400">✦</span>
+                  <div key={i} className="flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-gray-400">
+                    <span className="text-amber-500 dark:text-amber-400">✦</span>
                     <span>{h}</span>
                   </div>
                 ))}
@@ -180,14 +180,14 @@ export default function Home() {
 
       {/* Featured Works */}
       <section className="mb-24">
-        <div className="flex justify-between items-end mb-12 border-b border-white/10 pb-6">
+        <div className="flex justify-between items-end mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400">Portfolio Highlights</span>
-            <h2 className="text-3xl sm:text-5xl font-serif font-medium text-white tracking-tight mt-1">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Portfolio Highlights</span>
+            <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
               Featured Projects.
             </h2>
           </div>
-          <Link href="/projects" className="hidden md:flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-400 hover:text-amber-400 transition-colors pb-2">
+          <Link href="/projects" className="hidden md:flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-600 hover:text-amber-600 dark:text-gray-400 dark:hover:text-amber-400 transition-colors pb-2">
             View All 20 Projects <FaArrowRight />
           </Link>
         </div>
@@ -200,24 +200,24 @@ export default function Home() {
       </section>
 
       {/* Professional Commitment Section */}
-      <section className="mb-24 py-14 px-8 sm:px-12 bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-3xl text-center shadow-2xl relative overflow-hidden">
+      <section className="mb-24 py-14 px-8 sm:px-12 bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-3xl text-center shadow-xl dark:shadow-2xl relative overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-cyan-500/5 to-purple-500/5 pointer-events-none" />
         <div className="max-w-3xl mx-auto space-y-6 relative z-10">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 inline-block">
+          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 inline-block font-medium">
             Engineering Principles
           </span>
-          <h2 className="text-3xl md:text-4xl font-serif font-medium text-white tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-serif font-medium text-slate-900 dark:text-white tracking-tight">
             Engineering scalable systems with maintainable, dependable code.
           </h2>
-          <p className="text-base text-gray-300 font-light leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base text-slate-600 dark:text-gray-300 font-light leading-relaxed max-w-2xl mx-auto">
             Committed to building production software with responsive user interfaces, robust data security, optimal Lighthouse performance, and clean API boundaries.
           </p>
           <div className="pt-4 flex flex-wrap justify-center gap-4">
-            <Link href="/about" className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 hover:border-amber-500/40 text-xs font-mono uppercase tracking-widest text-amber-400 hover:text-white rounded-full transition-all">
+            <Link href="/about" className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10 hover:border-amber-500/40 text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 hover:text-slate-900 dark:hover:text-white rounded-full transition-all shadow-sm">
               <span>Read Full Background</span>
               <FaArrowRight />
             </Link>
-            <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-black text-xs font-mono uppercase font-bold tracking-widest rounded-full hover:bg-amber-400 transition-all">
+            <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-black text-xs font-mono uppercase font-bold tracking-widest rounded-full hover:bg-amber-400 transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)]">
               <span>Initiate Project</span>
               <FaArrowRight />
             </Link>

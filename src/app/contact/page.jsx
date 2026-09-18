@@ -65,16 +65,16 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-12 min-h-screen relative text-white animate-fadeIn">
+    <section className="py-12 min-h-screen relative text-slate-900 dark:text-white animate-fadeIn transition-colors duration-300">
       <div className="container mx-auto px-4 relative z-10 max-w-5xl">
         {/* Header */}
         <div className="mb-16">
           <div>
-            <h2 className="text-5xl md:text-7xl font-serif font-medium text-white mb-4 tracking-tight">
+            <h2 className="text-5xl md:text-7xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight">
               Contact.
             </h2>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
-            <p className="text-gray-400 text-lg font-light max-w-xl">
+            <p className="text-slate-600 dark:text-gray-400 text-lg font-light max-w-xl">
               Have a project in mind or want to collaborate? Send a message and let&apos;s build together.
             </p>
           </div>
@@ -82,46 +82,46 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Direct Info Sidebar */}
-          <div className="lg:col-span-5 space-y-8 p-8 rounded-3xl bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col justify-between">
+          <div className="lg:col-span-5 space-y-8 p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl flex flex-col justify-between transition-colors duration-300">
             <div className="space-y-8">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400">Direct Contact</span>
-                <h3 className="text-2xl font-serif font-medium text-white mt-1 mb-4">Let&apos;s Talk</h3>
-                <div className="space-y-4 text-gray-300 font-light text-sm">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Direct Contact</span>
+                <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white mt-1 mb-4">Let&apos;s Talk</h3>
+                <div className="space-y-4 text-slate-600 dark:text-gray-300 font-light text-sm">
                   <div className="flex flex-col">
-                    <span className="uppercase font-mono text-[10px] text-gray-500 mb-1">Email Address</span>
+                    <span className="uppercase font-mono text-[10px] text-slate-500 dark:text-gray-500 mb-1">Email Address</span>
                     <div className="flex items-center gap-2">
-                      <a href="mailto:codesrahul96@gmail.com" className="hover:text-amber-400 transition-colors text-base font-medium">
+                      <a href="mailto:codesrahul96@gmail.com" className="hover:text-amber-600 dark:hover:text-amber-400 text-slate-900 dark:text-white transition-colors text-base font-medium">
                         codesrahul96@gmail.com
                       </a>
                       <button
                         onClick={handleCopyEmail}
-                        className="p-1.5 rounded-md bg-white/5 border border-white/10 text-gray-400 hover:text-amber-400 hover:border-amber-500/30 transition-all text-xs"
+                        className="p-1.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 transition-all text-xs"
                         title="Copy Email"
                       >
-                        {copiedEmail ? <FaCheck className="text-emerald-400" /> : <FaCopy />}
+                        {copiedEmail ? <FaCheck className="text-emerald-500 dark:text-emerald-400" /> : <FaCopy />}
                       </button>
                     </div>
                   </div>
 
                   <div className="flex flex-col">
-                    <span className="uppercase font-mono text-[10px] text-gray-500 mb-1">Phone / WhatsApp</span>
+                    <span className="uppercase font-mono text-[10px] text-slate-500 dark:text-gray-500 mb-1">Phone / WhatsApp</span>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <a href="tel:+918805159425" className="hover:text-amber-400 transition-colors text-base font-medium font-mono">
+                      <a href="tel:+918805159425" className="hover:text-amber-600 dark:hover:text-amber-400 text-slate-900 dark:text-white transition-colors text-base font-medium font-mono">
                         +91 88051 59425
                       </a>
                       <button
                         onClick={handleCopyPhone}
-                        className="p-1.5 rounded-md bg-white/5 border border-white/10 text-gray-400 hover:text-amber-400 hover:border-amber-500/30 transition-all text-xs"
+                        className="p-1.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 transition-all text-xs"
                         title="Copy Phone Number"
                       >
-                        {copiedPhone ? <FaCheck className="text-emerald-400" /> : <FaCopy />}
+                        {copiedPhone ? <FaCheck className="text-emerald-500 dark:text-emerald-400" /> : <FaCopy />}
                       </button>
                       <a
                         href="https://wa.me/918805159425"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition-all text-xs flex items-center gap-1.5 font-mono"
+                        className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-all text-xs flex items-center gap-1.5 font-mono font-medium"
                         title="Chat on WhatsApp"
                       >
                         <FaWhatsapp size={13} />
@@ -131,14 +131,14 @@ export default function Contact() {
                   </div>
 
                   <div className="flex flex-col">
-                    <span className="uppercase font-mono text-[10px] text-gray-500 mb-1">Current Location</span>
-                    <span className="text-base text-gray-200">Pune, Maharashtra, India</span>
+                    <span className="uppercase font-mono text-[10px] text-slate-500 dark:text-gray-500 mb-1">Current Location</span>
+                    <span className="text-base text-slate-800 dark:text-gray-200">Pune, Maharashtra, India</span>
                   </div>
                 </div>
               </div>
 
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-400 mb-2 block">Connect Online</span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-700 dark:text-cyan-400 font-medium mb-2 block">Connect Online</span>
                 <div className="flex gap-3 flex-wrap">
                   {[
                     { icon: <FaWhatsapp size={18} />, link: "https://wa.me/918805159425", label: "WhatsApp" },
@@ -152,7 +152,7 @@ export default function Contact() {
                       href={social.link} 
                       target={social.link.startsWith("http") ? "_blank" : undefined}
                       rel={social.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="p-3.5 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-amber-400 hover:border-amber-500/40 hover:scale-110 active:scale-95 transition-all"
+                      className="p-3.5 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/40 hover:scale-110 active:scale-95 transition-all shadow-sm"
                       title={social.label}
                     >
                       {social.icon}
@@ -162,17 +162,17 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs font-mono text-amber-300">
+            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs font-mono text-amber-700 dark:text-amber-300 font-medium">
               ⚡ Typically responding within 24 hours.
             </div>
           </div>
 
           {/* Contact Form Card */}
-          <div className="lg:col-span-7 p-8 md:p-10 rounded-3xl bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-2xl">
+          <div className="lg:col-span-7 p-8 md:p-10 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
             
             {/* Interactive Scope Chips */}
             <div className="mb-6">
-              <label className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2.5 block">
+              <label className="text-[10px] font-mono uppercase tracking-widest text-slate-500 dark:text-gray-400 mb-2.5 block">
                 Select Project Interest:
               </label>
               <div className="flex flex-wrap gap-2">
@@ -181,7 +181,7 @@ export default function Contact() {
                     type="button"
                     key={scope}
                     onClick={() => handleSelectScope(scope)}
-                    className="text-[10px] font-mono uppercase tracking-wider px-3.5 py-2 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:text-white hover:border-amber-500/50 hover:bg-amber-500/10 transition-all duration-200"
+                    className="text-[10px] font-mono uppercase tracking-wider px-3.5 py-2 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/5 text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:border-amber-500/50 hover:bg-amber-500/10 transition-all duration-200"
                   >
                     + {scope}
                   </button>
@@ -192,7 +192,7 @@ export default function Contact() {
             <form action={clientAction} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2">Your Name *</label>
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">Your Name *</label>
                   <input
                     type="text"
                     name="name"
@@ -200,11 +200,11 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="John Doe"
-                    className="bg-white/5 border border-white/10 focus:border-amber-500/50 p-3.5 text-xs font-mono text-white placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
+                    className="bg-slate-50 dark:bg-white/5 border border-slate-300/80 dark:border-white/10 focus:border-amber-500/60 dark:focus:border-amber-500/50 p-3.5 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2">Your Email *</label>
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">Your Email *</label>
                   <input
                     type="email"
                     name="email"
@@ -212,15 +212,15 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="john@example.com"
-                    className="bg-white/5 border border-white/10 focus:border-amber-500/50 p-3.5 text-xs font-mono text-white placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
+                    className="bg-slate-50 dark:bg-white/5 border border-slate-300/80 dark:border-white/10 focus:border-amber-500/60 dark:focus:border-amber-500/50 p-3.5 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2">
-                    Phone / WhatsApp <span className="text-gray-500 text-[9px] lowercase">(optional)</span>
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">
+                    Phone / WhatsApp <span className="text-slate-400 dark:text-gray-500 text-[9px] lowercase">(optional)</span>
                   </label>
                   <input
                     type="tel"
@@ -228,24 +228,24 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 98765 43210"
-                    className="bg-white/5 border border-white/10 focus:border-amber-500/50 p-3.5 text-xs font-mono text-white placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
+                    className="bg-slate-50 dark:bg-white/5 border border-slate-300/80 dark:border-white/10 focus:border-amber-500/60 dark:focus:border-amber-500/50 p-3.5 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2">Subject</label>
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">Subject</label>
                   <input
                     type="text"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="Project Inquiry / Opportunity"
-                    className="bg-white/5 border border-white/10 focus:border-amber-500/50 p-3.5 text-xs font-mono text-white placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
+                    className="bg-slate-50 dark:bg-white/5 border border-slate-300/80 dark:border-white/10 focus:border-amber-500/60 dark:focus:border-amber-500/50 p-3.5 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col">
-                <label className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2">Your Message *</label>
+                <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">Your Message *</label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -253,7 +253,7 @@ export default function Contact() {
                   required
                   rows="5"
                   placeholder="Tell me about your project or idea..."
-                  className="bg-white/5 border border-white/10 focus:border-amber-500/50 p-3.5 text-xs font-mono text-white placeholder-gray-600 outline-none transition-all resize-none rounded-xl backdrop-blur-md"
+                  className="bg-slate-50 dark:bg-white/5 border border-slate-300/80 dark:border-white/10 focus:border-amber-500/60 dark:focus:border-amber-500/50 p-3.5 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 outline-none transition-all resize-none rounded-xl backdrop-blur-md"
                 />
               </div>
 

@@ -200,14 +200,14 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
 
   return (
     <>
-      <div className="group relative rounded-3xl border border-white/15 bg-white/[0.02] backdrop-blur-2xl overflow-hidden transition-all duration-300 ease-out hover:border-amber-500/40 hover:bg-white/[0.04] hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(245,158,11,0.15)] flex flex-col justify-between h-full">
+      <div className="group relative rounded-3xl border border-slate-200 dark:border-white/15 bg-white/70 dark:bg-white/[0.02] backdrop-blur-2xl overflow-hidden transition-all duration-300 ease-out hover:border-amber-500/50 hover:bg-white/95 dark:hover:bg-white/[0.04] hover:-translate-y-1.5 shadow-md dark:shadow-none hover:shadow-[0_15px_35px_rgba(245,158,11,0.15)] flex flex-col justify-between h-full">
         {/* Top subtle glow accent bar on hover */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
 
         <div>
           {/* Image / Gallery Showcase Area with Dynamic Ambient Backdrop */}
           <div
-            className="relative overflow-hidden h-64 sm:h-72 border-b border-white/10 bg-gradient-to-b from-[#0e1424] via-[#090d19] to-[#04060d] select-none touch-pan-y"
+            className="relative overflow-hidden h-64 sm:h-72 border-b border-slate-200 dark:border-white/10 bg-gradient-to-b from-slate-100 via-slate-200/80 to-slate-100 dark:from-[#0e1424] dark:via-[#090d19] dark:to-[#04060d] select-none touch-pan-y"
             onTouchStart={onCardTouchStart}
             onTouchEnd={onCardTouchEnd}
           >
@@ -231,7 +231,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                 />
               )}
               {/* Radial gradient vignette overlay */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.75)_100%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.3)_100%)] dark:bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.75)_100%)]" />
             </div>
 
             {/* Sliding Screenshots Track with Hardware-Accelerated Smooth Transition */}
@@ -256,8 +256,8 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className={`object-contain transition-transform duration-500 ease-out pointer-events-none ${
                         hasMultipleImages
-                          ? "p-2 drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
-                          : "bg-black/30 group-hover:scale-105"
+                          ? "p-2 drop-shadow-[0_8px_20px_rgba(0,0,0,0.18)] dark:drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
+                          : "bg-black/10 dark:bg-black/30 group-hover:scale-105"
                       }`}
                       priority={idx === 0}
                     />
@@ -267,8 +267,8 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                       alt={`${project.title} - screenshot ${idx + 1}`}
                       className={`w-full h-full object-contain transition-transform duration-500 ease-out pointer-events-none ${
                         hasMultipleImages
-                          ? "p-2 drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
-                          : "bg-black/30 group-hover:scale-105"
+                          ? "p-2 drop-shadow-[0_8px_20px_rgba(0,0,0,0.18)] dark:drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)] group-hover:scale-[1.03]"
+                          : "bg-black/10 dark:bg-black/30 group-hover:scale-105"
                       }`}
                     />
                   )}
@@ -339,7 +339,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                       className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                         idx === currentIdx
                           ? "w-5 bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]"
-                          : "w-2 bg-white/40 hover:bg-white/70"
+                          : "w-2 bg-white/50 hover:bg-white/80"
                       }`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
@@ -397,11 +397,11 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
           {/* Project Details */}
           <div className="p-6 sm:p-7 space-y-4">
             <div className="flex justify-between items-start gap-2">
-              <h3 className="text-xl sm:text-2xl font-serif font-medium text-white group-hover:text-amber-400 transition-colors duration-200">
+              <h3 className="text-xl sm:text-2xl font-serif font-medium text-slate-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-200">
                 {project.title}
               </h3>
               <div className="flex flex-col items-end gap-1.5 shrink-0">
-                <span className="text-[10px] font-mono tracking-widest text-amber-400 uppercase border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 rounded-full backdrop-blur-md">
+                <span className="text-[10px] font-mono tracking-widest text-amber-700 dark:text-amber-400 uppercase border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 rounded-full backdrop-blur-md font-medium">
                   {project.category?.toLowerCase().includes("app")
                     ? "App"
                     : project.category === "Open Source"
@@ -409,13 +409,13 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                     : "Web"}
                 </span>
                 {project.contributed && (
-                  <span className="text-[9px] font-mono tracking-widest text-cyan-400 uppercase border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 rounded-full backdrop-blur-md">
+                  <span className="text-[9px] font-mono tracking-widest text-cyan-700 dark:text-cyan-400 uppercase border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 rounded-full backdrop-blur-md font-medium">
                     ✦ Contributed
                   </span>
                 )}
               </div>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed font-light line-clamp-3">
+            <p className="text-slate-600 dark:text-gray-300 text-sm leading-relaxed font-light line-clamp-3">
               {project.description}
             </p>
 
@@ -426,7 +426,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-gray-300 active:bg-amber-500 active:text-black transition-colors"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-gray-300 active:bg-amber-500 active:text-black transition-colors"
                 >
                   <FaGithub size={13} />
                   <span>Code</span>
@@ -437,7 +437,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-amber-400 active:bg-amber-500 active:text-black transition-colors"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-xs font-mono text-amber-600 dark:text-amber-400 active:bg-amber-500 active:text-black transition-colors"
                 >
                   <FaExternalLinkAlt size={11} />
                   <span>Demo</span>
@@ -451,7 +451,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                     e.stopPropagation();
                     setIsLightboxOpen(true);
                   }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-400 active:bg-cyan-400 active:text-black transition-colors ml-auto"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-600 dark:text-cyan-400 active:bg-cyan-400 active:text-black transition-colors ml-auto"
                 >
                   <FaExpand size={10} />
                   <span>Gallery</span>
@@ -462,15 +462,15 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
         </div>
 
         {/* Technologies Badges */}
-        <div className="p-6 sm:p-7 pt-0 border-t border-white/5 mt-4">
+        <div className="p-6 sm:p-7 pt-0 border-t border-slate-200/80 dark:border-white/5 mt-4">
           <div className="flex flex-wrap gap-2 pt-4">
             {project.technologies.map((tech, index) => (
               <span
                 key={index}
-                className="flex items-center px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-gray-300 bg-white/5 border border-white/10 rounded-md group-hover:border-amber-500/30 group-hover:text-white transition-all duration-200 backdrop-blur-md"
+                className="flex items-center px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-slate-700 dark:text-gray-300 bg-slate-100/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-md group-hover:border-amber-500/40 group-hover:text-slate-900 dark:group-hover:text-white transition-all duration-200 backdrop-blur-md"
               >
                 {techIcons[tech] && (
-                  <span className="mr-1.5 opacity-80 text-amber-400">
+                  <span className="mr-1.5 opacity-90 text-amber-600 dark:text-amber-400">
                     {techIcons[tech]}
                   </span>
                 )}
