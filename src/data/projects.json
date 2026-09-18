@@ -75,6 +75,26 @@
   },
   {
     "id": 5,
+    "title": "WhatsApp Automation Platform",
+    "description": "A production-grade WhatsApp communication engine and multi-agent customer support platform built on Next.js 16 (App Router), TypeScript, Prisma ORM, and Meta's official WhatsApp Cloud API. Features a real-time team inbox, automated 24/7 AI replies via Google Gemini with intelligent human agent takeover, broadcast marketing campaigns, contact CRM, and a headless developer REST API.",
+    "category": "Web Development",
+    "technologies": [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "TailwindCSS",
+      "Gemini AI",
+      "WhatsApp Cloud API",
+      "Redis",
+      "REST API"
+    ],
+    "github": "https://github.com/CodesRahul96/WhatsApp-Automation.git",
+    "demo": "https://github.com/CodesRahul96/WhatsApp-Automation.git",
+    "image": "whatsappautomation"
+  },
+  {
+    "id": 6,
     "title": "VideoX",
     "description": "A high-performance video streaming application supporting large file uploads and adaptive playback. Leverages MongoDB GridFS for efficient media storage and retrieval.",
     "category": "Web Development",
@@ -92,7 +112,7 @@
     "image": "videox"
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "ExclusiveTV",
     "description": "A premium Android application for seamless live TV streaming. Features a custom video player, D-Pad navigation support for Android TV, and real-time channel updates. Designed for a high-end viewing experience.",
     "category": "Android App",
@@ -108,7 +128,7 @@
     "image": "exclusivetv"
   },
   {
-    "id": 7,
+    "id": 8,
     "title": "StreamPlus",
     "description": "A native Android streaming app built with Jetpack Compose and Kotlin. Features a Netflix-style content feed with horizontal rows, Firebase-backed authentication with Crashlytics reporting, Hilt dependency injection, and a fully dark OLED-optimized UI. Targets Android API 24–34.",
     "category": "Android App",
@@ -125,7 +145,7 @@
     "image": "streamplus"
   },
   {
-    "id": 8,
+    "id": 9,
     "title": "PlayNox Player",
     "description": "A high-performance native Android video player powered by the MPV/libmpv media engine with hardware acceleration. Features Material Design 3 with Material You dynamic colors, AMOLED dark mode, edge swipe gestures for brightness & volume, subtitle support, real-time video enhancement (brightness, contrast, saturation, gamma), and multilingual support. Targets Android API 26–36.",
     "category": "Android App",
@@ -142,7 +162,7 @@
     "image": "playnox"
   },
   {
-    "id": 9,
+    "id": 10,
     "title": "DesiDelights",
     "description": "Discover authentic Indian recipes. From spicy curries to sweet desserts, find the best traditional and modern Indian dishes. Features a rich search and filtering experience.",
     "category": "Web Development",
@@ -156,7 +176,7 @@
     "image": "desidelights"
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "GymWala",
     "description": "A modern fitness companion app offering workout guides and health tracking. Features a sleek, high-contrast UI designed for motivation and clarity.",
     "category": "Frontend",
@@ -170,7 +190,7 @@
     "image": "gymwala"
   },
   {
-    "id": 11,
+    "id": 12,
     "title": "Live TV",
     "description": "A web-based TV streaming interface aggregating free-to-air channels. Features a custom video player implementation and an approachable channel guide UI.",
     "category": "Frontend",
@@ -182,21 +202,6 @@
     "github": "https://github.com/CodesRahul96/Live-TV.git",
     "demo": "https://free-live-tv.vercel.app/",
     "image": "freelivetv"
-  },
-  {
-    "id": 12,
-    "title": "Playlist Downloader",
-    "description": "A web tool for managing and downloading M3U playlist files. Enables users to parse, preview, and export playlists for use across media players and IPTV applications.",
-    "category": "Frontend",
-    "technologies": [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "TailwindCSS"
-    ],
-    "github": "https://github.com/CodesRahul96",
-    "demo": "https://playlist.indevs.in",
-    "image": "playlist"
   },
   {
     "id": 13,
@@ -214,21 +219,6 @@
   },
   {
     "id": 14,
-    "title": "Advanced ToDoList",
-    "description": "A modern, responsive ToDoList application built with React, Node.js, and Firebase. Features real-time data synchronization, drag-and-drop organization, and a clean, intuitive interface.",
-    "category": "Frontend",
-    "technologies": [
-      "React",
-      "Node.js",
-      "Firebase",
-      "TailwindCSS"
-    ],
-    "github": "https://github.com/CodesRahul96",
-    "demo": "https://todolist.indevs.in",
-    "image": "todolist"
-  },
-  {
-    "id": 15,
     "title": "OmenControl for Linux",
     "description": "Open-source GTK4 Linux control center for HP Omen & Victus laptops. Replaces the Windows OMEN Gaming Hub with native fan control (15-sample hysteresis), zero-overhead RGB keyboard lighting, GPU MUX switching (Hybrid/Discrete/Integrated), WMI hardware power profiles, and real-time CPU/GPU telemetry dashboards.",
     "category": "Open Source",
@@ -246,7 +236,7 @@
     "contributed": true
   },
   {
-    "id": 16,
+    "id": 15,
     "title": "Portfolio Website",
     "description": "This very website! A showcase of modern frontend techniques including glassmorphism, particle animations, lazy loading, and a fully responsive layout built with Next.js.",
     "category": "Frontend",

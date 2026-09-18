@@ -25,8 +25,12 @@ import {
   SiNextdotjs,
   SiTypescript,
   SiPwa,
+  SiPrisma,
+  SiPostgresql,
+  SiRedis,
+  SiGooglegemini,
 } from "react-icons/si";
-import { FaAndroid } from "react-icons/fa";
+import { FaAndroid, FaWhatsapp } from "react-icons/fa";
 import { VscJson } from "react-icons/vsc";
 import * as projectImages from "../assets/projects";
 
@@ -41,6 +45,7 @@ const techIcons = {
   Express: <SiExpress />,
   "Socket.io": <SiSocketdotio />,
   "API Integration": <FaExternalLinkAlt />,
+  "REST API": <FaExternalLinkAlt />,
   Axios: <SiAxios />,
   Wordpress: <SiWordpress />,
   JWT: <VscJson />,
@@ -49,6 +54,13 @@ const techIcons = {
   Firebase: <SiFirebase />,
   Android: <FaAndroid />,
   PWA: <SiPwa />,
+  Prisma: <SiPrisma />,
+  PostgreSQL: <SiPostgresql />,
+  Redis: <SiRedis />,
+  "Gemini AI": <SiGooglegemini />,
+  "Google Gemini": <SiGooglegemini />,
+  "WhatsApp Cloud API": <FaWhatsapp />,
+  WhatsApp: <FaWhatsapp />,
 };
 
 const ProjectCard = React.memo(function ProjectCard({ project }) {

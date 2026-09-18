@@ -5,11 +5,9 @@ import gymwala from "./gymwala.png";
 import freelivetv from "./freelivetv.png";
 const livetv = freelivetv;
 import omencontrol from "./omencontrol.png";
-import playlist from "./playlist.png";
 import portfolio from "./portfolio.png";
 import taskflow from "./taskflow.png";
 import taskmanager from "./taskmanager.png";
-import todolist from "./todolist.png";
 import trentshopnow from "./trentshopnow.png";
 import udemywala from "./udemywala.png";
 import videox from "./videox.png";
@@ -39,6 +37,10 @@ import playnox2 from "./playnox/playnox-02.jpg";
 import playnox3 from "./playnox/playnox-03.jpg";
 import playnox4 from "./playnox/playnox-04.jpg";
 
+// WhatsApp Automation Screenshots
+import whatsappAutomation1 from "./whatsapp_automation/whatsapp-automation-01.png";
+import whatsappAutomation2 from "./whatsapp_automation/whatsapp-automation-02.png";
+
 const exclusivetv = [
   exclusivetv1,
   exclusivetv2,
@@ -67,6 +69,13 @@ const playnox = [
   playnox4,
 ];
 
+const whatsappautomation = [
+  whatsappAutomation1,
+  whatsappAutomation2,
+];
+
+const whatsapp_automation = whatsappautomation;
+
 export {
   blogsify,
   comingsoon,
@@ -75,18 +84,18 @@ export {
   gymwala,
   livetv,
   omencontrol,
-  playlist,
   playnox,
   portfolio,
   taskflow,
   taskmanager,
-  todolist,
   trentshopnow,
   udemywala,
   videox,
   // Multi-image collections
   exclusivetv,
   streamplus,
+  whatsappautomation,
+  whatsapp_automation,
   // Individual screenshots
   exclusivetv1,
   exclusivetv2,
@@ -107,4 +116,8 @@ export {
   playnox2,
   playnox3,
   playnox4,
+  whatsappAutomation1,
+  whatsappAutomation2,
+  whatsappAutomation1 as whatsappautomation1,
+  whatsappAutomation2 as whatsappautomation2,
 };
