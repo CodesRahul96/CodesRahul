@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaEnvelope, FaGithub, FaLinkedin, FaCopy, FaCheck, FaArrowRight } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaWhatsapp, FaPhoneAlt, FaCopy, FaCheck, FaArrowRight } from "react-icons/fa";
 import { toast } from "sonner";
 import { sendEmail } from "../../actions/sendEmail";
 
@@ -13,9 +13,10 @@ const projectScopes = [
 ];
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,6 +38,13 @@ export default function Contact() {
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText("+918805159425");
+    setCopiedPhone(true);
+    toast.success("Phone number copied to clipboard!");
+    setTimeout(() => setCopiedPhone(false), 2000);
+  };
+
   const clientAction = async (formData) => {
     if (!formData.get("name") || !formData.get("email") || !formData.get("message")) {
       toast.error("Please fill in all required fields.");
@@ -52,7 +60,7 @@ export default function Contact() {
       toast.error(result.error);
     } else {
       toast.success("Message sent successfully! I will get back to you soon.");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     }
   };
 
@@ -95,6 +103,33 @@ export default function Contact() {
                       </button>
                     </div>
                   </div>
+
+                  <div className="flex flex-col">
+                    <span className="uppercase font-mono text-[10px] text-gray-500 mb-1">Phone / WhatsApp</span>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <a href="tel:+918805159425" className="hover:text-amber-400 transition-colors text-base font-medium font-mono">
+                        +91 88051 59425
+                      </a>
+                      <button
+                        onClick={handleCopyPhone}
+                        className="p-1.5 rounded-md bg-white/5 border border-white/10 text-gray-400 hover:text-amber-400 hover:border-amber-500/30 transition-all text-xs"
+                        title="Copy Phone Number"
+                      >
+                        {copiedPhone ? <FaCheck className="text-emerald-400" /> : <FaCopy />}
+                      </button>
+                      <a
+                        href="https://wa.me/918805159425"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 transition-all text-xs flex items-center gap-1.5 font-mono"
+                        title="Chat on WhatsApp"
+                      >
+                        <FaWhatsapp size={13} />
+                        <span>WhatsApp</span>
+                      </a>
+                    </div>
+                  </div>
+
                   <div className="flex flex-col">
                     <span className="uppercase font-mono text-[10px] text-gray-500 mb-1">Current Location</span>
                     <span className="text-base text-gray-200">Pune, Maharashtra, India</span>
@@ -104,8 +139,10 @@ export default function Contact() {
 
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-400 mb-2 block">Connect Online</span>
-                <div className="flex gap-4">
+                <div className="flex gap-3 flex-wrap">
                   {[
+                    { icon: <FaWhatsapp size={18} />, link: "https://wa.me/918805159425", label: "WhatsApp" },
+                    { icon: <FaPhoneAlt size={16} />, link: "tel:+918805159425", label: "Call" },
                     { icon: <FaGithub size={18} />, link: "https://github.com/codesrahul96", label: "GitHub" },
                     { icon: <FaLinkedin size={18} />, link: "https://linkedin.com/in/codesrahul", label: "LinkedIn" },
                     { icon: <FaEnvelope size={18} />, link: "mailto:codesrahul96@gmail.com", label: "Email" },
@@ -113,8 +150,8 @@ export default function Contact() {
                     <a 
                       key={idx} 
                       href={social.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                      target={social.link.startsWith("http") ? "_blank" : undefined}
+                      rel={social.link.startsWith("http") ? "noopener noreferrer" : undefined}
                       className="p-3.5 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-amber-400 hover:border-amber-500/40 hover:scale-110 active:scale-95 transition-all"
                       title={social.label}
                     >
@@ -180,16 +217,31 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="flex flex-col">
-                <label className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2">Subject</label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="Project Inquiry / Opportunity"
-                  className="bg-white/5 border border-white/10 focus:border-amber-500/50 p-3.5 text-xs font-mono text-white placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex flex-col">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2">
+                    Phone / WhatsApp <span className="text-gray-500 text-[9px] lowercase">(optional)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+91 98765 43210"
+                    className="bg-white/5 border border-white/10 focus:border-amber-500/50 p-3.5 text-xs font-mono text-white placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-2">Subject</label>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="Project Inquiry / Opportunity"
+                    className="bg-white/5 border border-white/10 focus:border-amber-500/50 p-3.5 text-xs font-mono text-white placeholder-gray-600 outline-none transition-all rounded-xl backdrop-blur-md"
+                  />
+                </div>
               </div>
 
               <div className="flex flex-col">

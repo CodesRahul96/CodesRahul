@@ -8,6 +8,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const sendEmail = async (formData) => {
   const name = formData.get("name");
   const email = formData.get("email");
+  const phone = formData.get("phone");
   const subject = formData.get("subject");
   const message = formData.get("message");
 
@@ -30,7 +31,7 @@ export const sendEmail = async (formData) => {
       to: "codesrahul96@gmail.com",
       subject: `New Portfolio Message: ${subject || "No Subject"}`,
       reply_to: email,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\n\nMessage:\n${message}`,
     });
 
     return { success: true };
