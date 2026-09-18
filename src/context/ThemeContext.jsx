@@ -6,77 +6,107 @@ const ThemeContext = createContext({
   theme: "dark",
   toggleTheme: () => {},
   setTheme: () => {},
+  resetToSystem: () => {},
+  isUserForced: false,
   mounted: false,
 });
 
+function applyTheme(isDark) {
+  if (isDark) {
+    document.documentElement.classList.add("dark");
+    document.documentElement.classList.remove("light");
+    document.documentElement.style.colorScheme = "dark";
+  } else {
+    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.add("light");
+    document.documentElement.style.colorScheme = "light";
+  }
+}
+
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setThemeState] = useState("dark");
+  // true = user manually chose a theme (localStorage has a value)
+  const [isUserForced, setIsUserForced] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Read saved preference; fall back to system prefers-color-scheme
     const saved = localStorage.getItem("theme");
-    let current;
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+
     if (saved) {
-      current = saved === "dark" ? "dark" : "light";
+      // User previously forced a theme — respect it
+      const isDark = saved === "dark";
+      setThemeState(isDark ? "dark" : "light");
+      setIsUserForced(true);
+      applyTheme(isDark);
     } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      current = prefersDark ? "dark" : "light";
+      // No override — follow system
+      const isDark = mq.matches;
+      setThemeState(isDark ? "dark" : "light");
+      setIsUserForced(false);
+      applyTheme(isDark);
     }
-    setTheme(current);
-    if (current === "dark") {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-      document.documentElement.style.colorScheme = "dark";
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
-      document.documentElement.style.colorScheme = "light";
-    }
+
     setMounted(true);
+
+    // Live-sync with device theme — only when user hasn't forced a choice
+    const handleSystemChange = (e) => {
+      const hasSaved = localStorage.getItem("theme");
+      if (!hasSaved) {
+        const isDark = e.matches;
+        setThemeState(isDark ? "dark" : "light");
+        applyTheme(isDark);
+      }
+    };
+
+    mq.addEventListener("change", handleSystemChange);
+    return () => mq.removeEventListener("change", handleSystemChange);
   }, []);
 
+  // Manual toggle — saves preference to localStorage (user-forced)
   const toggleTheme = () => {
-    setTheme((prevTheme) => {
-      const nextTheme = prevTheme === "dark" ? "light" : "dark";
+    setThemeState((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
       try {
-        localStorage.setItem("theme", nextTheme);
-        if (nextTheme === "dark") {
-          document.documentElement.classList.add("dark");
-          document.documentElement.classList.remove("light");
-          document.documentElement.style.colorScheme = "dark";
-        } else {
-          document.documentElement.classList.remove("dark");
-          document.documentElement.classList.add("light");
-          document.documentElement.style.colorScheme = "light";
-        }
+        localStorage.setItem("theme", next);
+        setIsUserForced(true);
+        applyTheme(next === "dark");
       } catch (err) {
         console.error("Theme toggle error:", err);
       }
-      return nextTheme;
+      return next;
     });
   };
 
+  // Direct set — also user-forced
   const changeTheme = (newTheme) => {
-    setTheme(newTheme);
     try {
       localStorage.setItem("theme", newTheme);
-      if (newTheme === "dark") {
-        document.documentElement.classList.add("dark");
-        document.documentElement.classList.remove("light");
-        document.documentElement.style.colorScheme = "dark";
-      } else {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.classList.add("light");
-        document.documentElement.style.colorScheme = "light";
-      }
+      setIsUserForced(true);
+      applyTheme(newTheme === "dark");
     } catch (err) {
       console.error("Theme change error:", err);
+    }
+    setThemeState(newTheme);
+  };
+
+  // Reset to system preference — clears user override
+  const resetToSystem = () => {
+    try {
+      localStorage.removeItem("theme");
+      setIsUserForced(false);
+      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      applyTheme(isDark);
+      setThemeState(isDark ? "dark" : "light");
+    } catch (err) {
+      console.error("Reset to system error:", err);
     }
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme: changeTheme, mounted }}>
+    <ThemeContext.Provider
+      value={{ theme, toggleTheme, setTheme: changeTheme, resetToSystem, isUserForced, mounted }}
+    >
       {children}
     </ThemeContext.Provider>
   );
