@@ -14,10 +14,15 @@ export function ThemeProvider({ children }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Read saved preference or document class
+    // Read saved preference; fall back to system prefers-color-scheme
     const saved = localStorage.getItem("theme");
-    const isDark = saved ? saved === "dark" : document.documentElement.classList.contains("dark");
-    const current = isDark ? "dark" : "light";
+    let current;
+    if (saved) {
+      current = saved === "dark" ? "dark" : "light";
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      current = prefersDark ? "dark" : "light";
+    }
     setTheme(current);
     if (current === "dark") {
       document.documentElement.classList.add("dark");

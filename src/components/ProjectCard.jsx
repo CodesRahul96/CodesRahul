@@ -205,17 +205,17 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none" />
 
         <div>
-          {/* Image / Gallery Showcase Area with Dynamic Ambient Backdrop & Frosted Glass Depth */}
+          {/* Image / Gallery Showcase — clean neutral stage */}
           <div
-            className="relative overflow-hidden h-64 sm:h-72 border-b border-slate-200/80 dark:border-white/10 bg-gradient-to-b from-slate-50/95 via-slate-100/75 to-slate-200/85 dark:from-[#0d1326]/95 dark:via-[#080c1b]/85 dark:to-[#04060f]/95 backdrop-blur-2xl select-none touch-pan-y"
+            className="relative overflow-hidden h-64 sm:h-72 border-b border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-[#0f111a] select-none touch-pan-y"
             onTouchStart={onCardTouchStart}
             onTouchEnd={onCardTouchEnd}
           >
-            {/* Tactile Micro-Grid / Dot Matrix Texture for Glass Material Feeling */}
-            <div className="absolute inset-0 bg-[radial-gradient(#64748b_1px,transparent_1px)] dark:bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:18px_18px] opacity-[0.14] dark:opacity-[0.08] pointer-events-none z-0" />
+            {/* Subtle inner-shadow vignette — frames screenshots cleanly */}
+            <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.06)] dark:shadow-[inset_0_0_50px_rgba(0,0,0,0.5)] pointer-events-none z-20 rounded-b-none" />
 
-            {/* Dynamic Ambient Colored Glow matching active screenshot */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50 dark:opacity-40 z-0">
+            {/* Dynamic ambient backdrop — very subtle, just enough for context */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 dark:opacity-30 z-0">
               {currentImage?.src ? (
                 <Image
                   src={currentImage}
@@ -233,18 +233,10 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                   aria-hidden="true"
                 />
               )}
-              {/* Radial gradient vignette overlay for depth & focus */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.2)_0%,rgba(0,0,0,0.12)_100%)] dark:bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.15)_0%,rgba(0,0,0,0.8)_100%)]" />
             </div>
 
-            {/* Specular Radial Glass Highlight from top center */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.7)_0%,transparent_65%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(56,189,248,0.12)_0%,transparent_70%)] pointer-events-none z-0" />
-
-            {/* Subtle Diagonal Glass Refraction Sheen on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.12] dark:via-white/[0.04] to-transparent pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity duration-500 z-0" />
-
-            {/* Top Glass Shine Line */}
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent pointer-events-none z-20" />
+            {/* Bottom fade — smooth transition into card body */}
+            <div className="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-slate-100 dark:from-[#0f111a] to-transparent pointer-events-none z-10" />
 
             {/* Sliding Screenshots Track with Hardware-Accelerated Smooth Transition */}
             <div
