@@ -181,7 +181,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
       </head>
-      <body className="bg-[#f8fafc] text-slate-900 dark:bg-[#050508] dark:text-gray-200 antialiased selection:bg-amber-500 selection:text-black relative transition-colors duration-300">
+      <body suppressHydrationWarning className="bg-[#f8fafc] text-slate-900 dark:bg-[#050508] dark:text-gray-200 antialiased selection:bg-amber-500 selection:text-black relative transition-colors duration-300">
         <ThemeProvider>
           <AppBackground />
           <div className="flex flex-col min-h-screen relative z-10">

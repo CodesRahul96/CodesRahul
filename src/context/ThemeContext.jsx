@@ -23,9 +23,21 @@ function applyTheme(isDark) {
   }
 }
 
+/**
+ * Read the theme the inline <head> script already applied to <html>.
+ * This runs on the first client render so React state matches the DOM exactly —
+ * eliminating all hydration mismatches in child components.
+ */
+function getInitialTheme() {
+  if (typeof window === "undefined") return "dark"; // SSR placeholder
+  // The inline script already set the correct class — read it directly
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
 export function ThemeProvider({ children }) {
-  const [theme, setThemeState] = useState("dark");
-  // true = user manually chose a theme (localStorage has a value)
+  // Initialise from the DOM (already corrected by the inline <head> script),
+  // so the first client render matches the visible page — no flash/mismatch.
+  const [theme, setThemeState] = useState(getInitialTheme);
   const [isUserForced, setIsUserForced] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -34,25 +46,18 @@ export function ThemeProvider({ children }) {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
     if (saved) {
-      // User previously forced a theme — respect it
-      const isDark = saved === "dark";
-      setThemeState(isDark ? "dark" : "light");
       setIsUserForced(true);
-      applyTheme(isDark);
+      // State already correct from getInitialTheme; just mark forced
     } else {
-      // No override — follow system
-      const isDark = mq.matches;
-      setThemeState(isDark ? "dark" : "light");
       setIsUserForced(false);
-      applyTheme(isDark);
+      // Keep listening for device theme changes (only when no user override)
     }
 
     setMounted(true);
 
-    // Live-sync with device theme — only when user hasn't forced a choice
+    // Live-sync with device theme — only when the user has NOT forced a choice
     const handleSystemChange = (e) => {
-      const hasSaved = localStorage.getItem("theme");
-      if (!hasSaved) {
+      if (!localStorage.getItem("theme")) {
         const isDark = e.matches;
         setThemeState(isDark ? "dark" : "light");
         applyTheme(isDark);
@@ -63,7 +68,7 @@ export function ThemeProvider({ children }) {
     return () => mq.removeEventListener("change", handleSystemChange);
   }, []);
 
-  // Manual toggle — saves preference to localStorage (user-forced)
+  // Manual toggle — user-forced, saves to localStorage
   const toggleTheme = () => {
     setThemeState((prev) => {
       const next = prev === "dark" ? "light" : "dark";
@@ -90,7 +95,7 @@ export function ThemeProvider({ children }) {
     setThemeState(newTheme);
   };
 
-  // Reset to system preference — clears user override
+  // Clear user override and re-sync with system preference
   const resetToSystem = () => {
     try {
       localStorage.removeItem("theme");
