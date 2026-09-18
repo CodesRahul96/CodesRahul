@@ -69,8 +69,8 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* Desktop Floating Pill Nav — black & orange */}
-          <ul className="hidden md:flex space-x-1 items-center bg-slate-950 dark:bg-slate-950 border border-white/10 px-3 py-1.5 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-colors duration-300">
+          {/* Desktop Floating Pill Nav */}
+          <ul className="hidden md:flex space-x-1 items-center bg-white/90 dark:bg-slate-950 backdrop-blur-xl border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-colors duration-300">
             {NAV_LINKS.map((item) => {
               const isActive = pathname === item.path;
               return (
@@ -81,7 +81,7 @@ const Navbar = () => {
                     className={`relative z-10 text-[11px] font-mono uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 block ${
                       isActive
                         ? "text-black font-bold bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.5)]"
-                        : "text-gray-400 hover:text-white hover:bg-white/10"
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/10"
                     }`}
                   >
                     {item.name}
