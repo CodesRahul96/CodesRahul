@@ -5,12 +5,12 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 
 export default function ThemeToggle({ className = "", compact = false }) {
-  const { theme, toggleTheme } = useTheme();
-  const isDark = theme === "dark";
+  const { toggleTheme, theme } = useTheme();
 
   return (
     <button
       type="button"
+      suppressHydrationWarning
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -30,31 +30,31 @@ export default function ThemeToggle({ className = "", compact = false }) {
         cursor-pointer z-20
         ${className}
       `}
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      title={isDark ? "Switch to Light Theme" : "Switch to Dark Theme"}
+      aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+      title={theme === "dark" ? "Switch to Light Theme" : "Switch to Dark Theme"}
     >
       <div className="relative w-4 h-4 flex items-center justify-center pointer-events-none">
-        {/* Sun Icon for Light Mode */}
+        {/*
+          Sun — visible in light mode, hidden in dark mode.
+          Uses pure Tailwind dark: classes so server + client render identical JSX.
+          No JS-conditional className → zero hydration mismatch.
+        */}
         <FaSun
-          className={`
+          className="
             text-[14px] text-amber-500 transition-all duration-300 absolute
-            ${
-              isDark
-                ? "rotate-90 scale-0 opacity-0"
-                : "rotate-0 scale-100 opacity-100"
-            }
-          `}
+            rotate-0 scale-100 opacity-100
+            dark:rotate-90 dark:scale-0 dark:opacity-0
+          "
         />
-        {/* Moon Icon for Dark Mode */}
+        {/*
+          Moon — hidden in light mode, visible in dark mode.
+        */}
         <FaMoon
-          className={`
+          className="
             text-[13px] text-amber-400 transition-all duration-300 absolute
-            ${
-              isDark
-                ? "rotate-0 scale-100 opacity-100"
-                : "-rotate-90 scale-0 opacity-0"
-            }
-          `}
+            -rotate-90 scale-0 opacity-0
+            dark:rotate-0 dark:scale-100 dark:opacity-100
+          "
         />
       </div>
     </button>
