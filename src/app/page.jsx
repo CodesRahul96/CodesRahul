@@ -60,16 +60,16 @@ export default function Home() {
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-mono tracking-wider backdrop-blur-md font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
-              <span>Available for Full-time Roles & Contracts • Pune / Remote</span>
+              <span>Available for Freelance & Full-time Roles • Pune, Maharashtra & Remote</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-slate-900 dark:text-white leading-[1.05]">
-              Full Stack & Android <br className="hidden sm:inline" />
-              <span className="text-amber-500 dark:text-amber-400 italic font-normal">Software Engineer.</span>
+              Full Stack, Freelance & <br className="hidden sm:inline" />
+              <span className="text-amber-500 dark:text-amber-400 italic font-normal">Android Developer.</span>
             </h1>
             
             <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed font-light">
-              Hi, I&apos;m <span className="text-slate-900 dark:text-white font-medium">Rahul Misal</span>. I engineer high-performance web systems using the <span className="text-amber-600 dark:text-amber-400 font-medium">MERN stack</span> (MongoDB, Express, React, Node.js), <span className="text-slate-900 dark:text-white font-medium">Next.js</span>, and native <span className="text-cyan-600 dark:text-cyan-400 font-medium">Android applications</span> with Kotlin.
+              Hi, I&apos;m <span className="text-slate-900 dark:text-white font-medium">Rahul Misal</span> — a professional <span className="text-amber-600 dark:text-amber-400 font-medium">Full Stack & Freelance Web Developer</span> and <span className="text-cyan-600 dark:text-cyan-400 font-medium">Native Android Engineer</span> based in Pune, Maharashtra, India. I engineer high-performance MERN stack web applications, Next.js platforms, and Kotlin mobile apps.
             </p>
             
             {/* Action CTAs */}
@@ -221,7 +221,7 @@ export default function Home() {
             Engineering scalable systems with maintainable, dependable code.
           </h2>
           <p className="text-base text-slate-600 dark:text-gray-300 font-light leading-relaxed max-w-2xl mx-auto">
-            Committed to building production software with responsive user interfaces, robust data security, optimal Lighthouse performance, and clean API boundaries.
+            Committed to building production software with responsive user interfaces, robust data security, optimal Lighthouse performance, and clean API boundaries. Based in Pune, Maharashtra and delivering worldwide.
           </p>
           <div className="pt-4 flex flex-wrap justify-center gap-4">
             <Link href="/about" className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10 hover:border-amber-500/40 text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 hover:text-slate-900 dark:hover:text-white rounded-full transition-all shadow-sm">
@@ -233,6 +233,53 @@ export default function Home() {
               <FaArrowRight />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* High-Intent SEO FAQ Section (Google Rich Snippets & SGE Target) */}
+      <section className="mb-24">
+        <div className="mb-10 border-b border-slate-200 dark:border-white/10 pb-6">
+          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Frequently Asked Questions</span>
+          <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
+            Frequently Asked Queries.
+          </h2>
+          <p className="text-slate-600 dark:text-gray-400 text-sm md:text-base font-light mt-2 max-w-2xl">
+            Everything you need to know about working with Rahul Misal on Full Stack web, Android app development, and freelance contracts in Pune, Maharashtra, and globally.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            {
+              q: "Looking for a freelance Full Stack or Android developer in Pune?",
+              a: "Rahul Misal (CodesRahul) is a Pune-based Full Stack and Android Software Engineer with 3+ years of experience delivering MERN stack web applications, Next.js portals, and native Kotlin mobile apps. Available for on-site meetings in Pune and remote engagements across Maharashtra, India, and worldwide."
+            },
+            {
+              q: "What technologies and stacks do you specialize in?",
+              a: "My core stack includes MongoDB, Express.js, React.js, Node.js (MERN), Next.js 15, TypeScript, Tailwind CSS, and native Android (Kotlin, Jetpack Compose, ExoPlayer/libmpv), backed by enterprise HTTP security (HSTS, CSP) and Technical SEO."
+            },
+            {
+              q: "How does the freelance project workflow and timeline work?",
+              a: "Projects begin with architectural scoping, wireframing, and milestone planning, followed by rapid sprint development with staging previews. Code is delivered with 100% tests, comprehensive documentation, and zero-downtime deployment pipelines."
+            },
+            {
+              q: "How can I hire Rahul Misal for my project or company?",
+              a: "Reach out directly via the Contact page, email codesrahul96@gmail.com, or message on WhatsApp at +91 88051 59425. I am open to full-time positions, freelance contracts, and technical consulting."
+            }
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 hover:border-amber-500/40 transition-all duration-300 shadow-md dark:shadow-xl space-y-3"
+            >
+              <h3 className="text-lg font-serif font-medium text-slate-900 dark:text-white flex items-start gap-3">
+                <span className="text-amber-500 text-sm font-mono mt-0.5">0{idx + 1}.</span>
+                <span>{item.q}</span>
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-gray-300 font-light leading-relaxed pl-7">
+                {item.a}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 

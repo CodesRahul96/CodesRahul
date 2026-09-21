@@ -6,8 +6,8 @@ import rahulAbout3D from '../../assets/rahul_about_3d.png';
 import InteractivePhotoCard from '../../components/InteractivePhotoCard';
 
 export const metadata = {
-  title: 'About',
-  description: 'Learn about Rahul Misal — Full Stack Software Engineer from Pune, India with 3+ years of experience building MERN stack web applications, mobile apps, and intuitive UIs.',
+  title: 'About Rahul Misal — Full Stack Developer & Freelancer in Pune, India',
+  description: 'Learn about Rahul Misal (CodesRahul) — Leading Full Stack Software Engineer, Freelancer & Native Android Developer based in Pune, Maharashtra, India. 3+ years engineering MERN platforms, Next.js, and Kotlin mobile apps.',
 };
 
 

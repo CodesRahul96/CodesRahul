@@ -75,7 +75,7 @@ export default function Contact() {
             </h2>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
             <p className="text-slate-600 dark:text-gray-400 text-lg font-light max-w-xl">
-              Have a project in mind or want to collaborate? Send a message and let&apos;s build together.
+              Looking for a freelance Full Stack or Android developer in Pune, Maharashtra, or remotely? Send a message and let&apos;s engineer your next digital product.
             </p>
           </div>
         </div>
