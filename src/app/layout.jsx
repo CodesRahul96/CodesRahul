@@ -208,6 +208,13 @@ const jsonLdSchema = {
         {
           '@type': 'ListItem',
           position: 3,
+          name: 'UdemyWala',
+          description: 'High-performance course & coupon platform engineered for search dominance with Schema.org microdata, dynamic sitemaps, HSTS/CSP security, and SWR caching.',
+          url: 'https://udemywala.vercel.app/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
           name: 'Blogsify',
           description: 'MERN stack blogging platform with JWT authentication, rich text editing, and real-time community comments.',
           url: 'https://blogsify.vercel.app/',

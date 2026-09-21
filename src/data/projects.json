@@ -59,12 +59,13 @@
   {
     "id": 4,
     "title": "UdemyWala",
-    "description": "A high-performance, 100% free Udemy course & coupon aggregator web application built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. Features real-time search autocomplete, category filtering, one-click coupon copying, client-side bookmarks, ISR caching, and zero-flicker dark/light mode.",
+    "description": "A high-performance Udemy course & coupon platform engineered for search dominance (#1 Google ranking with Google AI Overview citations). Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. Features complete Schema.org microdata (Course, Organization, FAQPage), dynamic sitemaps, enterprise HTTP security (HSTS Preload, strict CSP, Clickjacking protection), and an automated Stale-While-Revalidate (SWR) caching pipeline with 100% uptime.",
     "category": "Web Development",
     "technologies": [
       "Next.js",
       "TypeScript",
       "React",
+      "Technical SEO",
       "TailwindCSS",
       "API Integration",
       "PWA"
