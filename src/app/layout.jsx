@@ -210,7 +210,7 @@ const jsonLdSchema = {
           position: 3,
           name: 'UdemyWala',
           description: 'High-performance course & coupon platform engineered for search dominance with Schema.org microdata, dynamic sitemaps, HSTS/CSP security, and SWR caching.',
-          url: 'https://udemywala.vercel.app/',
+          url: 'https://udemywala.xyz/',
         },
         {
           '@type': 'ListItem',
