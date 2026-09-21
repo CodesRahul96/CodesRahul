@@ -1,6 +1,24 @@
 [
   {
     "id": 1,
+    "title": "UdemyWala",
+    "description": "A high-performance Udemy course & coupon platform engineered for search dominance (#1 Google ranking with Google AI Overview citations). Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. Features complete Schema.org microdata (Course, Organization, FAQPage), dynamic sitemaps, enterprise HTTP security (HSTS Preload, strict CSP, Clickjacking protection), and an automated Stale-While-Revalidate (SWR) caching pipeline with 100% uptime.",
+    "category": "Web Development",
+    "technologies": [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Technical SEO",
+      "TailwindCSS",
+      "API Integration",
+      "PWA"
+    ],
+    "github": "https://github.com/CodesRahul96/UdemyWala.git",
+    "demo": "https://udemywala.xyz/",
+    "image": "udemywala"
+  },
+  {
+    "id": 2,
     "title": "TaskFlow",
     "description": "An enterprise-grade productivity platform with Kanban boards, real-time collaboration via Socket.IO, JWT + Google OAuth authentication, drag-and-drop task management, and a hardened security architecture. Built with React (Vite), Node.js, Express, and MongoDB.",
     "category": "Web Development",
@@ -19,7 +37,7 @@
     "image": "taskflow"
   },
   {
-    "id": 2,
+    "id": 3,
     "title": "Blogsify",
     "description": "A feature-rich MERN stack blogging platform featuring secure JWT authentication, rich text editing, and real-time comment capabilities. Designed with a modular architecture for scalability.",
     "category": "Web Development",
@@ -38,7 +56,7 @@
     "image": "blogsify"
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "TrentShopNow",
     "description": "A comprehensive e-commerce solution with advanced product filtering, shopping cart functionality, and secure checkout. Built with optimal performance and user experience in mind.",
     "category": "Web Development",
@@ -55,24 +73,6 @@
     "github": "https://github.com/CodesRahul96/TrentShopNow.git",
     "demo": "https://trentshopnow.vercel.app/",
     "image": "trentshopnow"
-  },
-  {
-    "id": 4,
-    "title": "UdemyWala",
-    "description": "A high-performance Udemy course & coupon platform engineered for search dominance (#1 Google ranking with Google AI Overview citations). Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS. Features complete Schema.org microdata (Course, Organization, FAQPage), dynamic sitemaps, enterprise HTTP security (HSTS Preload, strict CSP, Clickjacking protection), and an automated Stale-While-Revalidate (SWR) caching pipeline with 100% uptime.",
-    "category": "Web Development",
-    "technologies": [
-      "Next.js",
-      "TypeScript",
-      "React",
-      "Technical SEO",
-      "TailwindCSS",
-      "API Integration",
-      "PWA"
-    ],
-    "github": "https://github.com/CodesRahul96/UdemyWala.git",
-    "demo": "https://udemywala.xyz/",
-    "image": "udemywala"
   },
   {
     "id": 5,

@@ -194,23 +194,23 @@ const jsonLdSchema = {
         {
           '@type': 'ListItem',
           position: 1,
+          name: 'UdemyWala',
+          description: 'High-performance course & coupon platform engineered for search dominance with Schema.org microdata, dynamic sitemaps, HSTS/CSP security, and SWR caching.',
+          url: 'https://udemywala.xyz/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
           name: 'TaskFlow',
           description: 'Enterprise productivity platform with Kanban boards, real-time collaboration via Socket.IO, JWT + Google OAuth, and hardened security architecture.',
           url: 'https://github.com/CodesRahul96/TaskFlow.git',
         },
         {
           '@type': 'ListItem',
-          position: 2,
+          position: 3,
           name: 'PlayNox Player',
           description: 'High-performance native Android video player powered by MPV/libmpv with hardware acceleration, Material You dynamic colors, and gesture controls.',
           url: 'https://github.com/CodesRahul96/PlayNox.git',
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'UdemyWala',
-          description: 'High-performance course & coupon platform engineered for search dominance with Schema.org microdata, dynamic sitemaps, HSTS/CSP security, and SWR caching.',
-          url: 'https://udemywala.xyz/',
         },
         {
           '@type': 'ListItem',

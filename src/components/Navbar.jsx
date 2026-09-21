@@ -48,8 +48,8 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "py-3 bg-white/80 dark:bg-transparent backdrop-blur-lg shadow-sm dark:shadow-none border-b border-slate-200/60 dark:border-transparent"
-            : "py-6"
+            ? "py-3 bg-white/75 dark:bg-[#050508]/80 backdrop-blur-md shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.5)] border-b border-slate-200/70 dark:border-white/10"
+            : "py-6 bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center w-full">
