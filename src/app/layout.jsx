@@ -87,6 +87,9 @@ export const metadata = {
       { rel: 'icon', url: '/logo.svg', type: 'image/svg+xml' },
     ],
   },
+  verification: {
+    google: 'jMdcUsLFgDXDPnCIoTOtCuX7FwhAEYZsMcrt16PdVvw',
+  },
 };
 
 const jsonLdSchema = {
