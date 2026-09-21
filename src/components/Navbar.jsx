@@ -48,9 +48,10 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "py-3 bg-white/75 dark:bg-[#050508]/80 backdrop-blur-md shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.5)] border-b border-slate-200/70 dark:border-white/10"
+            ? "py-3 bg-white/70 dark:bg-[#050508]/75 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-[#050508]/65 shadow-[0_8px_30px_rgb(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] border-b border-slate-200/80 dark:border-white/10"
             : "py-6 bg-transparent"
         }`}
+        style={scrolled ? { backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' } : {}}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center w-full">
           
@@ -70,7 +71,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Floating Pill Nav */}
-          <ul className="hidden md:flex space-x-1 items-center bg-white/90 dark:bg-slate-950 backdrop-blur-xl border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-colors duration-300">
+          <ul className="hidden md:flex space-x-1 items-center bg-white/80 dark:bg-slate-950/75 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 px-3 py-1.5 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-colors duration-300">
             {NAV_LINKS.map((item) => {
               const isActive = pathname === item.path;
               return (
