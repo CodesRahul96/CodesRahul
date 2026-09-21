@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Preloader from '../components/Preloader';
 import AppBackground from '../components/AppBackground';
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from '../context/ThemeContext';
 import ThemedToaster from '../components/ThemedToaster';
