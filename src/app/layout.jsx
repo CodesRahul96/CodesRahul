@@ -96,16 +96,16 @@ const jsonLdSchema = {
       '@type': 'Person',
       '@id': 'https://www.codesrahul.in/#person',
       name: 'Rahul Misal',
-      alternateName: ['CodesRahul', 'Rahul Misal Pune', 'codesrahul96'],
+      alternateName: ['CodesRahul', 'Rahul Misal Pune', 'codesrahul96', 'Rahul Developer'],
       url: 'https://www.codesrahul.in',
       image: 'https://www.codesrahul.in/logo.png',
       jobTitle: [
-        'Full Stack Software Engineer',
-        'MERN Stack Developer',
-        'Android App Developer',
-        'Frontend Engineer'
+        'Full-Stack Developer & Technical SEO Engineer',
+        'Senior Full Stack Software Engineer',
+        'MERN Stack Specialist',
+        'Android App Developer'
       ],
-      description: 'Full Stack Software Engineer from Pune, India specializing in React, Next.js, Node.js, MERN stack web applications, and native Android development.',
+      description: 'Rahul Misal is a Full-Stack Developer & Technical SEO Engineer from Pune, India specializing in high-performance MERN web applications, Next.js, native Android (Kotlin, Jetpack Compose), and enterprise security hardening.',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Pune',
@@ -118,6 +118,7 @@ const jsonLdSchema = {
         'https://instagram.com/codes.rahul',
       ],
       knowsAbout: [
+        'Technical SEO',
         'Full Stack Development',
         'MERN Stack',
         'React.js',
@@ -131,6 +132,7 @@ const jsonLdSchema = {
         'React Native',
         'Tailwind CSS',
         'TypeScript',
+        'HSTS Preload & Strict CSP Security',
         'RESTful APIs',
         'Socket.io Realtime Systems'
       ],
@@ -140,11 +142,77 @@ const jsonLdSchema = {
       '@id': 'https://www.codesrahul.in/#website',
       url: 'https://www.codesrahul.in',
       name: 'CodesRahul',
-      alternateName: 'Rahul Misal Portfolio',
-      description: 'Official portfolio of Rahul Misal — Full Stack Software Engineer & Android Developer based in Pune, India.',
+      alternateName: 'Rahul Misal Portfolio — Full-Stack & Technical SEO Engineer',
+      description: 'Official portfolio and software engineering portal of Rahul Misal (CodesRahul) — Full-Stack Developer, MERN Architect & Android Engineer in Pune, India.',
       publisher: {
         '@id': 'https://www.codesrahul.in/#person',
       },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.codesrahul.in/#faq',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Who is Rahul Misal (CodesRahul)?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Rahul Misal is a Full-Stack Software Engineer & Technical SEO Specialist based in Pune, India. He engineers production-grade MERN stack applications, modern Next.js systems, and native Android applications in Kotlin with enterprise security hardening.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What technologies does Rahul Misal specialize in?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Rahul specializes in the MERN Stack (MongoDB, Express.js, React.js, Node.js), Next.js, TypeScript, native Android development (Kotlin, Jetpack Compose, MPV/ExoPlayer), REST & Socket.IO APIs, and Technical SEO & HTTP security hardening (HSTS, CSP, SWR caching).',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is Rahul Misal available for full-time engineering roles or contracts?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes, Rahul Misal is actively available for full-time software engineering roles, high-impact consulting, and bespoke development contracts for clients in Pune, across India, and globally for remote positions.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What notable projects has Rahul Misal engineered?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Notable projects include TaskFlow (an enterprise real-time Kanban collaboration platform with Socket.IO & JWT), PlayNox Player (a hardware-accelerated native Android video player with libmpv and Jetpack Compose), StreamPlus (OLED-optimized streaming application), and UdemyWala (education platform with #1 Google ranking and SGE citation eligibility).',
+          },
+        },
+      ],
+    },
+    {
+      '@type': 'ItemList',
+      '@id': 'https://www.codesrahul.in/#projects',
+      name: 'Featured Software Engineering Projects by Rahul Misal',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'TaskFlow',
+          description: 'Enterprise productivity platform with Kanban boards, real-time collaboration via Socket.IO, JWT + Google OAuth, and hardened security architecture.',
+          url: 'https://github.com/CodesRahul96/TaskFlow.git',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'PlayNox Player',
+          description: 'High-performance native Android video player powered by MPV/libmpv with hardware acceleration, Material You dynamic colors, and gesture controls.',
+          url: 'https://github.com/CodesRahul96/PlayNox.git',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Blogsify',
+          description: 'MERN stack blogging platform with JWT authentication, rich text editing, and real-time community comments.',
+          url: 'https://blogsify.vercel.app/',
+        },
+      ],
     },
   ],
 };

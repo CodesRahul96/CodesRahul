@@ -190,6 +190,16 @@ export default function Contact() {
             </div>
 
             <form action={clientAction} className="space-y-6">
+              {/* Anti-bot Honeypot field (hidden from real users, filled by scrapers) */}
+              <input
+                type="text"
+                name="_gotcha"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden pointer-events-none opacity-0 absolute -z-50"
+              />
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
                   <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">Your Name *</label>

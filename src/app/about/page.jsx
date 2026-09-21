@@ -59,15 +59,21 @@ const skillCategories = [
 const experience = [
   {
     year: "2023 - Present",
-    role: "Full Stack Software Developer",
-    company: "Freelance & Bespoke Clients",
-    desc: "Architecting web applications, custom MERN stack solutions, and responsive user interfaces for modern web platforms."
+    role: "Full-Stack Developer & Technical SEO Engineer",
+    company: "UdemyWala",
+    desc: "Engineered high-performance web architecture, Schema.org microdata (Course, Organization, FAQPage), dynamic sitemaps, and strict HTTP security (HSTS Preload, strict CSP, Clickjacking protection). Designed automated SWR data pipelines maintaining 100% uptime and positioning the web app at #1 on Google for target queries with Google AI Overview (SGE) citations."
   },
   {
-    year: "2021 - 2023",
+    year: "2022 - 2023",
+    role: "Full Stack Software Developer",
+    company: "Freelance & Bespoke Clients",
+    desc: "Architected modern web applications, scalable MERN stack backends, and responsive user interfaces for production web and mobile platforms."
+  },
+  {
+    year: "2021 - 2022",
     role: "Frontend Engineer",
     company: "Project Engagements",
-    desc: "Engineered responsive client-side web applications using React, Next.js, and Tailwind CSS with focus on performance and clean component architecture."
+    desc: "Engineered responsive client-side web applications using React, Next.js, and Tailwind CSS with focus on Core Web Vitals, performance tuning, and clean component architecture."
   }
 ];
 
