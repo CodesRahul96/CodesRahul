@@ -130,6 +130,7 @@ const jsonLdSchema = {
         'https://github.com/CodesRahul96',
         'https://linkedin.com/in/codesrahul',
         'https://instagram.com/codes.rahul',
+        'https://blogsify.vercel.app/',
       ],
       knowsAbout: [
         'Full Stack Web Development',

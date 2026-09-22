@@ -3,6 +3,20 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/blog',
+        destination: 'https://blogsify.vercel.app/',
+        permanent: false,
+      },
+      {
+        source: '/blogs',
+        destination: 'https://blogsify.vercel.app/',
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {

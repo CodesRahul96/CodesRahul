@@ -52,8 +52,17 @@ function Footer() {
             </p>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
+          {/* Navigation & Social Links */}
+          <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
+            <a 
+              href="https://blogsify.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-amber-600 hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300 bg-amber-500/10 border border-amber-500/30 px-4 py-2 rounded-full transition-all hover:bg-amber-500/20 shadow-sm"
+              title="Blogsify — Technical Blog by Rahul Misal"
+            >
+              <span>Blog</span> ↗
+            </a>
             <a 
               href="mailto:codesrahul96@gmail.com" 
               className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-600 hover:text-amber-600 dark:text-gray-400 dark:hover:text-amber-400 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-4 py-2 rounded-full transition-all hover:border-amber-500/40 dark:hover:border-amber-500/30 shadow-sm"

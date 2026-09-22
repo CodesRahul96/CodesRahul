@@ -2,6 +2,7 @@ export const NAV_LINKS = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
+  { name: "Blog", path: "https://blogsify.vercel.app/", external: true },
   { name: "Contact", path: "/contact" },
 ];
 

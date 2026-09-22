@@ -76,17 +76,28 @@ const Navbar = () => {
               const isActive = pathname === item.path;
               return (
                 <li key={item.name} className="relative">
-                  <Link
-                    href={item.path}
-                    prefetch={true}
-                    className={`relative z-10 text-[11px] font-mono uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 block ${
-                      isActive
-                        ? "text-black font-bold bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.5)]"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/10"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
+                  {item.external ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative z-10 text-[11px] font-mono uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 block text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/10"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.path}
+                      prefetch={true}
+                      className={`relative z-10 text-[11px] font-mono uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 block ${
+                        isActive
+                          ? "text-black font-bold bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.5)]"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/10"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </li>
               );
             })}
@@ -159,18 +170,30 @@ const Navbar = () => {
           <ul className="flex flex-col items-center space-y-8 w-full relative z-10 mt-8">
             {NAV_LINKS.map((item) => (
               <li key={item.name}>
-                <Link
-                  href={item.path}
-                  prefetch={true}
-                  onClick={toggleMenu}
-                  className={`text-3xl font-serif tracking-tight transition-colors duration-300 block ${
-                    pathname === item.path
-                      ? "text-amber-500 dark:text-amber-400 font-bold italic"
-                      : "text-slate-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white"
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={toggleMenu}
+                    className="text-3xl font-serif tracking-tight transition-colors duration-300 block text-slate-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white"
+                  >
+                    {item.name} ↗
+                  </a>
+                ) : (
+                  <Link
+                    href={item.path}
+                    prefetch={true}
+                    onClick={toggleMenu}
+                    className={`text-3xl font-serif tracking-tight transition-colors duration-300 block ${
+                      pathname === item.path
+                        ? "text-amber-500 dark:text-amber-400 font-bold italic"
+                        : "text-slate-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )}
               </li>
             ))}
             <li className="pt-6 w-full max-w-xs space-y-4">
