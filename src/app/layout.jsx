@@ -213,7 +213,7 @@ const jsonLdSchema = {
           position: 2,
           name: 'TaskFlow',
           description: 'Enterprise productivity platform with Kanban boards, real-time collaboration via Socket.IO, JWT + Google OAuth, and hardened security architecture.',
-          url: 'https://github.com/CodesRahul96/TaskFlow.git',
+          url: 'https://taskflow.indevs.in/',
         },
         {
           '@type': 'ListItem',

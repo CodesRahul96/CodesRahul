@@ -115,14 +115,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tech Ticker */}
-      <section className="py-8 border-y border-slate-200 dark:border-white/10 bg-slate-100/60 dark:bg-white/[0.02] backdrop-blur-md overflow-hidden relative my-16 transition-colors duration-300">
-        <div className="flex whitespace-nowrap animate-marquee w-fit">
-          {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
-            <span key={index} className="mx-8 text-2xl sm:text-4xl font-serif font-medium text-slate-400 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400 uppercase tracking-wider opacity-70 hover:opacity-100 transition-all duration-300 cursor-default">
-              {tech}
-            </span>
-          ))}
+      {/* Dynamic Angled Skills Ribbons (Modern Showcase) */}
+      <section className="relative my-20 py-12 overflow-hidden select-none transition-colors duration-300">
+        {/* Subtle ambient glow behind ribbons */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-amber-500/10 dark:bg-amber-500/15 blur-[100px] pointer-events-none rounded-full" />
+
+        {/* Back Ribbon (Angled slightly negative with crisp contrast in light & dark mode) */}
+        <div className="relative -rotate-2 scale-105 z-10 py-3.5 bg-slate-900 text-white dark:bg-slate-950/90 dark:text-gray-300 backdrop-blur-md border-y border-slate-800 dark:border-amber-500/20 shadow-md overflow-hidden">
+          <div className="flex whitespace-nowrap animate-marquee-reverse w-fit items-center">
+            {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
+              <span key={`back-${index}`} className="flex items-center">
+                <span className="mx-6 text-xl sm:text-2xl font-black uppercase tracking-wider text-slate-200 dark:text-gray-300 font-sans">
+                  {tech}
+                </span>
+                <span className="text-amber-400 text-sm sm:text-base font-bold select-none">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Front Bold Accent Ribbon (High energy amber gradient with bold black text, pop in both modes) */}
+        <div className="relative rotate-1 scale-105 z-20 -mt-6 py-4 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black shadow-[0_10px_35px_rgba(245,158,11,0.35)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.6)] border-y border-amber-300/40 overflow-hidden">
+          <div className="flex whitespace-nowrap animate-marquee w-fit items-center">
+            {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
+              <span key={`front-${index}`} className="flex items-center">
+                <span className="mx-6 text-2xl sm:text-4xl font-black uppercase tracking-tighter text-slate-950 font-sans drop-shadow-[0_1px_1px_rgba(255,255,255,0.4)]">
+                  {tech}
+                </span>
+                <span className="text-slate-900 text-lg sm:text-xl font-black select-none">✦</span>
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
