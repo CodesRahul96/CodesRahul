@@ -122,7 +122,7 @@ export function ThemeProvider({ children }) {
             if (ripple && ripple.parentNode) {
               ripple.parentNode.removeChild(ripple);
             }
-          }, 700);
+          }, 800);
         } catch (_) {}
       }
 
@@ -160,13 +160,17 @@ export function ThemeProvider({ children }) {
         `circle(${endRadius}px at ${x}px ${y}px)`,
       ];
 
+      const isSwitchingToLight = !willBeDark;
+      const duration = isSwitchingToLight ? 750 : 650;
+      const easing = "cubic-bezier(0.4, 0, 0.2, 1)"; // Gentle start (zero initial velocity spike), smooth glide
+
       document.documentElement.animate(
         {
           clipPath: willBeDark ? [...clipPath].reverse() : clipPath,
         },
         {
-          duration: 650,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          duration,
+          easing,
           fill: "forwards",
           pseudoElement: willBeDark
             ? "::view-transition-old(root)"

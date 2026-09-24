@@ -176,7 +176,7 @@ html.theme-transitioning *::after {
   pointer-events: none;
   z-index: 99999;
   transform: scale(0);
-  animation: theme-circle-ripple 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: theme-circle-ripple 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
