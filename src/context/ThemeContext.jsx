@@ -90,12 +90,14 @@ export function ThemeProvider({ children }) {
       }
     }
 
-    // 2. Compute radius needed to fully cover viewport from (x, y)
+    // 2. Compute radius needed to fully cover viewport from (x, y) + buffer for corners
     const endRadius = typeof window !== "undefined"
-      ? Math.hypot(
-          Math.max(x, window.innerWidth - x),
-          Math.max(y, window.innerHeight - y)
-        )
+      ? Math.ceil(
+          Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+          )
+        ) + 15
       : 0;
 
     // 3. Fallback for environments without document.startViewTransition (e.g. Firefox) or reduced-motion
@@ -158,22 +160,19 @@ export function ThemeProvider({ children }) {
         `circle(${endRadius}px at ${x}px ${y}px)`,
       ];
 
-      const animation = document.documentElement.animate(
+      document.documentElement.animate(
         {
           clipPath: willBeDark ? [...clipPath].reverse() : clipPath,
         },
         {
           duration: 450,
-          easing: "ease-in-out",
+          easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+          fill: "forwards",
           pseudoElement: willBeDark
             ? "::view-transition-old(root)"
             : "::view-transition-new(root)",
         }
       );
-
-      animation.onfinish = () => {
-        document.documentElement.classList.remove("theme-transitioning");
-      };
     });
 
     transition.finished.finally(() => {
