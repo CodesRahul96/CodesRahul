@@ -122,7 +122,7 @@ export function ThemeProvider({ children }) {
             if (ripple && ripple.parentNode) {
               ripple.parentNode.removeChild(ripple);
             }
-          }, 600);
+          }, 700);
         } catch (_) {}
       }
 
@@ -165,8 +165,8 @@ export function ThemeProvider({ children }) {
           clipPath: willBeDark ? [...clipPath].reverse() : clipPath,
         },
         {
-          duration: 450,
-          easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+          duration: 650,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
           fill: "forwards",
           pseudoElement: willBeDark
             ? "::view-transition-old(root)"
