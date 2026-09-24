@@ -138,6 +138,8 @@ export function ThemeProvider({ children }) {
     }
 
     // 4. Native View Transitions API (Chromium, Safari 18+)
+    document.documentElement.style.setProperty("--click-x", `${x}px`);
+    document.documentElement.style.setProperty("--click-y", `${y}px`);
     document.documentElement.classList.add("theme-transitioning");
 
     const transition = document.startViewTransition(() => {
@@ -181,6 +183,8 @@ export function ThemeProvider({ children }) {
 
     transition.finished.finally(() => {
       document.documentElement.classList.remove("theme-transitioning");
+      document.documentElement.style.removeProperty("--click-x");
+      document.documentElement.style.removeProperty("--click-y");
     });
   };
 

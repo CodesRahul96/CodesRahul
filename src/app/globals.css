@@ -5,9 +5,13 @@
 @layer base {
   html {
     color-scheme: dark;
+    background-color: #050508;
+    color: #e5e7eb;
   }
   html.light {
     color-scheme: light;
+    background-color: #f8fafc;
+    color: #0f172a;
   }
 
   body {
@@ -20,9 +24,8 @@
     overflow-x: hidden;
     box-sizing: border-box;
     padding: 0;
-    background-color: #f8fafc;
-    color: #0f172a;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: transparent;
+    color: inherit;
   }
 
   html.dark body,
@@ -144,6 +147,11 @@
 ::view-transition-new(root),
 .dark::view-transition-old(root) {
   z-index: 9999;
+}
+
+/* Prevent initial frame white flash by clipping ::view-transition-new to 0px on frame 0 */
+html.theme-transitioning::view-transition-new(root) {
+  clip-path: circle(0px at var(--click-x, 50%) var(--click-y, 50%));
 }
 
 /* Prevent CSS background-color transition conflicts during active theme switch */
