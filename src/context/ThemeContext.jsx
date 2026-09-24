@@ -163,8 +163,8 @@ export function ThemeProvider({ children }) {
       ];
 
       const isSwitchingToLight = !willBeDark;
-      const duration = isSwitchingToLight ? 750 : 650;
-      const easing = "cubic-bezier(0.4, 0, 0.2, 1)"; // Gentle start (zero initial velocity spike), smooth glide
+      const duration = isSwitchingToLight ? 650 : 580;
+      const easing = "cubic-bezier(0.35, 0, 0.15, 1)"; // Fluid cinematic ease: zero initial jerk, silky deceleration
 
       document.documentElement.animate(
         {
