@@ -69,17 +69,20 @@ export function ThemeProvider({ children }) {
     return () => mq.removeEventListener("change", handleSystemChange);
   }, []);
 
-  // Manual toggle — with circular reveal animation from click origin
-  const toggleTheme = (e) => {
+  // Manual toggle — with circular reveal animation closing onto button
+  const toggleTheme = (e, explicitCoords) => {
     const isDark = theme === "dark";
     const next = isDark ? "light" : "dark";
     const willBeDark = next === "dark";
 
-    // 1. Calculate origin coordinates (button center, click event, or screen center)
+    // 1. Calculate origin coordinates (explicit coords from button, event rect, or mobile DOM query)
     let x = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
     let y = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
 
-    if (e) {
+    if (explicitCoords && typeof explicitCoords.x === "number" && typeof explicitCoords.y === "number") {
+      x = explicitCoords.x;
+      y = explicitCoords.y;
+    } else if (e) {
       if (e.currentTarget && typeof e.currentTarget.getBoundingClientRect === "function") {
         const rect = e.currentTarget.getBoundingClientRect();
         x = rect.left + rect.width / 2;
@@ -90,15 +93,20 @@ export function ThemeProvider({ children }) {
       }
     }
 
-    // 2. Compute radius needed to fully cover viewport from (x, y) + buffer for corners
-    const endRadius = typeof window !== "undefined"
-      ? Math.ceil(
-          Math.hypot(
-            Math.max(x, window.innerWidth - x),
-            Math.max(y, window.innerHeight - y)
-          )
-        ) + 15
-      : 0;
+    // High-precision fallback for mobile devices if coordinates defaulted to screen center
+    if (typeof document !== "undefined" && (x === window.innerWidth / 2 && y === window.innerHeight / 2)) {
+      const btn = document.querySelector("[data-theme-toggle]");
+      if (btn) {
+        const rect = btn.getBoundingClientRect();
+        x = rect.left + rect.width / 2;
+        y = rect.top + rect.height / 2;
+      }
+    }
+
+    // 2. Compute radius needed to fully cover viewport (including mobile URL bars and dynamic island)
+    const vw = typeof window !== "undefined" ? Math.max(window.innerWidth, document.documentElement.clientWidth || 0) : 0;
+    const vh = typeof window !== "undefined" ? Math.max(window.innerHeight, document.documentElement.clientHeight || 0) : 0;
+    const endRadius = Math.ceil(Math.hypot(Math.max(x, vw - x), Math.max(y, vh - y))) + 30;
 
     // 3. Fallback for environments without document.startViewTransition (e.g. Firefox) or reduced-motion
     if (
@@ -111,7 +119,7 @@ export function ThemeProvider({ children }) {
         try {
           const ripple = document.createElement("div");
           ripple.className = "theme-ripple";
-          const diameter = endRadius * 2.2;
+          const diameter = endRadius * 2.4;
           ripple.style.width = `${diameter}px`;
           ripple.style.height = `${diameter}px`;
           ripple.style.left = `${x - diameter / 2}px`;
@@ -119,10 +127,16 @@ export function ThemeProvider({ children }) {
           ripple.style.backgroundColor = willBeDark ? "#050508" : "#f8fafc";
           document.body.appendChild(ripple);
           setTimeout(() => {
+            setThemeState(next);
+            applyTheme(willBeDark);
+            try { localStorage.setItem("theme", next); } catch (_) {}
+          }, 280);
+          setTimeout(() => {
             if (ripple && ripple.parentNode) {
               ripple.parentNode.removeChild(ripple);
             }
-          }, 800);
+          }, 700);
+          return;
         } catch (_) {}
       }
 
