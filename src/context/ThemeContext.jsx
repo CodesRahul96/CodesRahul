@@ -157,26 +157,25 @@ export function ThemeProvider({ children }) {
     });
 
     transition.ready.then(() => {
-      const clipPath = [
-        `circle(0px at ${x}px ${y}px)`,
-        `circle(${endRadius}px at ${x}px ${y}px)`,
-      ];
-
       const isSwitchingToLight = !willBeDark;
       const duration = isSwitchingToLight ? 650 : 580;
       const easing = "cubic-bezier(0.35, 0, 0.15, 1)"; // Fluid cinematic ease: zero initial jerk, silky deceleration
 
+      // ::view-transition-old(root) is ALWAYS on top (z-index: 9999).
+      // Animating it from full screen down to 0px reveals the incoming theme from (x, y)
+      // without any possibility of the screen flashing to the new theme beforehand!
       document.documentElement.animate(
         {
-          clipPath: willBeDark ? [...clipPath].reverse() : clipPath,
+          clipPath: [
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+            `circle(0px at ${x}px ${y}px)`,
+          ],
         },
         {
           duration,
           easing,
           fill: "forwards",
-          pseudoElement: willBeDark
-            ? "::view-transition-old(root)"
-            : "::view-transition-new(root)",
+          pseudoElement: "::view-transition-old(root)",
         }
       );
     });
