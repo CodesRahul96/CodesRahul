@@ -128,3 +128,64 @@
     -webkit-text-stroke-color: transparent;
   }
 }
+
+/* Circular Reveal View Transition for Theme Toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root),
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root),
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+
+/* Prevent CSS background-color transition conflicts during active theme switch */
+html.theme-transitioning,
+html.theme-transitioning body,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: none !important;
+}
+
+/* Universal Fallback Circular Ripple for browsers without View Transitions (e.g. Firefox) */
+@keyframes theme-circle-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.theme-ripple {
+  position: fixed;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: scale(0);
+  animation: theme-circle-ripple 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  .theme-ripple {
+    display: none !important;
+  }
+}

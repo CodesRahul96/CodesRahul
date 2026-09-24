@@ -14,7 +14,7 @@ export default function ThemeToggle({ className = "", compact = false }) {
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        toggleTheme();
+        toggleTheme(e);
       }}
       className={`
         relative group overflow-hidden

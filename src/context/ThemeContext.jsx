@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 
 const ThemeContext = createContext({
   theme: "dark",
@@ -68,18 +69,115 @@ export function ThemeProvider({ children }) {
     return () => mq.removeEventListener("change", handleSystemChange);
   }, []);
 
-  // Manual toggle — user-forced, saves to localStorage
-  const toggleTheme = () => {
-    setThemeState((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
+  // Manual toggle — with circular reveal animation from click origin
+  const toggleTheme = (e) => {
+    const isDark = theme === "dark";
+    const next = isDark ? "light" : "dark";
+    const willBeDark = next === "dark";
+
+    // 1. Calculate origin coordinates (button center, click event, or screen center)
+    let x = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
+    let y = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
+
+    if (e) {
+      if (e.currentTarget && typeof e.currentTarget.getBoundingClientRect === "function") {
+        const rect = e.currentTarget.getBoundingClientRect();
+        x = rect.left + rect.width / 2;
+        y = rect.top + rect.height / 2;
+      } else if (typeof e.clientX === "number" && typeof e.clientY === "number" && (e.clientX !== 0 || e.clientY !== 0)) {
+        x = e.clientX;
+        y = e.clientY;
+      }
+    }
+
+    // 2. Compute radius needed to fully cover viewport from (x, y)
+    const endRadius = typeof window !== "undefined"
+      ? Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y)
+        )
+      : 0;
+
+    // 3. Fallback for environments without document.startViewTransition (e.g. Firefox) or reduced-motion
+    if (
+      typeof document === "undefined" ||
+      !document.startViewTransition ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      // Create smooth circular ripple wave overlay for Firefox & unsupported engines
+      if (typeof document !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        try {
+          const ripple = document.createElement("div");
+          ripple.className = "theme-ripple";
+          const diameter = endRadius * 2.2;
+          ripple.style.width = `${diameter}px`;
+          ripple.style.height = `${diameter}px`;
+          ripple.style.left = `${x - diameter / 2}px`;
+          ripple.style.top = `${y - diameter / 2}px`;
+          ripple.style.backgroundColor = willBeDark ? "#050508" : "#f8fafc";
+          document.body.appendChild(ripple);
+          setTimeout(() => {
+            if (ripple && ripple.parentNode) {
+              ripple.parentNode.removeChild(ripple);
+            }
+          }, 600);
+        } catch (_) {}
+      }
+
+      setThemeState(next);
       try {
         localStorage.setItem("theme", next);
         setIsUserForced(true);
-        applyTheme(next === "dark");
+        applyTheme(willBeDark);
       } catch (err) {
         console.error("Theme toggle error:", err);
       }
-      return next;
+      return;
+    }
+
+    // 4. Native View Transitions API (Chromium, Safari 18+)
+    document.documentElement.classList.add("theme-transitioning");
+
+    const transition = document.startViewTransition(() => {
+      // flushSync ensures React synchronously updates the DOM before the snapshot is captured
+      flushSync(() => {
+        setThemeState(next);
+        applyTheme(willBeDark);
+      });
+      try {
+        localStorage.setItem("theme", next);
+        setIsUserForced(true);
+      } catch (err) {
+        console.error("Theme toggle error:", err);
+      }
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+
+      const animation = document.documentElement.animate(
+        {
+          clipPath: willBeDark ? [...clipPath].reverse() : clipPath,
+        },
+        {
+          duration: 450,
+          easing: "ease-in-out",
+          pseudoElement: willBeDark
+            ? "::view-transition-old(root)"
+            : "::view-transition-new(root)",
+        }
+      );
+
+      animation.onfinish = () => {
+        document.documentElement.classList.remove("theme-transitioning");
+      };
+    });
+
+    transition.finished.finally(() => {
+      document.documentElement.classList.remove("theme-transitioning");
     });
   };
 
