@@ -46,6 +46,22 @@ import whatsappAutomation2 from "./whatsapp_automation/whatsapp-automation-02.pn
 import nevriotech1 from "./nevriotech/nevriotech-01.png";
 import nevriotech2 from "./nevriotech/nevriotech-02.png";
 
+// Renewo Subscription Manager Screenshots
+import renewo1 from "./renewo/01_home_dark.jpg";
+import renewo2 from "./renewo/02_subscriptions_dark.jpg";
+import renewo3 from "./renewo/03_add_subscription_dark.jpg";
+import renewo4 from "./renewo/04_insights_dark.jpg";
+import renewo5 from "./renewo/05_settings_dark.jpg";
+import renewo6 from "./renewo/06_signin_dark.jpg";
+import renewo7 from "./renewo/07_signup_dark.jpg";
+import renewo8 from "./renewo/08_home_light.jpg";
+import renewo9 from "./renewo/09_subscriptions_light.jpg";
+import renewo10 from "./renewo/10_add_subscription_light.jpg";
+import renewo11 from "./renewo/11_insights_light.jpg";
+import renewo12 from "./renewo/12_settings_light.jpg";
+import renewo13 from "./renewo/13_signin_light.jpg";
+import renewo14 from "./renewo/14_signup_light.jpg";
+
 const exclusivetv = [
   exclusivetv1,
   exclusivetv2,
@@ -88,6 +104,23 @@ const nevriotech = [
 
 const nevrio = nevriotech;
 
+const renewo = [
+  renewo1,
+  renewo2,
+  renewo3,
+  renewo4,
+  renewo5,
+  renewo6,
+  renewo7,
+  renewo8,
+  renewo9,
+  renewo10,
+  renewo11,
+  renewo12,
+  renewo13,
+  renewo14,
+];
+
 export {
   blogsify,
   comingsoon,
@@ -99,6 +132,7 @@ export {
   omencontrol,
   playnox,
   portfolio,
+  renewo,
   taskflow,
   todolist,
   trentshopnow,
