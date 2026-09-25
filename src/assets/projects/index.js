@@ -1,10 +1,10 @@
+// Single-image imports
 import blogsify from "./blogsify.png";
 import comingsoon from "./comingsoon.png";
 import crunchyroll from "./crunchyroll.png";
 import desidelights from "./desidelights.png";
 import gymwala from "./gymwala.png";
 import freelivetv from "./freelivetv.png";
-const livetv = freelivetv;
 import omencontrol from "./omencontrol.png";
 import portfolio from "./portfolio.png";
 import taskflow from "./taskflow.png";
@@ -62,6 +62,10 @@ import renewo12 from "./renewo/12_settings_light.jpg";
 import renewo13 from "./renewo/13_signin_light.jpg";
 import renewo14 from "./renewo/14_signup_light.jpg";
 
+// Aliases
+const livetv = freelivetv;
+
+// Multi-image collections
 const exclusivetv = [
   exclusivetv1,
   exclusivetv2,
@@ -94,14 +98,12 @@ const whatsappautomation = [
   whatsappAutomation1,
   whatsappAutomation2,
 ];
-
 const whatsapp_automation = whatsappautomation;
 
 const nevriotech = [
   nevriotech1,
   nevriotech2,
 ];
-
 const nevrio = nevriotech;
 
 const renewo = [
@@ -122,6 +124,7 @@ const renewo = [
 ];
 
 export {
+  // Single images
   blogsify,
   comingsoon,
   crunchyroll,
@@ -130,9 +133,7 @@ export {
   gymwala,
   livetv,
   omencontrol,
-  playnox,
   portfolio,
-  renewo,
   taskflow,
   todolist,
   trentshopnow,
@@ -142,6 +143,8 @@ export {
   exclusivetv,
   nevrio,
   nevriotech,
+  playnox,
+  renewo,
   streamplus,
   whatsappautomation,
   whatsapp_automation,
@@ -171,4 +174,18 @@ export {
   whatsappAutomation2,
   whatsappAutomation1 as whatsappautomation1,
   whatsappAutomation2 as whatsappautomation2,
+  renewo1,
+  renewo2,
+  renewo3,
+  renewo4,
+  renewo5,
+  renewo6,
+  renewo7,
+  renewo8,
+  renewo9,
+  renewo10,
+  renewo11,
+  renewo12,
+  renewo13,
+  renewo14,
 };
