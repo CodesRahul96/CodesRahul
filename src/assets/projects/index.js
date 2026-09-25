@@ -1,6 +1,6 @@
 import blogsify from "./blogsify.png";
 import comingsoon from "./comingsoon.png";
-import crunchyroll from "./crunchyroll.png";
+import crunchyroll from "./crunchyroll.jpg";
 import desidelights from "./desidelights.png";
 import gymwala from "./gymwala.png";
 import freelivetv from "./freelivetv.png";
