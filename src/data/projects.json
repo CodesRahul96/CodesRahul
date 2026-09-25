@@ -76,6 +76,23 @@
   },
   {
     "id": 5,
+    "title": "Renewo – Subscription Manager",
+    "description": "A clean, fast, and cross-platform subscription manager built with Kotlin Multiplatform (Compose Multiplatform) and Supabase. Tracks weekly, monthly, and yearly recurring expenses with 1-tap presets for Netflix, Spotify, YouTube, iCloud, and more. Features custom renewal alerts, pause-without-delete, budget dashboards, and native brand colors — targeting Android and Desktop.",
+    "category": "Android App",
+    "technologies": [
+      "Kotlin",
+      "Compose Multiplatform",
+      "Supabase",
+      "KMP",
+      "Android",
+      "Desktop"
+    ],
+    "github": "https://github.com/CodesRahul96/SubManager_App.git",
+    "demo": "https://github.com/CodesRahul96/SubManager_App/releases",
+    "image": "renewo"
+  },
+  {
+    "id": 6,
     "title": "WhatsApp Automation Platform",
     "description": "A production-grade WhatsApp communication engine and multi-agent customer support platform built on Next.js 16 (App Router), TypeScript, Prisma ORM, and Meta's official WhatsApp Cloud API. Features a real-time team inbox, automated 24/7 AI replies via Google Gemini with intelligent human agent takeover, broadcast marketing campaigns, contact CRM, and a headless developer REST API.",
     "category": "Web Development",
@@ -95,7 +112,7 @@
     "image": "whatsappautomation"
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "Nevrio Technology Services",
     "description": "Enterprise digital engineering and IT consultancy portal for Nevrio Technology Services Pvt Ltd. Features an interactive project cost estimator, case study ROI metrics, service architecture deep-dives across spatial AR/VR, enterprise AI automation, and full-stack Next.js cloud engineering with dark and light themes.",
     "category": "Web Development",
@@ -111,7 +128,7 @@
     "image": "nevriotech"
   },
   {
-    "id": 7,
+    "id": 8,
     "title": "VideoX",
     "description": "A high-performance video streaming application supporting large file uploads and adaptive playback. Leverages MongoDB GridFS for efficient media storage and retrieval.",
     "category": "Web Development",
@@ -129,7 +146,7 @@
     "image": "videox"
   },
   {
-    "id": 8,
+    "id": 9,
     "title": "ExclusiveTV",
     "description": "A premium Android application for seamless live TV streaming. Features a custom video player, D-Pad navigation support for Android TV, and real-time channel updates. Designed for a high-end viewing experience.",
     "category": "Android App",
@@ -145,7 +162,7 @@
     "image": "exclusivetv"
   },
   {
-    "id": 9,
+    "id": 10,
     "title": "StreamPlus",
     "description": "A native Android streaming app built with Jetpack Compose and Kotlin. Features a Netflix-style content feed with horizontal rows, Firebase-backed authentication with Crashlytics reporting, Hilt dependency injection, and a fully dark OLED-optimized UI. Targets Android API 24–34.",
     "category": "Android App",
@@ -162,7 +179,7 @@
     "image": "streamplus"
   },
   {
-    "id": 10,
+    "id": 11,
     "title": "PlayNox Player",
     "description": "A high-performance native Android video player powered by the MPV/libmpv media engine with hardware acceleration. Features Material Design 3 with Material You dynamic colors, AMOLED dark mode, edge swipe gestures for brightness & volume, subtitle support, real-time video enhancement (brightness, contrast, saturation, gamma), and multilingual support. Targets Android API 26–36.",
     "category": "Android App",
@@ -179,7 +196,7 @@
     "image": "playnox"
   },
   {
-    "id": 11,
+    "id": 12,
     "title": "DesiDelights",
     "description": "Discover authentic Indian recipes. From spicy curries to sweet desserts, find the best traditional and modern Indian dishes. Features a rich search and filtering experience.",
     "category": "Web Development",
@@ -193,7 +210,7 @@
     "image": "desidelights"
   },
   {
-    "id": 12,
+    "id": 13,
     "title": "GymWala",
     "description": "A modern fitness companion app offering workout guides and health tracking. Features a sleek, high-contrast UI designed for motivation and clarity.",
     "category": "Frontend",
@@ -207,7 +224,7 @@
     "image": "gymwala"
   },
   {
-    "id": 13,
+    "id": 14,
     "title": "Live TV",
     "description": "A web-based TV streaming interface aggregating free-to-air channels. Features a custom video player implementation and an approachable channel guide UI.",
     "category": "Frontend",
@@ -221,7 +238,7 @@
     "image": "freelivetv"
   },
   {
-    "id": 14,
+    "id": 15,
     "title": "Advanced ToDoList",
     "description": "A modern, responsive ToDoList application built with React, Node.js, and Firebase. Features real-time data synchronization, drag-and-drop organization, and a clean, intuitive interface.",
     "category": "Frontend",
@@ -236,7 +253,7 @@
     "image": "todolist"
   },
   {
-    "id": 15,
+    "id": 16,
     "title": "Crunchyroll Desktop for Linux",
     "description": "An unofficial, feature-packed cross-platform Crunchyroll desktop client built with Electron and Widevine DRM support for Linux, Windows, and macOS. Features hardware-accelerated video playback, customizable playback speed (0.25x–3.0x), Picture-in-Picture mode, automated intro/recap skip, system theme synchronization, power-save sleep prevention, and persistent session state.",
     "category": "Desktop App",
@@ -253,7 +270,7 @@
     "image": "crunchyroll"
   },
   {
-    "id": 16,
+    "id": 17,
     "title": "OmenControl for Linux",
     "description": "Open-source GTK4 Linux control center for HP Omen & Victus laptops. Replaces the Windows OMEN Gaming Hub with native fan control (15-sample hysteresis), zero-overhead RGB keyboard lighting, GPU MUX switching (Hybrid/Discrete/Integrated), WMI hardware power profiles, and real-time CPU/GPU telemetry dashboards.",
     "category": "Desktop App",
@@ -271,7 +288,7 @@
     "contributed": true
   },
   {
-    "id": 17,
+    "id": 18,
     "title": "Portfolio Website",
     "description": "This very website! A showcase of modern frontend techniques including glassmorphism, particle animations, lazy loading, and a fully responsive layout built with Next.js.",
     "category": "Frontend",
