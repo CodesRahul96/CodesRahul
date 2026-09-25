@@ -239,7 +239,7 @@
     "id": 15,
     "title": "Crunchyroll Desktop for Linux",
     "description": "An unofficial, feature-packed cross-platform Crunchyroll desktop client built with Electron and Widevine DRM support for Linux, Windows, and macOS. Features hardware-accelerated video playback, customizable playback speed (0.25x–3.0x), Picture-in-Picture mode, automated intro/recap skip, system theme synchronization, power-save sleep prevention, and persistent session state.",
-    "category": "App",
+    "category": "Desktop App",
     "technologies": [
       "Electron",
       "JavaScript",
@@ -256,7 +256,7 @@
     "id": 16,
     "title": "OmenControl for Linux",
     "description": "Open-source GTK4 Linux control center for HP Omen & Victus laptops. Replaces the Windows OMEN Gaming Hub with native fan control (15-sample hysteresis), zero-overhead RGB keyboard lighting, GPU MUX switching (Hybrid/Discrete/Integrated), WMI hardware power profiles, and real-time CPU/GPU telemetry dashboards.",
-    "category": "Open Source",
+    "category": "Desktop App",
     "technologies": [
       "Python",
       "GTK4",
