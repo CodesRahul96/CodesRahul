@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from '../context/ThemeContext';
 import ThemedToaster from '../components/ThemedToaster';
+import PortfolioChatbot from '../components/PortfolioChatbot';
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.codesrahul.in'),
@@ -277,6 +278,7 @@ export default function RootLayout({ children }) {
             </main>
             <Footer />
             <ThemedToaster />
+            <PortfolioChatbot />
             <Analytics />
             <SpeedInsights />
           </div>
