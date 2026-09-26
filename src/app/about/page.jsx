@@ -77,6 +77,12 @@ const education = [
     degree: "B.Sc. Computer Science",
     institution: "Savitribai Phule Pune University",
     desc: "Core Computer Science Fundamentals, Data Structures, Web Technologies, and Database Systems."
+  },
+  {
+    year: "2020 - 2021",
+    degree: "Full-Stack & Mobile Specialization",
+    institution: "Applied Engineering & Self-Directed Labs",
+    desc: "Intensive focus on modern React ecosystems, Node.js microservice architectures, Kotlin Android development, and production design patterns."
   }
 ];
 
@@ -86,12 +92,12 @@ export default function About() {
       <div className="relative z-10">
         
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-10">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Background & Experience</span>
-            <h2 className="text-5xl md:text-7xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight mt-1">
+            <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Background & Experience</span>
+            <h1 className="text-4xl md:text-6xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight mt-1">
               About Me.
-            </h2>
+            </h1>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
             <p className="text-slate-600 dark:text-gray-300 text-lg font-light leading-relaxed max-w-2xl">
               Software Engineer dedicated to building dependable web solutions with clean code practices and intuitive design.
@@ -100,7 +106,7 @@ export default function About() {
         </div>
 
         {/* Profile Section with 3D Interactive Portrait */}
-        <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
+        <div className="flex flex-col md:flex-row items-center gap-12 mb-20">
           <div className="w-full md:w-2/5 flex justify-center">
             <InteractivePhotoCard
               imageSrc={rahulAbout3D}
@@ -131,7 +137,7 @@ export default function About() {
 
             <div className="flex flex-wrap gap-2.5 pt-2">
                {["Full-Stack MERN", "Android (Kotlin)", "Next.js 15", "REST & Socket APIs", "UI/UX Systems", "Cloud & Docker"].map((tag, i) => (
-                 <span key={i} className="px-3.5 py-1.5 border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/5 text-xs font-mono uppercase tracking-wider text-amber-700 dark:text-amber-400 rounded-full backdrop-blur-md shadow-sm dark:shadow-none font-medium">
+                 <span key={i} className="px-3.5 py-1.5 border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/5 text-xs font-mono tracking-wide text-amber-700 dark:text-amber-400 rounded-full backdrop-blur-md shadow-sm dark:shadow-none font-medium">
                    {tag}
                  </span>
                ))}
@@ -140,42 +146,41 @@ export default function About() {
         </div>
 
         {/* Skills Section */}
-        <div className="mb-24">
+        <div className="mb-20">
            <div>
-             <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-700 dark:text-cyan-400 font-medium">Technical Capability</span>
+             <span className="text-xs font-mono uppercase tracking-wider text-cyan-700 dark:text-cyan-400 font-medium">Technical Capability</span>
              <h3 className="text-3xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight mt-1">Technical Skills</h3>
-             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-12" />
+             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-10" />
            </div>
            
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
              {skillCategories.map((category, idx) => (
                 <div 
                   key={idx} 
-                  className="p-8 border border-slate-200 dark:border-white/10 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl hover:border-amber-500/40 transition-all duration-300 shadow-md dark:shadow-xl"
+                  className="p-8 border border-slate-200 dark:border-white/10 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl hover:border-amber-500/40 transition-all duration-300 shadow-md dark:shadow-xl flex flex-col justify-between h-full"
                 >
-                 <div className="flex items-center gap-3.5 mb-8">
-                   {category.icon}
-                   <h4 className="text-base font-mono font-semibold text-slate-900 dark:text-white tracking-wider uppercase">{category.title}</h4>
-                 </div>
+                 <div>
+                   <div className="flex items-center gap-3.5 mb-6">
+                     {category.icon}
+                     <h4 className="text-base font-mono font-semibold text-slate-900 dark:text-white tracking-wide">{category.title}</h4>
+                   </div>
 
-                 <div className="space-y-6">
-                   {category.skills.map((skill, sIdx) => (
-                     <div key={sIdx} className="group">
-                       <div className="flex justify-between items-center mb-2">
-                         <div className="flex items-center gap-3">
-                             <span className="text-lg">{skill.icon}</span>
-                             <span className="text-slate-700 dark:text-gray-200 font-light text-sm">{skill.name}</span>
-                          </div>
-                          <span className="text-xs font-mono text-amber-600 dark:text-amber-400 font-medium">{skill.level}%</span>
+                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                     {category.skills.map((skill, sIdx) => (
+                       <div
+                         key={sIdx}
+                         className="flex items-center justify-between p-3 rounded-2xl bg-slate-100/70 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/5 hover:border-amber-500/30 transition-all"
+                       >
+                         <div className="flex items-center gap-2.5">
+                           <span className="text-lg">{skill.icon}</span>
+                           <span className="text-slate-800 dark:text-gray-200 font-medium text-xs">{skill.name}</span>
+                         </div>
+                         <span className="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold px-2 py-0.5 rounded-full bg-amber-500/10">
+                           {skill.level >= 85 ? "Advanced" : "Proficient"}
+                         </span>
                        </div>
-                        <div className="h-[3px] bg-slate-200 dark:bg-white/10 w-full rounded-full overflow-hidden">
-                          <div 
-                            className="h-full bg-gradient-to-r from-amber-500 to-cyan-400 transition-all duration-700 ease-out"
-                            style={{ width: `${skill.level}%` }}
-                          />
-                       </div>
-                     </div>
-                   ))}
+                     ))}
+                   </div>
                  </div>
                 </div>
              ))}
@@ -183,40 +188,44 @@ export default function About() {
         </div>
 
         {/* Experience & Education */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-20 items-stretch">
           {/* Experience */}
-          <div className="p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-md dark:shadow-xl">
-            <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white mb-8 tracking-tight">
-               Work History
-            </h3>
-            <div className="space-y-10">
-              {experience.map((exp, index) => (
-                <div key={index} className="relative group border-l-2 border-amber-500/40 pl-6">
-                  <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-amber-500 dark:bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.8)]" />
-                  <span className="text-xs font-mono text-amber-600 dark:text-amber-400 tracking-widest mb-1 block uppercase font-medium">{exp.year}</span>
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{exp.role}</h4>
-                  <p className="text-slate-500 dark:text-gray-400 text-xs mb-3 font-mono">{exp.company}</p>
-                  <p className="text-slate-600 dark:text-gray-300 leading-relaxed font-light text-sm">{exp.desc}</p>
-                </div>
-              ))}
+          <div className="p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-md dark:shadow-xl h-full flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white mb-8 tracking-tight">
+                 Work History
+              </h3>
+              <div className="space-y-8">
+                {experience.map((exp, index) => (
+                  <div key={index} className="relative group border-l-2 border-amber-500/40 pl-6">
+                    <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-amber-500 dark:bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.8)]" />
+                    <span className="text-xs font-mono text-amber-600 dark:text-amber-400 tracking-wider mb-1 block uppercase font-medium">{exp.year}</span>
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{exp.role}</h4>
+                    <p className="text-slate-500 dark:text-gray-400 text-xs mb-3 font-mono">{exp.company}</p>
+                    <p className="text-slate-600 dark:text-gray-300 leading-relaxed font-light text-sm">{exp.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Education */}
-          <div className="p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-md dark:shadow-xl">
-            <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white mb-8 tracking-tight">
-               Education
-            </h3>
-            <div className="space-y-10">
-               {education.map((edu, index) => (
-                <div key={index} className="relative group border-l-2 border-cyan-500/40 pl-6">
-                  <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
-                  <span className="text-xs font-mono text-cyan-700 dark:text-cyan-400 tracking-widest mb-1 block uppercase font-medium">{edu.year}</span>
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{edu.degree}</h4>
-                  <p className="text-slate-500 dark:text-gray-400 text-xs mb-3 font-mono">{edu.institution}</p>
-                  <p className="text-slate-600 dark:text-gray-300 leading-relaxed font-light text-sm">{edu.desc}</p>
-                </div>
-              ))}
+          <div className="p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-md dark:shadow-xl h-full flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white mb-8 tracking-tight">
+                 Education & Credentials
+              </h3>
+              <div className="space-y-8">
+                 {education.map((edu, index) => (
+                  <div key={index} className="relative group border-l-2 border-cyan-500/40 pl-6">
+                    <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
+                    <span className="text-xs font-mono text-cyan-700 dark:text-cyan-400 tracking-wider mb-1 block uppercase font-medium">{edu.year}</span>
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{edu.degree}</h4>
+                    <p className="text-slate-500 dark:text-gray-400 text-xs mb-3 font-mono">{edu.institution}</p>
+                    <p className="text-slate-600 dark:text-gray-300 leading-relaxed font-light text-sm">{edu.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
