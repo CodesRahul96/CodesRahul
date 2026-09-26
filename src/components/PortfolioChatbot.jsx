@@ -8,7 +8,6 @@ import {
   FaRobot,
   FaTrashAlt,
   FaChevronDown,
-  FaSparkles,
   FaWhatsapp,
   FaEnvelope
 } from "react-icons/fa";
@@ -40,8 +39,10 @@ export default function PortfolioChatbot() {
   useEffect(() => {
     if (isOpen && !isMinimized) {
       scrollToBottom();
-      // Auto-focus input on open
-      setTimeout(() => inputRef.current?.focus(), 150);
+      // Auto-focus input on open (only on non-touch devices to avoid unexpected soft-keyboard pop on mobile)
+      if (typeof window !== "undefined" && window.matchMedia("(min-width: 640px)").matches) {
+        setTimeout(() => inputRef.current?.focus(), 150);
+      }
     }
   }, [isOpen, isMinimized, messages, isTyping]);
 
@@ -71,10 +72,10 @@ export default function PortfolioChatbot() {
     setInputMessage("");
     setIsTyping(true);
 
-    // Realistic AI thinking delay (250ms - 450ms)
+    // Realistic AI thinking delay (250ms - 400ms)
     setTimeout(() => {
       const response = generateAiResponse(query, messages);
-      
+
       const botMsg = {
         id: `bot-${Date.now()}`,
         sender: "bot",
@@ -100,13 +101,33 @@ export default function PortfolioChatbot() {
     ]);
   };
 
-  // Helper to format basic markdown (bold, lists, links) safely
-  const renderFormattedText = (text) => {
+  // Helper to format block text (bold, links, code, quotes) safely
+  const renderBlockText = (text) => {
     const lines = text.split("\n");
     return lines.map((line, lIdx) => {
-      // Process bold **text**
-      const parts = line.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/g);
+      // Check for horizontal divider
+      if (line.trim() === "---") {
+        return <hr key={lIdx} className="my-2 border-slate-200 dark:border-white/10" />;
+      }
+
+      // Check for blockquote
+      if (line.startsWith("> ")) {
+        return (
+          <div
+            key={lIdx}
+            className="border-l-2 border-amber-500 pl-2.5 my-1.5 italic text-slate-700 dark:text-gray-300 font-medium"
+          >
+            {line.replace(/^>\s*/, "")}
+          </div>
+        );
+      }
+
+      // Process inline formatting: bold **text**, inline `code`, and markdown links [text](url)
+      const parts = line.split(/(\*\*.*?\*\*|`[^`]+`|\[.*?\]\(.*?\))/g);
       const renderedLine = parts.map((part, pIdx) => {
+        if (!part) return null;
+
+        // Bold text
         if (part.startsWith("**") && part.endsWith("**")) {
           return (
             <strong key={pIdx} className="font-semibold text-slate-900 dark:text-white">
@@ -114,6 +135,20 @@ export default function PortfolioChatbot() {
             </strong>
           );
         }
+
+        // Inline code
+        if (part.startsWith("`") && part.endsWith("`") && part.length > 2) {
+          return (
+            <code
+              key={pIdx}
+              className="px-1.5 py-0.5 mx-0.5 rounded bg-amber-500/10 dark:bg-amber-400/10 text-amber-700 dark:text-amber-300 font-mono text-[11px] border border-amber-500/20 break-all"
+            >
+              {part.slice(1, -1)}
+            </code>
+          );
+        }
+
+        // Markdown Link
         if (part.startsWith("[") && part.includes("](") && part.endsWith(")")) {
           const match = part.match(/\[(.*?)\]\((.*?)\)/);
           if (match) {
@@ -124,7 +159,7 @@ export default function PortfolioChatbot() {
                 key={pIdx}
                 href={href}
                 onClick={() => setIsOpen(false)}
-                className="text-amber-600 dark:text-amber-400 underline underline-offset-2 hover:text-amber-500 font-medium inline-flex items-center gap-1"
+                className="text-amber-600 dark:text-amber-400 underline underline-offset-2 hover:text-amber-500 font-medium inline-flex items-center gap-1 active:opacity-70 transition-opacity"
               >
                 {linkText}
               </Link>
@@ -134,7 +169,7 @@ export default function PortfolioChatbot() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-amber-600 dark:text-amber-400 underline underline-offset-2 hover:text-amber-500 font-medium inline-flex items-center gap-1"
+                className="text-amber-600 dark:text-amber-400 underline underline-offset-2 hover:text-amber-500 font-medium inline-flex items-center gap-1 active:opacity-70 transition-opacity"
               >
                 {linkText} ↗
               </a>
@@ -144,43 +179,108 @@ export default function PortfolioChatbot() {
         return part;
       });
 
+      // Section header ###
       if (line.startsWith("### ")) {
         return (
-          <h4 key={lIdx} className="text-sm font-bold text-slate-900 dark:text-white mt-2 mb-1">
+          <h4
+            key={lIdx}
+            className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mt-2 mb-1 tracking-tight"
+          >
             {line.replace("### ", "")}
           </h4>
         );
       }
 
-      if (line.startsWith("• ")) {
+      // Bullet item
+      if (line.startsWith("• ") || line.startsWith("- ")) {
         return (
-          <div key={lIdx} className="flex items-start gap-2 ml-1 my-0.5">
-            <span className="text-amber-500 dark:text-amber-400 mt-1 text-[10px]">✦</span>
-            <span>{renderedLine.slice(1)}</span>
+          <div key={lIdx} className="flex items-start gap-2 ml-0.5 my-1 text-slate-800 dark:text-gray-200">
+            <span className="text-amber-500 dark:text-amber-400 mt-1 text-[9px] shrink-0">✦</span>
+            <span className="leading-relaxed flex-1">{renderedLine.slice(1)}</span>
+          </div>
+        );
+      }
+
+      // Numbered list item
+      if (/^\d+\.\s/.test(line)) {
+        const numMatch = line.match(/^(\d+\.)\s/);
+        const prefix = numMatch ? numMatch[1] : "";
+        return (
+          <div key={lIdx} className="flex items-start gap-2 ml-0.5 my-1 text-slate-800 dark:text-gray-200">
+            <span className="font-mono text-amber-500 dark:text-amber-400 font-bold text-[11px] shrink-0">{prefix}</span>
+            <span className="leading-relaxed flex-1">{renderedLine.slice(1)}</span>
           </div>
         );
       }
 
       return (
-        <p key={lIdx} className={line.trim() === "" ? "h-2" : "my-1"}>
+        <p key={lIdx} className={line.trim() === "" ? "h-1.5" : "my-0.5 leading-relaxed"}>
           {renderedLine}
         </p>
       );
     });
   };
 
+  // Helper to format text with support for multiline code blocks
+  const renderFormattedText = (text) => {
+    if (!text) return null;
+
+    if (text.includes("```")) {
+      const segments = text.split(/(```[\s\S]*?```)/g);
+      return segments.map((seg, sIdx) => {
+        if (seg.startsWith("```") && seg.endsWith("```")) {
+          const rawLines = seg.slice(3, -3).trim().split("\n");
+          const firstLine = rawLines[0]?.trim() || "";
+          const isLang = /^(javascript|typescript|js|ts|css|html|bash|kotlin|json|python)$/i.test(firstLine);
+          const codeContent = isLang ? rawLines.slice(1).join("\n") : rawLines.join("\n");
+
+          return (
+            <div
+              key={sIdx}
+              className="my-2 rounded-xl bg-slate-950 text-slate-100 p-2.5 sm:p-3 font-mono text-[11px] sm:text-xs overflow-x-auto border border-slate-800 shadow-inner"
+            >
+              {isLang && (
+                <div className="text-[9px] text-amber-400 font-semibold mb-1 uppercase tracking-wider select-none font-mono">
+                  {firstLine}
+                </div>
+              )}
+              <pre className="whitespace-pre overflow-x-auto leading-relaxed scrollbar-thin">
+                <code>{codeContent}</code>
+              </pre>
+            </div>
+          );
+        }
+        return <React.Fragment key={sIdx}>{renderBlockText(seg)}</React.Fragment>;
+      });
+    }
+
+    return renderBlockText(text);
+  };
+
   return (
     <>
+      {/* Mobile Backdrop Overlay */}
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] sm:hidden transition-opacity duration-300"
+          aria-hidden="true"
+        />
+      )}
+
       {/* Floating Trigger Button */}
-      <aside aria-label="Portfolio AI Assistant" className="fixed bottom-6 right-6 z-50">
-        {!isOpen && (
+      {!isOpen && (
+        <aside
+          aria-label="Portfolio AI Assistant"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pb-[env(safe-area-inset-bottom,0px)] pr-[env(safe-area-inset-right,0px)]"
+        >
           <button
             type="button"
             onClick={() => {
               setIsOpen(true);
               setIsMinimized(false);
             }}
-            className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black shadow-[0_4px_24px_rgba(245,158,11,0.4)] hover:shadow-[0_6px_32px_rgba(245,158,11,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-md"
+            className="group relative flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black shadow-[0_4px_24px_rgba(245,158,11,0.4)] hover:shadow-[0_6px_32px_rgba(245,158,11,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-md touch-manipulation"
             aria-label="Open AI Assistant"
           >
             <div className="relative flex items-center justify-center">
@@ -188,28 +288,33 @@ export default function PortfolioChatbot() {
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-500 border border-white" />
             </div>
-            <span className="text-xs font-mono font-bold tracking-wider uppercase">
+            <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase">
               Ask AI
             </span>
           </button>
-        )}
+        </aside>
+      )}
 
-        {/* Chat Window */}
-        {isOpen && (
+      {/* Chat Window Container */}
+      {isOpen && (
+        <aside
+          aria-label="CodesRahul AI Assistant"
+          className={`z-[60] transition-all duration-300 ease-out origin-bottom-right ${
+            isMinimized
+              ? "fixed bottom-3 right-3 sm:bottom-6 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-80 h-14"
+              : "fixed inset-x-2.5 bottom-2.5 sm:inset-auto sm:bottom-6 sm:right-6 w-auto sm:w-[420px] h-[84dvh] sm:h-[580px] max-h-[calc(100dvh-1.25rem)] sm:max-h-[85vh]"
+          }`}
+        >
           <div
-            className={`transition-all duration-300 ease-out origin-bottom-right ${
-              isMinimized
-                ? "w-80 h-14 overflow-hidden rounded-2xl shadow-xl"
-                : "w-[92vw] sm:w-[420px] h-[580px] max-h-[85vh] rounded-3xl shadow-2xl"
-            } bg-white/95 dark:bg-[#0c0d14]/95 backdrop-blur-2xl border border-slate-200 dark:border-white/10 flex flex-col overflow-hidden animate-fadeIn`}
+            className={`w-full h-full rounded-2xl sm:rounded-3xl shadow-2xl bg-white/95 dark:bg-[#0c0d14]/95 backdrop-blur-2xl border border-slate-200 dark:border-white/10 flex flex-col overflow-hidden animate-fadeIn`}
             role="dialog"
             aria-modal="true"
-            aria-label="CodesRahul AI Assistant"
+            aria-label="CodesRahul AI Assistant Dialog"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-white/[0.02]">
-              <div className="flex items-center gap-3">
-                <div className="relative w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-400 flex items-center justify-center text-black font-black text-xs shadow-md">
+            <div className="flex items-center justify-between px-3.5 sm:px-5 py-3 sm:py-3.5 border-b border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-white/[0.02] shrink-0">
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <div className="relative w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-400 flex items-center justify-center text-black font-black text-xs shadow-md shrink-0">
                   R
                   <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-900" />
                 </div>
@@ -227,13 +332,13 @@ export default function PortfolioChatbot() {
               </div>
 
               {/* Window Controls */}
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-0.5 sm:gap-1">
                 <button
                   type="button"
                   onClick={handleClearChat}
                   title="Clear chat"
                   aria-label="Clear chat messages"
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/10 transition-colors text-xs"
+                  className="w-8 h-8 sm:w-7 sm:h-7 flex items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/10 active:scale-95 transition-all text-xs touch-manipulation"
                 >
                   <FaTrashAlt size={12} />
                 </button>
@@ -242,7 +347,7 @@ export default function PortfolioChatbot() {
                   onClick={() => setIsMinimized(!isMinimized)}
                   title={isMinimized ? "Expand" : "Minimize"}
                   aria-label={isMinimized ? "Expand chat" : "Minimize chat"}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/10 transition-colors text-xs"
+                  className="w-8 h-8 sm:w-7 sm:h-7 flex items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/10 active:scale-95 transition-all text-xs touch-manipulation"
                 >
                   <FaChevronDown
                     size={12}
@@ -254,7 +359,7 @@ export default function PortfolioChatbot() {
                   onClick={() => setIsOpen(false)}
                   title="Close"
                   aria-label="Close chat window"
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 dark:hover:text-red-400 hover:bg-slate-200/60 dark:hover:bg-white/10 transition-colors text-xs"
+                  className="w-8 h-8 sm:w-7 sm:h-7 flex items-center justify-center rounded-lg text-slate-400 hover:text-red-500 dark:hover:text-red-400 hover:bg-slate-200/60 dark:hover:bg-white/10 active:scale-95 transition-all text-xs touch-manipulation"
                 >
                   <FaTimes size={13} />
                 </button>
@@ -264,14 +369,14 @@ export default function PortfolioChatbot() {
             {/* Message Area */}
             {!isMinimized && (
               <>
-                <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs font-sans text-slate-800 dark:text-gray-200 scroll-smooth">
+                <div className="flex-1 overflow-y-auto overflow-x-hidden p-3 sm:p-4 space-y-3.5 sm:space-y-4 text-xs font-sans text-slate-800 dark:text-gray-200 scroll-smooth overscroll-contain">
                   {messages.map((msg) => (
                     <div
                       key={msg.id}
                       className={`flex flex-col ${msg.sender === "user" ? "items-end" : "items-start"}`}
                     >
                       <div
-                        className={`max-w-[85%] rounded-2xl px-4 py-3 leading-relaxed ${
+                        className={`max-w-[88%] sm:max-w-[85%] rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 leading-relaxed break-words ${
                           msg.sender === "user"
                             ? "bg-amber-500 text-black font-medium shadow-md rounded-br-none"
                             : "bg-slate-100/90 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 text-slate-800 dark:text-gray-200 rounded-bl-none shadow-sm"
@@ -286,13 +391,13 @@ export default function PortfolioChatbot() {
 
                       {/* Interactive suggestion chips under bot messages */}
                       {msg.sender === "bot" && msg.suggestions && msg.suggestions.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 mt-2 max-w-[95%]">
+                        <div className="flex flex-wrap gap-1.5 mt-2 max-w-full">
                           {msg.suggestions.map((sug, sIdx) => (
                             <button
                               key={sIdx}
                               type="button"
                               onClick={() => handleSend(sug)}
-                              className="text-[11px] font-mono px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.03] text-slate-700 dark:text-gray-300 hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 active:scale-95 transition-all text-left"
+                              className="text-[11px] font-mono px-2.5 sm:px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.03] text-slate-700 dark:text-gray-300 hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 active:scale-95 transition-all text-left break-words touch-manipulation"
                             >
                               {sug}
                             </button>
@@ -315,23 +420,23 @@ export default function PortfolioChatbot() {
                 </div>
 
                 {/* Direct Action Quick Bar */}
-                <div className="px-4 py-2 border-t border-slate-200/80 dark:border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-gray-400 bg-slate-50/60 dark:bg-white/[0.01]">
-                  <span>Quick Connect:</span>
-                  <div className="flex items-center gap-2">
+                <div className="px-3 sm:px-4 py-2 sm:py-2.5 border-t border-slate-200/80 dark:border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-gray-400 bg-slate-50/60 dark:bg-white/[0.01] shrink-0">
+                  <span className="hidden xs:inline">Quick Connect:</span>
+                  <div className="flex items-center gap-3 ml-auto xs:ml-0">
                     <a
                       href={RAHUL_PROFILE.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 hover:underline"
+                      className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 hover:underline py-1 px-1.5 rounded active:bg-emerald-500/10 transition-colors touch-manipulation"
                     >
-                      <FaWhatsapp /> WhatsApp
+                      <FaWhatsapp size={13} /> <span>WhatsApp</span>
                     </a>
                     <span>•</span>
                     <a
                       href={`mailto:${RAHUL_PROFILE.email}`}
-                      className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 hover:underline"
+                      className="inline-flex items-center gap-1.5 text-amber-600 dark:text-amber-400 hover:underline py-1 px-1.5 rounded active:bg-amber-500/10 transition-colors touch-manipulation"
                     >
-                      <FaEnvelope /> Email
+                      <FaEnvelope size={12} /> <span>Email</span>
                     </a>
                   </div>
                 </div>
@@ -342,21 +447,24 @@ export default function PortfolioChatbot() {
                     e.preventDefault();
                     handleSend();
                   }}
-                  className="p-3 border-t border-slate-200 dark:border-white/10 bg-white dark:bg-black/40 flex items-center gap-2"
+                  className="p-2.5 sm:p-3 border-t border-slate-200 dark:border-white/10 bg-white dark:bg-black/40 flex items-center gap-2 shrink-0 pb-[max(0.625rem,env(safe-area-inset-bottom))]"
                 >
                   <input
                     ref={inputRef}
                     type="text"
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
-                    placeholder="Ask about projects, Kotlin, hiring..."
+                    placeholder="Ask about projects, skills, hiring..."
                     disabled={isTyping}
-                    className="flex-1 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full px-4 py-2.5 text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-amber-500/60 transition-all disabled:opacity-50"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="sentences"
+                    className="flex-1 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full px-3.5 sm:px-4 py-2 sm:py-2.5 text-base sm:text-xs font-mono text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-amber-500/60 transition-all disabled:opacity-50"
                   />
                   <button
                     type="submit"
                     disabled={!inputMessage.trim() || isTyping}
-                    className="w-9 h-9 rounded-full bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:hover:bg-amber-500 text-black flex items-center justify-center transition-all shadow-sm shrink-0 active:scale-90"
+                    className="w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:hover:bg-amber-500 text-black flex items-center justify-center transition-all shadow-sm shrink-0 active:scale-90 touch-manipulation"
                     aria-label="Send message"
                   >
                     <FaPaperPlane size={12} />
@@ -365,8 +473,8 @@ export default function PortfolioChatbot() {
               </>
             )}
           </div>
-        )}
-      </aside>
+        </aside>
+      )}
     </>
   );
 }
