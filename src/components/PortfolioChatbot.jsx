@@ -642,15 +642,6 @@ export default function PortfolioChatbot() {
             aria-label="Open or drag AI Assistant"
             title="Drag to left or right corner, or tap to open chat"
           >
-            {/* Desktop Ambient Tooltip */}
-            <div
-              className={`hidden sm:flex items-center gap-1.5 absolute -top-8 ${
-                dockSide === "left" ? "left-0" : "right-0"
-              } whitespace-nowrap bg-slate-900/95 dark:bg-black/95 text-amber-400 font-mono text-[10px] font-semibold px-2.5 py-1 rounded-full border border-amber-500/30 shadow-lg backdrop-blur-md pointer-events-none transition-opacity duration-300 opacity-80 group-hover:opacity-100`}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-              Ask Rahul&apos;s AI
-            </div>
 
             {/* Drag Handle Icon */}
             <span
