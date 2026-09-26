@@ -567,7 +567,7 @@ export default function PortfolioChatbot() {
     return renderBlockText(text);
   };
 
-  // Compute inline styles for button placement
+  // Compute inline styles for button placement (only overrides when actively dragged or dropped at custom Y)
   const getButtonPositionStyle = () => {
     if (dragPos) {
       return {
@@ -581,29 +581,22 @@ export default function PortfolioChatbot() {
       };
     }
 
-    const style = {
+    if (customY !== null) {
+      return {
+        position: "fixed",
+        top: `${customY}px`,
+        bottom: "auto",
+        zIndex: 50,
+        transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)"
+      };
+    }
+
+    // Default for new visitors: pure responsive styling via Tailwind CSS classes
+    return {
       position: "fixed",
       zIndex: 50,
       transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)"
     };
-
-    if (dockSide === "left") {
-      style.left = "1rem";
-      style.right = "auto";
-    } else {
-      style.right = "1rem";
-      style.left = "auto";
-    }
-
-    if (customY !== null) {
-      style.top = `${customY}px`;
-      style.bottom = "auto";
-    } else {
-      style.bottom = "1rem";
-      style.top = "auto";
-    }
-
-    return style;
   };
 
   return (
@@ -623,7 +616,15 @@ export default function PortfolioChatbot() {
           ref={buttonRef}
           aria-label="Portfolio AI Assistant"
           style={getButtonPositionStyle()}
-          className="select-none touch-none"
+          className={`select-none touch-none ${
+            dockSide === "left"
+              ? "left-4 sm:left-7 pl-[env(safe-area-inset-left,0px)]"
+              : "right-4 sm:right-7 pr-[env(safe-area-inset-right,0px)]"
+          } ${
+            customY === null
+              ? "bottom-5 sm:bottom-7 pb-[env(safe-area-inset-bottom,0px)]"
+              : ""
+          }`}
         >
           <div
             onMouseDown={handlePointerDown}
@@ -633,14 +634,24 @@ export default function PortfolioChatbot() {
               setIsOpen(true);
               setIsMinimized(false);
             }}
-            className={`group relative flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black shadow-[0_4px_24px_rgba(245,158,11,0.4)] hover:shadow-[0_6px_32px_rgba(245,158,11,0.6)] active:scale-95 transition-all duration-300 backdrop-blur-md cursor-grab active:cursor-grabbing ${
-              isDraggingButton ? "scale-105 shadow-[0_10px_35px_rgba(245,158,11,0.7)] ring-2 ring-amber-400/80 cursor-grabbing" : ""
+            className={`group relative flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black shadow-[0_6px_28px_rgba(245,158,11,0.45)] hover:shadow-[0_8px_36px_rgba(245,158,11,0.65)] active:scale-95 transition-all duration-300 backdrop-blur-md cursor-grab active:cursor-grabbing ${
+              isDraggingButton ? "scale-105 shadow-[0_12px_40px_rgba(245,158,11,0.75)] ring-2 ring-amber-400 cursor-grabbing" : ""
             }`}
             role="button"
             tabIndex={0}
             aria-label="Open or drag AI Assistant"
             title="Drag to left or right corner, or tap to open chat"
           >
+            {/* Desktop Ambient Tooltip */}
+            <div
+              className={`hidden sm:flex items-center gap-1.5 absolute -top-8 ${
+                dockSide === "left" ? "left-0" : "right-0"
+              } whitespace-nowrap bg-slate-900/95 dark:bg-black/95 text-amber-400 font-mono text-[10px] font-semibold px-2.5 py-1 rounded-full border border-amber-500/30 shadow-lg backdrop-blur-md pointer-events-none transition-opacity duration-300 opacity-80 group-hover:opacity-100`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+              Ask Rahul&apos;s AI
+            </div>
+
             {/* Drag Handle Icon */}
             <span
               className="text-black/50 group-hover:text-black/80 transition-colors"
@@ -671,15 +682,15 @@ export default function PortfolioChatbot() {
           } ${
             isMinimized
               ? dockSide === "left"
-                ? "fixed bottom-3 left-3 sm:bottom-6 sm:left-6 w-[calc(100vw-1.5rem)] sm:w-80 h-14"
-                : "fixed bottom-3 right-3 sm:bottom-6 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-80 h-14"
+                ? "fixed bottom-4 left-4 sm:bottom-7 sm:left-7 w-[calc(100vw-2rem)] sm:w-80 h-14 pb-[env(safe-area-inset-bottom,0px)] pl-[env(safe-area-inset-left,0px)]"
+                : "fixed bottom-4 right-4 sm:bottom-7 sm:right-7 w-[calc(100vw-2rem)] sm:w-80 h-14 pb-[env(safe-area-inset-bottom,0px)] pr-[env(safe-area-inset-right,0px)]"
               : dockSide === "left"
-              ? "fixed inset-x-2.5 bottom-2.5 sm:inset-auto sm:bottom-6 sm:left-6 w-auto sm:w-[420px] h-[84dvh] sm:h-[580px] max-h-[calc(100dvh-1.25rem)] sm:max-h-[85vh]"
-              : "fixed inset-x-2.5 bottom-2.5 sm:inset-auto sm:bottom-6 sm:right-6 w-auto sm:w-[420px] h-[84dvh] sm:h-[580px] max-h-[calc(100dvh-1.25rem)] sm:max-h-[85vh]"
+              ? "fixed inset-x-3 bottom-3 sm:inset-auto sm:bottom-7 sm:left-7 w-auto sm:w-[420px] h-[85dvh] sm:h-[600px] max-h-[calc(100dvh-1.5rem)] sm:max-h-[85vh] pb-[env(safe-area-inset-bottom,0px)]"
+              : "fixed inset-x-3 bottom-3 sm:inset-auto sm:bottom-7 sm:right-7 w-auto sm:w-[420px] h-[85dvh] sm:h-[600px] max-h-[calc(100dvh-1.5rem)] sm:max-h-[85vh] pb-[env(safe-area-inset-bottom,0px)]"
           }`}
         >
           <div
-            className="w-full h-full rounded-2xl sm:rounded-3xl shadow-2xl bg-white/95 dark:bg-[#0c0d14]/95 backdrop-blur-2xl border border-slate-200 dark:border-white/10 flex flex-col overflow-hidden animate-fadeIn"
+            className="w-full h-full rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.8)] bg-white/95 dark:bg-[#0c0d14]/95 backdrop-blur-2xl border border-slate-200 dark:border-white/10 flex flex-col overflow-hidden animate-fadeIn"
             role="dialog"
             aria-modal="true"
             aria-label="CodesRahul AI Assistant Dialog"
