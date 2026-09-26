@@ -9,7 +9,9 @@ import {
   FaTrashAlt,
   FaChevronDown,
   FaWhatsapp,
-  FaEnvelope
+  FaEnvelope,
+  FaGripVertical,
+  FaExchangeAlt
 } from "react-icons/fa";
 import { generateAiResponse, INITIAL_SUGGESTIONS, RAHUL_PROFILE } from "../lib/aiEngine";
 
@@ -22,12 +24,33 @@ export default function PortfolioChatbot() {
     {
       id: "welcome",
       sender: "bot",
-      text: `Hello! 👋 I'm **CodesRahul AI**, Rahul's personal interactive portfolio assistant.\n\nAsk me anything about his **20+ shipped projects**, **Kotlin/Android apps**, **MERN stack**, or how to **hire him**!`,
+      text: `Hello! 👋 I'm **CodesRahul AI**, Rahul's personal interactive portfolio assistant.\n\nAsk me anything about his **20+ shipped projects**, **Kotlin/Android apps**, **MERN stack**, or how to **hire him**!\n\n*(💡 Tip: You can drag and drop this assistant to either the left or right corner anytime!)*`,
       suggestions: INITIAL_SUGGESTIONS,
       timestamp: "Just now"
     }
   ]);
 
+  // Corner docking state: 'right' (default) or 'left'
+  const [dockSide, setDockSide] = useState("right");
+  // Custom Y position for floating button (null = default bottom offset)
+  const [customY, setCustomY] = useState(null);
+
+  // Active drag tracking
+  const [isDraggingButton, setIsDraggingButton] = useState(false);
+  const [dragPos, setDragPos] = useState(null); // { x, y }
+
+  const dragStartRef = useRef({
+    startX: 0,
+    startY: 0,
+    initialX: 0,
+    initialY: 0,
+    hasMoved: false,
+    rectWidth: 0,
+    rectHeight: 0
+  });
+
+  const isClickBlockedRef = useRef(false);
+  const buttonRef = useRef(null);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -39,7 +62,7 @@ export default function PortfolioChatbot() {
   useEffect(() => {
     if (isOpen && !isMinimized) {
       scrollToBottom();
-      // Auto-focus input on open (only on non-touch devices to avoid unexpected soft-keyboard pop on mobile)
+      // Auto-focus input on open (only on larger screens to avoid unexpected soft keyboard pop on mobile)
       if (typeof window !== "undefined" && window.matchMedia("(min-width: 640px)").matches) {
         setTimeout(() => inputRef.current?.focus(), 150);
       }
@@ -56,6 +79,124 @@ export default function PortfolioChatbot() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
+
+  // Keep Y within viewport bounds on screen resize or orientation change
+  useEffect(() => {
+    const handleResize = () => {
+      setCustomY((prevY) => {
+        if (prevY === null) return null;
+        const maxY = window.innerHeight - 80;
+        return Math.max(75, Math.min(prevY, maxY));
+      });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // =========================================================================
+  // DRAG & DROP LOGIC (TOUCH & MOUSE COMPATIBLE)
+  // =========================================================================
+  const handlePointerDown = (e) => {
+    // Only drag with primary touch or left-click
+    if (e.type === "mousedown" && e.button !== 0) return;
+
+    const targetEl = buttonRef.current;
+    if (!targetEl) return;
+
+    const rect = targetEl.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    dragStartRef.current = {
+      startX: clientX,
+      startY: clientY,
+      initialX: rect.left,
+      initialY: rect.top,
+      hasMoved: false,
+      rectWidth: rect.width,
+      rectHeight: rect.height
+    };
+
+    const handlePointerMove = (moveEvt) => {
+      const currentX = moveEvt.touches ? moveEvt.touches[0].clientX : moveEvt.clientX;
+      const currentY = moveEvt.touches ? moveEvt.touches[0].clientY : moveEvt.clientY;
+
+      const dx = currentX - dragStartRef.current.startX;
+      const dy = currentY - dragStartRef.current.startY;
+
+      // Threshold of 6px to separate quick tap/click from drag gesture
+      if (!dragStartRef.current.hasMoved && Math.hypot(dx, dy) > 6) {
+        dragStartRef.current.hasMoved = true;
+        setIsDraggingButton(true);
+      }
+
+      if (dragStartRef.current.hasMoved) {
+        if (moveEvt.cancelable) moveEvt.preventDefault();
+
+        const newX = dragStartRef.current.initialX + dx;
+        const newY = dragStartRef.current.initialY + dy;
+
+        // Viewport padding constraints
+        const paddingX = 10;
+        const topPadding = 75; // Stay below top navigation bar
+        const bottomPadding = 20;
+
+        const clampedX = Math.max(
+          paddingX,
+          Math.min(window.innerWidth - dragStartRef.current.rectWidth - paddingX, newX)
+        );
+        const clampedY = Math.max(
+          topPadding,
+          Math.min(window.innerHeight - dragStartRef.current.rectHeight - bottomPadding, newY)
+        );
+
+        setDragPos({ x: clampedX, y: clampedY });
+      }
+    };
+
+    const handlePointerUp = () => {
+      window.removeEventListener("mousemove", handlePointerMove);
+      window.removeEventListener("mouseup", handlePointerUp);
+      window.removeEventListener("touchmove", handlePointerMove);
+      window.removeEventListener("touchend", handlePointerUp);
+      window.removeEventListener("touchcancel", handlePointerUp);
+
+      if (dragStartRef.current.hasMoved) {
+        // Block onClick from triggering open action right after drop
+        isClickBlockedRef.current = true;
+        setTimeout(() => {
+          isClickBlockedRef.current = false;
+        }, 150);
+
+        setIsDraggingButton(false);
+
+        // Snap smoothly to left or right corner
+        setDragPos((lastPos) => {
+          if (lastPos) {
+            const centerX = lastPos.x + dragStartRef.current.rectWidth / 2;
+            const screenMiddle = window.innerWidth / 2;
+            const newSide = centerX < screenMiddle ? "left" : "right";
+            setDockSide(newSide);
+            setCustomY(lastPos.y);
+          }
+          return null;
+        });
+      } else {
+        setIsDraggingButton(false);
+        setDragPos(null);
+      }
+    };
+
+    window.addEventListener("mousemove", handlePointerMove);
+    window.addEventListener("mouseup", handlePointerUp);
+    window.addEventListener("touchmove", handlePointerMove, { passive: false });
+    window.addEventListener("touchend", handlePointerUp);
+    window.addEventListener("touchcancel", handlePointerUp);
+  };
+
+  const toggleDockSide = () => {
+    setDockSide((prev) => (prev === "right" ? "left" : "right"));
+  };
 
   const handleSend = (textToSend = inputMessage) => {
     const query = textToSend.trim();
@@ -105,12 +246,12 @@ export default function PortfolioChatbot() {
   const renderBlockText = (text) => {
     const lines = text.split("\n");
     return lines.map((line, lIdx) => {
-      // Check for horizontal divider
+      // Horizontal divider
       if (line.trim() === "---") {
         return <hr key={lIdx} className="my-2 border-slate-200 dark:border-white/10" />;
       }
 
-      // Check for blockquote
+      // Blockquote
       if (line.startsWith("> ")) {
         return (
           <div
@@ -257,6 +398,45 @@ export default function PortfolioChatbot() {
     return renderBlockText(text);
   };
 
+  // Compute inline styles for button placement
+  const getButtonPositionStyle = () => {
+    if (dragPos) {
+      return {
+        position: "fixed",
+        left: `${dragPos.x}px`,
+        top: `${dragPos.y}px`,
+        right: "auto",
+        bottom: "auto",
+        transition: "none",
+        zIndex: 60
+      };
+    }
+
+    const style = {
+      position: "fixed",
+      zIndex: 50,
+      transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)"
+    };
+
+    if (dockSide === "left") {
+      style.left = "1rem";
+      style.right = "auto";
+    } else {
+      style.right = "1rem";
+      style.left = "auto";
+    }
+
+    if (customY !== null) {
+      style.top = `${customY}px`;
+      style.bottom = "auto";
+    } else {
+      style.bottom = "1rem";
+      style.top = "auto";
+    }
+
+    return style;
+  };
+
   return (
     <>
       {/* Mobile Backdrop Overlay */}
@@ -268,30 +448,48 @@ export default function PortfolioChatbot() {
         />
       )}
 
-      {/* Floating Trigger Button */}
+      {/* Floating Draggable Trigger Button */}
       {!isOpen && (
         <aside
+          ref={buttonRef}
           aria-label="Portfolio AI Assistant"
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pb-[env(safe-area-inset-bottom,0px)] pr-[env(safe-area-inset-right,0px)]"
+          style={getButtonPositionStyle()}
+          className="select-none touch-none"
         >
-          <button
-            type="button"
+          <div
+            onMouseDown={handlePointerDown}
+            onTouchStart={handlePointerDown}
             onClick={() => {
+              if (isClickBlockedRef.current) return;
               setIsOpen(true);
               setIsMinimized(false);
             }}
-            className="group relative flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black shadow-[0_4px_24px_rgba(245,158,11,0.4)] hover:shadow-[0_6px_32px_rgba(245,158,11,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-md touch-manipulation"
-            aria-label="Open AI Assistant"
+            className={`group relative flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black shadow-[0_4px_24px_rgba(245,158,11,0.4)] hover:shadow-[0_6px_32px_rgba(245,158,11,0.6)] active:scale-95 transition-all duration-300 backdrop-blur-md cursor-grab active:cursor-grabbing ${
+              isDraggingButton ? "scale-105 shadow-[0_10px_35px_rgba(245,158,11,0.7)] ring-2 ring-amber-400/80 cursor-grabbing" : ""
+            }`}
+            role="button"
+            tabIndex={0}
+            aria-label="Open or drag AI Assistant"
+            title="Drag to left or right corner, or tap to open chat"
           >
+            {/* Tiny Drag Handle Icon */}
+            <span
+              className="text-black/50 group-hover:text-black/80 transition-colors"
+              title="Drag to reposition"
+            >
+              <FaGripVertical size={11} />
+            </span>
+
             <div className="relative flex items-center justify-center">
               <FaRobot className="text-base text-black group-hover:rotate-12 transition-transform duration-300" />
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-500 border border-white" />
             </div>
-            <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase">
+
+            <span className="text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase select-none">
               Ask AI
             </span>
-          </button>
+          </div>
         </aside>
       )}
 
@@ -299,19 +497,25 @@ export default function PortfolioChatbot() {
       {isOpen && (
         <aside
           aria-label="CodesRahul AI Assistant"
-          className={`z-[60] transition-all duration-300 ease-out origin-bottom-right ${
+          className={`z-[60] transition-all duration-300 ease-out ${
+            dockSide === "left" ? "origin-bottom-left" : "origin-bottom-right"
+          } ${
             isMinimized
-              ? "fixed bottom-3 right-3 sm:bottom-6 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-80 h-14"
+              ? dockSide === "left"
+                ? "fixed bottom-3 left-3 sm:bottom-6 sm:left-6 w-[calc(100vw-1.5rem)] sm:w-80 h-14"
+                : "fixed bottom-3 right-3 sm:bottom-6 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-80 h-14"
+              : dockSide === "left"
+              ? "fixed inset-x-2.5 bottom-2.5 sm:inset-auto sm:bottom-6 sm:left-6 w-auto sm:w-[420px] h-[84dvh] sm:h-[580px] max-h-[calc(100dvh-1.25rem)] sm:max-h-[85vh]"
               : "fixed inset-x-2.5 bottom-2.5 sm:inset-auto sm:bottom-6 sm:right-6 w-auto sm:w-[420px] h-[84dvh] sm:h-[580px] max-h-[calc(100dvh-1.25rem)] sm:max-h-[85vh]"
           }`}
         >
           <div
-            className={`w-full h-full rounded-2xl sm:rounded-3xl shadow-2xl bg-white/95 dark:bg-[#0c0d14]/95 backdrop-blur-2xl border border-slate-200 dark:border-white/10 flex flex-col overflow-hidden animate-fadeIn`}
+            className="w-full h-full rounded-2xl sm:rounded-3xl shadow-2xl bg-white/95 dark:bg-[#0c0d14]/95 backdrop-blur-2xl border border-slate-200 dark:border-white/10 flex flex-col overflow-hidden animate-fadeIn"
             role="dialog"
             aria-modal="true"
             aria-label="CodesRahul AI Assistant Dialog"
           >
-            {/* Header */}
+            {/* Header with Corner Docking Switcher */}
             <div className="flex items-center justify-between px-3.5 sm:px-5 py-3 sm:py-3.5 border-b border-slate-200 dark:border-white/10 bg-slate-50/80 dark:bg-white/[0.02] shrink-0">
               <div className="flex items-center gap-2.5 sm:gap-3">
                 <div className="relative w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-400 flex items-center justify-center text-black font-black text-xs shadow-md shrink-0">
@@ -333,6 +537,18 @@ export default function PortfolioChatbot() {
 
               {/* Window Controls */}
               <div className="flex items-center gap-0.5 sm:gap-1">
+                {/* Corner Switcher Button */}
+                <button
+                  type="button"
+                  onClick={toggleDockSide}
+                  title={`Dock to ${dockSide === "right" ? "Left" : "Right"} side`}
+                  aria-label={`Switch chat dock to ${dockSide === "right" ? "left" : "right"}`}
+                  className="w-8 h-8 sm:w-7 sm:h-7 flex items-center justify-center rounded-lg text-slate-400 hover:text-amber-500 hover:bg-amber-500/10 active:scale-95 transition-all text-xs touch-manipulation"
+                >
+                  <FaExchangeAlt size={11} />
+                </button>
+
+                {/* Clear Chat */}
                 <button
                   type="button"
                   onClick={handleClearChat}
@@ -342,6 +558,8 @@ export default function PortfolioChatbot() {
                 >
                   <FaTrashAlt size={12} />
                 </button>
+
+                {/* Minimize / Expand */}
                 <button
                   type="button"
                   onClick={() => setIsMinimized(!isMinimized)}
@@ -354,6 +572,8 @@ export default function PortfolioChatbot() {
                     className={`transition-transform duration-200 ${isMinimized ? "rotate-180" : ""}`}
                   />
                 </button>
+
+                {/* Close */}
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
