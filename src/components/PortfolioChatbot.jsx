@@ -93,6 +93,59 @@ export default function PortfolioChatbot() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Auto-close on inactivity (60 seconds of complete idle time)
+  const INACTIVITY_TIMEOUT_MS = 60 * 1000;
+  const inactivityTimerRef = useRef(null);
+
+  const resetInactivityTimer = () => {
+    if (inactivityTimerRef.current) {
+      clearTimeout(inactivityTimerRef.current);
+    }
+
+    if (!isOpen) return;
+
+    inactivityTimerRef.current = setTimeout(() => {
+      // Don't auto-close if the user has an active draft or AI is generating a reply
+      if (inputMessage.trim().length > 0 || isTyping) {
+        resetInactivityTimer();
+        return;
+      }
+      setIsOpen(false);
+      setIsMinimized(false);
+    }, INACTIVITY_TIMEOUT_MS);
+  };
+
+  useEffect(() => {
+    if (!isOpen) {
+      if (inactivityTimerRef.current) {
+        clearTimeout(inactivityTimerRef.current);
+      }
+      return;
+    }
+
+    // Initialize timer upon opening
+    resetInactivityTimer();
+
+    // User activity events that reset the timer
+    const activityEvents = ["mousemove", "mousedown", "keydown", "touchstart", "touchmove", "scroll"];
+    const handleActivity = () => {
+      resetInactivityTimer();
+    };
+
+    activityEvents.forEach((evt) => {
+      window.addEventListener(evt, handleActivity, { passive: true });
+    });
+
+    return () => {
+      if (inactivityTimerRef.current) {
+        clearTimeout(inactivityTimerRef.current);
+      }
+      activityEvents.forEach((evt) => {
+        window.removeEventListener(evt, handleActivity);
+      });
+    };
+  }, [isOpen, inputMessage, isTyping, messages]);
+
   // =========================================================================
   // DRAG & DROP LOGIC (TOUCH & MOUSE COMPATIBLE)
   // =========================================================================
