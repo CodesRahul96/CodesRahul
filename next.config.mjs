@@ -12,6 +12,11 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    // Bypass Vercel's /_next/image optimizer (free tier = 1000 req/month limit).
+    // Images are served directly as static files from Vercel's CDN — no quota hit.
+    unoptimized: true,
+  },
   async redirects() {
     const redirectsList = [
       // 1. Auto-redirect from Vercel default domain to the primary domain
