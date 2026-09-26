@@ -62,12 +62,6 @@ const experience = [
     role: "Full Stack Software Engineer",
     company: "Freelance & Bespoke Solutions",
     desc: "Architecting high-performance MERN web applications, Next.js platforms, and native Android apps. Specializing in enterprise HTTP security hardening, Technical SEO (#1 Google ranking architecture), and real-time Socket.IO systems."
-  },
-  {
-    year: "2021 - 2023",
-    role: "Frontend & Full Stack Engineer",
-    company: "Project Engagements & Client Delivery",
-    desc: "Engineered responsive client-side web platforms with React, Next.js, and Tailwind CSS. Focused on Core Web Vitals optimization, RESTful API integrations, and intuitive UI component systems."
   }
 ];
 
@@ -77,12 +71,6 @@ const education = [
     degree: "B.Sc. Computer Science",
     institution: "Savitribai Phule Pune University",
     desc: "Core Computer Science Fundamentals, Data Structures, Web Technologies, and Database Systems."
-  },
-  {
-    year: "2020 - 2021",
-    degree: "Full-Stack & Mobile Specialization",
-    institution: "Applied Engineering & Self-Directed Labs",
-    desc: "Intensive focus on modern React ecosystems, Node.js microservice architectures, Kotlin Android development, and production design patterns."
   }
 ];
 
