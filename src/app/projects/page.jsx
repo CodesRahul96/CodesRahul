@@ -45,9 +45,9 @@ export default function Projects() {
         {/* Header */}
         <div className="mb-16">
           <div>
-            <h2 className="text-5xl md:text-7xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight">
               Selected Works.
-            </h2>
+            </h1>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
             <p className="text-slate-600 dark:text-gray-400 text-lg font-light max-w-xl">
               A curated collection of web applications, mobile platforms, and architectural systems.
@@ -56,7 +56,7 @@ export default function Projects() {
         </div>
 
         {/* Filters & Search */}
-        <div className="mb-14 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 p-6 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
+        <div className="mb-14 flex flex-col md:flex-row justify-between items-start gap-6 p-6 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
           {/* Category Pills */}
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => {

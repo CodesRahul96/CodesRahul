@@ -64,7 +64,7 @@ const Navbar = () => {
               <span className="text-xl font-black tracking-tight">
                 <span className="text-slate-900 dark:text-white">Codes</span><span className="text-amber-500">Rahul</span>
               </span>
-              <span className="text-[9px] font-mono tracking-widest text-amber-600 dark:text-amber-400/80 uppercase font-medium">
+              <span className="text-xs font-mono tracking-wide text-amber-600 dark:text-amber-400 font-medium">
                 Software Engineer
               </span>
             </div>

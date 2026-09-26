@@ -70,9 +70,9 @@ export default function Contact() {
         {/* Header */}
         <div className="mb-16">
           <div>
-            <h2 className="text-5xl md:text-7xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight">
               Contact.
-            </h2>
+            </h1>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
             <p className="text-slate-600 dark:text-gray-400 text-lg font-light max-w-xl">
               Looking for a freelance Full Stack or Android developer in Pune, Maharashtra, or remotely? Send a message and let&apos;s engineer your next digital product.
@@ -80,16 +80,16 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Direct Info Sidebar */}
-          <div className="lg:col-span-5 space-y-8 p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl flex flex-col justify-between transition-colors duration-300">
+          <div className="lg:col-span-5 h-full space-y-8 p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl flex flex-col justify-between transition-colors duration-300">
             <div className="space-y-8">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Direct Contact</span>
+                <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Direct Contact</span>
                 <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white mt-1 mb-4">Let&apos;s Talk</h3>
                 <div className="space-y-4 text-slate-600 dark:text-gray-300 font-light text-sm">
                   <div className="flex flex-col">
-                    <span className="uppercase font-mono text-[10px] text-slate-500 dark:text-gray-500 mb-1">Email Address</span>
+                    <span className="uppercase font-mono text-xs text-slate-500 dark:text-gray-500 mb-1">Email Address</span>
                     <div className="flex items-center gap-2">
                       <a href="mailto:codesrahul96@gmail.com" className="hover:text-amber-600 dark:hover:text-amber-400 text-slate-900 dark:text-white transition-colors text-base font-medium">
                         codesrahul96@gmail.com
@@ -105,7 +105,7 @@ export default function Contact() {
                   </div>
 
                   <div className="flex flex-col">
-                    <span className="uppercase font-mono text-[10px] text-slate-500 dark:text-gray-500 mb-1">Phone / WhatsApp</span>
+                    <span className="uppercase font-mono text-xs text-slate-500 dark:text-gray-500 mb-1">Phone / WhatsApp</span>
                     <div className="flex items-center gap-2 flex-wrap">
                       <a href="tel:+918805159425" className="hover:text-amber-600 dark:hover:text-amber-400 text-slate-900 dark:text-white transition-colors text-base font-medium font-mono">
                         +91 88051 59425
@@ -131,14 +131,14 @@ export default function Contact() {
                   </div>
 
                   <div className="flex flex-col">
-                    <span className="uppercase font-mono text-[10px] text-slate-500 dark:text-gray-500 mb-1">Current Location</span>
+                    <span className="uppercase font-mono text-xs text-slate-500 dark:text-gray-500 mb-1">Current Location</span>
                     <span className="text-base text-slate-800 dark:text-gray-200">Pune, Maharashtra, India</span>
                   </div>
                 </div>
               </div>
 
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-cyan-700 dark:text-cyan-400 font-medium mb-2 block">Connect Online</span>
+                <span className="text-xs font-mono uppercase tracking-wider text-cyan-700 dark:text-cyan-400 font-medium mb-2 block">Connect Online</span>
                 <div className="flex gap-3 flex-wrap">
                   {[
                     { icon: <FaWhatsapp size={18} />, link: "https://wa.me/918805159425", label: "WhatsApp" },
@@ -168,24 +168,32 @@ export default function Contact() {
           </div>
 
           {/* Contact Form Card */}
-          <div className="lg:col-span-7 p-8 md:p-10 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
+          <div className="lg:col-span-7 h-full p-8 md:p-10 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
             
             {/* Interactive Scope Chips */}
             <div className="mb-6">
-              <label className="text-[10px] font-mono uppercase tracking-widest text-slate-500 dark:text-gray-400 mb-2.5 block">
+              <label className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-gray-400 mb-2.5 block">
                 Select Project Interest:
               </label>
               <div className="flex flex-wrap gap-2">
-                {projectScopes.map((scope) => (
-                  <button
-                    type="button"
-                    key={scope}
-                    onClick={() => handleSelectScope(scope)}
-                    className="text-[10px] font-mono uppercase tracking-wider px-3.5 py-2 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-white/5 text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:border-amber-500/50 hover:bg-amber-500/10 transition-all duration-200"
-                  >
-                    + {scope}
-                  </button>
-                ))}
+                {projectScopes.map((scope) => {
+                  const isSelected = formData.subject.includes(scope);
+                  return (
+                    <button
+                      type="button"
+                      key={scope}
+                      aria-pressed={isSelected}
+                      onClick={() => handleSelectScope(scope)}
+                      className={`text-xs font-mono tracking-wide px-4 py-2 rounded-full border transition-all duration-200 ${
+                        isSelected
+                          ? "bg-amber-500 text-black border-amber-500 font-semibold shadow-sm"
+                          : "bg-slate-100/80 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-amber-500/50 hover:text-slate-900 dark:hover:text-white"
+                      }`}
+                    >
+                      {isSelected ? `✓ ${scope}` : scope}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -202,7 +210,7 @@ export default function Contact() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">Your Name *</label>
+                  <label className="text-xs font-mono uppercase tracking-wider text-slate-600 dark:text-gray-400 mb-2">Your Name *</label>
                   <input
                     type="text"
                     name="name"
@@ -214,7 +222,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">Your Email *</label>
+                  <label className="text-xs font-mono uppercase tracking-wider text-slate-600 dark:text-gray-400 mb-2">Your Email *</label>
                   <input
                     type="email"
                     name="email"
@@ -229,8 +237,8 @@ export default function Contact() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">
-                    Phone / WhatsApp <span className="text-slate-400 dark:text-gray-500 text-[9px] lowercase">(optional)</span>
+                  <label className="text-xs font-mono uppercase tracking-wider text-slate-600 dark:text-gray-400 mb-2">
+                    Phone / WhatsApp <span className="text-slate-400 dark:text-gray-500 text-[10px] lowercase">(optional)</span>
                   </label>
                   <input
                     type="tel"
@@ -242,7 +250,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">Subject</label>
+                  <label className="text-xs font-mono uppercase tracking-wider text-slate-600 dark:text-gray-400 mb-2">Subject</label>
                   <input
                     type="text"
                     name="subject"
@@ -255,7 +263,7 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col">
-                <label className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 mb-2">Your Message *</label>
+                <label className="text-xs font-mono uppercase tracking-wider text-slate-600 dark:text-gray-400 mb-2">Your Message *</label>
                 <textarea
                   name="message"
                   value={formData.message}

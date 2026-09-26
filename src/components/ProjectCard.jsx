@@ -329,47 +329,21 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                   <FaChevronRight size={12} />
                 </button>
 
-                {/* Clickable Dot Pagination indicators */}
-                <div className="absolute bottom-2.5 left-0 right-0 z-20 flex items-center justify-center gap-1.5 px-2">
-                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/20 dark:bg-black/40 backdrop-blur-md border border-white/10">
-                    {imageList.slice(0, 8).map((_, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          setCurrentIdx(idx);
-                        }}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                          idx === currentIdx
-                            ? "w-5 bg-amber-500 dark:bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]"
-                            : "w-2 bg-white/60 dark:bg-white/40 hover:bg-white dark:hover:bg-white/80"
-                        }`}
-                        aria-label={`Go to slide ${idx + 1}`}
-                      />
-                    ))}
-                    {imageList.length > 8 && (
-                      <span className="text-[9px] font-mono text-white/90 ml-1 select-none font-medium">
-                        +{imageList.length - 8}
-                      </span>
-                    )}
-                  </div>
-                </div>
               </>
             )}
 
             {/* Desktop Quick-Action Overlay (visible on hover) */}
-            <div className="absolute inset-0 bg-slate-950/40 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden md:flex items-center justify-center space-x-4 backdrop-blur-md pointer-events-none group-hover:pointer-events-auto z-10">
+            <div className="absolute inset-0 bg-slate-950/50 dark:bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden md:flex items-center justify-center gap-3 backdrop-blur-md pointer-events-none group-hover:pointer-events-auto z-10 px-4">
               {project.github && (
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 rounded-full text-slate-800 dark:text-white bg-white/90 dark:bg-white/15 hover:bg-amber-500 hover:text-black dark:hover:bg-amber-500 dark:hover:text-black hover:scale-110 active:scale-95 transition-all duration-200 shadow-xl border border-slate-200/80 dark:border-white/20 backdrop-blur-md"
-                  title="View Code"
+                  aria-label={`View source code for ${project.title}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono font-medium text-slate-900 dark:text-white bg-white/95 dark:bg-slate-900/95 hover:bg-amber-500 hover:text-black dark:hover:bg-amber-500 dark:hover:text-black hover:scale-105 active:scale-95 transition-all duration-200 shadow-xl border border-slate-200/80 dark:border-white/20 backdrop-blur-md"
                 >
-                  <FaGithub size={18} />
+                  <FaGithub size={15} aria-hidden="true" />
+                  <span>Code</span>
                 </a>
               )}
               {project.demo && (
@@ -377,10 +351,11 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 rounded-full text-slate-800 dark:text-white bg-white/90 dark:bg-white/15 hover:bg-amber-500 hover:text-black dark:hover:bg-amber-500 dark:hover:text-black hover:scale-110 active:scale-95 transition-all duration-200 shadow-xl border border-slate-200/80 dark:border-white/20 backdrop-blur-md"
-                  title="Live Demo"
+                  aria-label={`Visit live demo for ${project.title}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono font-medium text-slate-900 dark:text-white bg-white/95 dark:bg-slate-900/95 hover:bg-amber-500 hover:text-black dark:hover:bg-amber-500 dark:hover:text-black hover:scale-105 active:scale-95 transition-all duration-200 shadow-xl border border-slate-200/80 dark:border-white/20 backdrop-blur-md"
                 >
-                  <FaExternalLinkAlt size={16} />
+                  <FaExternalLinkAlt size={13} aria-hidden="true" />
+                  <span>Live Demo</span>
                 </a>
               )}
               {hasMultipleImages && (
@@ -391,10 +366,11 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                     e.stopPropagation();
                     setIsLightboxOpen(true);
                   }}
-                  className="p-3.5 rounded-full text-slate-800 dark:text-white bg-white/90 dark:bg-white/15 hover:bg-cyan-500 hover:text-black dark:hover:bg-cyan-400 dark:hover:text-black hover:scale-110 active:scale-95 transition-all duration-200 shadow-xl border border-slate-200/80 dark:border-white/20 backdrop-blur-md"
-                  title="Open Gallery Lightbox"
+                  aria-label={`Open screenshot gallery for ${project.title}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono font-medium text-slate-900 dark:text-white bg-white/95 dark:bg-slate-900/95 hover:bg-cyan-500 hover:text-black dark:hover:bg-cyan-400 dark:hover:text-black hover:scale-105 active:scale-95 transition-all duration-200 shadow-xl border border-slate-200/80 dark:border-white/20 backdrop-blur-md"
                 >
-                  <FaExpand size={16} />
+                  <FaExpand size={13} aria-hidden="true" />
+                  <span>Gallery</span>
                 </button>
               )}
             </div>
@@ -407,7 +383,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                 {project.title}
               </h3>
               <div className="flex flex-col items-end gap-1.5 shrink-0">
-                <span className="text-[10px] font-mono tracking-widest text-amber-700 dark:text-amber-400 uppercase border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 rounded-full backdrop-blur-md font-medium">
+                <span className="text-xs font-mono tracking-wider text-amber-700 dark:text-amber-400 uppercase border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 rounded-full backdrop-blur-md font-medium">
                   {project.category?.toLowerCase().includes("app")
                     ? "App"
                     : project.category === "Open Source"
@@ -415,7 +391,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                     : "Web"}
                 </span>
                 {project.contributed && (
-                  <span className="text-[9px] font-mono tracking-widest text-cyan-700 dark:text-cyan-400 uppercase border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 rounded-full backdrop-blur-md font-medium">
+                  <span className="text-xs font-mono tracking-wider text-cyan-700 dark:text-cyan-400 uppercase border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 rounded-full backdrop-blur-md font-medium">
                     ✦ Contributed
                   </span>
                 )}
@@ -469,11 +445,11 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
 
         {/* Technologies Badges */}
         <div className="p-6 sm:p-7 pt-0 border-t border-slate-200/80 dark:border-white/5 mt-4">
-          <div className="flex flex-wrap gap-2 pt-4">
-            {project.technologies.map((tech, index) => (
+          <div className="flex flex-wrap items-center gap-2 pt-4">
+            {project.technologies.slice(0, 4).map((tech, index) => (
               <span
                 key={index}
-                className="flex items-center px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-slate-700 dark:text-gray-300 bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 rounded-lg group-hover:border-amber-500/40 group-hover:text-slate-900 dark:group-hover:text-white transition-all duration-200 backdrop-blur-md"
+                className="flex items-center px-2.5 py-1 text-xs font-mono uppercase tracking-wider text-slate-700 dark:text-slate-300 bg-slate-100/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 rounded-lg group-hover:border-amber-500/40 group-hover:text-slate-900 dark:group-hover:text-white transition-all duration-200 backdrop-blur-md"
               >
                 {techIcons[tech] && (
                   <span className="mr-1.5 opacity-90 text-amber-600 dark:text-amber-400">
@@ -483,6 +459,15 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
                 {tech}
               </span>
             ))}
+            {project.technologies.length > 4 && (
+              <span
+                title={project.technologies.slice(4).join(", ")}
+                aria-label={`Plus ${project.technologies.length - 4} more technologies: ${project.technologies.slice(4).join(", ")}`}
+                className="px-2.5 py-1 text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-200/60 dark:bg-white/[0.06] rounded-lg border border-slate-300/60 dark:border-white/10 cursor-help"
+              >
+                +{project.technologies.length - 4} more
+              </span>
+            )}
           </div>
         </div>
       </div>

@@ -152,7 +152,7 @@ export default function Home() {
       {/* Core Engineering Domains (Executive Section) */}
       <section className="mb-24">
         <div className="mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Engineering Competence</span>
+          <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Engineering Competence</span>
           <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
             Specialized Architectures.
           </h2>
@@ -168,16 +168,18 @@ export default function Home() {
               className="p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 hover:border-amber-500/40 hover:bg-white dark:hover:bg-white/[0.04] transition-all duration-300 shadow-md dark:shadow-xl flex flex-col justify-between group"
             >
               <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 font-medium">
-                    {domain.tag}
-                  </span>
-                  <span className="text-xs font-mono text-slate-400 dark:text-gray-500">0{index + 1}</span>
-                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs font-mono uppercase tracking-wider text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 font-medium">
+                      {domain.tag}
+                    </span>
+                    <span className="text-xs font-mono text-slate-400 dark:text-gray-500">0{index + 1}</span>
+                  </div>
 
-                <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-                  {domain.title}
-                </h3>
+                  <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors min-h-[3.75rem] flex items-start pt-1">
+                    {domain.title}
+                  </h3>
+                </div>
 
                 <p className="text-xs font-mono text-cyan-700 dark:text-cyan-400 tracking-wide font-medium">
                   {domain.badge}
@@ -203,15 +205,19 @@ export default function Home() {
 
       {/* Featured Works */}
       <section className="mb-24">
-        <div className="flex justify-between items-end mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Portfolio Highlights</span>
+            <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Portfolio Highlights</span>
             <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
               Featured Projects.
             </h2>
           </div>
-          <Link href="/projects" className="hidden md:flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-600 hover:text-amber-600 dark:text-gray-400 dark:hover:text-amber-400 transition-colors pb-2">
-            View All 20 Projects <FaArrowRight />
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-xs font-mono tracking-wide font-medium px-4 py-2 rounded-full border border-slate-300 dark:border-white/20 bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:border-amber-500 hover:text-amber-600 dark:hover:text-amber-400 transition-all self-start sm:self-auto shadow-sm"
+          >
+            <span>View All 20 Projects</span>
+            <FaArrowRight className="text-xs" aria-hidden="true" />
           </Link>
         </div>
         
@@ -237,7 +243,7 @@ export default function Home() {
       <section className="mb-24 py-14 px-8 sm:px-12 bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-3xl text-center shadow-xl dark:shadow-2xl relative overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-cyan-500/5 to-purple-500/5 pointer-events-none" />
         <div className="max-w-3xl mx-auto space-y-6 relative z-10">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 inline-block font-medium">
+          <span className="text-xs font-mono uppercase tracking-wider text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 inline-block font-medium">
             Engineering Principles
           </span>
           <h2 className="text-3xl md:text-4xl font-serif font-medium text-slate-900 dark:text-white tracking-tight">
