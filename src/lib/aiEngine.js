@@ -88,7 +88,7 @@ export function generateAiResponse(userMessage, conversationHistory = []) {
 
   if (!query) {
     return {
-      text: "Hello! I am Rahul's offline AI assistant. Ask me anything about his projects, technical skills, background, or how to hire him.",
+      text: "Hello! I am Rahul's interactive AI assistant. Ask me anything about his projects, technical skills, background, or how to hire him.",
       suggestions: INITIAL_SUGGESTIONS
     };
   }
@@ -96,7 +96,7 @@ export function generateAiResponse(userMessage, conversationHistory = []) {
   // 1. GREETINGS & INTRODUCTIONS
   if (/^(hi|hello|hey|greetings|hola|namaste|good morning|good afternoon|good evening|yo)\b/.test(query)) {
     return {
-      text: `Hello! 👋 I'm **CodesRahul AI**, Rahul Misal's personal offline portfolio assistant.\n\nI can tell you all about his **20+ shipped applications**, **Android & MERN stack expertise**, **freelance availability**, or connect you directly with him.\n\nWhat would you like to explore?`,
+      text: `Hello! 👋 I'm **CodesRahul AI**, Rahul Misal's personal interactive portfolio assistant.\n\nI can tell you all about his **20+ shipped applications**, **Android & MERN stack expertise**, **freelance availability**, or connect you directly with him.\n\nWhat would you like to explore?`,
       suggestions: [
         "🚀 Tell me about his best projects",
         "🛠 What are his strongest technical skills?",
@@ -142,7 +142,7 @@ export function generateAiResponse(userMessage, conversationHistory = []) {
         `${renewo.description}\n\n` +
         `• **Tech Stack:** ${renewo.technologies.join(", ")}\n` +
         `• **Target Platforms:** Android & Desktop\n` +
-        `• **Key Highlights:** 1-tap presets for Netflix, Spotify, iCloud, budget analytics, and offline-first Supabase sync.\n\n` +
+        `• **Key Highlights:** 1-tap presets for Netflix, Spotify, iCloud, budget analytics, and high-performance Supabase sync.\n\n` +
         `🔗 [View GitHub Repository](${renewo.github}) | [Download App Releases](${renewo.demo})`,
       suggestions: [
         "📱 Show more Android projects",

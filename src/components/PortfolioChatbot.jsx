@@ -12,7 +12,7 @@ import {
   FaWhatsapp,
   FaEnvelope
 } from "react-icons/fa";
-import { generateAiResponse, INITIAL_SUGGESTIONS, RAHUL_PROFILE } from "../lib/offlineAiEngine";
+import { generateAiResponse, INITIAL_SUGGESTIONS, RAHUL_PROFILE } from "../lib/aiEngine";
 
 export default function PortfolioChatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function PortfolioChatbot() {
     {
       id: "welcome",
       sender: "bot",
-      text: `Hello! 👋 I'm **CodesRahul AI**, Rahul's personal offline portfolio assistant.\n\nI run **100% client-side** with zero latency. Ask me anything about his **20+ shipped projects**, **Kotlin/Android apps**, **MERN stack**, or how to **hire him**!`,
+      text: `Hello! 👋 I'm **CodesRahul AI**, Rahul's personal interactive portfolio assistant.\n\nAsk me anything about his **20+ shipped projects**, **Kotlin/Android apps**, **MERN stack**, or how to **hire him**!`,
       suggestions: INITIAL_SUGGESTIONS,
       timestamp: "Just now"
     }
@@ -181,7 +181,7 @@ export default function PortfolioChatbot() {
               setIsMinimized(false);
             }}
             className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black shadow-[0_4px_24px_rgba(245,158,11,0.4)] hover:shadow-[0_6px_32px_rgba(245,158,11,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 backdrop-blur-md"
-            aria-label="Open Offline AI Assistant"
+            aria-label="Open AI Assistant"
           >
             <div className="relative flex items-center justify-center">
               <FaRobot className="text-base text-black group-hover:rotate-12 transition-transform duration-300" />
@@ -189,7 +189,7 @@ export default function PortfolioChatbot() {
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-500 border border-white" />
             </div>
             <span className="text-xs font-mono font-bold tracking-wider uppercase">
-              Ask AI <span className="hidden sm:inline opacity-75 font-normal">Offline</span>
+              Ask AI
             </span>
           </button>
         )}
@@ -216,12 +216,12 @@ export default function PortfolioChatbot() {
                 <div>
                   <h3 className="text-xs font-bold font-mono text-slate-900 dark:text-white flex items-center gap-1.5 leading-none">
                     CodesRahul AI
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-500/15 text-amber-700 dark:text-amber-400 font-semibold border border-amber-500/30">
-                      Offline
+                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 font-semibold border border-emerald-500/30">
+                      Active
                     </span>
                   </h3>
                   <p className="text-[10px] font-mono text-slate-500 dark:text-gray-400 mt-0.5">
-                    Instant • Zero API keys
+                    Instant • Portfolio Assistant
                   </p>
                 </div>
               </div>
