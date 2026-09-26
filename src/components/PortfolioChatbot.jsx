@@ -11,9 +11,59 @@ import {
   FaWhatsapp,
   FaEnvelope,
   FaGripVertical,
-  FaExchangeAlt
+  FaExchangeAlt,
+  FaCopy,
+  FaCheck
 } from "react-icons/fa";
 import { generateAiResponse, INITIAL_SUGGESTIONS, RAHUL_PROFILE } from "../lib/aiEngine";
+
+// Sub-component for code blocks with 1-click copy
+function CodeBlock({ language, code }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  return (
+    <div className="my-2 rounded-xl bg-slate-950 text-slate-100 p-2.5 sm:p-3 font-mono text-[11px] sm:text-xs border border-slate-800 shadow-inner group relative">
+      <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-slate-800/80">
+        <span className="text-[10px] text-amber-400 font-semibold uppercase tracking-wider select-none font-mono">
+          {language || "code"}
+        </span>
+        <button
+          type="button"
+          onClick={handleCopy}
+          className="flex items-center gap-1.5 text-[10px] font-mono text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800/80 hover:bg-slate-700 active:scale-95 transition-all touch-manipulation"
+          aria-label="Copy code snippet"
+        >
+          {copied ? (
+            <>
+              <FaCheck className="text-emerald-400" size={10} />
+              <span className="text-emerald-400 font-medium">Copied!</span>
+            </>
+          ) : (
+            <>
+              <FaCopy size={10} />
+              <span>Copy</span>
+            </>
+          )}
+        </button>
+      </div>
+      <pre className="whitespace-pre overflow-x-auto leading-relaxed scrollbar-thin">
+        <code>{code}</code>
+      </pre>
+    </div>
+  );
+}
+
+const PREFILLED_WHATSAPP = `https://wa.me/918805159425?text=${encodeURIComponent(
+  "Hi Rahul, I was exploring your portfolio (CodesRahul) and would like to discuss a project / role with you!"
+)}`;
 
 export default function PortfolioChatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +80,7 @@ export default function PortfolioChatbot() {
     }
   ]);
 
-  // Corner docking state: 'right' (default) or 'left'
+  // Corner docking state: 'right' (default) or 'left' (saved in localStorage)
   const [dockSide, setDockSide] = useState("right");
   // Custom Y position for floating button (null = default bottom offset)
   const [customY, setCustomY] = useState(null);
@@ -50,9 +100,29 @@ export default function PortfolioChatbot() {
   });
 
   const isClickBlockedRef = useRef(false);
+  const streamIntervalRef = useRef(null);
   const buttonRef = useRef(null);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Load saved corner dock preference from localStorage
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("codesrahul_ai_dock");
+      if (saved === "left" || saved === "right") {
+        setDockSide(saved);
+      }
+    } catch (e) {
+      // Ignore in strict private browsing environments
+    }
+  }, []);
+
+  const updateDockSide = (newSide) => {
+    setDockSide(newSide);
+    try {
+      localStorage.setItem("codesrahul_ai_dock", newSide);
+    } catch (e) {}
+  };
 
   // Auto-scroll to bottom of messages
   const scrollToBottom = () => {
@@ -91,6 +161,15 @@ export default function PortfolioChatbot() {
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Cleanup streaming interval on unmount
+  useEffect(() => {
+    return () => {
+      if (streamIntervalRef.current) {
+        clearInterval(streamIntervalRef.current);
+      }
+    };
   }, []);
 
   // Auto-close on inactivity (60 seconds of complete idle time)
@@ -223,13 +302,13 @@ export default function PortfolioChatbot() {
 
         setIsDraggingButton(false);
 
-        // Snap smoothly to left or right corner
+        // Snap smoothly to left or right corner and persist preference
         setDragPos((lastPos) => {
           if (lastPos) {
             const centerX = lastPos.x + dragStartRef.current.rectWidth / 2;
             const screenMiddle = window.innerWidth / 2;
             const newSide = centerX < screenMiddle ? "left" : "right";
-            setDockSide(newSide);
+            updateDockSide(newSide);
             setCustomY(lastPos.y);
           }
           return null;
@@ -248,7 +327,8 @@ export default function PortfolioChatbot() {
   };
 
   const toggleDockSide = () => {
-    setDockSide((prev) => (prev === "right" ? "left" : "right"));
+    const nextSide = dockSide === "right" ? "left" : "right";
+    updateDockSide(nextSide);
   };
 
   const handleSend = (textToSend = inputMessage) => {
@@ -266,24 +346,68 @@ export default function PortfolioChatbot() {
     setInputMessage("");
     setIsTyping(true);
 
-    // Realistic AI thinking delay (250ms - 400ms)
+    // Realistic AI thinking delay before starting token streaming (200ms)
     setTimeout(() => {
       const response = generateAiResponse(query, messages);
+      const fullText = response.text;
+      const botId = `bot-${Date.now()}`;
 
-      const botMsg = {
-        id: `bot-${Date.now()}`,
+      // Adaptive streaming speed: finishes smoothly within ~0.8s - 1.2s
+      const chunkSpeed = 16; // ms per tick
+      const chunkSize = Math.max(3, Math.ceil(fullText.length / 55));
+      let charIdx = 0;
+
+      // Create initial streaming message container
+      const initialBotMsg = {
+        id: botId,
         sender: "bot",
-        text: response.text,
-        suggestions: response.suggestions || [],
+        text: "",
+        suggestions: [],
+        isStreaming: true,
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       };
 
-      setMessages((prev) => [...prev, botMsg]);
-      setIsTyping(false);
-    }, 380);
+      setMessages((prev) => [...prev, initialBotMsg]);
+
+      if (streamIntervalRef.current) {
+        clearInterval(streamIntervalRef.current);
+      }
+
+      streamIntervalRef.current = setInterval(() => {
+        charIdx = Math.min(fullText.length, charIdx + chunkSize);
+        const streamedSlice = fullText.slice(0, charIdx);
+        const isDone = charIdx >= fullText.length;
+
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === botId
+              ? {
+                  ...m,
+                  text: streamedSlice,
+                  suggestions: isDone ? response.suggestions || [] : [],
+                  isStreaming: !isDone
+                }
+              : m
+          )
+        );
+
+        scrollToBottom();
+
+        if (isDone) {
+          clearInterval(streamIntervalRef.current);
+          streamIntervalRef.current = null;
+          setIsTyping(false);
+        }
+      }, chunkSpeed);
+    }, 220);
   };
 
   const handleClearChat = () => {
+    if (streamIntervalRef.current) {
+      clearInterval(streamIntervalRef.current);
+      streamIntervalRef.current = null;
+    }
+    setIsTyping(false);
     setMessages([
       {
         id: "welcome-reset",
@@ -429,19 +553,11 @@ export default function PortfolioChatbot() {
           const codeContent = isLang ? rawLines.slice(1).join("\n") : rawLines.join("\n");
 
           return (
-            <div
+            <CodeBlock
               key={sIdx}
-              className="my-2 rounded-xl bg-slate-950 text-slate-100 p-2.5 sm:p-3 font-mono text-[11px] sm:text-xs overflow-x-auto border border-slate-800 shadow-inner"
-            >
-              {isLang && (
-                <div className="text-[9px] text-amber-400 font-semibold mb-1 uppercase tracking-wider select-none font-mono">
-                  {firstLine}
-                </div>
-              )}
-              <pre className="whitespace-pre overflow-x-auto leading-relaxed scrollbar-thin">
-                <code>{codeContent}</code>
-              </pre>
-            </div>
+              language={isLang ? firstLine : "code"}
+              code={codeContent}
+            />
           );
         }
         return <React.Fragment key={sIdx}>{renderBlockText(seg)}</React.Fragment>;
@@ -525,7 +641,7 @@ export default function PortfolioChatbot() {
             aria-label="Open or drag AI Assistant"
             title="Drag to left or right corner, or tap to open chat"
           >
-            {/* Tiny Drag Handle Icon */}
+            {/* Drag Handle Icon */}
             <span
               className="text-black/50 group-hover:text-black/80 transition-colors"
               title="Drag to reposition"
@@ -656,6 +772,10 @@ export default function PortfolioChatbot() {
                         }`}
                       >
                         {renderFormattedText(msg.text)}
+                        {/* Blinking streaming cursor */}
+                        {msg.isStreaming && (
+                          <span className="inline-block w-1.5 h-3.5 bg-amber-500 dark:bg-amber-400 animate-pulse ml-0.5 align-middle rounded-sm" />
+                        )}
                       </div>
 
                       <span className="text-[9px] font-mono text-slate-400 dark:text-gray-500 mt-1 px-1">
@@ -663,8 +783,8 @@ export default function PortfolioChatbot() {
                       </span>
 
                       {/* Interactive suggestion chips under bot messages */}
-                      {msg.sender === "bot" && msg.suggestions && msg.suggestions.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 mt-2 max-w-full">
+                      {msg.sender === "bot" && !msg.isStreaming && msg.suggestions && msg.suggestions.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 mt-2 max-w-full animate-fadeIn">
                           {msg.suggestions.map((sug, sIdx) => (
                             <button
                               key={sIdx}
@@ -680,8 +800,8 @@ export default function PortfolioChatbot() {
                     </div>
                   ))}
 
-                  {/* Typing Indicator */}
-                  {isTyping && (
+                  {/* Typing Indicator before first chunk streams */}
+                  {isTyping && !messages.some((m) => m.isStreaming) && (
                     <div className="flex items-center gap-2 p-3 rounded-2xl bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 w-24">
                       <span className="w-2 h-2 rounded-full bg-amber-500 animate-bounce" />
                       <span className="w-2 h-2 rounded-full bg-amber-500 animate-bounce [animation-delay:0.2s]" />
@@ -697,7 +817,7 @@ export default function PortfolioChatbot() {
                   <span className="hidden xs:inline">Quick Connect:</span>
                   <div className="flex items-center gap-3 ml-auto xs:ml-0">
                     <a
-                      href={RAHUL_PROFILE.whatsappUrl}
+                      href={PREFILLED_WHATSAPP}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 hover:underline py-1 px-1.5 rounded active:bg-emerald-500/10 transition-colors touch-manipulation"
