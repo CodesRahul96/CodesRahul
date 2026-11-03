@@ -2,32 +2,75 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope, FaExternalLinkAlt } from "react-icons/fa";
+import { SiNextdotjs, SiReact, SiKotlin, SiTypescript, SiMongodb, SiNodedotjs, SiTailwindcss, SiSupabase, SiDocker, SiSocketdotio } from "react-icons/si";
 import rahulHero3D from "../assets/rahul_hero_3d.png";
 import ProjectCard from "../components/ProjectCard";
 import InteractivePhotoCard from "../components/InteractivePhotoCard";
 import projectsData from "../data/projects.json";
 
-// Clean technology tags
+// Clean technology tags for the marquee
 const coreSkills = [
-  "React", "Next.js", "Node.js", "TypeScript", "Tailwind CSS", 
-  "MongoDB", "Express", "Android (Kotlin)", "Jetpack Compose", "React Native", "Firebase", "PostgreSQL"
+  "React", "Next.js 15", "Node.js", "TypeScript", "Tailwind CSS", 
+  "MongoDB", "Express", "Android (Kotlin)", "Compose Multiplatform", "Supabase", "Docker", "REST & WebSockets"
 ];
 
 const stats = [
   { value: "3+", label: "Years Experience" },
-  { value: "20+", label: "Projects Completed" },
-  { value: "MERN + Android", label: "Core Stack" },
-  { value: "100%", label: "Code Integrity" },
+  { value: "20+", label: "Shipped Projects" },
+  { value: "MERN + Kotlin", label: "Core Stack" },
+  { value: "#1 Rank", label: "Google SEO Architecture" },
+];
+
+const flagshipProjects = [
+  {
+    id: 1,
+    title: "UdemyWala",
+    badge: "#1 Google Search Rank",
+    category: "Full Stack & Technical SEO",
+    stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Schema.org", "SWR"],
+    summary: "High-performance discovery engine engineered for search dominance. Ranked #1 globally on Google Search with citations in Google AI Overviews. Built with Next.js 15 App Router, automated microdata, and strict enterprise security headers (HSTS Preload, CSP).",
+    demo: "https://udemywala.xyz/",
+    github: "https://github.com/CodesRahul96/UdemyWala.git"
+  },
+  {
+    id: 2,
+    title: "TaskFlow",
+    badge: "Real-Time WebSockets",
+    category: "Full Stack Web Platform",
+    stack: ["React (Vite)", "Node.js", "Express", "MongoDB", "Socket.IO", "JWT"],
+    summary: "Production Kanban productivity suite featuring instant multi-user synchronization through Socket.IO WebSockets, drag-and-drop workflow boards, Google OAuth authentication, and hardened role-based authorization.",
+    demo: "https://taskflow.indevs.in/",
+    github: "https://github.com/CodesRahul96/TaskFlow.git"
+  },
+  {
+    id: 3,
+    title: "Renewo",
+    badge: "Kotlin Multiplatform (KMP)",
+    category: "Native Android & Desktop",
+    stack: ["Kotlin", "Compose Multiplatform", "Supabase", "Room DB", "Android"],
+    summary: "Cross-platform subscription and personal budget manager built with Compose Multiplatform for Android and Desktop. Features instant recurring payment analytics, 1-tap presets (Netflix, Spotify, iCloud), and high-speed Supabase cloud synchronization.",
+    demo: "https://github.com/CodesRahul96/Renewo_App/releases",
+    github: "https://github.com/CodesRahul96/Renewo_App.git"
+  },
+  {
+    id: 4,
+    title: "OmenControl & Crunchyroll",
+    badge: "Systems & Desktop Engineering",
+    category: "Linux & Desktop Software",
+    stack: ["Python", "GTK4", "Electron", "Linux WMI", "Node.js"],
+    summary: "Hardware fan tuning and dynamic RGB management utility for HP Omen gaming laptops on Linux (ACPI WMI integration), alongside a dedicated hardware-accelerated Linux desktop streaming client.",
+    demo: "https://github.com/CodesRahul96/OmenControl-Linux.git",
+    github: "https://github.com/CodesRahul96/Crunchyroll-Linux-Desktop.git"
+  }
 ];
 
 const engineeringDomains = [
   {
     title: "Full Stack & MERN Architecture",
     tag: "Web Platforms",
-    badge: "MongoDB • Express • React • Node",
-    description: "Designing end-to-end web platforms with SSR Next.js, resilient Express RESTful APIs, real-time Socket.IO synchronization, and secure JWT / OAuth authentication.",
+    badge: "MongoDB • Express • React • Node.js",
+    description: "Designing end-to-end web platforms with SSR Next.js 15, resilient Express RESTful APIs, real-time Socket.IO synchronization, and secure JWT / OAuth authentication.",
     highlights: ["Scalable REST & GraphQL APIs", "Real-time Event Systems", "MongoDB Aggregations & PostgreSQL"]
   },
   {
@@ -60,7 +103,7 @@ export default function Home() {
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-mono tracking-wider backdrop-blur-md font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
-              <span>Available for Freelance & Full-time Roles • Pune, Maharashtra & Remote</span>
+              <span>Available for Full-time Roles & Freelance Contracts • Pune & Worldwide</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-slate-900 dark:text-white leading-[1.05]">
@@ -115,12 +158,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Dynamic Angled Skills Ribbons (Modern Showcase) */}
+      {/* Dynamic Angled Skills Ribbons */}
       <section className="relative my-20 py-12 overflow-hidden select-none transition-colors duration-300">
-        {/* Subtle ambient glow behind ribbons */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-amber-500/10 dark:bg-amber-500/15 blur-[100px] pointer-events-none rounded-full" />
 
-        {/* Back Ribbon (Angled slightly negative with crisp contrast in light & dark mode) */}
+        {/* Back Ribbon */}
         <div className="relative -rotate-2 scale-105 z-10 py-3.5 bg-slate-900 text-white dark:bg-slate-950/90 dark:text-gray-300 backdrop-blur-md border-y border-slate-800 dark:border-amber-500/20 shadow-md overflow-hidden">
           <div className="flex whitespace-nowrap animate-marquee-reverse w-fit items-center">
             {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
@@ -134,7 +176,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Front Bold Accent Ribbon (High energy amber gradient with bold black text, pop in both modes) */}
+        {/* Front Accent Ribbon */}
         <div className="relative rotate-1 scale-105 z-20 -mt-6 py-4 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black shadow-[0_10px_35px_rgba(245,158,11,0.35)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.6)] border-y border-amber-300/40 overflow-hidden">
           <div className="flex whitespace-nowrap animate-marquee w-fit items-center">
             {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
@@ -149,7 +191,90 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Core Engineering Domains (Executive Section) */}
+      {/* Modern Flagship Bento Spotlight Section */}
+      <section className="mb-24">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
+          <div>
+            <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Flagship Case Studies</span>
+            <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
+              Architectural Highlights.
+            </h2>
+          </div>
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-xs font-mono tracking-wide font-medium px-4 py-2 rounded-full border border-slate-300 dark:border-white/20 bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:border-amber-500 hover:text-amber-600 dark:hover:text-amber-400 transition-all self-start sm:self-auto shadow-sm"
+          >
+            <span>Explore All 20+ Projects</span>
+            <FaArrowRight className="text-xs" aria-hidden="true" />
+          </Link>
+        </div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {flagshipProjects.map((item, idx) => (
+            <div
+              key={idx}
+              className="p-7 sm:p-8 rounded-3xl bg-white/85 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 hover:border-amber-500/50 hover:bg-white dark:hover:bg-white/[0.04] transition-all duration-300 shadow-md dark:shadow-xl flex flex-col justify-between group"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-mono uppercase px-3 py-1 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-semibold tracking-wider">
+                    {item.badge}
+                  </span>
+                  <span className="text-xs font-mono text-slate-400 dark:text-gray-500">{item.category}</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-serif font-medium text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  {item.title}
+                </h3>
+
+                <p className="text-slate-600 dark:text-gray-300 text-sm font-light leading-relaxed">
+                  {item.summary}
+                </p>
+
+                {/* Tech Chips */}
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {item.stack.map((t, sIdx) => (
+                    <span
+                      key={sIdx}
+                      className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/5 text-[11px] font-mono text-slate-700 dark:text-gray-300"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Links */}
+              <div className="mt-8 pt-5 border-t border-slate-200/80 dark:border-white/5 flex items-center justify-between">
+                <a
+                  href={item.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                >
+                  <FaGithub size={14} />
+                  <span>View Source</span>
+                </a>
+
+                {item.demo && (
+                  <a
+                    href={item.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-amber-600 dark:text-amber-400 hover:underline"
+                  >
+                    <span>Live Access</span>
+                    <FaExternalLinkAlt size={11} />
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Core Engineering Domains */}
       <section className="mb-24">
         <div className="mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
           <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Engineering Competence</span>
@@ -203,7 +328,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Works */}
+      {/* Featured Works Grid */}
       <section className="mb-24">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
           <div>
@@ -265,7 +390,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* High-Intent SEO FAQ Section (Google Rich Snippets & SGE Target) */}
+      {/* High-Intent SEO FAQ Section */}
       <section className="mb-24">
         <div className="mb-10 border-b border-slate-200 dark:border-white/10 pb-6">
           <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Frequently Asked Questions</span>
