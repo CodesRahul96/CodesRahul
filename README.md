@@ -6,7 +6,7 @@ Welcome to my personal portfolio repository! This is a modern, enterprise-grade,
 
 ## ✨ Features
 
-- **"Anti-AI" Brutalist UI/UX**: Built with a bespoke design philosophy using stark contrasts, complex serif/sans-serif typography pairings, negative space, and organic noise overlays to stand out from generic templates.
+- **Executive Bento Grid & Editorial UI/UX**: Built with a bespoke design philosophy using stark contrasts, complex serif/sans-serif typography pairings, negative space, and organic noise overlays to stand out with senior engineering polish.
 - **Advanced Animations**: Powered by **Framer Motion** for cinematic page load sequences, staggering reveals, and interactive hover effects.
 - **Serverless Backend Architecture**:
   - Fully functional contact form powered by **Next.js Server Actions**.
