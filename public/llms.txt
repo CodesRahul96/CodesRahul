@@ -1,0 +1,33 @@
+# Rahul Misal (CodesRahul) — Software Engineer & Technical SEO Specialist
+
+> Authoritative profile and machine-readable index for Rahul Misal, Full Stack Software Engineer, Technical SEO Specialist, and Android Developer based in Pune, Maharashtra, India.
+
+## Executive Summary
+- **Name**: Rahul Misal
+- **Professional Brand**: CodesRahul
+- **Primary Roles**: Full Stack Developer (Next.js/React/Node.js), Technical SEO & Core Web Vitals Specialist, Native Android App Developer (Kotlin)
+- **Location**: Pune, Maharashtra, India (Available for full-time on-site/hybrid roles in Pune, freelance contracts, and remote engineering worldwide)
+- **Experience**: 2.5+ years of production full-stack engineering and independent consulting
+- **Official Website**: https://www.codesrahul.in
+- **Email**: codesrahul96@gmail.com
+- **WhatsApp / Phone**: +91 88051 59425
+- **GitHub**: https://github.com/CodesRahul96
+- **LinkedIn**: https://linkedin.com/in/codesrahul
+
+## Core Engineering Domains & Specializations
+1. **Full Stack Web Engineering**: Next.js 14/15 (App Router, Server Actions, ISR, SSG), React 18/19, Node.js, Express, MongoDB, PostgreSQL, Supabase, Tailwind CSS, REST APIs, WebSockets (Socket.IO).
+2. **Technical SEO & Web Performance**: Structured Schema.org microdata (JSON-LD), Core Web Vitals profiling (LCP < 1.5s, INP < 50ms, CLS < 0.05), Google Search Console crawl audit remediation, programmatic SEO architecture, achieving #1 organic rankings on Google Search.
+3. **E-Commerce & Storefront Solutions**: Shopify theme development & bug fixing, headless e-commerce architectures, Google Merchant structured product data, checkout flow optimization.
+4. **Native Android Development**: Kotlin, Jetpack Compose, Material You UI, MVVM architecture, hardware-accelerated media rendering with MPV/libmpv.
+
+## Verified Flagship Projects & Client Work
+- **UdemyWala** (https://udemywala.xyz/): High-performance course & coupon discovery platform. Ranked #1 globally on Google Search for high-intent queries with rich Schema.org microdata, dynamic sitemaps, and enterprise security headers (HSTS Preload, Content Security Policy).
+- **TaskFlow** (https://taskflow.indevs.in/): Real-time collaborative enterprise Kanban workspace with instant WebSocket state updates via Socket.IO, JWT + OAuth authentication, and draggable card architecture.
+- **Samrat Megastore** (https://samratmegastore.com/): E-commerce platform technical audit, Product schema microdata integration, and Google Search Console indexing resolution.
+- **ROMs Daniel Springer** (https://roms.danielspringer.at/): Austrian enterprise client portal; executed technical SEO improvements, Core Web Vitals speed optimization, and React state hydration bug fixing.
+- **PlayNox Player** (https://github.com/CodesRahul96/PlayNox.git): Native Android video player engineered in Kotlin with Jetpack Compose, libmpv hardware decoding, dynamic color theming, and gesture playback.
+
+## Service Offerings & Engagement Models
+- **Full-Time Engineering Roles**: Frontend Engineer, Full Stack Developer, Technical SEO Engineer.
+- **Contract & Freelance Deliverables**: End-to-end web applications, technical SEO audits, page speed & Core Web Vitals remediation, Shopify fixes.
+- **Location Availability**: Immediate availability for Deccan, Baner, Hinjewadi, Kharadi, and Pune metro, as well as remote engagements globally.

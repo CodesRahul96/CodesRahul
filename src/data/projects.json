@@ -37,6 +37,38 @@
     "image": "taskflow"
   },
   {
+    "id": 19,
+    "title": "Samrat Megastore",
+    "description": "E-commerce platform technical SEO overhaul and structured data implementation. Embedded Schema.org Product, Offer, and AggregateRating microdata, resolved Google Search Console indexing errors, and optimized mobile Core Web Vitals.",
+    "category": "Web Development",
+    "technologies": [
+      "Next.js",
+      "Technical SEO",
+      "Schema.org",
+      "Core Web Vitals",
+      "TailwindCSS"
+    ],
+    "github": "https://github.com/CodesRahul96",
+    "demo": "https://samratmegastore.com/",
+    "image": "trentshopnow"
+  },
+  {
+    "id": 20,
+    "title": "ROMs Portal \u2013 Daniel Springer",
+    "description": "Technical SEO optimization and frontend bug fixing for an Austrian client. Resolved React state hydration mismatches, optimized Core Web Vitals to 95+ PageSpeed scores, and structured dynamic breadcrumbs microdata for search crawlers.",
+    "category": "Web Development",
+    "technologies": [
+      "React",
+      "Technical SEO",
+      "Performance Optimization",
+      "Core Web Vitals",
+      "JavaScript"
+    ],
+    "github": "https://github.com/CodesRahul96",
+    "demo": "https://roms.danielspringer.at/",
+    "image": "udemywala"
+  },
+  {
     "id": 3,
     "title": "Blogsify",
     "description": "A feature-rich MERN stack blogging platform featuring secure JWT authentication, rich text editing, and real-time comment capabilities. Designed with a modular architecture for scalability.",
@@ -76,8 +108,8 @@
   },
   {
     "id": 5,
-    "title": "Renewo – Subscription Manager",
-    "description": "A clean, fast, and cross-platform subscription manager built with Kotlin Multiplatform (Compose Multiplatform) and Supabase. Tracks weekly, monthly, and yearly recurring expenses with 1-tap presets for Netflix, Spotify, YouTube, iCloud, and more. Features custom renewal alerts, pause-without-delete, budget dashboards, and native brand colors — targeting Android and Desktop.",
+    "title": "Renewo \u2013 Subscription Manager",
+    "description": "A clean, fast, and cross-platform subscription manager built with Kotlin Multiplatform (Compose Multiplatform) and Supabase. Tracks weekly, monthly, and yearly recurring expenses with 1-tap presets for Netflix, Spotify, YouTube, iCloud, and more. Features custom renewal alerts, pause-without-delete, budget dashboards, and native brand colors \u2014 targeting Android and Desktop.",
     "category": "Android App",
     "technologies": [
       "Kotlin",
@@ -94,7 +126,7 @@
   {
     "id": 6,
     "title": "WhatsApp Automation Platform",
-    "description": "A production-grade WhatsApp communication engine and multi-agent customer support platform built on Next.js 16 (App Router), TypeScript, Prisma ORM, and Meta's official WhatsApp Cloud API. Features a real-time team inbox, automated 24/7 AI replies via Google Gemini with intelligent human agent takeover, broadcast marketing campaigns, contact CRM, and a headless developer REST API.",
+    "description": "A production-grade WhatsApp communication engine and multi-agent customer support platform built on Next.js 16 (App Router), TypeScript, Prisma ORM, and Meta's official WhatsApp Cloud API. Features a real-time team inbox, automated workflow routing with intelligent human agent takeover, broadcast marketing campaigns, contact CRM, and a headless developer REST API.",
     "category": "Web Development",
     "technologies": [
       "Next.js",
@@ -102,10 +134,11 @@
       "Prisma",
       "PostgreSQL",
       "TailwindCSS",
-      "Gemini AI",
       "WhatsApp Cloud API",
       "Redis",
-      "REST API"
+      "REST API",
+      "Webhooks",
+      "Workflow Automation"
     ],
     "github": "https://github.com/CodesRahul96/WhatsApp-Automation.git",
     "demo": "https://github.com/CodesRahul96/WhatsApp-Automation.git",
@@ -164,7 +197,7 @@
   {
     "id": 10,
     "title": "StreamPlus",
-    "description": "A native Android streaming app built with Jetpack Compose and Kotlin. Features a Netflix-style content feed with horizontal rows, Firebase-backed authentication with Crashlytics reporting, Hilt dependency injection, and a fully dark OLED-optimized UI. Targets Android API 24–34.",
+    "description": "A native Android streaming app built with Jetpack Compose and Kotlin. Features a Netflix-style content feed with horizontal rows, Firebase-backed authentication with Crashlytics reporting, Hilt dependency injection, and a fully dark OLED-optimized UI. Targets Android API 24\u201334.",
     "category": "Android App",
     "technologies": [
       "Kotlin",
@@ -181,7 +214,7 @@
   {
     "id": 11,
     "title": "PlayNox Player",
-    "description": "A high-performance native Android video player powered by the MPV/libmpv media engine with hardware acceleration. Features Material Design 3 with Material You dynamic colors, AMOLED dark mode, edge swipe gestures for brightness & volume, subtitle support, real-time video enhancement (brightness, contrast, saturation, gamma), and multilingual support. Targets Android API 26–36.",
+    "description": "A high-performance native Android video player powered by the MPV/libmpv media engine with hardware acceleration. Features Material Design 3 with Material You dynamic colors, AMOLED dark mode, edge swipe gestures for brightness & volume, subtitle support, real-time video enhancement (brightness, contrast, saturation, gamma), and multilingual support. Targets Android API 26\u201336.",
     "category": "Android App",
     "technologies": [
       "Kotlin",
@@ -255,7 +288,7 @@
   {
     "id": 16,
     "title": "Crunchyroll Desktop for Linux",
-    "description": "An unofficial, feature-packed cross-platform Crunchyroll desktop client built with Electron and Widevine DRM support for Linux, Windows, and macOS. Features hardware-accelerated video playback, customizable playback speed (0.25x–3.0x), Picture-in-Picture mode, automated intro/recap skip, system theme synchronization, power-save sleep prevention, and persistent session state.",
+    "description": "An unofficial, feature-packed cross-platform Crunchyroll desktop client built with Electron and Widevine DRM support for Linux, Windows, and macOS. Features hardware-accelerated video playback, customizable playback speed (0.25x\u20133.0x), Picture-in-Picture mode, automated intro/recap skip, system theme synchronization, power-save sleep prevention, and persistent session state.",
     "category": "Desktop App",
     "technologies": [
       "Electron",

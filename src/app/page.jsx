@@ -405,20 +405,28 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
             {
-              q: "Looking for a freelance Full Stack or Android developer in Pune?",
-              a: "Rahul Misal (CodesRahul) is a Pune-based Full Stack and Android Software Engineer with 3+ years of experience delivering MERN stack web applications, Next.js portals, and native Kotlin mobile apps. Available for on-site meetings in Pune and remote engagements across Maharashtra, India, and worldwide."
+              q: "Looking for a Full Stack Developer or Technical SEO Specialist in Pune?",
+              a: "Rahul Misal (CodesRahul) is a Pune-based Full Stack and Android Software Engineer with 2.5+ years of experience delivering MERN stack web applications, Next.js portals, and native Kotlin mobile apps. Available for on-site meetings in Pune (Deccan, Baner, Hinjewadi) and remote contracts across Maharashtra, India, and worldwide."
             },
             {
-              q: "What technologies and stacks do you specialize in?",
-              a: "My core stack includes MongoDB, Express.js, React.js, Node.js (MERN), Next.js 15, TypeScript, Tailwind CSS, and native Android (Kotlin, Jetpack Compose, ExoPlayer/libmpv), backed by enterprise HTTP security (HSTS, CSP) and Technical SEO."
+              q: "What technologies and engineering domains do you specialize in?",
+              a: "My core engineering stack includes Next.js 15, React, Node.js, Express, MongoDB, TypeScript, Tailwind CSS, and native Android (Kotlin, Jetpack Compose), backed by enterprise HTTP security (HSTS, CSP) and Technical SEO audits."
             },
             {
-              q: "How does the freelance project workflow and timeline work?",
-              a: "Projects begin with architectural scoping, wireframing, and milestone planning, followed by rapid sprint development with staging previews. Code is delivered with 100% tests, comprehensive documentation, and zero-downtime deployment pipelines."
+              q: "Do you provide Technical SEO and Core Web Vitals optimization?",
+              a: "Yes. I execute deep technical SEO audits, structured Schema.org microdata (JSON-LD), crawl budget optimization, and Core Web Vitals speed tuning (LCP < 1.5s, CLS < 0.05, INP < 50ms) to secure #1 organic Google rankings, proven by platforms like UdemyWala and Samrat Megastore."
+            },
+            {
+              q: "Can you handle Shopify and E-Commerce storefront engineering?",
+              a: "Absolutely. I provide custom Shopify theme modifications, Liquid bug fixes, headless Next.js e-commerce storefronts, and Google Merchant product structured data integration to maximize checkout conversion and mobile performance."
+            },
+            {
+              q: "How does the freelance project workflow and delivery timeline work?",
+              a: "Projects begin with clear scoping and milestone planning, followed by rapid sprint development with staging previews. Code is delivered with clean git commits, comprehensive documentation, zero-downtime deployments, and GST-ready invoices."
             },
             {
               q: "How can I hire Rahul Misal for my project or company?",
-              a: "Reach out directly via the Contact page, email codesrahul96@gmail.com, or message on WhatsApp at +91 88051 59425. I am open to full-time positions, freelance contracts, and technical consulting."
+              a: "Reach out directly via the Contact page, email codesrahul96@gmail.com, or message on WhatsApp at +91 88051 59425. I am an immediate joiner available for full-time positions, freelance contracts, and technical consulting."
             }
           ].map((item, idx) => (
             <div

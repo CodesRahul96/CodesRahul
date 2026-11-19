@@ -1,10 +1,10 @@
 export default function sitemap() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.codesrahul.in';
+  const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.codesrahul.in').replace(/\/+$/, '');
   const currentDate = new Date();
   
   return [
     {
-      url: `${baseUrl}/`,
+      url: `${baseUrl}`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
@@ -25,7 +25,7 @@ export default function sitemap() {
       url: `${baseUrl}/contact`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
     },
   ];
 }
