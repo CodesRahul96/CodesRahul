@@ -57,7 +57,7 @@ const Navbar = () => {
           
           {/* Logo Brand Badge */}
           <Link href="/" prefetch={true} className="group flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-400 flex items-center justify-center text-black font-black text-sm shadow-[0_0_15px_rgba(245,158,11,0.4)] group-hover:scale-105 transition-transform">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-400 flex items-center justify-center text-black font-black text-sm shadow-sm group-hover:scale-105 transition-transform">
               R
             </div>
             <div className="flex flex-col leading-none">
@@ -91,7 +91,7 @@ const Navbar = () => {
                       prefetch={true}
                       className={`relative z-10 text-[11px] font-mono uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 block ${
                         isActive
-                          ? "text-black font-bold bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.5)]"
+                          ? "text-black font-bold bg-amber-500 shadow-sm"
                           : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/10"
                       }`}
                     >
@@ -116,7 +116,7 @@ const Navbar = () => {
                 bg-amber-500 hover:bg-amber-400
                 text-black font-mono text-[11px] uppercase tracking-widest font-bold
                 py-2.5 px-5 rounded-full
-                transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.35)]
+                transition-all duration-300 shadow-sm
                 ${isDownloading ? "cursor-not-allowed opacity-50" : ""}
               `}
             >
@@ -176,7 +176,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={toggleMenu}
-                    className="text-3xl font-serif tracking-tight transition-colors duration-300 block text-slate-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white"
+                    className="text-3xl font-sans font-bold tracking-tight transition-colors duration-300 block text-slate-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white"
                   >
                     {item.name} ↗
                   </a>
@@ -185,7 +185,7 @@ const Navbar = () => {
                     href={item.path}
                     prefetch={true}
                     onClick={toggleMenu}
-                    className={`text-3xl font-serif tracking-tight transition-colors duration-300 block ${
+                    className={`text-3xl font-sans font-bold tracking-tight transition-colors duration-300 block ${
                       pathname === item.path
                         ? "text-amber-500 dark:text-amber-400 font-bold italic"
                         : "text-slate-600 hover:text-slate-900 dark:text-gray-400 dark:hover:text-white"
@@ -200,7 +200,7 @@ const Navbar = () => {
               <button
                 onClick={handleDownloadCV}
                 disabled={isDownloading}
-                className="w-full flex items-center justify-center gap-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.3)]"
+                className="w-full flex items-center justify-center gap-3 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl shadow-sm"
               >
                 {isDownloading ? (
                   <>

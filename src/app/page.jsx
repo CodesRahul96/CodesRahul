@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import { FaArrowRight, FaGithub, FaLinkedin, FaEnvelope, FaExternalLinkAlt } from "react-icons/fa";
 import { SiNextdotjs, SiReact, SiKotlin, SiTypescript, SiMongodb, SiNodedotjs, SiTailwindcss, SiSupabase, SiDocker, SiSocketdotio } from "react-icons/si";
@@ -16,7 +15,7 @@ const coreSkills = [
 ];
 
 const stats = [
-  { value: "3+", label: "Years Experience" },
+  { value: "2.5+", label: "Years Experience" },
   { value: "20+", label: "Shipped Projects" },
   { value: "MERN + Kotlin", label: "Core Stack" },
   { value: "#1 Rank", label: "Google SEO Architecture" },
@@ -83,9 +82,9 @@ const engineeringDomains = [
   {
     title: "Performance, Cloud & DevOps",
     tag: "Infrastructure",
-    badge: "Next.js 15 • Firebase • Docker • Vercel",
-    description: "Optimizing Web Vitals (LCP, INP), configuring automated deployment pipelines, implementing client caching strategies, and managing cloud services.",
-    highlights: ["Sub-second Page Loads", "Zero-downtime CI/CD", "Secure Firebase & Cloud Functions"]
+    badge: "Docker • Supabase • Linux • Vercel",
+    description: "Containerizing services, deploying production databases with Row Level Security, enforcing strict HTTP security profiles (HSTS Preload, CSP), and optimizing Core Web Vitals.",
+    highlights: ["HSTS Preload & Strict CSP Headers", "Docker Container Workflows", "95+ Lighthouse Performance Audits"]
   }
 ];
 
@@ -93,151 +92,132 @@ export default function Home() {
   const featuredProjects = projectsData.slice(0, 4);
 
   return (
-    <div className="relative w-full text-slate-900 dark:text-white animate-fadeIn transition-colors duration-300">
+    <div className="relative w-full text-slate-900 dark:text-white animate-fadeIn transition-colors duration-200">
       {/* Hero Section */}
       <section className="relative flex flex-col justify-center py-10 md:py-16">
         <div className="flex flex-col lg:flex-row items-center justify-between w-full relative z-10 gap-12">
           
           {/* Left Column: Authentic Executive Bio */}
-          <div className="w-full lg:w-7/12 space-y-8">
+          <div className="w-full lg:w-7/12 space-y-7">
             {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-mono tracking-wider backdrop-blur-md font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg border border-emerald-500/20 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-mono tracking-wide font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               <span>Available for Full-time Roles & Freelance Contracts • Pune & Worldwide</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-medium tracking-tight text-slate-900 dark:text-white leading-[1.05]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-sans font-bold tracking-tight text-slate-900 dark:text-white leading-[1.08]">
               Full Stack, Freelance & <br className="hidden sm:inline" />
-              <span className="text-amber-500 dark:text-amber-400 italic font-normal">Android Developer.</span>
+              <span className="text-amber-600 dark:text-amber-400">Android Developer.</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed font-light">
-              Hi, I&apos;m <span className="text-slate-900 dark:text-white font-medium">Rahul Misal</span> — a professional <span className="text-amber-600 dark:text-amber-400 font-medium">Full Stack & Freelance Web Developer</span> and <span className="text-cyan-600 dark:text-cyan-400 font-medium">Native Android Engineer</span> based in Pune, Maharashtra, India. I engineer high-performance MERN stack web applications, Next.js platforms, and Kotlin mobile apps.
+            <p className="text-base sm:text-lg text-slate-600 dark:text-gray-300 max-w-xl leading-relaxed">
+              Hi, I&apos;m <span className="text-slate-900 dark:text-white font-medium">Rahul Misal</span> — a professional <span className="text-slate-900 dark:text-white font-medium">Full Stack & Freelance Web Developer</span> and <span className="text-slate-900 dark:text-white font-medium">Native Android Engineer</span> based in Pune, Maharashtra, India. I engineer high-performance MERN stack web applications, Next.js platforms, and Kotlin mobile apps.
             </p>
             
             {/* Action CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
                 href="/projects"
-                className="group inline-flex items-center gap-3 px-7 py-3.5 bg-amber-500 text-black text-xs font-mono font-bold uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all duration-200 hover:bg-amber-400 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center gap-2.5 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-mono font-bold uppercase tracking-wider rounded-xl transition-colors duration-150 shadow-sm"
               >
                 <span>Explore Projects</span>
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-200" />
+                <FaArrowRight className="text-xs" />
               </Link>
               
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-slate-50 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/30 text-slate-800 dark:text-white text-xs font-mono uppercase tracking-widest rounded-full transition-all duration-200 shadow-sm"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-50 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-800 dark:text-white text-xs font-mono uppercase tracking-wider rounded-xl transition-colors duration-150"
               >
                 <span>Get In Touch</span>
               </Link>
             </div>
 
             {/* Metrics Row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-slate-200 dark:border-white/10">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-slate-200 dark:border-white/10">
               {stats.map((stat, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-white/70 dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 backdrop-blur-md shadow-sm dark:shadow-none">
-                  <div className="text-2xl sm:text-3xl font-serif font-bold text-amber-600 dark:text-amber-400">{stat.value}</div>
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-gray-400 mt-1">{stat.label}</div>
+                <div key={i} className="p-3.5 rounded-xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 shadow-sm">
+                  <div className="text-2xl font-bold text-amber-600 dark:text-amber-400 font-sans">{stat.value}</div>
+                  <div className="text-[11px] font-mono uppercase tracking-wide text-slate-500 dark:text-gray-400 mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right Column: 3D Interactive Portrait */}
+          {/* Right Column: Grounded Photo Frame */}
           <div className="w-full lg:w-5/12 flex justify-center lg:justify-end">
             <InteractivePhotoCard
               imageSrc={rahulHero3D}
               alt="Rahul Misal — Full Stack & Android Developer"
               badgeText="Rahul Misal — Pune, India"
-              gradientBorder="from-slate-300/40 via-amber-500/20 to-transparent dark:from-white/15 dark:via-amber-500/20 dark:to-transparent"
-              glowColor="rgba(245, 158, 11, 0.25)"
               priority
             />
           </div>
         </div>
       </section>
 
-      {/* Dynamic Angled Skills Ribbons */}
-      <section className="relative my-20 py-12 overflow-hidden select-none transition-colors duration-300">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-amber-500/10 dark:bg-amber-500/15 blur-[100px] pointer-events-none rounded-full" />
-
-        {/* Back Ribbon */}
-        <div className="relative -rotate-2 scale-105 z-10 py-3.5 bg-slate-900 text-white dark:bg-slate-950/90 dark:text-gray-300 backdrop-blur-md border-y border-slate-800 dark:border-amber-500/20 shadow-md overflow-hidden">
-          <div className="flex whitespace-nowrap animate-marquee-reverse w-fit items-center">
-            {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
-              <span key={`back-${index}`} className="flex items-center">
-                <span className="mx-6 text-xl sm:text-2xl font-black uppercase tracking-wider text-slate-200 dark:text-gray-300 font-sans">
-                  {tech}
-                </span>
-                <span className="text-amber-400 text-sm sm:text-base font-bold select-none">✦</span>
+      {/* Clean Grounded Horizontal Tech Marquee */}
+      <section className="my-16 py-4 border-y border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.02] overflow-hidden select-none">
+        <div className="flex whitespace-nowrap animate-marquee w-fit items-center">
+          {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
+            <span key={index} className="flex items-center">
+              <span className="mx-6 text-sm sm:text-base font-semibold tracking-wide text-slate-700 dark:text-gray-300 font-mono">
+                {tech}
               </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Front Accent Ribbon */}
-        <div className="relative rotate-1 scale-105 z-20 -mt-6 py-4 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-black shadow-[0_10px_35px_rgba(245,158,11,0.35)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.6)] border-y border-amber-300/40 overflow-hidden">
-          <div className="flex whitespace-nowrap animate-marquee w-fit items-center">
-            {[...coreSkills, ...coreSkills, ...coreSkills].map((tech, index) => (
-              <span key={`front-${index}`} className="flex items-center">
-                <span className="mx-6 text-2xl sm:text-4xl font-black uppercase tracking-tighter text-slate-950 font-sans drop-shadow-[0_1px_1px_rgba(255,255,255,0.4)]">
-                  {tech}
-                </span>
-                <span className="text-slate-900 text-lg sm:text-xl font-black select-none">✦</span>
-              </span>
-            ))}
-          </div>
+              <span className="text-amber-500 text-xs font-bold select-none">/</span>
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* Modern Flagship Bento Spotlight Section */}
-      <section className="mb-24">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
+      {/* Flagship Case Studies Section */}
+      <section className="mb-20">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 border-b border-slate-200 dark:border-white/10 pb-5">
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Flagship Case Studies</span>
-            <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
-              Architectural Highlights.
+            <h2 className="text-2xl sm:text-4xl font-sans font-bold text-slate-900 dark:text-white tracking-tight">
+              Flagship Case Studies
             </h2>
+            <p className="text-slate-500 dark:text-gray-400 text-sm mt-1">
+              Production web platforms and client projects engineered with verifiable metrics.
+            </p>
           </div>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-xs font-mono tracking-wide font-medium px-4 py-2 rounded-full border border-slate-300 dark:border-white/20 bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:border-amber-500 hover:text-amber-600 dark:hover:text-amber-400 transition-all self-start sm:self-auto shadow-sm"
+            className="inline-flex items-center gap-2 text-xs font-mono font-medium px-4 py-2 rounded-lg border border-slate-300 dark:border-white/15 hover:border-amber-500 text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors self-start sm:self-auto"
           >
-            <span>Explore All 20+ Projects</span>
+            <span>Explore All Projects</span>
             <FaArrowRight className="text-xs" aria-hidden="true" />
           </Link>
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {flagshipProjects.map((item, idx) => (
             <div
               key={idx}
-              className="p-7 sm:p-8 rounded-3xl bg-white/85 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 hover:border-amber-500/50 hover:bg-white dark:hover:bg-white/[0.04] transition-all duration-300 shadow-md dark:shadow-xl flex flex-col justify-between group"
+              className="p-6 sm:p-7 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-colors duration-150 shadow-sm flex flex-col justify-between"
             >
-              <div className="space-y-4">
+              <div className="space-y-3.5">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono uppercase px-3 py-1 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-semibold tracking-wider">
+                  <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 font-medium">
                     {item.badge}
                   </span>
                   <span className="text-xs font-mono text-slate-400 dark:text-gray-500">{item.category}</span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-serif font-medium text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-sans font-bold text-slate-900 dark:text-white">
                   {item.title}
                 </h3>
 
-                <p className="text-slate-600 dark:text-gray-300 text-sm font-light leading-relaxed">
+                <p className="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
                   {item.summary}
                 </p>
 
                 {/* Tech Chips */}
-                <div className="flex flex-wrap gap-1.5 pt-2">
+                <div className="flex flex-wrap gap-1.5 pt-1">
                   {item.stack.map((t, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/5 text-[11px] font-mono text-slate-700 dark:text-gray-300"
+                      className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200/80 dark:border-white/5 text-[11px] font-mono text-slate-700 dark:text-gray-300"
                     >
                       {t}
                     </span>
@@ -246,26 +226,26 @@ export default function Home() {
               </div>
 
               {/* Action Links */}
-              <div className="mt-8 pt-5 border-t border-slate-200/80 dark:border-white/5 flex items-center justify-between">
+              <div className="flex items-center gap-3 pt-5 mt-5 border-t border-slate-100 dark:border-white/5">
                 <a
-                  href={item.github}
+                  href={item.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-mono font-medium text-amber-600 dark:text-amber-400 hover:underline"
                 >
-                  <FaGithub size={14} />
-                  <span>View Source</span>
+                  <span>Launch Live</span>
+                  <FaExternalLinkAlt className="text-[10px]" />
                 </a>
 
-                {item.demo && (
+                {item.github && (
                   <a
-                    href={item.demo}
+                    href={item.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-amber-600 dark:text-amber-400 hover:underline"
+                    className="inline-flex items-center gap-2 text-xs font-mono text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors"
                   >
-                    <span>Live Access</span>
-                    <FaExternalLinkAlt size={11} />
+                    <FaGithub className="text-sm" />
+                    <span>Source</span>
                   </a>
                 )}
               </div>
@@ -274,51 +254,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Core Engineering Domains */}
-      <section className="mb-24">
-        <div className="mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
-          <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Engineering Competence</span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
-            Specialized Architectures.
+      {/* Engineering Domains Grid */}
+      <section className="mb-20">
+        <div className="mb-8 border-b border-slate-200 dark:border-white/10 pb-5">
+          <h2 className="text-2xl sm:text-4xl font-sans font-bold text-slate-900 dark:text-white tracking-tight">
+            Engineering Domains
           </h2>
-          <p className="text-slate-600 dark:text-gray-400 text-sm md:text-base font-light mt-2 max-w-2xl">
-            From resilient full-stack MERN backends to native Android mobile platforms and low-latency cloud deployments.
+          <p className="text-slate-500 dark:text-gray-400 text-sm mt-1">
+            Core specializations refined across production applications, clients, and open-source systems.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {engineeringDomains.map((domain, index) => (
             <div
               key={index}
-              className="p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 hover:border-amber-500/40 hover:bg-white dark:hover:bg-white/[0.04] transition-all duration-300 shadow-md dark:shadow-xl flex flex-col justify-between group"
+              className="p-6 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-colors duration-150 shadow-sm flex flex-col justify-between"
             >
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs font-mono uppercase tracking-wider text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 font-medium">
-                      {domain.tag}
-                    </span>
-                    <span className="text-xs font-mono text-slate-400 dark:text-gray-500">0{index + 1}</span>
-                  </div>
-
-                  <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors min-h-[3.75rem] flex items-start pt-1">
-                    {domain.title}
-                  </h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span>{domain.tag}</span>
+                  <span>0{index + 1}</span>
                 </div>
 
-                <p className="text-xs font-mono text-cyan-700 dark:text-cyan-400 tracking-wide font-medium">
+                <h3 className="text-xl font-sans font-bold text-slate-900 dark:text-white">
+                  {domain.title}
+                </h3>
+
+                <p className="text-xs font-mono text-cyan-600 dark:text-cyan-400 font-medium">
                   {domain.badge}
                 </p>
 
-                <p className="text-slate-600 dark:text-gray-300 text-sm font-light leading-relaxed">
+                <p className="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">
                   {domain.description}
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-slate-200/80 dark:border-white/5 space-y-2">
+              <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/5 space-y-1.5">
                 {domain.highlights.map((h, i) => (
                   <div key={i} className="flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-gray-400">
-                    <span className="text-amber-500 dark:text-amber-400">✦</span>
+                    <span className="text-amber-500">✦</span>
                     <span>{h}</span>
                   </div>
                 ))}
@@ -329,80 +304,75 @@ export default function Home() {
       </section>
 
       {/* Featured Works Grid */}
-      <section className="mb-24">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 border-b border-slate-200 dark:border-white/10 pb-6">
+      <section className="mb-20">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 border-b border-slate-200 dark:border-white/10 pb-5">
           <div>
-            <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Portfolio Highlights</span>
-            <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
-              Featured Projects.
+            <h2 className="text-2xl sm:text-4xl font-sans font-bold text-slate-900 dark:text-white tracking-tight">
+              Featured Projects
             </h2>
+            <p className="text-slate-500 dark:text-gray-400 text-sm mt-1">
+              Select showcase of web applications and mobile apps.
+            </p>
           </div>
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-xs font-mono tracking-wide font-medium px-4 py-2 rounded-full border border-slate-300 dark:border-white/20 bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:border-amber-500 hover:text-amber-600 dark:hover:text-amber-400 transition-all self-start sm:self-auto shadow-sm"
+            className="inline-flex items-center gap-2 text-xs font-mono font-medium px-4 py-2 rounded-lg border border-slate-300 dark:border-white/15 hover:border-amber-500 text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors self-start sm:self-auto"
           >
-            <span>View All 20 Projects</span>
+            <span>View All Projects</span>
             <FaArrowRight className="text-xs" aria-hidden="true" />
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
-        {/* See More Projects CTA */}
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center mt-8">
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-slate-200 dark:border-white/15 bg-white/80 dark:bg-white/[0.03] hover:bg-amber-500 hover:border-amber-500 dark:hover:bg-amber-500 dark:hover:border-amber-500 text-slate-700 dark:text-gray-200 hover:text-black dark:hover:text-black text-xs font-mono uppercase tracking-widest transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] backdrop-blur-md"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl border border-slate-200 dark:border-white/15 bg-white dark:bg-white/[0.02] hover:bg-slate-50 dark:hover:bg-white/[0.06] text-slate-700 dark:text-gray-200 text-xs font-mono uppercase tracking-wider transition-colors duration-150 shadow-sm"
           >
             <span>See All Projects</span>
-            <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+            <FaArrowRight className="text-xs" />
           </Link>
         </div>
       </section>
 
       {/* Professional Commitment Section */}
-      <section className="mb-24 py-14 px-8 sm:px-12 bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-3xl text-center shadow-xl dark:shadow-2xl relative overflow-hidden transition-colors duration-300">
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-cyan-500/5 to-purple-500/5 pointer-events-none" />
-        <div className="max-w-3xl mx-auto space-y-6 relative z-10">
-          <span className="text-xs font-mono uppercase tracking-wider text-amber-700 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 inline-block font-medium">
-            Engineering Principles
-          </span>
-          <h2 className="text-3xl md:text-4xl font-serif font-medium text-slate-900 dark:text-white tracking-tight">
-            Engineering scalable systems with maintainable, dependable code.
+      <section className="mb-20 py-10 px-6 sm:px-10 bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 rounded-2xl text-center shadow-sm relative overflow-hidden transition-colors duration-200">
+        <div className="max-w-2xl mx-auto space-y-4">
+          <h2 className="text-2xl sm:text-3xl font-sans font-bold text-slate-900 dark:text-white tracking-tight">
+            Ready to Build Something Solid?
           </h2>
-          <p className="text-base text-slate-600 dark:text-gray-300 font-light leading-relaxed max-w-2xl mx-auto">
-            Committed to building production software with responsive user interfaces, robust data security, optimal Lighthouse performance, and clean API boundaries. Based in Pune, Maharashtra and delivering worldwide.
+          <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
+            I am currently available for full-time engineering roles, freelance contracts, and startup technical consulting in Pune, Maharashtra, and remote worldwide.
           </p>
-          <div className="pt-4 flex flex-wrap justify-center gap-4">
-            <Link href="/about" className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-white/5 border border-slate-300 dark:border-white/10 hover:border-amber-500/40 text-xs font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 hover:text-slate-900 dark:hover:text-white rounded-full transition-all shadow-sm">
-              <span>Read Full Background</span>
-              <FaArrowRight />
-            </Link>
-            <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-black text-xs font-mono uppercase font-bold tracking-widest rounded-full hover:bg-amber-400 transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)]">
-              <span>Initiate Project</span>
-              <FaArrowRight />
+          <div className="pt-2">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-mono uppercase font-bold tracking-wider rounded-xl transition-colors duration-150 shadow-sm"
+            >
+              <span>Schedule a Discussion</span>
+              <FaArrowRight className="text-xs" />
             </Link>
           </div>
         </div>
       </section>
 
       {/* High-Intent SEO FAQ Section */}
-      <section className="mb-24">
-        <div className="mb-10 border-b border-slate-200 dark:border-white/10 pb-6">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 dark:text-amber-400 font-medium">Frequently Asked Questions</span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-medium text-slate-900 dark:text-white tracking-tight mt-1">
-            Frequently Asked Queries.
+      <section className="mb-20">
+        <div className="mb-8 border-b border-slate-200 dark:border-white/10 pb-5">
+          <h2 className="text-2xl sm:text-4xl font-sans font-bold text-slate-900 dark:text-white tracking-tight">
+            Frequently Asked Questions
           </h2>
-          <p className="text-slate-600 dark:text-gray-400 text-sm md:text-base font-light mt-2 max-w-2xl">
-            Everything you need to know about working with Rahul Misal on Full Stack web, Android app development, and freelance contracts in Pune, Maharashtra, and globally.
+          <p className="text-slate-500 dark:text-gray-400 text-sm mt-1">
+            Common queries regarding full stack web, Android app development, and technical SEO engagements.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {[
             {
               q: "Looking for a Full Stack Developer or Technical SEO Specialist in Pune?",
@@ -431,13 +401,13 @@ export default function Home() {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 hover:border-amber-500/40 transition-all duration-300 shadow-md dark:shadow-xl space-y-3"
+              className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-colors duration-150 shadow-sm space-y-2"
             >
-              <h3 className="text-lg font-serif font-medium text-slate-900 dark:text-white flex items-start gap-3">
-                <span className="text-amber-500 text-sm font-mono mt-0.5">0{idx + 1}.</span>
+              <h3 className="text-base font-sans font-bold text-slate-900 dark:text-white flex items-start gap-2.5">
+                <span className="text-amber-500 font-mono text-xs mt-0.5">0{idx + 1}.</span>
                 <span>{item.q}</span>
               </h3>
-              <p className="text-sm text-slate-600 dark:text-gray-300 font-light leading-relaxed pl-7">
+              <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed pl-6">
                 {item.a}
               </p>
             </div>

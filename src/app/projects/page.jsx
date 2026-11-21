@@ -45,7 +45,7 @@ export default function Projects() {
         {/* Header */}
         <div className="mb-16">
           <div>
-            <h1 className="text-4xl md:text-6xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-sans font-bold text-slate-900 dark:text-white mb-4 tracking-tight">
               Selected Works.
             </h1>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
@@ -56,7 +56,7 @@ export default function Projects() {
         </div>
 
         {/* Filters & Search */}
-        <div className="mb-14 flex flex-col md:flex-row justify-between items-start gap-6 p-6 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
+        <div className="mb-14 flex flex-col md:flex-row justify-between items-start gap-6 p-6 rounded-2xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
           {/* Category Pills */}
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => {
@@ -67,7 +67,7 @@ export default function Projects() {
                   onClick={() => setFilter(category)}
                   className={`text-xs font-mono tracking-wider uppercase px-4 py-2.5 rounded-full transition-all duration-200 ${
                     isActive
-                      ? "bg-amber-500 text-black font-bold shadow-[0_0_15px_rgba(245,158,11,0.4)]"
+                      ? "bg-amber-500 text-black font-bold shadow-sm"
                       : "bg-slate-100 hover:bg-slate-200/80 border border-slate-300/80 text-slate-700 hover:text-slate-900 dark:bg-white/5 dark:border-white/10 dark:text-gray-400 dark:hover:text-white dark:hover:border-white/30"
                   }`}
                 >

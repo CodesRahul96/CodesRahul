@@ -70,7 +70,7 @@ export default function Contact() {
         {/* Header */}
         <div className="mb-16">
           <div>
-            <h1 className="text-4xl md:text-6xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-sans font-bold text-slate-900 dark:text-white mb-4 tracking-tight">
               Contact.
             </h1>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
@@ -82,11 +82,11 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Direct Info Sidebar */}
-          <div className="lg:col-span-5 h-full space-y-8 p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl flex flex-col justify-between transition-colors duration-300">
+          <div className="lg:col-span-5 h-full space-y-8 p-8 rounded-2xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl flex flex-col justify-between transition-colors duration-300">
             <div className="space-y-8">
               <div>
                 <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Direct Contact</span>
-                <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white mt-1 mb-4">Let&apos;s Talk</h3>
+                <h3 className="text-2xl font-sans font-bold text-slate-900 dark:text-white mt-1 mb-4">Let&apos;s Talk</h3>
                 <div className="space-y-4 text-slate-600 dark:text-gray-300 font-light text-sm">
                   <div className="flex flex-col">
                     <span className="uppercase font-mono text-xs text-slate-500 dark:text-gray-500 mb-1">Email Address</span>
@@ -168,7 +168,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form Card */}
-          <div className="lg:col-span-7 h-full p-8 md:p-10 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
+          <div className="lg:col-span-7 h-full p-8 md:p-10 rounded-2xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-2xl transition-colors duration-300">
             
             {/* Interactive Scope Chips */}
             <div className="mb-6">
@@ -278,7 +278,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full group flex items-center justify-center gap-3 text-xs font-mono uppercase tracking-widest font-bold py-4 px-8 rounded-full bg-amber-500 hover:bg-amber-400 text-black shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all ${
+                className={`w-full group flex items-center justify-center gap-3 text-xs font-mono uppercase tracking-widest font-bold py-4 px-8 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-sm transition-all ${
                   isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:scale-[1.02] active:scale-[0.98]"
                 }`}
               >

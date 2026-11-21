@@ -90,7 +90,7 @@ export default function About() {
         <div className="mb-10">
           <div>
             <span className="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-medium">Background & Experience</span>
-            <h1 className="text-4xl md:text-6xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight mt-1">
+            <h1 className="text-4xl md:text-6xl font-sans font-bold text-slate-900 dark:text-white mb-4 tracking-tight mt-1">
               About Me.
             </h1>
             <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-6" />
@@ -118,7 +118,7 @@ export default function About() {
               Rahul Misal — Full Stack MERN & Android Engineer
             </div>
 
-            <h3 className="text-3xl sm:text-4xl font-serif font-medium text-slate-900 dark:text-white tracking-tight leading-tight">
+            <h3 className="text-3xl sm:text-4xl font-sans font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
               Architecting scalable MERN platforms & native Android applications.
             </h3>
 
@@ -166,7 +166,7 @@ export default function About() {
         <div className="mb-20">
            <div>
              <span className="text-xs font-mono uppercase tracking-wider text-cyan-700 dark:text-cyan-400 font-medium">Technical Capability</span>
-             <h3 className="text-3xl font-serif font-medium text-slate-900 dark:text-white mb-4 tracking-tight mt-1">Technical Skills</h3>
+             <h3 className="text-3xl font-sans font-bold text-slate-900 dark:text-white mb-4 tracking-tight mt-1">Technical Skills</h3>
              <div className="w-full h-[1px] bg-gradient-to-r from-amber-500/50 via-cyan-500/50 to-transparent mb-10" />
            </div>
            
@@ -174,7 +174,7 @@ export default function About() {
              {skillCategories.map((category, idx) => (
                 <div 
                   key={idx} 
-                  className="p-8 border border-slate-200 dark:border-white/10 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl hover:border-amber-500/40 transition-all duration-300 shadow-md dark:shadow-xl flex flex-col justify-between h-full group"
+                  className="p-8 border border-slate-200 dark:border-white/10 rounded-2xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl hover:border-amber-500/40 transition-all duration-300 shadow-md dark:shadow-xl flex flex-col justify-between h-full group"
                 >
                  <div>
                    <div className="flex items-center justify-between mb-6">
@@ -212,16 +212,16 @@ export default function About() {
         {/* Experience & Education */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-20 items-stretch">
           {/* Experience */}
-          <div className="p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-md dark:shadow-xl h-full flex flex-col justify-between">
+          <div className="p-8 rounded-2xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-md dark:shadow-xl h-full flex flex-col justify-between">
             <div>
-              <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white mb-8 tracking-tight flex items-center gap-2.5">
+              <h3 className="text-2xl font-sans font-bold text-slate-900 dark:text-white mb-8 tracking-tight flex items-center gap-2.5">
                  <FaBriefcase className="text-amber-500 text-lg" />
                  <span>Work History</span>
               </h3>
               <div className="space-y-8">
                 {experience.map((exp, index) => (
                   <div key={index} className="relative group border-l-2 border-amber-500/40 pl-6">
-                    <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-amber-500 dark:bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.8)]" />
+                    <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-amber-500 dark:bg-amber-400 " />
                     <span className="text-xs font-mono text-amber-600 dark:text-amber-400 tracking-wider mb-1 block uppercase font-medium">{exp.year}</span>
                     <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{exp.role}</h4>
                     <p className="text-slate-500 dark:text-gray-400 text-xs mb-3 font-mono">{exp.company}</p>
@@ -233,16 +233,16 @@ export default function About() {
           </div>
 
           {/* Education */}
-          <div className="p-8 rounded-3xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-md dark:shadow-xl h-full flex flex-col justify-between">
+          <div className="p-8 rounded-2xl bg-white/80 dark:bg-white/[0.02] backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-md dark:shadow-xl h-full flex flex-col justify-between">
             <div>
-              <h3 className="text-2xl font-serif font-medium text-slate-900 dark:text-white mb-8 tracking-tight flex items-center gap-2.5">
+              <h3 className="text-2xl font-sans font-bold text-slate-900 dark:text-white mb-8 tracking-tight flex items-center gap-2.5">
                  <FaGraduationCap className="text-cyan-500 text-xl" />
                  <span>Education & Credentials</span>
               </h3>
               <div className="space-y-8">
                  {education.map((edu, index) => (
                   <div key={index} className="relative group border-l-2 border-cyan-500/40 pl-6">
-                    <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
+                    <span className="absolute -left-[7px] top-1.5 h-[12px] w-[12px] rounded-full bg-cyan-500 dark:bg-cyan-400 " />
                     <span className="text-xs font-mono text-cyan-700 dark:text-cyan-400 tracking-wider mb-1 block uppercase font-medium">{edu.year}</span>
                     <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{edu.degree}</h4>
                     <p className="text-slate-500 dark:text-gray-400 text-xs mb-3 font-mono">{edu.institution}</p>
@@ -255,9 +255,9 @@ export default function About() {
         </div>
 
         {/* Call to Action Bar */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-cyan-500/10 border border-amber-500/20 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="p-8 sm:p-10 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
-            <h4 className="text-xl font-serif font-medium text-slate-900 dark:text-white">
+            <h4 className="text-xl font-sans font-bold text-slate-900 dark:text-white">
               Interested in collaborating or hiring Rahul?
             </h4>
             <p className="text-sm text-slate-600 dark:text-gray-300 font-light">

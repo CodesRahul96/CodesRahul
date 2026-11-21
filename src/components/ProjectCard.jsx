@@ -200,9 +200,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
 
   return (
     <>
-      <div className="group relative rounded-3xl border border-slate-200/80 dark:border-white/10 bg-white/75 dark:bg-[#070913]/65 backdrop-blur-2xl overflow-hidden transition-all duration-300 ease-out hover:border-amber-500/50 dark:hover:border-amber-500/40 hover:bg-white/90 dark:hover:bg-[#0c1020]/80 hover:-translate-y-1.5 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06),0_2px_8px_rgba(0,0,0,0.03)] dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_40px_-12px_rgba(245,158,11,0.18)] dark:hover:shadow-[0_20px_45px_-10px_rgba(245,158,11,0.22)] ring-1 ring-black/[0.03] dark:ring-white/[0.06] flex flex-col justify-between h-full">
-        {/* Top subtle glow accent bar on hover */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none" />
+      <div className="group relative rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#090d18] overflow-hidden transition-colors duration-150 hover:border-slate-300 dark:hover:border-white/20 shadow-sm flex flex-col justify-between h-full">
 
         <div>
           {/* Image / Gallery Showcase — clean neutral stage */}
@@ -379,7 +377,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
           {/* Project Details */}
           <div className="p-6 sm:p-7 space-y-4">
             <div className="flex justify-between items-start gap-2">
-              <h3 className="text-xl sm:text-2xl font-serif font-medium text-slate-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-200">
+              <h3 className="text-xl sm:text-2xl font-sans font-bold text-slate-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-200">
                 {project.title}
               </h3>
               <div className="flex flex-col items-end gap-1.5 shrink-0">
