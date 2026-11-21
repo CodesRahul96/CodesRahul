@@ -150,6 +150,11 @@
   z-index: 1;
 }
 
+html::view-transition {
+  position: fixed;
+  inset: 0;
+}
+
 /* Prevent CSS background-color transition conflicts during active theme switch */
 html.theme-transitioning,
 html.theme-transitioning body,

@@ -335,19 +335,26 @@ export default function RootLayout({ children }) {
             __html: `
               (function() {
                 try {
-                  var saved = localStorage.getItem('theme');
-                  var isDark = saved
-                    ? saved === 'dark'
-                    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var saved = localStorage.getItem('app-theme') || localStorage.getItem('theme') || 'system';
+                  var isDark = saved === 'dark' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                  var root = document.documentElement;
                   if (isDark) {
-                    document.documentElement.classList.add('dark');
-                    document.documentElement.classList.remove('light');
-                    document.documentElement.style.colorScheme = 'dark';
+                    root.classList.add('dark');
+                    root.classList.remove('light');
+                    root.style.colorScheme = 'dark';
                   } else {
-                    document.documentElement.classList.remove('dark');
-                    document.documentElement.classList.add('light');
-                    document.documentElement.style.colorScheme = 'light';
+                    root.classList.remove('dark');
+                    root.classList.add('light');
+                    root.style.colorScheme = 'light';
                   }
+                  var meta = document.querySelector('meta[name="theme-color"]');
+                  var color = isDark ? '#050508' : '#f8fafc';
+                  if (!meta) {
+                    meta = document.createElement('meta');
+                    meta.setAttribute('name', 'theme-color');
+                    document.head.appendChild(meta);
+                  }
+                  meta.setAttribute('content', color);
                 } catch (e) {}
               })();
             `,

@@ -1,25 +1,45 @@
 "use client";
 
 import React, { useRef } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { FaSun, FaMoon, FaDesktop } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 
 export default function ThemeToggle({ className = "", compact = false }) {
-  const { toggleTheme, theme } = useTheme();
+  const { toggleTheme, theme, resolvedTheme, mounted } = useTheme();
   const buttonRef = useRef(null);
 
   const handleClick = (e) => {
     e.stopPropagation();
-    let coords = null;
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect();
-      coords = {
-        x: rect.left + rect.width / 2,
-        y: rect.top + rect.height / 2,
+    toggleTheme({ element: buttonRef.current });
+  };
+
+  const getLabelAndTitle = () => {
+    if (!mounted) {
+      return {
+        label: "Switch theme mode",
+        title: "Theme: System (Auto) — Next: Dark",
       };
     }
-    toggleTheme(e, coords);
+    if (theme === "system") {
+      const activeText = resolvedTheme === "dark" ? "Dark" : "Light";
+      return {
+        label: `Current theme: System Auto (${activeText}). Click to switch to Dark theme.`,
+        title: `Theme: System (${activeText}) — Next: Dark`,
+      };
+    }
+    if (theme === "dark") {
+      return {
+        label: "Current theme: Dark. Click to switch to Light theme.",
+        title: "Theme: Dark — Next: Light",
+      };
+    }
+    return {
+      label: "Current theme: Light. Click to switch to System Auto theme.",
+      title: "Theme: Light — Next: System (Auto)",
+    };
   };
+
+  const { label, title } = getLabelAndTitle();
 
   return (
     <button
@@ -42,31 +62,42 @@ export default function ThemeToggle({ className = "", compact = false }) {
         cursor-pointer z-20 touch-manipulation
         ${className}
       `}
-      aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
-      title={theme === "dark" ? "Switch to Light Theme" : "Switch to Dark Theme"}
+      aria-label={label}
+      title={title}
     >
       <div className="relative w-4 h-4 flex items-center justify-center pointer-events-none">
-        {/*
-          Sun — visible in light mode, hidden in dark mode.
-          Uses pure Tailwind dark: classes so server + client render identical JSX.
-          No JS-conditional className → zero hydration mismatch.
-        */}
-        <FaSun
-          className="
-            text-[14px] text-amber-500 transition-all duration-300 absolute
-            rotate-0 scale-100 opacity-100
-            dark:rotate-90 dark:scale-0 dark:opacity-0
-          "
+        {/* System (Auto) Icon */}
+        <FaDesktop
+          className={`
+            text-[12px] text-amber-500 dark:text-amber-400 transition-all duration-300 absolute
+            ${
+              !mounted || theme === "system"
+                ? "rotate-0 scale-100 opacity-100"
+                : "-rotate-90 scale-0 opacity-0"
+            }
+          `}
         />
-        {/*
-          Moon — hidden in light mode, visible in dark mode.
-        */}
+        {/* Dark (Moon) Icon */}
         <FaMoon
-          className="
+          className={`
             text-[13px] text-amber-400 transition-all duration-300 absolute
-            -rotate-90 scale-0 opacity-0
-            dark:rotate-0 dark:scale-100 dark:opacity-100
-          "
+            ${
+              mounted && theme === "dark"
+                ? "rotate-0 scale-100 opacity-100"
+                : "-rotate-90 scale-0 opacity-0"
+            }
+          `}
+        />
+        {/* Light (Sun) Icon */}
+        <FaSun
+          className={`
+            text-[14px] text-amber-500 transition-all duration-300 absolute
+            ${
+              mounted && theme === "light"
+                ? "rotate-0 scale-100 opacity-100"
+                : "rotate-90 scale-0 opacity-0"
+            }
+          `}
         />
       </div>
     </button>

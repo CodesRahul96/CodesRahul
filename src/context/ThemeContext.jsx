@@ -1,234 +1,283 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
 const ThemeContext = createContext({
-  theme: "dark",
+  theme: "system",
+  resolvedTheme: "dark",
   toggleTheme: () => {},
   setTheme: () => {},
   resetToSystem: () => {},
-  isUserForced: false,
   mounted: false,
 });
 
-function applyTheme(isDark) {
+/**
+ * Synchronously applies theme classes and meta theme-color to the DOM.
+ */
+function applyThemeToDOM(resolved) {
+  if (typeof document === "undefined") return;
+  const isDark = resolved === "dark";
+  const root = document.documentElement;
+
   if (isDark) {
-    document.documentElement.classList.add("dark");
-    document.documentElement.classList.remove("light");
-    document.documentElement.style.colorScheme = "dark";
+    root.classList.add("dark");
+    root.classList.remove("light");
+    root.style.colorScheme = "dark";
   } else {
-    document.documentElement.classList.remove("dark");
-    document.documentElement.classList.add("light");
-    document.documentElement.style.colorScheme = "light";
+    root.classList.remove("dark");
+    root.classList.add("light");
+    root.style.colorScheme = "light";
   }
+
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute("name", "theme-color");
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute("content", isDark ? "#050508" : "#f8fafc");
 }
 
 /**
- * Read the theme the inline <head> script already applied to <html>.
- * This runs on the first client render so React state matches the DOM exactly —
- * eliminating all hydration mismatches in child components.
+ * Resolves active appearance based on current theme preference and OS preference.
  */
-function getInitialTheme() {
-  if (typeof window === "undefined") return "dark"; // SSR placeholder
-  // The inline script already set the correct class — read it directly
-  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+function resolveAppearance(targetTheme) {
+  if (targetTheme === "dark") return "dark";
+  if (targetTheme === "light") return "light";
+  if (typeof window !== "undefined" && window.matchMedia) {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  return "dark";
+}
+
+/**
+ * Reads initial theme from storage or DOM.
+ */
+function getSavedTheme() {
+  if (typeof window === "undefined") return "system";
+  try {
+    const saved = localStorage.getItem("app-theme") || localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark" || saved === "system") {
+      return saved;
+    }
+  } catch (_) {}
+  return "system";
 }
 
 export function ThemeProvider({ children }) {
-  // Initialise from the DOM (already corrected by the inline <head> script),
-  // so the first client render matches the visible page — no flash/mismatch.
-  const [theme, setThemeState] = useState(getInitialTheme);
-  const [isUserForced, setIsUserForced] = useState(false);
+  const [theme, setThemeState] = useState("system");
+  const [resolvedTheme, setResolvedTheme] = useState("dark");
   const [mounted, setMounted] = useState(false);
 
+  const themeRef = useRef(theme);
+
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
+    themeRef.current = theme;
+  }, [theme]);
+
+  // Initial client boot synchronization
+  useEffect(() => {
+    const initialTheme = getSavedTheme();
+    const initialResolved = resolveAppearance(initialTheme);
+
+    setThemeState(initialTheme);
+    setResolvedTheme(initialResolved);
+    applyThemeToDOM(initialResolved);
+    setMounted(true);
+  }, []);
+
+  // Real-time OS color-scheme listener with backward compatibility
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
-    if (saved) {
-      setIsUserForced(true);
-      // State already correct from getInitialTheme; just mark forced
-    } else {
-      setIsUserForced(false);
-      // Keep listening for device theme changes (only when no user override)
-    }
-
-    setMounted(true);
-
-    // Live-sync with device theme — only when the user has NOT forced a choice
     const handleSystemChange = (e) => {
-      if (!localStorage.getItem("theme")) {
-        const isDark = e.matches;
-        setThemeState(isDark ? "dark" : "light");
-        applyTheme(isDark);
+      if (themeRef.current === "system") {
+        const isDark = typeof e.matches === "boolean" ? e.matches : mq.matches;
+        const newResolved = isDark ? "dark" : "light";
+        setResolvedTheme(newResolved);
+        applyThemeToDOM(newResolved);
       }
     };
 
-    mq.addEventListener("change", handleSystemChange);
-    return () => mq.removeEventListener("change", handleSystemChange);
+    if (typeof mq.addEventListener === "function") {
+      mq.addEventListener("change", handleSystemChange);
+    } else if (typeof mq.addListener === "function") {
+      mq.addListener(handleSystemChange);
+    }
+
+    return () => {
+      if (typeof mq.removeEventListener === "function") {
+        mq.removeEventListener("change", handleSystemChange);
+      } else if (typeof mq.removeListener === "function") {
+        mq.removeListener(handleSystemChange);
+      }
+    };
   }, []);
 
-  // Manual toggle — with circular reveal animation closing onto button
-  const toggleTheme = (e, explicitCoords) => {
-    const isDark = theme === "dark";
-    const next = isDark ? "light" : "dark";
-    const willBeDark = next === "dark";
+  /**
+   * Directly sets the theme: "system" | "light" | "dark"
+   */
+  const setTheme = (nextTheme) => {
+    const validTheme = nextTheme === "light" || nextTheme === "dark" ? nextTheme : "system";
+    const nextResolved = resolveAppearance(validTheme);
 
-    // 1. Calculate origin coordinates (explicit coords from button, event rect, or mobile DOM query)
+    setThemeState(validTheme);
+    setResolvedTheme(nextResolved);
+    applyThemeToDOM(nextResolved);
+
+    try {
+      localStorage.setItem("app-theme", validTheme);
+      localStorage.setItem("theme", validTheme);
+    } catch (_) {}
+  };
+
+  /**
+   * Resets theme to system auto mode
+   */
+  const resetToSystem = () => {
+    setTheme("system");
+  };
+
+  /**
+   * Smooth 3-state circular reveal toggle:
+   * System (Auto) -> Dark -> Light -> System (Auto)
+   */
+  const toggleTheme = (options) => {
+    const cycleMap = {
+      system: "dark",
+      dark: "light",
+      light: "system",
+    };
+
+    const nextTheme = cycleMap[themeRef.current] || "dark";
+    const nextResolved = resolveAppearance(nextTheme);
+    const isNextLight = nextResolved === "light";
+
+    // 1. Calculate physical click coordinates (x, y)
     let x = typeof window !== "undefined" ? window.innerWidth / 2 : 0;
     let y = typeof window !== "undefined" ? window.innerHeight / 2 : 0;
 
-    if (explicitCoords && typeof explicitCoords.x === "number" && typeof explicitCoords.y === "number") {
-      x = explicitCoords.x;
-      y = explicitCoords.y;
-    } else if (e) {
-      if (e.currentTarget && typeof e.currentTarget.getBoundingClientRect === "function") {
-        const rect = e.currentTarget.getBoundingClientRect();
-        x = rect.left + rect.width / 2;
-        y = rect.top + rect.height / 2;
-      } else if (typeof e.clientX === "number" && typeof e.clientY === "number" && (e.clientX !== 0 || e.clientY !== 0)) {
-        x = e.clientX;
-        y = e.clientY;
-      }
+    let targetEl = null;
+    if (options && options.element) {
+      targetEl = options.element;
+    } else if (options && options.currentTarget) {
+      targetEl = options.currentTarget;
+    } else if (options && options.target && options.target.closest) {
+      targetEl = options.target.closest("button") || options.target;
+    } else if (typeof document !== "undefined") {
+      targetEl = document.querySelector("[data-theme-toggle]");
     }
 
-    // High-precision fallback for mobile devices if coordinates defaulted to screen center
-    if (typeof document !== "undefined" && (x === window.innerWidth / 2 && y === window.innerHeight / 2)) {
-      const btn = document.querySelector("[data-theme-toggle]");
-      if (btn) {
-        const rect = btn.getBoundingClientRect();
-        x = rect.left + rect.width / 2;
-        y = rect.top + rect.height / 2;
-      }
+    if (targetEl && typeof targetEl.getBoundingClientRect === "function") {
+      const rect = targetEl.getBoundingClientRect();
+      x = rect.left + rect.width / 2;
+      y = rect.top + rect.height / 2;
+    } else if (options && typeof options.clientX === "number" && typeof options.clientY === "number") {
+      x = options.clientX;
+      y = options.clientY;
     }
 
-    // 2. Compute radius needed to fully cover viewport (including mobile URL bars and dynamic island)
+    // 2. Compute radius needed to fully sweep the viewport
     const vw = typeof window !== "undefined" ? Math.max(window.innerWidth, document.documentElement.clientWidth || 0) : 0;
     const vh = typeof window !== "undefined" ? Math.max(window.innerHeight, document.documentElement.clientHeight || 0) : 0;
-    const endRadius = Math.ceil(Math.hypot(Math.max(x, vw - x), Math.max(y, vh - y))) + 30;
+    const maxDistX = Math.max(x, vw - x);
+    const maxDistY = Math.max(y, vh - y);
+    const endRadius = Math.ceil(Math.hypot(maxDistX, maxDistY)) + 24;
 
-    // 3. Fallback for environments without document.startViewTransition (e.g. Firefox) or reduced-motion
+    const commitThemeChange = () => {
+      setThemeState(nextTheme);
+      setResolvedTheme(nextResolved);
+      applyThemeToDOM(nextResolved);
+      try {
+        localStorage.setItem("app-theme", nextTheme);
+        localStorage.setItem("theme", nextTheme);
+      } catch (_) {}
+    };
+
+    // 3. Instant switch for reduced-motion preference
     if (
-      typeof document === "undefined" ||
-      !document.startViewTransition ||
+      typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-      // Create smooth circular ripple wave overlay for Firefox & unsupported engines
-      if (typeof document !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        try {
-          const ripple = document.createElement("div");
-          ripple.className = "theme-ripple";
-          const diameter = endRadius * 2.4;
-          ripple.style.width = `${diameter}px`;
-          ripple.style.height = `${diameter}px`;
-          ripple.style.left = `${x - diameter / 2}px`;
-          ripple.style.top = `${y - diameter / 2}px`;
-          ripple.style.backgroundColor = willBeDark ? "#050508" : "#f8fafc";
-          document.body.appendChild(ripple);
-          setTimeout(() => {
-            setThemeState(next);
-            applyTheme(willBeDark);
-            try { localStorage.setItem("theme", next); } catch (_) {}
-          }, 280);
-          setTimeout(() => {
-            if (ripple && ripple.parentNode) {
-              ripple.parentNode.removeChild(ripple);
-            }
-          }, 700);
-          return;
-        } catch (_) {}
-      }
-
-      setThemeState(next);
-      try {
-        localStorage.setItem("theme", next);
-        setIsUserForced(true);
-        applyTheme(willBeDark);
-      } catch (err) {
-        console.error("Theme toggle error:", err);
-      }
+      commitThemeChange();
       return;
     }
 
-    // 4. Native View Transitions API (Chromium, Safari 18+)
-    document.documentElement.style.setProperty("--click-x", `${x}px`);
-    document.documentElement.style.setProperty("--click-y", `${y}px`);
-    document.documentElement.classList.add("theme-transitioning");
+    // 4. Circular View Transitions API (Chromium, Safari 18+)
+    if (typeof document !== "undefined" && typeof document.startViewTransition === "function") {
+      document.documentElement.classList.add("theme-transitioning");
 
-    const transition = document.startViewTransition(() => {
-      // flushSync ensures React synchronously updates the DOM before the snapshot is captured
-      flushSync(() => {
-        setThemeState(next);
-        applyTheme(willBeDark);
+      const transition = document.startViewTransition(() => {
+        flushSync(() => {
+          commitThemeChange();
+        });
       });
+
+      transition.ready.then(() => {
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(${endRadius}px at ${x}px ${y}px)`,
+              `circle(0px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration: isNextLight ? 650 : 580,
+            easing: "cubic-bezier(0.35, 0, 0.15, 1)",
+            fill: "forwards",
+            pseudoElement: "::view-transition-old(root)",
+          }
+        );
+      });
+
+      transition.finished.finally(() => {
+        document.documentElement.classList.remove("theme-transitioning");
+      });
+      return;
+    }
+
+    // 5. CSS expanding ripple circle fallback (Firefox, legacy browsers)
+    if (typeof document !== "undefined") {
       try {
-        localStorage.setItem("theme", next);
-        setIsUserForced(true);
-      } catch (err) {
-        console.error("Theme toggle error:", err);
-      }
-    });
+        const ripple = document.createElement("div");
+        ripple.className = "theme-ripple";
+        const diameter = endRadius * 2.4;
+        ripple.style.width = `${diameter}px`;
+        ripple.style.height = `${diameter}px`;
+        ripple.style.left = `${x - diameter / 2}px`;
+        ripple.style.top = `${y - diameter / 2}px`;
+        ripple.style.backgroundColor = nextResolved === "dark" ? "#050508" : "#f8fafc";
+        document.body.appendChild(ripple);
 
-    transition.ready.then(() => {
-      const isSwitchingToLight = !willBeDark;
-      const duration = isSwitchingToLight ? 650 : 580;
-      const easing = "cubic-bezier(0.35, 0, 0.15, 1)"; // Fluid cinematic ease: zero initial jerk, silky deceleration
+        setTimeout(() => {
+          commitThemeChange();
+        }, 280);
 
-      // ::view-transition-old(root) is ALWAYS on top (z-index: 9999).
-      // Animating it from full screen down to 0px reveals the incoming theme from (x, y)
-      // without any possibility of the screen flashing to the new theme beforehand!
-      document.documentElement.animate(
-        {
-          clipPath: [
-            `circle(${endRadius}px at ${x}px ${y}px)`,
-            `circle(0px at ${x}px ${y}px)`,
-          ],
-        },
-        {
-          duration,
-          easing,
-          fill: "forwards",
-          pseudoElement: "::view-transition-old(root)",
-        }
-      );
-    });
-
-    transition.finished.finally(() => {
-      document.documentElement.classList.remove("theme-transitioning");
-      document.documentElement.style.removeProperty("--click-x");
-      document.documentElement.style.removeProperty("--click-y");
-    });
-  };
-
-  // Direct set — also user-forced
-  const changeTheme = (newTheme) => {
-    try {
-      localStorage.setItem("theme", newTheme);
-      setIsUserForced(true);
-      applyTheme(newTheme === "dark");
-    } catch (err) {
-      console.error("Theme change error:", err);
+        setTimeout(() => {
+          if (ripple && ripple.parentNode) {
+            ripple.parentNode.removeChild(ripple);
+          }
+        }, 700);
+        return;
+      } catch (_) {}
     }
-    setThemeState(newTheme);
-  };
 
-  // Clear user override and re-sync with system preference
-  const resetToSystem = () => {
-    try {
-      localStorage.removeItem("theme");
-      setIsUserForced(false);
-      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      applyTheme(isDark);
-      setThemeState(isDark ? "dark" : "light");
-    } catch (err) {
-      console.error("Reset to system error:", err);
-    }
+    commitThemeChange();
   };
 
   return (
     <ThemeContext.Provider
-      value={{ theme, toggleTheme, setTheme: changeTheme, resetToSystem, isUserForced, mounted }}
+      value={{
+        theme,
+        resolvedTheme,
+        toggleTheme,
+        setTheme,
+        resetToSystem,
+        mounted,
+      }}
     >
       {children}
     </ThemeContext.Provider>

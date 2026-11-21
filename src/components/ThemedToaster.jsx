@@ -5,15 +5,15 @@ import { Toaster } from "sonner";
 import { useTheme } from "../context/ThemeContext";
 
 export default function ThemedToaster() {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   return (
     <Toaster
       position="bottom-right"
-      theme={theme === "light" ? "light" : "dark"}
+      theme={resolvedTheme === "light" ? "light" : "dark"}
       toastOptions={{
         style:
-          theme === "light"
+          resolvedTheme === "light"
             ? {
                 background: "#ffffff",
                 border: "1px solid rgba(15, 23, 42, 0.12)",
