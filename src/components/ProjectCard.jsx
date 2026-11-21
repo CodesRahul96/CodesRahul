@@ -90,7 +90,7 @@ const ProjectCard = React.memo(function ProjectCard({ project }) {
 
   // Safely resolve multiple images from project.images array OR project.image key
   const imageList = useMemo(() => {
-    let raw = [];
+    let raw;
     if (Array.isArray(project.images) && project.images.length > 0) {
       raw = project.images;
     } else if (project.image) {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import {
   FaTimes,
@@ -176,7 +176,7 @@ export default function PortfolioChatbot() {
   const INACTIVITY_TIMEOUT_MS = 60 * 1000;
   const inactivityTimerRef = useRef(null);
 
-  const resetInactivityTimer = () => {
+  const resetInactivityTimer = useCallback(() => {
     if (inactivityTimerRef.current) {
       clearTimeout(inactivityTimerRef.current);
     }
@@ -184,15 +184,12 @@ export default function PortfolioChatbot() {
     if (!isOpen) return;
 
     inactivityTimerRef.current = setTimeout(() => {
-      // Don't auto-close if the user has an active draft or AI is generating a reply
-      if (inputMessage.trim().length > 0 || isTyping) {
-        resetInactivityTimer();
-        return;
+      if (inputMessage.trim().length === 0 && !isTyping) {
+        setIsOpen(false);
+        setIsMinimized(false);
       }
-      setIsOpen(false);
-      setIsMinimized(false);
-    }, INACTIVITY_TIMEOUT_MS);
-  };
+    }, 60000);
+  }, [isOpen, inputMessage, isTyping]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -223,7 +220,7 @@ export default function PortfolioChatbot() {
         window.removeEventListener(evt, handleActivity);
       });
     };
-  }, [isOpen, inputMessage, isTyping, messages]);
+  }, [isOpen, inputMessage, isTyping, messages, resetInactivityTimer]);
 
   // =========================================================================
   // DRAG & DROP LOGIC (TOUCH & MOUSE COMPATIBLE)
