@@ -23,8 +23,7 @@
 ## Verified Flagship Projects & Client Work
 - **UdemyWala** (https://udemywala.xyz/): High-performance course & coupon discovery platform. Ranked #1 globally on Google Search for high-intent queries with rich Schema.org microdata, dynamic sitemaps, and enterprise security headers (HSTS Preload, Content Security Policy).
 - **TaskFlow** (https://taskflow.indevs.in/): Real-time collaborative enterprise Kanban workspace with instant WebSocket state updates via Socket.IO, JWT + OAuth authentication, and draggable card architecture.
-- **Samrat Megastore** (https://samratmegastore.com/): E-commerce platform technical audit, Product schema microdata integration, and Google Search Console indexing resolution.
-- **ROMs Daniel Springer** (https://roms.danielspringer.at/): Austrian enterprise client portal; executed technical SEO improvements, Core Web Vitals speed optimization, and React state hydration bug fixing.
+- **Blogsify** (https://blogsify.vercel.app/): Full-featured MERN stack blogging platform with secure JWT authentication, rich text editing, and real-time interaction.
 - **PlayNox Player** (https://github.com/CodesRahul96/PlayNox.git): Native Android video player engineered in Kotlin with Jetpack Compose, libmpv hardware decoding, dynamic color theming, and gesture playback.
 
 ## Service Offerings & Engagement Models

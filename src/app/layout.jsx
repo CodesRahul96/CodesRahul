@@ -252,7 +252,7 @@ const jsonLdSchema = {
           name: 'Do you provide Technical SEO and Core Web Vitals optimization?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Yes. Rahul executes deep technical SEO audits, structured Schema.org microdata (JSON-LD), crawl budget optimization, and Core Web Vitals speed tuning (LCP < 1.5s, CLS < 0.05, INP < 50ms) to secure #1 organic Google rankings, proven by platforms like UdemyWala and Samrat Megastore.',
+            text: 'Yes. Rahul executes deep technical SEO audits, structured Schema.org microdata (JSON-LD), crawl budget optimization, and Core Web Vitals speed tuning (LCP < 1.5s, CLS < 0.05, INP < 50ms) to secure #1 organic Google rankings, proven by platforms like UdemyWala and TaskFlow.',
           },
         },
         {
@@ -303,20 +303,13 @@ const jsonLdSchema = {
         {
           '@type': 'ListItem',
           position: 3,
-          name: 'Samrat Megastore',
-          description: 'E-commerce platform technical SEO audit, Schema.org product structured data integration, and Google Search Console indexing resolution.',
-          url: 'https://samratmegastore.com/',
+          name: 'Blogsify',
+          description: 'Full-featured MERN stack blogging platform with secure JWT authentication, rich text editing, and real-time interaction.',
+          url: 'https://blogsify.vercel.app/',
         },
         {
           '@type': 'ListItem',
           position: 4,
-          name: 'ROMs Daniel Springer',
-          description: 'Technical SEO improvements, Core Web Vitals speed optimization, and React state hydration bug fixing for Austrian client.',
-          url: 'https://roms.danielspringer.at/',
-        },
-        {
-          '@type': 'ListItem',
-          position: 5,
           name: 'PlayNox Player',
           description: 'High-performance native Android video player powered by MPV/libmpv with hardware acceleration, Material You dynamic colors, and gesture controls.',
           url: 'https://github.com/CodesRahul96/PlayNox.git',

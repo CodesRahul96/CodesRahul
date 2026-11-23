@@ -37,38 +37,6 @@
     "image": "taskflow"
   },
   {
-    "id": 19,
-    "title": "Samrat Megastore",
-    "description": "E-commerce platform technical SEO overhaul and structured data implementation. Embedded Schema.org Product, Offer, and AggregateRating microdata, resolved Google Search Console indexing errors, and optimized mobile Core Web Vitals.",
-    "category": "Web Development",
-    "technologies": [
-      "Next.js",
-      "Technical SEO",
-      "Schema.org",
-      "Core Web Vitals",
-      "TailwindCSS"
-    ],
-    "github": "https://github.com/CodesRahul96",
-    "demo": "https://samratmegastore.com/",
-    "image": "trentshopnow"
-  },
-  {
-    "id": 20,
-    "title": "ROMs Portal \u2013 Daniel Springer",
-    "description": "Technical SEO optimization and frontend bug fixing for an Austrian client. Resolved React state hydration mismatches, optimized Core Web Vitals to 95+ PageSpeed scores, and structured dynamic breadcrumbs microdata for search crawlers.",
-    "category": "Web Development",
-    "technologies": [
-      "React",
-      "Technical SEO",
-      "Performance Optimization",
-      "Core Web Vitals",
-      "JavaScript"
-    ],
-    "github": "https://github.com/CodesRahul96",
-    "demo": "https://roms.danielspringer.at/",
-    "image": "udemywala"
-  },
-  {
     "id": 3,
     "title": "Blogsify",
     "description": "A feature-rich MERN stack blogging platform featuring secure JWT authentication, rich text editing, and real-time comment capabilities. Designed with a modular architecture for scalability.",

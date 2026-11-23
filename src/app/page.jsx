@@ -384,7 +384,7 @@ export default function Home() {
             },
             {
               q: "Do you provide Technical SEO and Core Web Vitals optimization?",
-              a: "Yes. I execute deep technical SEO audits, structured Schema.org microdata (JSON-LD), crawl budget optimization, and Core Web Vitals speed tuning (LCP < 1.5s, CLS < 0.05, INP < 50ms) to secure #1 organic Google rankings, proven by platforms like UdemyWala and Samrat Megastore."
+              a: "Yes. I execute deep technical SEO audits, structured Schema.org microdata (JSON-LD), crawl budget optimization, and Core Web Vitals speed tuning (LCP < 1.5s, CLS < 0.05, INP < 50ms) to secure #1 organic Google rankings, proven by platforms like UdemyWala and TaskFlow."
             },
             {
               q: "Can you handle Shopify and E-Commerce storefront engineering?",
